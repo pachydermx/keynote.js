@@ -33,9 +33,9 @@ function page(name, manager) {
                 the_object.object.moveToState(0, 0);
             }
             // perform
-            this.timers.push(setTimeout(function () {
-                the_object.object.moveToState(the_object.state, the_object.duration);
-            }, the_object.interval));
+            this.timers.push(setTimeout(
+                the_object.object.moveToState(the_object.state, the_object.duration)
+            , the_object.interval));
         }
     };
     

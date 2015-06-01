@@ -1,8 +1,7 @@
 // object is basic type of component
-function object(id, content, meta, auto_reset) {
+function object(id, meta, auto_reset) {
     // properties
     this.id = id;
-    this.content = content;
     this.positions = [];
     this.meta = meta;
     if (typeof auto_reset !== "undefined") {
@@ -10,16 +9,50 @@ function object(id, content, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location;
+    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta;
     
     // init object
-    this.init = function (position) {
-        $(position).append(getDiv('obj_' + id, 'object', content));
+    this.init = function (selector, content, class_name) {
+        if (typeof class_name == "undefined") {
+            class_name = "object";
+        }
+        this.content = content;
+        $(selector).append(getDiv('obj_' + id, class_name, content));
         // get info
         this.dom_obj = $("#obj_" + id);
         this.width = this.dom_obj.width();
         this.height = this.dom_obj.height();
     };
+    
+    // init with image
+    this.init_with_image = function(selector, image) {
+        // init basic structures
+        this.init(selector, 'image', "object image_object");
+        // set background
+        this.dom_obj.css('background-image', 'url(' + image + ')');
+    };
+    
+    // set size
+    this.set_size = function(width_percent, width_delta, height_percent, height_delta) {
+        this.width_percent = width_percent;
+        this.width_delta = width_delta;
+        this.height_percent = height_percent;
+        this.height_delta = height_delta;
+        this.reset_size();
+    }
+    
+    // reset size
+    this.reset_size = function () {
+        // calc actual size
+        var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta;
+        var actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
+        // css apply
+        this.dom_obj.css('width', actual_width);
+        this.dom_obj.css('height', actual_height);
+        // reset size
+        this.width = this.dom_obj.width();
+        this.height = this.dom_obj.height();
+    }
 
     // add position
     this.addPosition = function (x_percent, x_delta, y_percent, y_delta, alpha) {
@@ -56,6 +89,7 @@ function object(id, content, meta, auto_reset) {
     
     // move to a state
     this.moveToState = function (state, duration) {
+        console.log('moving obj ' + this.id + ' to ' + state);
         // update state logger
         var the_state = this.positions[state];
         // perform movement
