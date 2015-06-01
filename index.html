@@ -35,6 +35,8 @@
         var imgtest = new object("test3", meta);
         imgtest.addPosition(-50, 0, 50, 0, 1);
         imgtest.addPosition(50, 0, 50, 0, 1);
+        imgtest.set_size(100, -40, 100, -40);
+        imgtest.set_z_index(-1);
         
         // create pages
         var page1 = new page('test page', manager);
@@ -60,7 +62,6 @@
             test.init("body", "<div>HELLO</div>");
             test2.init("body", "<div>WORLD</div>");
             imgtest.init_with_image("body", "img/test.jpg");
-            imgtest.set_size(100, -40, 100, -40);
             
             manager.goto_page(0);
         });

@@ -9,7 +9,7 @@ function object(id, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta;
+    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index;
     
     // init object
     this.init = function (selector, content, class_name) {
@@ -22,6 +22,11 @@ function object(id, meta, auto_reset) {
         this.dom_obj = $("#obj_" + id);
         this.width = this.dom_obj.width();
         this.height = this.dom_obj.height();
+        
+        // set css
+        if (typeof this.z_index !== "undefined"){
+            this.dom_obj.css('z-index', this.z_index);
+        }
     };
     
     // init with image
@@ -30,6 +35,8 @@ function object(id, meta, auto_reset) {
         this.init(selector, 'image', "object image_object");
         // set background
         this.dom_obj.css('background-image', 'url(' + image + ')');
+        // set size
+        this.reset_size();
     };
     
     // set size
@@ -38,7 +45,6 @@ function object(id, meta, auto_reset) {
         this.width_delta = width_delta;
         this.height_percent = height_percent;
         this.height_delta = height_delta;
-        this.reset_size();
     }
     
     // reset size
@@ -52,6 +58,11 @@ function object(id, meta, auto_reset) {
         // reset size
         this.width = this.dom_obj.width();
         this.height = this.dom_obj.height();
+    }
+    
+    // set z-index
+    this.set_z_index = function (index) {
+        this.z_index = index;
     }
 
     // add position
