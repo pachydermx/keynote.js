@@ -53,6 +53,7 @@ function inspector(manager) {
         this.object_viewer_list.html("");
         this.object_position_list.html("");
         this.object_info_list.html("");
+        $(".object").removeClass("selected_object");
         // print object list
         var i, the_object;
         for (i in this.manager.pages[page].objects){
@@ -67,15 +68,38 @@ function inspector(manager) {
     this.refresh_object_info = function (object) {
         // reset list
         this.object_position_list.html("");
+        this.object_info_list.html("");
         // print position list
         var i, the_position;
         for (i in object.positions){
             the_position = object.positions[i];
-            var display = "(" + the_position.x_percent + "%+" + the_position.x_delta + ", " + the_position.y_percent + "%+" + the_position.y_delta + ")";
+            var display = "(" + the_position.x_percent + "%+" + the_position.x_delta + "px, " + the_position.y_percent + "%+" + the_position.y_delta + "px)";
             this.object_position_list.append(getLi("object_position_list_item_" + i, "object_position_list_item", display));
         }
         // highlight current position
         $("#object_position_list_item_" + object.state).addClass("selected");
+        // highlight the object
+        $(".object").removeClass("selected_object");
+        object.dom_obj.addClass("selected_object");
+        
+        // auto reset
+        this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Auto Reset: " + object.auto_reset));
+        
+        // image mode
+        if (typeof object.image_scale_mode !== "undefined"){
+            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Image Mode: " + object.image_scale_mode));
+        }
+        
+        // z-index 
+        if (typeof object.z_index !== "undefined"){
+            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Z-Index: " + object.z_index));
+        }
+        
+        // Size
+        if (typeof object.width_percent !== "undefined"){
+            var display = "(" + object.width_percent + "%+" + object.width_delta + "px, " + object.height_percent + "%+" + object.height_delta + "px)";
+            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Size: " + display));
+        }
     }
     
     // viewer_list_click_action

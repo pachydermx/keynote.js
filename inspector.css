@@ -16,10 +16,11 @@
 }
 
 #inspector ul{
-    padding-left: 10px;
+    padding-left: 0px;
 }
 
 #inspector li{
+    padding: 0px 10px;
     list-style: none;
     cursor: default;
 }
@@ -27,4 +28,8 @@
 #inspector .selected{
     background-color: #666666;
     color: #ffffff;
+}
+
+.selected_object{
+    outline: solid red 2px;
 }
