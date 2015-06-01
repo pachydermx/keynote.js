@@ -12,6 +12,7 @@
     <script src="page.js"></script>
     <script src="object.js"></script>
     <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="keynote.css" rel="stylesheet" type="text/css">
     <link href="object.css" rel="stylesheet" type="text/css">
     <link href="inspector.css" rel="stylesheet" type="text/css">
     <script>
@@ -25,10 +26,20 @@
         test.addPosition(0, 0, 0, 0, 0);
         test.addPosition(50, 0, 50, 200, 1);
         
+        var test2 = new object("test2", "<div>WORLD</div>", meta);
+        test2.addPosition(50, 0, 100, 10, 0);
+        test2.addPosition(50, 0, 50, 220, 1);
+        test2.addPosition(50, 0, 0, -10, 0);
+        test2.default_exit_location = 2;
+        
         // create pages
         var page1 = new page('test page', manager);
         manager.add(page1);
         page1.add(test, 1, 1000, 1000);
+        
+        var page2 = new page('second page', manager);
+        manager.add(page2);
+        page2.add(test2, 1, 1000, 1000);
         
         // create inspector
         var inspector = new inspector(manager);
@@ -42,6 +53,7 @@
         $(document).ready(function(){
             inspector.enable();
             test.init("body");
+            test2.init("body");
             
             manager.goto_page(0);
         });

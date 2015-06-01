@@ -19,9 +19,10 @@ function manager() {
     
     // go to page
     this.goto_page = function(page) {
-        if (this.pages[page] != undefined) {
-            // check objects for exiting
-            if (lastPage != undefined) {
+        if (typeof this.pages[page] !== "undefined") {
+            // exit from last page
+            if (typeof this.lastPage !== "undefined") {
+                this.pages[this.lastPage].exit(this.pages[page].objects);
             }
             // enter a page
             this.pages[page].play();

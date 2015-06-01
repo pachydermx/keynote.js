@@ -28,6 +28,11 @@ function page(name, manager) {
         var i;
         for (i in this.objects) {
             var the_object = this.objects[i];
+            // reset to original state
+            if (the_object.object.auto_reset) {
+                the_object.object.moveToState(0, 0);
+            }
+            // perform
             this.timers.push(setTimeout(function () {
                 the_object.object.moveToState(the_object.state, the_object.duration);
             }, the_object.interval));
@@ -50,7 +55,6 @@ function page(name, manager) {
             exit_objects = $.grep(objects, function(value) {
                 return $.inArray(value, to_remove) < 0;
             });
-            console.log(objects, to_remove, exit_objects);
             // exit elements
             for (i in exit_objects) {
                 the_object = exit_objects[i];

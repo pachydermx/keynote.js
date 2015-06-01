@@ -13,3 +13,17 @@
     background-color: #dddddd;
     cursor: move;
 }
+
+#inspector ul{
+    padding-left: 10px;
+}
+
+#inspector li{
+    list-style: none;
+    cursor: default;
+}
+
+#inspector .selected{
+    background-color: #666666;
+    color: #ffffff;
+}

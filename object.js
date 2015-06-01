@@ -1,10 +1,15 @@
 // object is basic type of component
-function object(id, content, meta) {
+function object(id, content, meta, auto_reset) {
     // properties
     this.id = id;
     this.content = content;
     this.positions = [];
     this.meta = meta;
+    if (typeof auto_reset !== "undefined") {
+        this.auto_reset = auto_reset;
+    } else {
+        this.auto_reset = true;
+    }
     var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location;
     
     // init object
