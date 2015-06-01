@@ -12,24 +12,22 @@ function inspector(manager) {
         // title
         this.dom_obj.append("<div class='inspector_frame inspector_title'><label>Inspector</label></div>");
         // page viewer
+        this.dom_obj.append(getLabel('', 'section_title', 'Pages'));
         this.dom_obj.append(getDiv('page_viewer', 'inspector_frame', ''));
         this.page_viewer = $("#page_viewer");
         this.page_viewer.append(getUl('page_viewer_list', 'inspector_frame', ''));
         this.page_viewer_list = $("#page_viewer_list");
         this.refresh_page_viewer();
-        // division space
-        this.dom_obj.append("<hr>");
         // object viewer
+        this.dom_obj.append(getLabel('', 'section_title', 'Objects'));
         this.dom_obj.append(getUl('object_viewer_list', 'inspector_frame', ''));
         this.object_viewer_list = $("#object_viewer_list");
-        // division space
-        this.dom_obj.append("<hr>");
         // object location viewer
+        this.dom_obj.append(getLabel('', 'section_title', 'Positions'));
         this.dom_obj.append(getUl('object_position_list', 'inspector_frame', ''));
         this.object_position_list = $("#object_position_list");
-        // division space
-        this.dom_obj.append("<hr>");
         // object info viewer
+        this.dom_obj.append(getLabel('', 'section_title', 'Info'));
         this.dom_obj.append(getUl('object_info_list', 'inspector_frame', ''));
         this.object_info_list = $("#object_info_list");
     };
@@ -97,8 +95,10 @@ function inspector(manager) {
         
         // Size
         if (typeof object.width_percent !== "undefined"){
-            var display = "(" + object.width_percent + "%+" + object.width_delta + "px, " + object.height_percent + "%+" + object.height_delta + "px)";
-            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Size: " + display));
+            var width_display = object.width_percent + "%+" + object.width_delta + "px";
+            var height_display = object.height_percent + "%+" + object.height_delta + "px";
+            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Width: " + width_display));
+            this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Height: " + height_display));
         }
     }
     
