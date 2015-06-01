@@ -25,6 +25,12 @@
         var test = new object("test", meta);
         test.addPosition(0, 0, 0, 0, 0);
         test.addPosition(50, 0, 50, 200, 1);
+        test.addPosition(50, 0, 50, 100, 1);
+        test.auto_reset = false;
+        
+        var domtest = new object("domtest", meta);
+        domtest.addPosition(100, 100, 10, 100, 1);
+        domtest.addPosition(100, -100, 10, 100, 1);
         
         var test2 = new object("test2", meta);
         test2.addPosition(50, 0, 100, 10, 0);
@@ -43,9 +49,11 @@
         var page1 = new page('test page', manager);
         manager.add(page1);
         page1.add(test, 1, 1000, 1000);
+        page1.add(domtest, 1, 1000, 1000);
         
         var page2 = new page('second page', manager);
         manager.add(page2);
+        page2.add(test, 2, 500, 1000);
         page2.add(test2, 1, 1000, 1000);
         page2.add(imgtest, 1, 0, 1000);
         
@@ -61,6 +69,7 @@
         $(document).ready(function(){
             inspector.enable();
             test.init("body", "<div>HELLO</div>");
+            domtest.init_with_selector("#domtest");
             test2.init("body", "<div>WORLD</div>");
             imgtest.init_with_image("body", "img/test.jpg");
             
@@ -69,5 +78,9 @@
     </script>
 </head>
 <body>
+    <div id="domtest">
+        <img src="img/icon.png">
+        <p>Hello World</p>
+    </div>
 </body>
 </html>

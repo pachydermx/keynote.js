@@ -21,7 +21,7 @@ function object(id, meta, auto_reset) {
         // get info
         this.dom_obj = $("#obj_" + id);
         this.refresh();
-        
+        // reset to default position
         if (this.positions.length > 0){
             var pos = this.positions[0];
             this.moveToPosition(pos.x_percent, pos.x_delta, pos.y_percent, pos.y_delta, pos.alpha, 0);
@@ -36,6 +36,18 @@ function object(id, meta, auto_reset) {
         this.dom_obj.css('background-image', 'url(' + image + ')');
         // set size
         this.refresh();
+    };
+    
+    // init from DOM object
+    this.init_with_selector = function(object_selector, additional_class) {
+        $(object_selector).addClass("object " + additional_class);
+        this.dom_obj = $(object_selector);
+        this.refresh();
+        // reset to default position
+        if (this.positions.length > 0){
+            var pos = this.positions[0];
+            this.moveToPosition(pos.x_percent, pos.x_delta, pos.y_percent, pos.y_delta, pos.alpha, 0);
+        }
     };
     
     // set size
