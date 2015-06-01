@@ -1,0 +1,14 @@
+.inspector_box{
+    position: absolute;
+    z-index: 255;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    border: dotted 1px black;
+    opacity: 0.8;
+}
+
+#inspector label{
+    display: block;
+    padding: 10px 20px;
+    background-color: #dddddd;
+}

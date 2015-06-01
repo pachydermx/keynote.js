@@ -1,0 +1,50 @@
+<html>
+<head>
+    <!-- import jquery library -->
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="library.js"></script>
+    <script src="meta.js"></script>
+    <script src="configurator.js"></script>
+    <script src="inspector.js"></script>
+    <script src="manager.js"></script>
+    <script src="page.js"></script>
+    <script src="object.js"></script>
+    <link href="object.css" rel="stylesheet" type="text/css">
+    <link href="inspector.css" rel="stylesheet" type="text/css">
+    <script>
+        
+        // create meta and manager objects
+        var meta = new meta();
+        var manager = new manager();
+        
+        // create objects
+        var test = new object("test", "<div>HELLO</div>", meta);
+        test.addPosition(0, 0, 0, 0, 0);
+        test.addPosition(50, 0, 50, 200, 1);
+        
+        // create pages
+        var page1 = new page('test page', manager);
+        manager.add(page1);
+        page1.add(test, 1, 1000, 1000);
+        
+        // create inspector
+        var inspector = new inspector(manager);
+        
+        // create listener
+        $(window).resize(function(){
+            meta.update();
+            manager.refresh();
+        });
+ 
+        $(document).ready(function(){
+            inspector.enable();
+            test.init("body");
+            
+            page1.play();
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
