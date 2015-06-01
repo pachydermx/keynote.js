@@ -11,4 +11,5 @@
     display: block;
     padding: 10px 20px;
     background-color: #dddddd;
+    cursor: move;
 }

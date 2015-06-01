@@ -8,16 +8,7 @@ function inspector(manager) {
         // basic frame
         $("body").append(getDiv('inspector', 'inspector_box inpector_frame', ''));
         this.dom_obj = $("#inspector");
-        this.dom_obj.mousedown(function () {
-            this.moving = true;
-        });
-        this.dom_obj.mouseup(function () {
-            this.moveing = false;
-        });
-        this.dom_obj.mousemove(function (e) {
-            this.css('top', e.pageY);
-            this.css('left', e.pageX);
-        });
+        this.dom_obj.draggable();
         // title
         this.dom_obj.append("<div class='inpector_frame inspector_title'><label>Inspector</label></div>");
         // page viewer

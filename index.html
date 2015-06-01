@@ -3,6 +3,7 @@
     <!-- import jquery library -->
     <title></title>
     <script src="jquery.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script src="library.js"></script>
     <script src="meta.js"></script>
     <script src="configurator.js"></script>
@@ -10,6 +11,7 @@
     <script src="manager.js"></script>
     <script src="page.js"></script>
     <script src="object.js"></script>
+    <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <link href="object.css" rel="stylesheet" type="text/css">
     <link href="inspector.css" rel="stylesheet" type="text/css">
     <script>
@@ -41,7 +43,7 @@
             inspector.enable();
             test.init("body");
             
-            page1.play();
+            manager.goto_page(0);
         });
     </script>
 </head>

@@ -5,7 +5,7 @@ function object(id, content, meta) {
     this.content = content;
     this.positions = [];
     this.meta = meta;
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha;
+    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location;
     
     // init object
     this.init = function (position) {
@@ -55,5 +55,19 @@ function object(id, content, meta) {
         var the_state = this.positions[state];
         // perform movement
         this.moveToPosition(the_state.x_percent, the_state.x_delta, the_state.y_percent, the_state.y_delta, the_state.alpha, duration);
+    };
+    
+    // exit
+    this.exit = function (duration) {
+        // determine destination
+        var destination;
+        
+        if (typeof this.default_exit_location !== 'undefined'){
+            destination = this.default_exit_location;
+        } else {
+            destination = 0;
+        }
+        // perform
+        this.moveToState(destination, duration);
     };
 }

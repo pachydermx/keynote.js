@@ -1,3 +1,4 @@
+// HTML elements
 function getDiv(the_id, the_class, content) {
     return getDOM('div', the_id, the_class, content);
 }
