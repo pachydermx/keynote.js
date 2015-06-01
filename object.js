@@ -9,7 +9,7 @@ function object(id, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index;
+    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode;
     
     // init object
     this.init = function (selector, content, class_name) {
@@ -20,12 +20,11 @@ function object(id, meta, auto_reset) {
         $(selector).append(getDiv('obj_' + id, class_name, content));
         // get info
         this.dom_obj = $("#obj_" + id);
-        this.width = this.dom_obj.width();
-        this.height = this.dom_obj.height();
+        this.refresh();
         
-        // set css
-        if (typeof this.z_index !== "undefined"){
-            this.dom_obj.css('z-index', this.z_index);
+        if (this.positions.length > 0){
+            var pos = this.positions[0];
+            this.moveToPosition(pos.x_percent, pos.x_delta, pos.y_percent, pos.y_delta, pos.alpha, 0);
         }
     };
     
@@ -36,7 +35,7 @@ function object(id, meta, auto_reset) {
         // set background
         this.dom_obj.css('background-image', 'url(' + image + ')');
         // set size
-        this.reset_size();
+        this.refresh();
     };
     
     // set size
@@ -48,21 +47,37 @@ function object(id, meta, auto_reset) {
     }
     
     // reset size
-    this.reset_size = function () {
-        // calc actual size
-        var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta;
-        var actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
-        // css apply
-        this.dom_obj.css('width', actual_width);
-        this.dom_obj.css('height', actual_height);
+    this.refresh = function () {
+        // set size
+        if (typeof this.width_percent !== "undefined") {
+            // calc actual size
+            var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta;
+            var actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
+            // css apply
+            this.dom_obj.css('width', actual_width);
+            this.dom_obj.css('height', actual_height);
+        }
         // reset size
         this.width = this.dom_obj.width();
         this.height = this.dom_obj.height();
+        // set z-index
+        if (typeof this.z_index !== "undefined"){
+            this.dom_obj.css('z-index', this.z_index);
+        }
+        // set image scale mode
+        if (typeof this.image_scale_mode !== "undefined"){
+            this.dom_obj.css('background-size', this.image_scale_mode);
+        }
     }
     
     // set z-index
     this.set_z_index = function (index) {
         this.z_index = index;
+    }
+    
+    // set image scale mode
+    this.set_image_scale_mode = function (mode) {
+        this.image_scale_mode = mode;
     }
 
     // add position
