@@ -127,7 +127,7 @@ function object(id, meta, auto_reset) {
     
     // move to a state
     this.moveToState = function (state, duration) {
-        console.log('moving obj ' + this.id + ' to ' + state);
+        this.state = state;
         // update state logger
         var the_state = this.positions[state];
         // perform movement
