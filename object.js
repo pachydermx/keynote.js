@@ -52,6 +52,7 @@ function object(id, meta, auto_reset) {
     
     // set size
     this.set_size = function(width_percent, width_delta, height_percent, height_delta) {
+        // add size
         this.width_percent = width_percent;
         this.width_delta = width_delta;
         this.height_percent = height_percent;
@@ -101,6 +102,11 @@ function object(id, meta, auto_reset) {
                              'alpha': alpha});
     };
     
+    // add optional info (sizes, rotations, etc)
+    this.add_optional_info = function (state_id, optional_info) {
+        this.positions[state_id].push(optional_info);
+    };
+    
     // move to a position
     this.moveToPosition = function (x_percent, x_delta, y_percent, y_delta, alpha, duration) {
         // store state
@@ -124,6 +130,43 @@ function object(id, meta, auto_reset) {
             this.dom_obj.css("top", destination_y);
         }
     };
+    
+    // move and scale
+    this.move_and_scale = function (target, duration) {
+        // store state
+        this.current_x_percent = target.x_percent;
+        this.current_x_delta = target.x_delta;
+        this.current_y_percent = target.y_percent;
+        this.current_y_delta = target.y_delta;
+        // check if optional data exist
+        // check sizes
+        var target_size;
+        if (typeof target.width_percent !== "undefined") {
+            target_size.push({"width": this.meta.width * target.width_percent / 100 + target.width_delta});
+            target_size.push({"height": this.meta.height * target.height_percent / 100 + target.height_delta});
+        } else {
+            target_size.push({"width": this.width});
+            target_size.push({"height": this.height});
+        }
+        // calc correct position
+        var destination_x = this.meta.width * (x_percent / 100) - target_size.width / 2 + x_delta;
+        var destination_y = this.meta.height * (y_percent / 100) - target_size.height / 2 + y_delta;
+        // perform with animation
+        if (duration !== undefined || duration > 0) {
+            this.dom_obj.animate({
+                'left' : destination_x,
+                'top' : destination_y,
+                'width' : target_size.width,
+                'height' : target_size.height,
+                'opacity' : alpha
+            }, duration);
+        } else {
+            // perform without animation
+            this.dom_obj.css("left", destination_x);
+            this.dom_obj.css("top", destination_y);
+        }
+    };
+    
     
     // move to a state
     this.moveToState = function (state, duration) {
