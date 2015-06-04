@@ -4,9 +4,9 @@ function inspector(manager) {
     var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving;
     
     // init inspector window
-    this.enable = function () {
+    this.enable = function (selector) {
         // basic frame
-        $("body").append(getDiv('inspector', 'inspector_box inpector_frame', ''));
+        $(selector).append(getDiv('inspector', 'inspector_box inpector_frame', ''));
         this.dom_obj = $("#inspector");
         this.dom_obj.draggable();
         // title
@@ -39,9 +39,9 @@ function inspector(manager) {
         for (i in this.manager.pages) {
             // create dom element
             the_page = this.manager.pages[i];
-            this.page_viewer_list.append(getLi("page_viewer_list_item_"+i, "page_viewer_list_item", the_page.name));
+            this.page_viewer_list.append(getLi("page_viewer_list_item_" + i, "page_viewer_list_item", the_page.name));
             // assign action
-            $("#page_viewer_list_item_"+i).click(this.page_viewer_list_click_action);
+            $("#page_viewer_list_item_" + i).click(this.page_viewer_list_click_action);
         }
     };
     
@@ -54,11 +54,11 @@ function inspector(manager) {
         $(".object").removeClass("selected_object");
         // print object list
         var i, the_object;
-        for (i in this.manager.pages[page].objects){
+        for (i in this.manager.pages[page].objects) {
             the_object = this.manager.pages[page].objects[i].object;
             this.object_viewer_list.append(getLi("object_viewer_list_item_" + i, "object_viewer_list_item", the_object.id));
             // assign action
-            $("#object_viewer_list_item_"+i).click(this.object_viewer_list_click_action);
+            $("#object_viewer_list_item_" + i).click(this.object_viewer_list_click_action);
         }
     };
     
@@ -69,7 +69,7 @@ function inspector(manager) {
         this.object_info_list.html("");
         // print position list
         var i, the_state;
-        for (i in object.states){
+        for (i in object.states) {
             the_state = object.states[i];
             // normal info
             var display = "(" + the_state.x_percent + "%+" + the_state.x_delta + "px, " + the_state.y_percent + "%+" + the_state.y_delta + "px)";
@@ -98,28 +98,28 @@ function inspector(manager) {
         this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Auto Reset: " + object.auto_reset));
         
         // image mode
-        if (typeof object.image_scale_mode !== "undefined"){
+        if (typeof object.image_scale_mode !== "undefined") {
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Image Mode: " + object.image_scale_mode));
         }
         
         // z-index 
-        if (typeof object.z_index !== "undefined"){
+        if (typeof object.z_index !== "undefined") {
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Z-Index: " + object.z_index));
         }
         
         // Size
-        if (typeof object.width_percent !== "undefined"){
+        if (typeof object.width_percent !== "undefined") {
             var width_display = object.width_percent + "%+" + object.width_delta + "px";
             var height_display = object.height_percent + "%+" + object.height_delta + "px";
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Width: " + width_display));
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Height: " + height_display));
         }
-    }
+    };
     
     // viewer_list_click_action
     // TODO
     // var inspector must exist
-    this.page_viewer_list_click_action = function() {
+    this.page_viewer_list_click_action = function () {
         var page_id = $(this).attr("id").split('_')[4];
         // move to page
         manager.goto_page(page_id);
@@ -132,7 +132,7 @@ function inspector(manager) {
     };
     
     // object viewer click action
-    this.object_viewer_list_click_action = function() {
+    this.object_viewer_list_click_action = function () {
         var object_id = $(this).attr("id").split('_')[4];
         // set style
         $("#object_viewer_list li").removeClass("selected");

@@ -13,7 +13,7 @@ function object(id, meta, auto_reset) {
     
     // init object
     this.init = function (selector, content, class_name) {
-        if (typeof class_name == "undefined") {
+        if (typeof class_name === "undefined") {
             class_name = "object";
         }
         this.content = content;
@@ -22,14 +22,14 @@ function object(id, meta, auto_reset) {
         this.dom_obj = $("#obj_" + id);
         this.refresh();
         // reset to default position
-        if (this.states.length > 0){
+        if (this.states.length > 0) {
             var pos = this.states[0];
             this.perform_animation(pos, 0);
         }
     };
     
     // init with image
-    this.init_with_image = function(selector, image) {
+    this.init_with_image = function (selector, image) {
         // init basic structures
         this.init(selector, 'image', "object image_object");
         // set background
@@ -39,43 +39,42 @@ function object(id, meta, auto_reset) {
     };
     
     // init from DOM object
-    this.init_with_selector = function(object_selector, additional_class) {
+    this.init_with_selector = function (object_selector, additional_class) {
         $(object_selector).addClass("object " + additional_class);
         this.dom_obj = $(object_selector);
         this.refresh();
         // reset to default position
-        if (this.states.length > 0){
+        if (this.states.length > 0) {
             var pos = this.states[0];
             this.perform_animation(pos, 0);
         }
     };
     
     // set size
-    this.set_size = function(width_percent, width_delta, height_percent, height_delta) {
+    this.set_size = function (width_percent, width_delta, height_percent, height_delta) {
         // add size
         this.width_percent = width_percent;
         this.width_delta = width_delta;
         this.height_percent = height_percent;
         this.height_delta = height_delta;
-    }
+    };
         
     // set z-index
     this.set_z_index = function (index) {
         this.z_index = index;
-    }
+    };
     
     // set image scale mode
     this.set_image_scale_mode = function (mode) {
         this.image_scale_mode = mode;
-    }
+    };
 
     // reset size
     this.refresh = function () {
         // set size
         if (typeof this.width_percent !== "undefined") {
             // calc actual size
-            var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta;
-            var actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
+            var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta, actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
             // css apply
             this.dom_obj.css('width', actual_width);
             this.dom_obj.css('height', actual_height);
@@ -89,22 +88,22 @@ function object(id, meta, auto_reset) {
         this.dom_obj.css('left', actual_x);
         this.dom_obj.css('top', actual_y);
         // set z-index
-        if (typeof this.z_index !== "undefined"){
+        if (typeof this.z_index !== "undefined") {
             this.dom_obj.css('z-index', this.z_index);
         }
         // set image scale mode
-        if (typeof this.image_scale_mode !== "undefined"){
+        if (typeof this.image_scale_mode !== "undefined") {
             this.dom_obj.css('background-size', this.image_scale_mode);
         }
         
-    }
+    };
 
     // add position
     this.add_state = function (x_percent, x_delta, y_percent, y_delta, alpha) {
-        this.states.push({'x_percent': x_percent, 
-                             'x_delta': x_delta, 
-                             'y_percent': y_percent, 
-                             'y_delta': y_delta, 
+        this.states.push({'x_percent': x_percent,
+                             'x_delta': x_delta,
+                             'y_percent': y_percent,
+                             'y_delta': y_delta,
                              'alpha': alpha});
     };
     
@@ -127,7 +126,7 @@ function object(id, meta, auto_reset) {
     };
     
     // add easing
-    this.add_easing = function(state_id, easing) {
+    this.add_easing = function (state_id, easing) {
         this.add_optional_info(state_id, {'easing': easing});
     };
     
@@ -139,14 +138,14 @@ function object(id, meta, auto_reset) {
         this.current_y_percent = target.y_percent;
         this.current_y_delta = target.y_delta;
         // size
-        if (typeof target.width_percent !== "undefined"){
+        if (typeof target.width_percent !== "undefined") {
             this.width_percent = target.width_percent;
             this.width_delta = target.width_delta;
             this.height_percent = target.height_percent;
             this.height_delta = target.height_delta;
         }
         // rotate
-        if (typeof target.angle !== "undefined"){
+        if (typeof target.angle !== "undefined") {
             this.angle = target.angle;
         }
         // check if optional data exist
@@ -185,8 +184,8 @@ function object(id, meta, auto_reset) {
                 'rotate': target_angle
             }, {duration: duration,
                 easing: easing,
-                complete: function (){}
-            });
+                complete: function () {}
+                });
         } else {
             // perform without animation
             this.dom_obj.css("left", destination_x);
@@ -208,7 +207,7 @@ function object(id, meta, auto_reset) {
         // determine destination
         var destination;
         
-        if (typeof this.default_exit_location !== 'undefined'){
+        if (typeof this.default_exit_location !== 'undefined') {
             destination = this.default_exit_location;
         } else {
             destination = 0;
