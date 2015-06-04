@@ -2,7 +2,7 @@
 function object(id, meta, auto_reset) {
     // properties
     this.id = id;
-    this.positions = [];
+    this.states = [];
     this.meta = meta;
     if (typeof auto_reset !== "undefined") {
         this.auto_reset = auto_reset;
@@ -22,9 +22,9 @@ function object(id, meta, auto_reset) {
         this.dom_obj = $("#obj_" + id);
         this.refresh();
         // reset to default position
-        if (this.positions.length > 0){
-            var pos = this.positions[0];
-            this.moveToPosition(pos.x_percent, pos.x_delta, pos.y_percent, pos.y_delta, pos.alpha, 0);
+        if (this.states.length > 0){
+            var pos = this.states[0];
+            this.move_and_scale(pos, 0);
         }
     };
     
@@ -44,9 +44,9 @@ function object(id, meta, auto_reset) {
         this.dom_obj = $(object_selector);
         this.refresh();
         // reset to default position
-        if (this.positions.length > 0){
-            var pos = this.positions[0];
-            this.moveToPosition(pos.x_percent, pos.x_delta, pos.y_percent, pos.y_delta, pos.alpha, 0);
+        if (this.states.length > 0){
+            var pos = this.states[0];
+            this.move_and_scale(pos, 0);
         }
     };
     
@@ -58,7 +58,17 @@ function object(id, meta, auto_reset) {
         this.height_percent = height_percent;
         this.height_delta = height_delta;
     }
+        
+    // set z-index
+    this.set_z_index = function (index) {
+        this.z_index = index;
+    }
     
+    // set image scale mode
+    this.set_image_scale_mode = function (mode) {
+        this.image_scale_mode = mode;
+    }
+
     // reset size
     this.refresh = function () {
         // set size
@@ -82,20 +92,10 @@ function object(id, meta, auto_reset) {
             this.dom_obj.css('background-size', this.image_scale_mode);
         }
     }
-    
-    // set z-index
-    this.set_z_index = function (index) {
-        this.z_index = index;
-    }
-    
-    // set image scale mode
-    this.set_image_scale_mode = function (mode) {
-        this.image_scale_mode = mode;
-    }
 
     // add position
     this.addPosition = function (x_percent, x_delta, y_percent, y_delta, alpha) {
-        this.positions.push({'x_percent': x_percent, 
+        this.states.push({'x_percent': x_percent, 
                              'x_delta': x_delta, 
                              'y_percent': y_percent, 
                              'y_delta': y_delta, 
@@ -106,37 +106,13 @@ function object(id, meta, auto_reset) {
     this.add_optional_info = function (state_id, optional_info) {
         var i;
         for (i in optional_info) {
-            this.positions[state_id][i] = optional_info[i];
+            this.states[state_id][i] = optional_info[i];
         }
     };
     
     // add size transform
     this.add_size_transform = function (state_id, width_percent, width_delta, height_percent, height_delta) {
         this.add_optional_info(state_id, {'width_percent': width_percent, 'width_delta': width_delta, 'height_percent': height_percent, 'height_delta': height_delta});
-    };
-    
-    // move to a position
-    this.moveToPosition = function (x_percent, x_delta, y_percent, y_delta, alpha, duration) {
-        // store state
-        this.current_x_percent = x_percent;
-        this.current_x_delta = x_delta;
-        this.current_y_percent = y_percent;
-        this.current_y_delta = y_delta;
-        // calc correct position
-        var destination_x = this.meta.width * (x_percent / 100) - this.width / 2 + x_delta;
-        var destination_y = this.meta.height * (y_percent / 100) - this.height / 2 + y_delta;
-        // perform with animation
-        if (duration !== undefined || duration > 0) {
-            this.dom_obj.animate({
-                'left' : destination_x,
-                'top' : destination_y,
-                'opacity' : alpha
-            }, duration);
-        } else {
-            // perform without animation
-            this.dom_obj.css("left", destination_x);
-            this.dom_obj.css("top", destination_y);
-        }
     };
     
     // move and scale
@@ -185,10 +161,9 @@ function object(id, meta, auto_reset) {
     this.moveToState = function (state, duration) {
         this.state = state;
         // update state logger
-        var the_state = this.positions[state];
+        var the_state = this.states[state];
         // perform movement
-        //this.moveToPosition(the_state.x_percent, the_state.x_delta, the_state.y_percent, the_state.y_delta, the_state.alpha, duration);
-        this.move_and_scale(this.positions[state], duration);
+        this.move_and_scale(this.states[state], duration);
     };
     
     // exit

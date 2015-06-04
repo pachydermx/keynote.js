@@ -1,7 +1,7 @@
 // inspector is debugger of a page
 function inspector(manager) {
     this.manager = manager;
-    var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_position_list, object_info_list, moving;
+    var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving;
     
     // init inspector window
     this.enable = function () {
@@ -24,8 +24,8 @@ function inspector(manager) {
         this.object_viewer_list = $("#object_viewer_list");
         // object location viewer
         this.dom_obj.append(getLabel('', 'section_title', 'Positions'));
-        this.dom_obj.append(getUl('object_position_list', 'inspector_frame', ''));
-        this.object_position_list = $("#object_position_list");
+        this.dom_obj.append(getUl('object_state_list', 'inspector_frame', ''));
+        this.object_state_list = $("#object_state_list");
         // object info viewer
         this.dom_obj.append(getLabel('', 'section_title', 'Info'));
         this.dom_obj.append(getUl('object_info_list', 'inspector_frame', ''));
@@ -49,7 +49,7 @@ function inspector(manager) {
     this.refresh_object_viewer_list = function (page) {
         // reset list
         this.object_viewer_list.html("");
-        this.object_position_list.html("");
+        this.object_state_list.html("");
         this.object_info_list.html("");
         $(".object").removeClass("selected_object");
         // print object list
@@ -65,17 +65,23 @@ function inspector(manager) {
     // refresh object info
     this.refresh_object_info = function (object) {
         // reset list
-        this.object_position_list.html("");
+        this.object_state_list.html("");
         this.object_info_list.html("");
         // print position list
-        var i, the_position;
-        for (i in object.positions){
-            the_position = object.positions[i];
-            var display = "(" + the_position.x_percent + "%+" + the_position.x_delta + "px, " + the_position.y_percent + "%+" + the_position.y_delta + "px)";
-            this.object_position_list.append(getLi("object_position_list_item_" + i, "object_position_list_item", display));
+        var i, the_state;
+        for (i in object.states){
+            the_state = object.states[i];
+            // normal info
+            var display = "(" + the_state.x_percent + "%+" + the_state.x_delta + "px, " + the_state.y_percent + "%+" + the_state.y_delta + "px)";
+            // additional info
+            // size info
+            if (typeof the_state.width_percent !== "undefined") {
+                display += "\n Size: (" + the_state.width_percent + "%+" + the_state.width_delta + "px, " + the_state.height_percent + "%+" + the_state.height_delta + "px)";
+            }
+            this.object_state_list.append(getLi("object_state_list_item_" + i, "object_state_list_item", display));
         }
         // highlight current position
-        $("#object_position_list_item_" + object.state).addClass("selected");
+        $("#object_state_list_item_" + object.state).addClass("selected");
         // highlight the object
         $(".object").removeClass("selected_object");
         object.dom_obj.addClass("selected_object");
