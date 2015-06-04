@@ -40,8 +40,12 @@
         
         var imgtest = new object("test3", meta);
         imgtest.addPosition(-50, 0, 50, 0, 1);
+        imgtest.add_size_transform(0, 100, -40, 100, -40);
         imgtest.addPosition(50, 0, 50, 0, 1);
-        imgtest.set_size(100, -40, 100, -40);
+        imgtest.add_size_transform(1, 100, -40, 100, -40);
+        imgtest.addPosition(25, 0, 25, 0, 1);
+        imgtest.add_size_transform(2, 50, 0, 50, 0);
+        imgtest.auto_reset = false;
         imgtest.set_z_index(-1);
         imgtest.set_image_scale_mode("cover");
         
@@ -56,6 +60,10 @@
         page2.add(test, 2, 500, 1000);
         page2.add(test2, 1, 1000, 1000);
         page2.add(imgtest, 1, 0, 1000);
+        
+        var page3 = new page('third page', manager);
+        manager.add(page3);
+        page3.add(imgtest, 2, 0, 1000);
         
         // create inspector
         var inspector = new inspector(manager);

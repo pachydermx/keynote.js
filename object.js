@@ -110,6 +110,11 @@ function object(id, meta, auto_reset) {
         }
     };
     
+    // add size transform
+    this.add_size_transform = function (state_id, width_percent, width_delta, height_percent, height_delta) {
+        this.add_optional_info(state_id, {'width_percent': width_percent, 'width_delta': width_delta, 'height_percent': height_percent, 'height_delta': height_delta});
+    };
+    
     // move to a position
     this.moveToPosition = function (x_percent, x_delta, y_percent, y_delta, alpha, duration) {
         // store state
@@ -141,6 +146,12 @@ function object(id, meta, auto_reset) {
         this.current_x_delta = target.x_delta;
         this.current_y_percent = target.y_percent;
         this.current_y_delta = target.y_delta;
+        if (typeof target.width_percent !== "undefined"){
+            this.width_percent = target.width_percent;
+            this.width_delta = target.width_delta;
+            this.height_percent = target.height_percent;
+            this.height_delta = target.height_delta;
+        }
         // check if optional data exist
         // check sizes
         var target_size = {};
@@ -176,7 +187,8 @@ function object(id, meta, auto_reset) {
         // update state logger
         var the_state = this.positions[state];
         // perform movement
-        this.moveToPosition(the_state.x_percent, the_state.x_delta, the_state.y_percent, the_state.y_delta, the_state.alpha, duration);
+        //this.moveToPosition(the_state.x_percent, the_state.x_delta, the_state.y_percent, the_state.y_delta, the_state.alpha, duration);
+        this.move_and_scale(this.positions[state], duration);
     };
     
     // exit
