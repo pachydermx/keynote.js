@@ -82,6 +82,10 @@ function inspector(manager) {
             if (typeof the_state.angle !== "undefined") {
                 display += "\n Angle: " + the_state.angle + "˚";
             }
+            // easing info
+            if (typeof the_state.easing !== "undefined") {
+                display += "\n Easing: " + the_state.easing;
+            }
             this.object_state_list.append(getLi("object_state_list_item_" + i, "object_state_list_item", display));
         }
         // highlight current position
