@@ -144,7 +144,7 @@ function object(id, meta, auto_reset) {
             this.angle = target.angle;
         }
         // check if optional data exist
-        var target_size = {}, target_angle;
+        var target_size = {}, target_angle, easing;
         // check size
         if (typeof target.width_percent !== "undefined") {
             target_size.width = this.meta.width * target.width_percent / 100 + target.width_delta;
@@ -159,6 +159,12 @@ function object(id, meta, auto_reset) {
         } else {
             target_angle = 0;
         }
+        // check easing
+        if (typeof target.easing !== "undefined") {
+            easing = target.easing;
+        } else {
+            easing = "swing";
+        }
         // calc correct position
         var destination_x = this.meta.width * (target.x_percent / 100) - target_size.width / 2 + target.x_delta;
         var destination_y = this.meta.height * (target.y_percent / 100) - target_size.height / 2 + target.y_delta;
@@ -172,6 +178,7 @@ function object(id, meta, auto_reset) {
                 'opacity' : target.alpha,
                 'rotate': target_angle
             }, {duration: duration,
+                easing: easing,
                 complete: function (){}
             });
         } else {
