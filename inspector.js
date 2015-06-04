@@ -80,7 +80,7 @@ function inspector(manager) {
             }
             // rotate info
             if (typeof the_state.angle !== "undefined") {
-                display += "\n Angle: " + the_state.angle + "˚";
+                display += "\n Angle: " + the_state.angle + "deg";
             }
             // easing info
             if (typeof the_state.easing !== "undefined") {

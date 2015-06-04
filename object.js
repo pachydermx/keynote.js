@@ -83,6 +83,11 @@ function object(id, meta, auto_reset) {
         // reset size
         this.width = this.dom_obj.width();
         this.height = this.dom_obj.height();
+        // set location
+        var actual_x = this.meta.width * (this.current_x_percent / 100) - this.width / 2 + this.current_x_delta;
+        var actual_y = this.meta.height * (this.current_y_percent / 100) - this.height / 2 + this.current_y_delta;
+        this.dom_obj.css('left', actual_x);
+        this.dom_obj.css('top', actual_y);
         // set z-index
         if (typeof this.z_index !== "undefined"){
             this.dom_obj.css('z-index', this.z_index);
@@ -91,6 +96,7 @@ function object(id, meta, auto_reset) {
         if (typeof this.image_scale_mode !== "undefined"){
             this.dom_obj.css('background-size', this.image_scale_mode);
         }
+        
     }
 
     // add position

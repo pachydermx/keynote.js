@@ -19,7 +19,6 @@ function page(name, manager) {
         var i;
         for (i in this.objects) {
             var the_object = this.objects[i].object;
-            the_object.moveToPosition(the_object.current_x_percent, the_object.current_x_delta, the_object.current_y_percent, the_object.current_y_delta, the_object.current_alpha);
             the_object.refresh();
         }
     };
