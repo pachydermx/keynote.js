@@ -9,7 +9,7 @@ function object(id, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode;
+    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode, angle;
     
     // init object
     this.init = function (selector, content, class_name) {
@@ -24,7 +24,7 @@ function object(id, meta, auto_reset) {
         // reset to default position
         if (this.states.length > 0){
             var pos = this.states[0];
-            this.move_and_scale(pos, 0);
+            this.perform_animation(pos, 0);
         }
     };
     
@@ -46,7 +46,7 @@ function object(id, meta, auto_reset) {
         // reset to default position
         if (this.states.length > 0){
             var pos = this.states[0];
-            this.move_and_scale(pos, 0);
+            this.perform_animation(pos, 0);
         }
     };
     
@@ -94,7 +94,7 @@ function object(id, meta, auto_reset) {
     }
 
     // add position
-    this.addPosition = function (x_percent, x_delta, y_percent, y_delta, alpha) {
+    this.add_state = function (x_percent, x_delta, y_percent, y_delta, alpha) {
         this.states.push({'x_percent': x_percent, 
                              'x_delta': x_delta, 
                              'y_percent': y_percent, 
@@ -115,28 +115,49 @@ function object(id, meta, auto_reset) {
         this.add_optional_info(state_id, {'width_percent': width_percent, 'width_delta': width_delta, 'height_percent': height_percent, 'height_delta': height_delta});
     };
     
+    // add rotate transform
+    this.add_rotate_transform = function (state_id, angle) {
+        this.add_optional_info(state_id, {'angle': angle});
+    };
+    
+    // add easing
+    this.add_easing = function(state_id, easing) {
+        this.add_optional_info(state_id, {'easing': easing});
+    };
+    
     // move and scale
-    this.move_and_scale = function (target, duration) {
+    this.perform_animation = function (target, duration) {
         // store state
         this.current_x_percent = target.x_percent;
         this.current_x_delta = target.x_delta;
         this.current_y_percent = target.y_percent;
         this.current_y_delta = target.y_delta;
+        // size
         if (typeof target.width_percent !== "undefined"){
             this.width_percent = target.width_percent;
             this.width_delta = target.width_delta;
             this.height_percent = target.height_percent;
             this.height_delta = target.height_delta;
         }
+        // rotate
+        if (typeof target.angle !== "undefined"){
+            this.angle = target.angle;
+        }
         // check if optional data exist
-        // check sizes
-        var target_size = {};
+        var target_size = {}, target_angle;
+        // check size
         if (typeof target.width_percent !== "undefined") {
             target_size.width = this.meta.width * target.width_percent / 100 + target.width_delta;
             target_size.height = this.meta.height * target.height_percent / 100 + target.height_delta;
         } else {
             target_size.width = this.width;
             target_size.height = this.height;
+        }
+        // check rotate
+        if (typeof target.angle !== "undefined") {
+            target_angle = target.angle;
+        } else {
+            target_angle = 0;
         }
         // calc correct position
         var destination_x = this.meta.width * (target.x_percent / 100) - target_size.width / 2 + target.x_delta;
@@ -148,8 +169,11 @@ function object(id, meta, auto_reset) {
                 'top' : destination_y,
                 'width' : target_size.width,
                 'height' : target_size.height,
-                'opacity' : target.alpha
-            }, duration);
+                'opacity' : target.alpha,
+                'rotate': target_angle
+            }, {duration: duration,
+                complete: function (){}
+            });
         } else {
             // perform without animation
             this.dom_obj.css("left", destination_x);
@@ -163,7 +187,7 @@ function object(id, meta, auto_reset) {
         // update state logger
         var the_state = this.states[state];
         // perform movement
-        this.move_and_scale(this.states[state], duration);
+        this.perform_animation(this.states[state], duration);
     };
     
     // exit

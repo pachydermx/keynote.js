@@ -3,6 +3,7 @@
     <!-- import jquery library -->
     <title></title>
     <script src="jquery.js"></script>
+    <script src="jquery.rotate.js"></script>
     <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script src="library.js"></script>
     <script src="meta.js"></script>
@@ -23,28 +24,29 @@
         
         // create objects
         var test = new object("test", meta);
-        test.addPosition(0, 0, 0, 0, 0);
-        test.addPosition(50, 0, 50, 200, 1);
-        test.addPosition(50, 0, 50, 100, 1);
+        test.add_state(0, 0, 0, 0, 0);
+        test.add_state(50, 0, 50, 200, 1);
+        test.add_state(50, 0, 50, 100, 1);
         test.auto_reset = false;
         
         var domtest = new object("domtest", meta);
-        domtest.addPosition(100, 100, 10, 100, 1);
-        domtest.addPosition(100, -100, 10, 100, 1);
+        domtest.add_state(100, 100, 10, 100, 1);
+        domtest.add_state(100, -100, 10, 100, 1);
         
         var test2 = new object("test2", meta);
-        test2.addPosition(50, 0, 100, 10, 0);
-        test2.addPosition(50, 0, 50, 220, 1);
-        test2.addPosition(50, 0, 0, -10, 0);
+        test2.add_state(50, 0, 100, 10, 0);
+        test2.add_state(50, 0, 50, 220, 1);
+        test2.add_state(50, 0, 0, -10, 0);
         test2.default_exit_location = 2;
         
         var imgtest = new object("test3", meta);
-        imgtest.addPosition(-50, 0, 50, 0, 1);
+        imgtest.add_state(-50, 0, 50, 0, 1);
         imgtest.add_size_transform(0, 100, -40, 100, -40);
-        imgtest.addPosition(50, 0, 50, 0, 1);
+        imgtest.add_state(50, 0, 50, 0, 1);
         imgtest.add_size_transform(1, 100, -40, 100, -40);
-        imgtest.addPosition(25, 0, 25, 0, 1);
+        imgtest.add_state(25, 0, 25, 0, 1);
         imgtest.add_size_transform(2, 50, 0, 50, 0);
+        imgtest.add_rotate_transform(2, 180);
         imgtest.auto_reset = false;
         imgtest.set_z_index(-1);
         imgtest.set_image_scale_mode("cover");

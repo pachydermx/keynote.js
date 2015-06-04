@@ -78,6 +78,10 @@ function inspector(manager) {
             if (typeof the_state.width_percent !== "undefined") {
                 display += "\n Size: (" + the_state.width_percent + "%+" + the_state.width_delta + "px, " + the_state.height_percent + "%+" + the_state.height_delta + "px)";
             }
+            // rotate info
+            if (typeof the_state.angle !== "undefined") {
+                display += "\n Angle: " + the_state.angle + "˚";
+            }
             this.object_state_list.append(getLi("object_state_list_item_" + i, "object_state_list_item", display));
         }
         // highlight current position
