@@ -2,6 +2,10 @@
 function object(id, meta, auto_reset) {
     // properties
     this.id = id;
+    // check id
+    if (id.indexOf(' ') >= 0){
+        console.log("Error: Space in object ID");
+    }
     this.states = [];
     this.meta = meta;
     if (typeof auto_reset !== "undefined") {

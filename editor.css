@@ -1,5 +1,14 @@
-body{
+html, body{
     margin: 0px;
+    font-size: 12px;
+}
+
+ul{
+    list-style: none;
+}
+
+.ui-widget {
+    font-size: 80%;
 }
 
 #menu_bar{
@@ -27,4 +36,20 @@ body{
     width: 320px;
     height: 100%;
     background: #eeeeee;
+    vertical-align: top;
+}
+
+.selector{
+    padding: 0px;
+    margin: 10px;
+    background: #FFFFFF;
+    border: #555555 solid 1px;
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.selected{
+    background: #333333;
+    color: #ffffff;
 }

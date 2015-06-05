@@ -33,6 +33,11 @@
         function test(){
             console.log("a");
         }
+        
+        // tell editor loaded
+        window.onload = function () {
+            parent.preview_loaded();
+        }
  
     </script>
 </head>

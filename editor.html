@@ -4,6 +4,7 @@
         <script src="jquery.rotate.js"></script>
         <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
         <script src="library.js"></script>
+        <script src="inspector.js"></script>
         <script src="editor.js"></script>
         <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <link href="editor.css" rel="stylesheet" type="text/css">
@@ -11,15 +12,70 @@
     </head>
     <body> 
         <div id="menu_bar">
-            <button id="new_page">New Page</button>
-            <button id="new_obj">New Object</button>
+            <button class="menu_bar_button" id="new_page">New Page</button>
+            <button class="menu_bar_button" id="new_text_obj">New Text Object</button>
+            <button class="menu_bar_button" id="new_image_obj">New Image Object</button>
+            <button class="menu_bar_button" id="new_code_obj">New Code Object</button>
+            <button class="menu_bar_button" id="preview_this_page">Preview</button>
         </div>
         <table id="content_frame"><tr>
             <td id="preview_frame">
                 <iframe id="preview" src="templates/default.html"></iframe>
             </td>
             <td id="inspector_frame">
+                <ul>
+                    <li><a href="#objects_panel">Objects</a></li>
+                    <li><a href="#page_panel">Page</a></li>
+                    <li><a href="#object_panel">Object</a></li>
+                    <li><a href="#output">Output</a></li>
+                </ul>
+                <div id="objects_panel">
+                    <div id="objects_selector" class="selector">
+                        <ul id="object_list">
+                        </ul>
+                    </div>
+                </div>
+                <div id="page_panel">
+                    <div id="page_selector" class="selector">
+                        <ul id="page_viewer_list">
+                        </ul>
+                    </div>
+                    <ul class="options">
+                        <li>
+                            <label>Page ID</label>
+                            <input type="text">
+                        </li>
+                        <hr/>
+                        <button id="confirm_page_changes">Confirm</button>
+                    </ul>
+                </div>
+                <div id="object_panel">
+                    <div id="object_selector" class="selector">
+                        <ul id="object_viewer_list">
+                        </ul>
+                    </div>
+                    <div id="object_state_selector" class="selector">
+                        <ul id="object_state_list">
+                        </ul>
+                    </div>
+                    <ul id="object_info_list">
+                    </ul>
+                    <ul class="options">
+                        <li>
+                            <label>Object ID</label>
+                            <input type="text">
+                        </li>
+                        <hr/>
+                        <button id="confirm_page_changes">Confirm</button>
+                    </ul>
                 
+                </div>
+                <div id="output">
+                    <button id="output_refresh">Refresh</button>
+                    <button id="output_copy">Copy to Clipboard</button>
+                    <textarea id="output_textarea">
+                    </textarea>
+                </div>
             </td>
         </tr></table>
     </body>

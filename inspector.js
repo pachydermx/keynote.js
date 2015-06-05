@@ -1,10 +1,12 @@
 // inspector is debugger of a page
 function inspector(manager) {
     this.manager = manager;
-    var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving;
+    var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving, editor;
     
     // init inspector window
     this.enable = function (selector) {
+        // configure
+        this.editor = false;
         // basic frame
         $(selector).append(getDiv('inspector', 'inspector_box inpector_frame', ''));
         this.dom_obj = $("#inspector");
@@ -31,6 +33,17 @@ function inspector(manager) {
         this.dom_obj.append(getUl('object_info_list', 'inspector_frame', ''));
         this.object_info_list = $("#object_info_list");
     };
+
+    // init editor inspector
+    this.enable_editor = function () {
+        // configure
+        this.editor = true;
+        // assign $objects
+        this.page_viewer_list = $("#page_viewer_list");
+        this.object_viewer_list = $("#object_viewer_list");
+        this.object_state_list = $("#object_state_list");
+        this.object_info_list = $("#object_info_list");
+    }
     
     // refresh page list
     this.refresh_page_viewer = function () {
