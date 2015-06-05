@@ -1,7 +1,7 @@
 // inspector is debugger of a page
 function inspector(manager) {
     this.manager = manager;
-    var dom_obj, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving, editor;
+    var dom_obj, object_list, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving, editor, objects;
     
     // init inspector window
     this.enable = function (selector) {
@@ -35,7 +35,7 @@ function inspector(manager) {
     };
 
     // init editor inspector
-    this.enable_editor = function () {
+    this.enable_editor = function (objects) {
         // configure
         this.editor = true;
         // assign $objects
@@ -43,6 +43,8 @@ function inspector(manager) {
         this.object_viewer_list = $("#object_viewer_list");
         this.object_state_list = $("#object_state_list");
         this.object_info_list = $("#object_info_list");
+        this.object_list = $("#object_list");
+        this.objects = objects;
     }
     
     // refresh page list
@@ -129,8 +131,21 @@ function inspector(manager) {
         }
     };
     
+    // refresh overall object list (editor)
+    this.refresh_object_list = function () {
+        // reset list
+        this.object_list.html("");
+        // print object list
+        var i, the_object;
+        for (i in this.objects) {
+            the_object = this.objects[i];
+            this.object_list.append(getLi("object_list_item_" + i, "object_list_item", the_object.id));
+            // assign action
+            $("#object_list_item_" + i).click(this.start_edit_object);
+        }
+    };
+    
     // viewer_list_click_action
-    // TODO
     // var inspector must exist
     this.page_viewer_list_click_action = function () {
         var page_id = $(this).attr("id").split('_')[4];
@@ -152,5 +167,16 @@ function inspector(manager) {
         $(this).addClass("selected");
         // show positions
         inspector.refresh_object_info(inspector.manager.pages[inspector.manager.lastPage].objects[object_id].object);
+    };
+    
+    // start editing object
+    this.start_edit_object = function (e) {
+        var object_id = $(this).attr("id").split('_')[3];
+        var object_name = $(this).text();
+        // set style
+        $("#object_list li").removeClass("selected");
+        $(this).addClass("selected");
+        // print name into input
+        $("#object_name_input").val(object_name);
     };
 }

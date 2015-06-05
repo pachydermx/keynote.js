@@ -17,13 +17,14 @@ $(document).ready(function () {
     
     $("#new_text_obj").click(function(){
         preview.create_obj();
+        inspector.refresh_object_list();
     });
 });
 
 // init inspector
 function preview_loaded () {
     inspector = new inspector(preview.manager);
-    inspector.enable_editor();
+    inspector.enable_editor(preview.objects);
 }
 
 function refresh_page_list(){

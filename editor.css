@@ -49,6 +49,16 @@ ul{
     overflow-y: scroll;
 }
 
+.selector ul{
+    padding: 0px;
+    margin: 0px;
+}
+
+.selector li{
+    padding: 3px;
+    border-bottom: dotted rgba(0, 0, 0, 0.5) 1px;
+}
+
 .selected{
     background: #333333;
     color: #ffffff;
