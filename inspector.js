@@ -244,8 +244,16 @@ function inspector(manager) {
     // start editing state
     // this event occurs after clicking items in state list
     this.start_edit_state = function (e) {
+        // get basic information
+        var object_id = $("#object_id").val();
+        var the_object = inspector.objects[object_id];
+        var state_id = $(this).attr("id").split('_')[4];
+        var the_state= = the_object.states[state_id];
         // set style
         inspector.highlight_selection("object_state_list", this);
+        
+        // print value to form
+        
     };
     
     // confirm changes on object name
