@@ -105,9 +105,9 @@ function inspector(manager) {
         }
         // highlight current position
         $("#object_state_list_item_" + object.state).addClass("selected");
-        // highlight the object
-        $(".object").removeClass("selected_object");
-        object.dom_obj.addClass("selected_object");
+        
+        // highlight object
+        this.highlight_object(object);
         
         // auto reset
         this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Auto Reset: " + object.auto_reset));
@@ -128,20 +128,6 @@ function inspector(manager) {
             var height_display = object.height_percent + "%+" + object.height_delta + "px";
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Width: " + width_display));
             this.object_info_list.append(getLi("object_info_list_auto_reset", "object_info_list_item", "Height: " + height_display));
-        }
-    };
-    
-    // refresh overall object list (editor)
-    this.refresh_object_list = function () {
-        // reset list
-        this.object_list.html("");
-        // print object list
-        var i, the_object;
-        for (i in this.objects) {
-            the_object = this.objects[i];
-            this.object_list.append(getLi("object_list_item_" + i, "object_list_item", the_object.id));
-            // assign action
-            $("#object_list_item_" + i).click(this.start_edit_object);
         }
     };
     
@@ -169,14 +155,128 @@ function inspector(manager) {
         inspector.refresh_object_info(inspector.manager.pages[inspector.manager.lastPage].objects[object_id].object);
     };
     
-    // start editing object
+    // general functions
+    
+    // highlight object
+    this.highlight_object = function (object) {
+        // highlight the object
+        $(".object").removeClass("selected_object");
+        object.dom_obj.addClass("selected_object");
+    };
+    
+    // highlight selection
+    this.highlight_selection = function (list_id, the_item) {
+        $("#" + list_id +" li").removeClass("selected");
+        $(the_item).addClass("selected");
+    };
+        
+    // generalized list refresh function
+    // object is jquery object of the list
+    // list is data source
+    // id_prefix, list_class is the id, class of li element to print
+    // title is the index of printing
+    // click function is the action after clicking the item
+    this.refresh_list = function (object, list, id_prefix, list_class, title, click_function) {
+        // reset list
+        object.html("");
+        // print object list
+        var i, the_item;
+        for (i in list) {
+            the_item = list[i];
+            object.append(getLi(id_prefix + i, list_class, the_item[title]));
+            // assign action
+            $("#" + id_prefix + i).click(click_function);
+        }
+    };
+    
+    
+    
+    
+    // functions above work with editor
+    
+    // refresh overall object list (editor)
+    this.refresh_object_list = function () {
+        this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "id", this.start_edit_object);
+        /*
+        // reset list
+        this.object_list.html("");
+        // print object list
+        var i, the_object;
+        for (i in this.objects) {
+            the_object = this.objects[i];
+            this.object_list.append(getLi("object_list_item_" + i, "object_list_item", the_object.id));
+            // assign action
+            $("#object_list_item_" + i).click(this.start_edit_object);
+        }
+        */
+    };
+    
+    // start editing object. 
+    // this event occurs after clicking items in object list
     this.start_edit_object = function (e) {
+        // get basic information
         var object_id = $(this).attr("id").split('_')[3];
         var object_name = $(this).text();
         // set style
-        $("#object_list li").removeClass("selected");
-        $(this).addClass("selected");
+        inspector.highlight_selection("object_list", this);
+        // print id
+        $("#object_id").val(object_id);
         // print name into input
         $("#object_name_input").val(object_name);
+        // highlight object
+        inspector.highlight_object(inspector.objects[object_id]);
+        
+        // refresh states list
+        inspector.refresh_state_list(object_id);
+    };
+    
+    // refresh object states list (editor)
+    this.refresh_state_list = function (object_id) {
+        // reset state list
+        this.object_state_list.html("");
+        // print state list
+        var i, the_state;
+        for (i in this.objects[object_id].states){
+            the_state = this.objects[object_id].states;
+            this.object_state_list.append(getLi("object_state_list_item" + i, "object_state_list_item", "State " + i));
+            // assign action
+            $("#object_state_list_item_" + i).click(this.start_edit_state);
+        }
+    };
+    
+    // start editing state
+    // this event occurs after clicking items in state list
+    this.start_edit_state = function (e) {
+        // set style
+        inspector.highlight_selection("object_state_list", this);
+    };
+    
+    // confirm changes on object name
+    // this event occurs after clicking confirm button in object panel
+    this.confirm_object_name = function (e) {
+        // get object id
+        var object_id = $("#object_id").val();
+        // get new object name
+        var new_name = $("#object_name_input").val();
+        // assign object name
+        this.objects[object_id].id = new_name;
+        // refresh object list
+        this.refresh_object_list();
+    };
+    
+    // start editing page
+    // this event occurs after clicking items in page list
+    this.start_edit_page = function (e) {
+        // get basic information
+        // set style
+        // print information to input
+    };
+    
+    // confirm changes on page
+    // this event occurs after clicking confirm button in page panel
+    this.confirm_page = function (e) {
+        // get new info from inputs
+        // assign new info
+        // refresh list
     };
 }

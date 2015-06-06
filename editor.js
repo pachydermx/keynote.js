@@ -19,6 +19,12 @@ $(document).ready(function () {
         preview.create_obj();
         inspector.refresh_object_list();
     });
+    
+    
+    // inspector panel
+    $("#confirm_object_changes").click(function (){
+        inspector.confirm_object_name();
+    });
 });
 
 // init inspector

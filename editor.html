@@ -25,8 +25,8 @@
             <td id="inspector_frame">
                 <ul>
                     <li><a href="#objects_panel">Objects</a></li>
+                    <li><a href="#state_panel">States</a></li>
                     <li><a href="#page_panel">Page</a></li>
-                    <li><a href="#object_panel">Object</a></li>
                     <li><a href="#output">Output</a></li>
                 </ul>
                 <div id="objects_panel">
@@ -36,6 +36,9 @@
                     </div>
                     <ul class="options">
                         <li>
+                            <input id="object_id" type="text">
+                        </li>
+                        <li>
                             <label>Object ID</label>
                             <input id="object_name_input" type="text">
                         </li>
@@ -43,25 +46,8 @@
                         <button id="confirm_object_changes">Confirm</button>
                     </ul>
                 </div>
-                <div id="page_panel">
-                    <div id="page_selector" class="selector">
-                        <ul id="page_viewer_list">
-                        </ul>
-                    </div>
-                    <ul class="options">
-                        <li>
-                            <label>Page ID</label>
-                            <input type="text">
-                        </li>
-                        <hr/>
-                        <button id="confirm_page_changes">Confirm</button>
-                    </ul>
-                </div>
-                <div id="object_panel">
-                    <div id="object_selector" class="selector">
-                        <ul id="object_viewer_list">
-                        </ul>
-                    </div>
+                
+                <div id="state_panel">
                     <div id="object_state_selector" class="selector">
                         <ul id="object_state_list">
                         </ul>
@@ -76,8 +62,23 @@
                         <hr/>
                         <button id="confirm_page_changes">Confirm</button>
                     </ul>
-                
                 </div>
+                
+                <div id="page_panel">
+                    <div id="page_selector" class="selector">
+                        <ul id="page_viewer_list">
+                        </ul>
+                    </div>
+                    <ul class="options">
+                        <li>
+                            <label>Page ID</label>
+                            <input type="text">
+                        </li>
+                        <hr/>
+                        <button id="confirm_page_changes">Confirm</button>
+                    </ul>
+                </div>
+                
                 <div id="output">
                     <button id="output_refresh">Refresh</button>
                     <button id="output_copy">Copy to Clipboard</button>
