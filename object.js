@@ -72,6 +72,17 @@ function object(id, meta, auto_reset) {
     this.set_image_scale_mode = function (mode) {
         this.image_scale_mode = mode;
     };
+    
+    // set content
+    this.set_content = function (code) {
+        // assign code
+        this.dom_obj.html(code);
+        // release size
+        this.dom_obj.css("width", "");
+        this.dom_obj.css("height", "");
+        // refresh
+        this.refresh();
+    }
 
     // reset size
     this.refresh = function () {

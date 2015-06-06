@@ -176,14 +176,21 @@ function inspector(manager) {
     // id_prefix, list_class is the id, class of li element to print
     // title is the index of printing
     // click function is the action after clicking the item
-    this.refresh_list = function (object, list, id_prefix, list_class, title, click_function) {
+    this.refresh_list = function (object, list, id_prefix, list_class, title_type, title, click_function) {
         // reset list
         object.html("");
         // print object list
-        var i, the_item;
+        var i, the_item, title;
         for (i in list) {
             the_item = list[i];
-            object.append(getLi(id_prefix + i, list_class, the_item[title]));
+            if (title_type == "property"){
+                title = the_item[title];
+            } else if (title_type == "index"){
+                title = title + " " + i;
+            } else {
+                title = "Unknown " + i;
+            }
+            object.append(getLi(id_prefix + i, list_class, title));
             // assign action
             $("#" + id_prefix + i).click(click_function);
         }
@@ -196,19 +203,7 @@ function inspector(manager) {
     
     // refresh overall object list (editor)
     this.refresh_object_list = function () {
-        this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "id", this.start_edit_object);
-        /*
-        // reset list
-        this.object_list.html("");
-        // print object list
-        var i, the_object;
-        for (i in this.objects) {
-            the_object = this.objects[i];
-            this.object_list.append(getLi("object_list_item_" + i, "object_list_item", the_object.id));
-            // assign action
-            $("#object_list_item_" + i).click(this.start_edit_object);
-        }
-        */
+        this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "property", "id", this.start_edit_object);
     };
     
     // start editing object. 
@@ -216,32 +211,34 @@ function inspector(manager) {
     this.start_edit_object = function (e) {
         // get basic information
         var object_id = $(this).attr("id").split('_')[3];
-        var object_name = $(this).text();
+        var the_object = inspector.objects[object_id];
+        var object_name = the_object.id;
         // set style
         inspector.highlight_selection("object_list", this);
+        
+        // print values to form
         // print id
         $("#object_id").val(object_id);
         // print name into input
         $("#object_name_input").val(object_name);
+        // set auto reset
+        $("#auto_reset_input").prop("checked", the_object.auto_reset); 
+        // set z-index
+        if (typeof the_object.z_index !== "undefined"){
+            $("#z_index_input").val(the_object.z_index);
+        }
+        // get code
+        $("#object_code_input").text(the_object.dom_obj.html());
+        
         // highlight object
         inspector.highlight_object(inspector.objects[object_id]);
-        
         // refresh states list
         inspector.refresh_state_list(object_id);
     };
     
     // refresh object states list (editor)
     this.refresh_state_list = function (object_id) {
-        // reset state list
-        this.object_state_list.html("");
-        // print state list
-        var i, the_state;
-        for (i in this.objects[object_id].states){
-            the_state = this.objects[object_id].states;
-            this.object_state_list.append(getLi("object_state_list_item" + i, "object_state_list_item", "State " + i));
-            // assign action
-            $("#object_state_list_item_" + i).click(this.start_edit_state);
-        }
+        this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
     };
     
     // start editing state
@@ -253,13 +250,21 @@ function inspector(manager) {
     
     // confirm changes on object name
     // this event occurs after clicking confirm button in object panel
-    this.confirm_object_name = function (e) {
+    this.confirm_object_change = function (e) {
         // get object id
         var object_id = $("#object_id").val();
-        // get new object name
+        // get new object info
         var new_name = $("#object_name_input").val();
-        // assign object name
+        var new_auto_reset = $("#auto_reset_input").prop("checked")
+        var new_z_index = $("#z_index_input").val();
+        var new_code = $("#object_code_input").text();
+        // assign object info
         this.objects[object_id].id = new_name;
+        this.objects[object_id].auto_reset = new_auto_reset;
+        if (!isNaN(parseInt($("#z_index_input").val()))){
+            this.objects[object_id].set_z_index(parseInt($("#z_index_input").val()));
+        }
+        this.objects[object_id].set_content($("#object_code_input").val());
         // refresh object list
         this.refresh_object_list();
     };

@@ -23,7 +23,7 @@ $(document).ready(function () {
     
     // inspector panel
     $("#confirm_object_changes").click(function (){
-        inspector.confirm_object_name();
+        inspector.confirm_object_change();
     });
 });
 
