@@ -20,10 +20,18 @@ $(document).ready(function () {
         inspector.refresh_object_list();
     });
     
+    $("#new_state").click(function(){
+        preview.create_state();
+        inspector.refresh_state_list(parseInt($("#object_id").val()));
+    });
     
     // inspector panel
     $("#confirm_object_changes").click(function (){
         inspector.confirm_object_change();
+    });
+    
+    $("#confirm_state_changes").click(function (){
+        inspector.confirm_state_change();
     });
 });
 

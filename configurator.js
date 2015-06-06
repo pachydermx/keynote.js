@@ -15,3 +15,9 @@ function create_obj() {
     pages[pages.length - 1].add(objects[objects.length - 1], 0, 1000, 1000);
     objects[objects.length-1].init("body", "<div>Text</div>");
 }
+
+function create_state() {
+    objects[objects.length - 1].add_state(50, 0, 50, 0, 1);
+    pages[pages.length - 1].add(objects[objects.length - 1], 0, 1000, 1000);
+}
+    

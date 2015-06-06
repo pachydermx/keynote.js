@@ -180,22 +180,30 @@ function inspector(manager) {
         // reset list
         object.html("");
         // print object list
-        var i, the_item, title;
+        var i, the_item, the_title;
         for (i in list) {
             the_item = list[i];
             if (title_type == "property"){
-                title = the_item[title];
+                the_title = the_item[title];
             } else if (title_type == "index"){
-                title = title + " " + i;
+                the_title = title + " " + i;
             } else {
-                title = "Unknown " + i;
+                the_title = "Unknown " + i;
             }
-            object.append(getLi(id_prefix + i, list_class, title));
+            object.append(getLi(id_prefix + i, list_class, the_title));
             // assign action
             $("#" + id_prefix + i).click(click_function);
         }
     };
     
+    // switch object state
+    this.switch_state = function (object_id, state_id) {
+        if ($("#animation_enabled_input").prop("checked")) {
+            this.objects[object_id].moveToState(state_id, 1000);
+        } else {
+            this.objects[object_id].moveToState(state_id);
+        }
+    };
     
     
     
@@ -248,12 +256,49 @@ function inspector(manager) {
         var object_id = $("#object_id").val();
         var the_object = inspector.objects[object_id];
         var state_id = $(this).attr("id").split('_')[4];
-        var the_state= = the_object.states[state_id];
+        var the_state = the_object.states[state_id];
+        // move to current state
+        inspector.switch_state(object_id, state_id);
         // set style
         inspector.highlight_selection("object_state_list", this);
         
         // print value to form
-        
+        $("#state_id").val(state_id);
+        // print position
+        $("#x_percent_input").val(the_state.x_percent);
+        $("#x_delta_input").val(the_state.x_delta);
+        $("#y_percent_input").val(the_state.y_percent);
+        $("#y_delta_input").val(the_state.y_delta);
+        // print alpha
+        $("#alpha_input").val(the_state.alpha);
+        // print size
+        if (typeof the_state.width_percent !== "undefined") {
+            // checkbox
+            $("#size_enbaled_input").prop("checked", true);
+            // data
+            $("#width_percent_input").val(the_state.width_percent);
+            $("#width_delta_input").val(the_state.width_delta);
+            $("#height_percent_input").val(the_state.height_percent);
+            $("#height_delta_input").val(the_state.height_delta);
+        } else {
+            $("#size_enabled_input").prop("checked", false);
+        }
+        // print rotate
+        if (typeof the_state.angle !== "undefined") {
+            // checkbox
+            $("#rotate_enabled_input").prop("checked", true);
+            // data
+            $("#angle_input").val(the_state.angle);
+        } else {
+            $("#rotate_enabled_input").prop("checked", false);
+        }
+        // print easing
+        if (typeof the_state.easing !== "undefined") {
+            // checkbox
+            $("#easing_input").prop("checked", true);
+        } else {
+            $("#easing_input").prop("checked", false);
+        }
     };
     
     // confirm changes on object name
@@ -275,6 +320,31 @@ function inspector(manager) {
         this.objects[object_id].set_content($("#object_code_input").val());
         // refresh object list
         this.refresh_object_list();
+    };
+    
+    // confirm changes on state
+    // this event occurs after clicking confirm button in state panel
+    this.confirm_state_change = function (e) {
+        // get basic info
+        var object_id = $("#object_id").val();
+        var state_id = $("#state_id").val();
+        // get new state info
+        var new_x_percent = parseInt($("#x_percent_input").val());
+        var new_x_delta = parseInt($("#x_delta_input").val());
+        var new_y_percent = parseInt($("#y_percent_input").val());
+        var new_y_delta = parseInt($("#y_delta_input").val());
+        var new_alpha = parseFloat($("#alpha_input").val());
+        // assign object info
+        var the_state = this.objects[object_id].states[state_id];
+        the_state.x_percent = new_x_percent;
+        the_state.x_delta = new_x_delta;
+        the_state.y_percent = new_y_percent;
+        the_state.y_delta = new_y_delta;
+        // refresh object list
+        this.refresh_state_list(object_id);
+        // refresh state
+        // move to current state
+        inspector.switch_state(object_id, state_id);
     };
     
     // start editing page
