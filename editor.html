@@ -174,15 +174,36 @@
                 
                 <div id="page_panel">
                     <div id="page_selector" class="selector">
-                        <ul id="page_viewer_list">
+                        <ul id="page_list">
                         </ul>
                     </div>
                     <ul class="options">
+                        <input id="page_id" type="text">
                         <li>
-                            <label>Page ID</label>
-                            <input type="text">
+                            <label for="page_name_input">Page Name</label>
+                            <input id="page_name_input" type="text">
                         </li>
-                        <hr/>
+                        <hr>
+                        <li>
+                            <div id="page_state" class="selector">
+                                <ul id="page_state_list">
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="object_insert_select">Insert</label>
+                            <select id="object_insert_select"></select>
+                            <select id="object_state_select"></select>
+                        </li>
+                        <li>
+                            <label for="object_interval">Interval</label>
+                            <input id="object_interval" type="number">
+                        </li>
+                        <li>
+                            <label for="object_duration">Duration</label>
+                            <input id="object_duration" type="number">
+                        </li>
+                        <hr>
                         <button id="confirm_page_changes">Confirm</button>
                     </ul>
                 </div>

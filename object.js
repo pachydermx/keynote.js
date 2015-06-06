@@ -205,6 +205,10 @@ function object(id, meta, auto_reset) {
             // perform without animation
             this.dom_obj.css("left", destination_x);
             this.dom_obj.css("top", destination_y);
+            this.dom_obj.css("opacity", target.alpha);
+            this.dom_obj.css("width", target_size.width);
+            this.dom_obj.css("height", target_size.height);
+            this.dom_obj.css("rotate", target_angle);
         }
     };
     

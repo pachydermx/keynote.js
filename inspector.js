@@ -1,7 +1,7 @@
 // inspector is debugger of a page
 function inspector(manager) {
     this.manager = manager;
-    var dom_obj, object_list, page_viewer, page_viewer_list, object_viewer, object_viewer_list, object_state_list, object_info_list, moving, editor, objects;
+    var dom_obj, object_list, page_viewer, page_viewer_list, object_viewer, page_list, object_viewer_list, object_state_list, object_info_list, moving, editor, objects;
     
     // init inspector window
     this.enable = function (selector) {
@@ -39,7 +39,7 @@ function inspector(manager) {
         // configure
         this.editor = true;
         // assign $objects
-        this.page_viewer_list = $("#page_viewer_list");
+        this.page_list = $("#page_list");
         this.object_viewer_list = $("#object_viewer_list");
         this.object_state_list = $("#object_state_list");
         this.object_info_list = $("#object_info_list");
@@ -205,6 +205,16 @@ function inspector(manager) {
         }
     };
     
+    // print object list
+    this.get_object_list = function (prefix, middle, profix) {
+        var i, the_item, output = "";
+        for (i in this.objects) {
+            the_item = this.objects[i];
+            output = prefix + i + middle + the_item.id + profix;
+        }
+    };
+        
+    
     
     
     // functions above work with editor
@@ -249,6 +259,23 @@ function inspector(manager) {
         this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
     };
     
+    // refresh page list (editor)
+    this.refresh_page_list = function () {
+        this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
+    };
+    
+    // start editing page
+    // this event occurs after clicking items in page list
+    this.start_edit_page = function (e) {
+        // gather basic information
+        var page_id = $(this).attr("id").split('_')[3];
+        // move to selected page
+        inspector.manager.goto_page(page_id);
+        // set style
+        inspector.highlight_selection("page_list", this);
+        // print values to form
+    };
+    
     // start editing state
     // this event occurs after clicking items in state list
     this.start_edit_state = function (e) {
@@ -272,9 +299,9 @@ function inspector(manager) {
         // print alpha
         $("#alpha_input").val(the_state.alpha);
         // print size
-        if (typeof the_state.width_percent !== "undefined") {
+        if (typeof the_state["width_percent"] !== "undefined") {
             // checkbox
-            $("#size_enbaled_input").prop("checked", true);
+            $("#size_enabled_input").prop("checked", true);
             // data
             $("#width_percent_input").val(the_state.width_percent);
             $("#width_delta_input").val(the_state.width_delta);
@@ -295,9 +322,10 @@ function inspector(manager) {
         // print easing
         if (typeof the_state.easing !== "undefined") {
             // checkbox
-            $("#easing_input").prop("checked", true);
+            $("#easing_enabled_input").prop("checked", true);
+            $("#easing_input [value=" + the_state.easing +"]").prop("selected", "selected");
         } else {
-            $("#easing_input").prop("checked", false);
+            $("#easing_enabled_input").prop("checked", false);
         }
     };
     
@@ -335,24 +363,45 @@ function inspector(manager) {
         var new_y_delta = parseInt($("#y_delta_input").val());
         var new_alpha = parseFloat($("#alpha_input").val());
         // assign object info
+        // basic info
         var the_state = this.objects[object_id].states[state_id];
         the_state.x_percent = new_x_percent;
         the_state.x_delta = new_x_delta;
         the_state.y_percent = new_y_percent;
         the_state.y_delta = new_y_delta;
+        the_state.alpha = new_alpha;
+        // size info
+        var new_width_percent, new_width_delta, new_height_percent, new_height_delta;
+        if ($("#size_enabled_input").prop("checked")){
+            new_width_percent = parseInt($("#width_percent_input").val());
+            new_width_delta = parseInt($("#width_delta_input").val());
+            new_height_percent = parseInt($("#height_percent_input").val());
+            new_height_delta = parseInt($("#height_delta_input").val());
+        }
+        if (!(isNaN(new_width_percent) || isNaN(new_width_delta) || isNaN(new_height_percent) || isNaN(new_height_delta))){
+            the_state.width_percent = new_width_percent;
+            the_state.width_delta = new_width_delta;
+            the_state.height_percent = new_height_percent;
+            the_state.height_delta = new_height_delta;
+        }
+        // rotate info
+        var new_angle;
+        if ($("#rotate_enabled_input").prop("checked")){
+            new_angle = parseInt($("#angle_input").val());
+        }
+        if (!isNaN(new_angle)){
+            the_state.angle = new_angle;
+        }
+        // easing
+        var new_easing;
+        if ($("#easing_enabled_input").prop("checked")){
+            new_easing = $("#easing_input").val();
+            the_state.easing = new_easing;
+        }
         // refresh object list
         this.refresh_state_list(object_id);
         // refresh state
-        // move to current state
         inspector.switch_state(object_id, state_id);
-    };
-    
-    // start editing page
-    // this event occurs after clicking items in page list
-    this.start_edit_page = function (e) {
-        // get basic information
-        // set style
-        // print information to input
     };
     
     // confirm changes on page

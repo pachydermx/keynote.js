@@ -12,7 +12,7 @@ $(document).ready(function () {
     // assign actions
     $("#new_page").click(function(){
         preview.create_page();
-        inspector.refresh_page_viewer();
+        inspector.refresh_page_list();
     });
     
     $("#new_text_obj").click(function(){
