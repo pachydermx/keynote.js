@@ -33,6 +33,10 @@ $(document).ready(function () {
     $("#confirm_state_changes").click(function (){
         inspector.confirm_state_change();
     });
+    
+    $("#confirm_page_changes").click(function () {
+        inspector.confirm_page_change();
+    });
 });
 
 // init inspector

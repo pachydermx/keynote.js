@@ -183,16 +183,22 @@ function inspector(manager) {
         var i, the_item, the_title;
         for (i in list) {
             the_item = list[i];
-            if (title_type == "property"){
+            if (title_type == "property" || title_type == "object_select"){
                 the_title = the_item[title];
             } else if (title_type == "index"){
                 the_title = title + " " + i;
+            } else if (title_type == "state"){
+                the_title = the_item.object[title] + " - " + the_item.state;
             } else {
                 the_title = "Unknown " + i;
             }
-            object.append(getLi(id_prefix + i, list_class, the_title));
-            // assign action
-            $("#" + id_prefix + i).click(click_function);
+            if (title_type == "object_select") {
+                object.append(getOption(i, the_item.id));
+            } else {
+                object.append(getLi(id_prefix + i, list_class, the_title));
+                // assign action
+                $("#" + id_prefix + i).click(click_function);
+            }
         }
     };
     
@@ -221,7 +227,10 @@ function inspector(manager) {
     
     // refresh overall object list (editor)
     this.refresh_object_list = function () {
+        // refresh object list
         this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "property", "id", this.start_edit_object);
+        // refresh object selector
+        this.refresh_list($("#object_selector"), this.objects, "", "", "object_select", "id");
     };
     
     // start editing object. 
@@ -269,11 +278,29 @@ function inspector(manager) {
     this.start_edit_page = function (e) {
         // gather basic information
         var page_id = $(this).attr("id").split('_')[3];
+        var the_page = inspector.manager.pages[page_id];
         // move to selected page
         inspector.manager.goto_page(page_id);
         // set style
         inspector.highlight_selection("page_list", this);
         // print values to form
+        $("#page_id").val(page_id);
+        // print page name
+        $("#page_name_input").val(the_page.name);
+        // print states
+        inspector.refresh_list($("#page_state_list"), the_page.objects, "page_state_item_", "page_state_item", "state", "id", inspector.start_edit_page_state);
+    };
+    
+    // start editing page state
+    // this event occurs after clicking items in states list in page panel
+    this.start_edit_page_state = function (e) {
+        // gather basic information
+        var page_id = $("#page_id").val();
+        var the_page = inspector.manager.pages[page_id];
+        var state_id = $(this).attr("id").split('_')[3];
+        var the_state = the_page.objects[state_id];
+        // set style
+        inspector.highlight_selection("page_state_list", this);
     };
     
     // start editing state
@@ -406,9 +433,13 @@ function inspector(manager) {
     
     // confirm changes on page
     // this event occurs after clicking confirm button in page panel
-    this.confirm_page = function (e) {
+    this.confirm_page_change = function (e) {
         // get new info from inputs
+        var page_id = parseInt($("#page_id").val());
+        var new_name = $("#page_name_input").val();
         // assign new info
+        inspector.manager.pages[page_id].name = new_name;
         // refresh list
+        inspector.refresh_page_list();
     };
 }

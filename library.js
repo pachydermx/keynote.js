@@ -18,5 +18,9 @@ function getLabel(the_id, the_class, content) {
 function getLi(the_id, the_class, content){
     return getDOM('li', the_id, the_class, content);
 }
+
+function getOption(value, content){
+    return '<option value="' + value + '">' + content + '</option>';
+}
     
 // Image Library
