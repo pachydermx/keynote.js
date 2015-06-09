@@ -187,7 +187,7 @@ function inspector(manager) {
                 the_title = the_item[title];
             } else if (title_type == "index"){
                 the_title = title + " " + i;
-            } else if (title_type == "state"){
+            } else if (title_type == "state" || title_type == "state_select"){
                 the_title = the_item.object[title] + " - " + the_item.state;
             } else {
                 the_title = "Unknown " + i;
