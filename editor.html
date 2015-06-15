@@ -96,79 +96,102 @@
                             <label for="alpha_input">Alpha</label>
                             <input id="alpha_input" min="0" max="1" step="0.1" type="number">
                         </li>
-                        <hr>
-                        <li>
-                            <label for="size_enabled_input">Size</label>
-                            <input id="size_enabled_input" type="checkbox">
-                        </li>
-                        <li>
-                            <label for="width_percent_input">width%</label>
-                            <input id="width_percent_input" min="0" max="150" step="10" type="number">
-                        </li>
-                        <li>
-                            <label for="width_delta_input">+width px</label>
-                            <input id="width_delta_input" step="50" type="number">
-                        </li>
-                        <li>
-                            <label for="height_percent_input">height%</label>
-                            <input id="height_percent_input" min="0" max="150" step="10" type="number">
-                        </li>
-                        <li>
-                            <label for="height_delta_input">+height px</label>
-                            <input id="height_delta_input" step="50" type="number">
-                        </li>
-                        <hr>
-                        <li>
-                            <label for="rotate_enabled_input">Rotate</label>
-                            <input id="rotate_enabled_input" type="checkbox">
-                        </li>
-                        <li>
-                            <label for="angle_input">Rotate</label>
-                            <input id="angle_input" min="-3600" max="3600" step="30" type="number">
-                        </li>
-                        <hr>
-                        <li>
-                            <label for="easing_enabled_input">Easing</label>
-                            <input id="easing_enabled_input" type="checkbox">
-                        </li>
-                        <li>
-                            <label for="easing_input">Easing</label>
-                            <select id="easing_input">
-                                <option value="linear">Linear</option>
-                                <option value="swing">Swing</option>
-                                <option value="easeInQuad">Ease In Quad</option>
-                                <option value="easeOutQuad">Ease Out Quad</option>
-                                <option value="easeInOutQuad">Ease In Out Quad</option>
-                                <option value="easeInCubic">Ease In Cubic</option>
-                                <option value="easeOutCubic">Ease Out Cubic</option>
-                                <option value="easeInOutCubic">Ease In Out Cubic</option>
-                                <option value="easeInQuart">Ease In Quart</option>
-                                <option value="easeOutQuart">Ease Out Quart</option>
-                                <option value="easeInOutQuart">Ease In Out Quart</option>
-                                <option value="easeInQuint">Ease In Quint</option>
-                                <option value="easeOutQuint">Ease Out Quint</option>
-                                <option value="easeInOutQuint">Ease In Out Quint</option>
-                                <option value="easeInExpo">Ease In Expo</option>
-                                <option value="easeOutExpo">Ease Out Expo</option>
-                                <option value="easeInOutExpo">Ease In Out Expo</option>
-                                <option value="easeInSine">Ease In Sine</option>
-                                <option value="easeOutSine">Ease Out Sine</option>
-                                <option value="easeInOutSine">Ease In Out Sine</option>
-                                <option value="easeInCirc">Ease In Circ</option>
-                                <option value="easeOutCirc">Ease Out Circ</option>
-                                <option value="easeInOutCirc">Ease In Out Circ</option>
-                                <option value="easeInElastic">Ease In Elastic</option>
-                                <option value="easeOutElastic">Ease Out Elastic</option>
-                                <option value="easeInOutElastic">Ease In Out Elastic</option>
-                                <option value="easeInBack">Ease In Back</option>
-                                <option value="easeOutBack">Ease Out Back</option>
-                                <option value="easeInOutBack">Ease In Out Back</option>
-                                <option value="easeInBounce">Ease In Bounce</option>
-                                <option value="easeOutBounce">Ease Out Bounce</option>
-                                <option value="easeInOutBounce">Ease In Out Bounce</option>
-                            </select>
-                        </li>
-                        <hr>
+                    </ul>
+                    <hr>
+                    <div class="optional panel" id="size_panel">
+                        <h3>Size</h3>
+                        <div>
+                        <ul class="options">
+                            <li>
+                                <label for="size_enabled_input">Size</label>
+                                <input id="size_enabled_input" class="enabler" type="checkbox">
+                            </li>
+                            <li>
+                                <label for="width_percent_input">width%</label>
+                                <input id="width_percent_input" min="0" max="150" step="10" type="number">
+                            </li>
+                            <li>
+                                <label for="width_delta_input">+width px</label>
+                                <input id="width_delta_input" step="50" type="number">
+                            </li>
+                            <li>
+                                <label for="height_percent_input">height%</label>
+                                <input id="height_percent_input" min="0" max="150" step="10" type="number">
+                            </li>
+                            <li>
+                                <label for="height_delta_input">+height px</label>
+                                <input id="height_delta_input" step="50" type="number">
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="optional panel" id="rotate_panel">
+                        <h3>Rotate</h3>
+                        <div>
+                            <ul class="options">
+                                <li>
+                                    <label for="rotate_enabled_input">Rotate</label>
+                                    <input id="rotate_enabled_input" class="enabler" type="checkbox">
+                                </li>
+                                <li>
+                                    <label for="angle_input">Rotate</label>
+                                    <input id="angle_input" min="-3600" max="3600" step="30" type="number">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="optional panel" id="easing_panel">
+                        <h3>Easing</h3>
+                        <div>
+                            <ul class="options">
+                                <li>
+                                    <label for="easing_enabled_input">Easing</label>
+                                    <input id="easing_enabled_input" class="enabler" type="checkbox">
+                                </li>
+                                <li>
+                                    <label for="easing_input">Easing</label>
+                                    <select id="easing_input">
+                                        <option value="linear">Linear</option>
+                                        <option value="swing">Swing</option>
+                                        <option value="easeInQuad">Ease In Quad</option>
+                                        <option value="easeOutQuad">Ease Out Quad</option>
+                                        <option value="easeInOutQuad">Ease In Out Quad</option>
+                                        <option value="easeInCubic">Ease In Cubic</option>
+                                        <option value="easeOutCubic">Ease Out Cubic</option>
+                                        <option value="easeInOutCubic">Ease In Out Cubic</option>
+                                        <option value="easeInQuart">Ease In Quart</option>
+                                        <option value="easeOutQuart">Ease Out Quart</option>
+                                        <option value="easeInOutQuart">Ease In Out Quart</option>
+                                        <option value="easeInQuint">Ease In Quint</option>
+                                        <option value="easeOutQuint">Ease Out Quint</option>
+                                        <option value="easeInOutQuint">Ease In Out Quint</option>
+                                        <option value="easeInExpo">Ease In Expo</option>
+                                        <option value="easeOutExpo">Ease Out Expo</option>
+                                        <option value="easeInOutExpo">Ease In Out Expo</option>
+                                        <option value="easeInSine">Ease In Sine</option>
+                                        <option value="easeOutSine">Ease Out Sine</option>
+                                        <option value="easeInOutSine">Ease In Out Sine</option>
+                                        <option value="easeInCirc">Ease In Circ</option>
+                                        <option value="easeOutCirc">Ease Out Circ</option>
+                                        <option value="easeInOutCirc">Ease In Out Circ</option>
+                                        <option value="easeInElastic">Ease In Elastic</option>
+                                        <option value="easeOutElastic">Ease Out Elastic</option>
+                                        <option value="easeInOutElastic">Ease In Out Elastic</option>
+                                        <option value="easeInBack">Ease In Back</option>
+                                        <option value="easeOutBack">Ease Out Back</option>
+                                        <option value="easeInOutBack">Ease In Out Back</option>
+                                        <option value="easeInBounce">Ease In Bounce</option>
+                                        <option value="easeOutBounce">Ease Out Bounce</option>
+                                        <option value="easeInOutBounce">Ease In Out Bounce</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul class="options">
                         <button id="confirm_state_changes">Confirm</button>
                     </ul>
                 </div>

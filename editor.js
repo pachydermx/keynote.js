@@ -6,8 +6,29 @@ $(document).ready(function () {
     preview_body = $("#preview").contents().find("body");
     
     // set ui
-    $("#inspector_frame").tabs();
+    // tool bar
     $(".menu_bar_button").button();
+    // control panel
+    // panels
+    $(".optional.panel").accordion({ 
+        collapsible: true,
+        active: false,
+        activate: function (e, ui) {
+            console.log(this);
+            if (ui.newHeader.length > 0){
+                // opening
+                $(this).find(".enabler").prop("checked", true);
+                console.log("open");
+            } else {
+                // collapsing
+                $(this).find(".enabler").prop("checked", false);
+                console.log(this);
+            }
+        }
+    });
+    // overall (END)
+    $("#inspector_frame").tabs();
+    
     
     // assign actions
     $("#new_page").click(function(){
@@ -22,11 +43,6 @@ $(document).ready(function () {
     
     $("#new_state").click(function(){
         preview.create_state();
-    });
-    
-    $("#object_selector").change(function () {
-        var index = $(this).val();
-        inspector.select_page_object_item(index);
     });
     
     // inspector panel
@@ -46,6 +62,11 @@ $(document).ready(function () {
         inspector.confirm_page_state_change();
     });
     
+    // auto load state list
+    $("#object_selector").change(function () {
+        var index = $(this).val();
+        inspector.select_page_object_item(index);
+    });
     
 });
 
