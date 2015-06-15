@@ -40,9 +40,19 @@ ul{
     vertical-align: top;
 }
 
+input.index{
+    background: red;
+}
+
+.inspector_panel{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100% - 32px);
+}
+
 .selector{
     padding: 0px;
-    margin: 10px;
+    margin: 5px;
     background: #FFFFFF;
     border: #555555 solid 1px;
     width: 100%;

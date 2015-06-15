@@ -34,14 +34,14 @@
                     <li><a href="#page_panel">Page</a></li>
                     <li><a href="#output">Output</a></li>
                 </ul>
-                <div id="objects_panel">
+                <div class="inspector_panel" id="objects_panel">
                     <div id="objects_selector" class="selector">
                         <ul id="object_list">
                         </ul>
                     </div>
                     <ul class="options">
                         <li>
-                            <input id="object_id" type="text">
+                            <input class="index" id="object_id" type="text">
                         </li>
                         <li>
                             <label for="object_name_input">Object ID</label>
@@ -64,7 +64,7 @@
                     </ul>
                 </div>
                 
-                <div id="state_panel">
+                <div class="inspector_panel" id="state_panel">
                     <div id="object_state_selector" class="selector">
                         <ul id="object_state_list">
                         </ul>
@@ -73,28 +73,28 @@
                     </ul>
                     <ul class="options">
                         <li>
-                            <input id="state_id" type="text">
+                            <input class="index" id="state_id" type="text">
                         </li>
                         <li>
                             <label for="x_percent_input">X%</label>
-                            <input id="x_percent_input" type="number">
+                            <input id="x_percent_input" min="-50" max="150" step="10" type="number">
                         </li>
                         <li>
                             <label for="x_delta_input">+X px</label>
-                            <input id="x_delta_input" type="number">
+                            <input id="x_delta_input" step="50" type="number">
                         </li>
                         <li>
                             <label for="y_percent_input">Y%</label>
-                            <input id="y_percent_input" type="number">
+                            <input id="y_percent_input" min="-50" max="150" step="10" type="number">
                         </li>
                         <li>
                             <label for="y_delta_input">+Y px</label>
-                            <input id="y_delta_input" type="number">
+                            <input id="y_delta_input" step="50" type="number">
                         </li>
                         <hr>
                         <li>
                             <label for="alpha_input">Alpha</label>
-                            <input id="alpha_input" type="number">
+                            <input id="alpha_input" min="0" max="1" step="0.1" type="number">
                         </li>
                         <hr>
                         <li>
@@ -103,19 +103,19 @@
                         </li>
                         <li>
                             <label for="width_percent_input">width%</label>
-                            <input id="width_percent_input" type="number">
+                            <input id="width_percent_input" min="0" max="150" step="10" type="number">
                         </li>
                         <li>
                             <label for="width_delta_input">+width px</label>
-                            <input id="width_delta_input" type="number">
+                            <input id="width_delta_input" step="50" type="number">
                         </li>
                         <li>
                             <label for="height_percent_input">height%</label>
-                            <input id="height_percent_input" type="number">
+                            <input id="height_percent_input" min="0" max="150" step="10" type="number">
                         </li>
                         <li>
                             <label for="height_delta_input">+height px</label>
-                            <input id="height_delta_input" type="number">
+                            <input id="height_delta_input" step="50" type="number">
                         </li>
                         <hr>
                         <li>
@@ -124,7 +124,7 @@
                         </li>
                         <li>
                             <label for="angle_input">Rotate</label>
-                            <input id="angle_input" type="number">
+                            <input id="angle_input" min="-3600" max="3600" step="30" type="number">
                         </li>
                         <hr>
                         <li>
@@ -173,13 +173,13 @@
                     </ul>
                 </div>
                 
-                <div id="page_panel">
+                <div class="inspector_panel" id="page_panel">
                     <div id="page_selector" class="selector">
                         <ul id="page_list">
                         </ul>
                     </div>
                     <ul class="options">
-                        <input id="page_id" type="text">
+                        <input class="index" id="page_id" type="text">
                         <li>
                             <label for="page_name_input">Page Name</label>
                             <input id="page_name_input" type="text">
@@ -193,7 +193,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <input id="page_state_id" type="text">
+                        <input class="index" id="page_state_id" type="text">
                         <li>
                             <label for="object_selector">Object</label>
                             <select id="object_selector"></select>
@@ -201,11 +201,11 @@
                         </li>
                         <li>
                             <label for="object_interval_input">Interval</label>
-                            <input id="object_interval_input" type="number">
+                            <input id="object_interval_input" min="0" step="200" type="number">
                         </li>
                         <li>
                             <label for="object_duration_input">Duration</label>
-                            <input id="object_duration_input" type="number">
+                            <input id="object_duration_input" min="0" step="200" type="number">
                         </li>
                         <hr>
                         <button id="confirm_page_state_changes">Confirm</button>
@@ -213,7 +213,7 @@
                     </ul>
                 </div>
                 
-                <div id="output">
+                <div class="inspector_panel" id="output">
                     <button id="output_refresh">Refresh</button>
                     <button id="output_copy">Copy to Clipboard</button>
                     <textarea id="output_textarea">
