@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 // init inspector
 function preview_loaded () {
-    inspector = new inspector(preview.manager);
+    inspector = new editor_inspector(preview.manager);
     inspector.enable_editor(preview.objects);
 }
 
