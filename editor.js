@@ -42,6 +42,10 @@ $(document).ready(function () {
     $("#confirm_page_changes").click(function () {
         inspector.confirm_page_change();
     });
+    
+    $("#confirm_page_state_changes").click(function () {
+        inspector.confirm_page_state_change();
+    });
 });
 
 // init inspector

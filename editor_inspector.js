@@ -60,7 +60,7 @@ function editor_inspector (manager) {
     
     // refresh page states list
     this.refresh_page_states_list = function (page_id) {
-        this.refresh_list($("#page_state_list"), this.manager.pages[page_id], "page_state_item_", "page_state_item", "state", "id", this.start_edit_page_state);
+        this.refresh_list($("#page_state_list"), this.manager.pages[page_id].objects, "page_state_item_", "page_state_item", "state", "id", this.start_edit_page_state);
     };
     
     // refresh page list (editor)
@@ -266,11 +266,12 @@ function editor_inspector (manager) {
         var page_id = parseInt($("#page_id").val());
         var page_state_id = parseInt($("#page_state_id").val());
         // get new data
-        var new_object_index = parseInt($("#object_select").val());
+        var new_object_index = parseInt($("#object_selector").val());
         var new_object = inspector.objects[new_object_index];
         var new_state = parseInt($("#object_state_select").val());
         var new_interval = parseInt($("#object_interval_input").val());
         var new_duration = parseInt($("#object_duration_input").val());
+        console.log(new_object_index, new_object, new_state, new_interval, new_duration);
         // assign data
         var the_state = inspector.manager.pages[page_id].objects[page_state_id];
         the_state.object = new_object;
