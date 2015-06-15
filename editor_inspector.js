@@ -36,6 +36,7 @@ function editor_inspector (manager) {
         // print values to form
         // print id
         $("#object_id").val(object_id);
+        preview.selected_object_index = object_id;
         // print name into input
         $("#object_name_input").val(object_name);
         // set auto reset
