@@ -44,6 +44,7 @@ function inspector(manager) {
         this.object_state_list = $("#object_state_list");
         this.object_info_list = $("#object_info_list");
         this.object_list = $("#object_list");
+        this.object_state_select = $("#object_state_select");
         this.objects = objects;
     }
     
@@ -185,15 +186,15 @@ function inspector(manager) {
             the_item = list[i];
             if (title_type == "property" || title_type == "object_select"){
                 the_title = the_item[title];
-            } else if (title_type == "index"){
+            } else if (title_type == "index" || title_type == "page_state_select"){
                 the_title = title + " " + i;
             } else if (title_type == "state" || title_type == "state_select"){
                 the_title = the_item.object[title] + " - " + the_item.state;
             } else {
                 the_title = "Unknown " + i;
             }
-            if (title_type == "object_select") {
-                object.append(getOption(i, the_item.id));
+            if (title_type == "object_select" || title_type == "page_state_select") {
+                object.append(getOption(i, the_title));
             } else {
                 object.append(getLi(id_prefix + i, list_class, the_title));
                 // assign action
@@ -273,6 +274,14 @@ function inspector(manager) {
         this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
     };
     
+    // select an object and show its state list in page inspector
+    this.select_page_object_item = function (index) {
+        // activate the item
+        $("#object_selector [value=" + index + "]").prop("selected", "selected");
+        // refresh its state list
+        this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
+    }
+    
     // start editing page
     // this event occurs after clicking items in page list
     this.start_edit_page = function (e) {
@@ -298,9 +307,13 @@ function inspector(manager) {
         var page_id = $("#page_id").val();
         var the_page = inspector.manager.pages[page_id];
         var state_id = $(this).attr("id").split('_')[3];
+        $("#page_state_id").val(state_id);
         var the_state = the_page.objects[state_id];
         // set style
         inspector.highlight_selection("page_state_list", this);
+        // set object name
+        var object_index = inspector.objects.indexOf(the_state.object);
+        inspector.select_page_object_item(object_index);
     };
     
     // start editing state
