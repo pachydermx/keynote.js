@@ -29,7 +29,6 @@ $(document).ready(function () {
     // overall (END)
     $("#inspector_frame").tabs();
     
-    
     // assign actions
     $("#new_page").click(function(){
         preview.create_page();

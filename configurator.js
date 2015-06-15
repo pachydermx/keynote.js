@@ -14,7 +14,9 @@ function create_page() {
 }
 
 function create_obj() {
-    objects.push(new object("Untitled"+objects.length, meta));
+    var new_object = new object("Untitled"+objects.length, meta);
+    objects.push(new_object);
+    manager.objects.push(new_object);
     objects[objects.length - 1].add_state(50, 0, 50, 0, 1);
     objects[objects.length-1].init("body", "<div>Text</div>");
     last_created_object_index = objects.length - 1;

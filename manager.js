@@ -1,6 +1,7 @@
 // manager controls pages
 function manager() {
     this.pages = [];
+    this.objects = [];
     var lastPage;
     
     // add page to manager
@@ -10,10 +11,15 @@ function manager() {
     
     // reset positions of all pages
     this.refresh = function () {
+        // refresh objects which had already added to a page
         var i;
         for (i in this.pages) {
             var the_page = this.pages[i];
             the_page.refresh();
+        }
+        // refresh all objects in manager
+        for (i in this.objects) {
+            this.objects[i].refresh();
         }
     };
     
