@@ -58,6 +58,11 @@ function editor_inspector (manager) {
         this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
     };
     
+    // refresh page states list
+    this.refresh_page_states_list = function (page_id) {
+        this.refresh_list($("#page_state_list"), this.manager.pages[page_id], "page_state_item_", "page_state_item", "state", "id", this.start_edit_page_state);
+    };
+    
     // refresh page list (editor)
     this.refresh_page_list = function () {
         this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
@@ -86,7 +91,7 @@ function editor_inspector (manager) {
         // print page name
         $("#page_name_input").val(the_page.name);
         // print states
-        inspector.refresh_list($("#page_state_list"), the_page.objects, "page_state_item_", "page_state_item", "state", "id", inspector.start_edit_page_state);
+        inspector.refresh_page_states_list(page_id);
     };
     
     // start editing page state
@@ -100,9 +105,19 @@ function editor_inspector (manager) {
         var the_state = the_page.objects[state_id];
         // set style
         inspector.highlight_selection("page_state_list", this);
-        // set object name
+        // set object 
         var object_index = inspector.objects.indexOf(the_state.object);
         inspector.select_page_object_item(object_index);
+        // set state
+        var object_state_index = the_state.state;
+        $("#object_state_select [value=" + object_state_index + "]").prop("selected", "selected");
+        // set interval
+        var object_interval = the_state.interval;
+        $("#object_interval_input").val(object_interval);
+        // set duration
+        var object_duration = the_state.duration;
+        $("#object_duration_input").val(object_duration);
+        
     };
     
     // start editing state
@@ -244,6 +259,27 @@ function editor_inspector (manager) {
         // refresh list
         inspector.refresh_page_list();
     };
+    
+    // confirm changes to page state
+    this.confirm_page_state_change = function (e) {
+        // get basic index
+        var page_id = parseInt($("#page_id").val());
+        var page_state_id = parseInt($("#page_state_id").val());
+        // get new data
+        var new_object_index = parseInt($("#object_select").val());
+        var new_object = inspector.objects[new_object_index];
+        var new_state = parseInt($("#object_state_select").val());
+        var new_interval = parseInt($("#object_interval_input").val());
+        var new_duration = parseInt($("#object_duration_input").val());
+        // assign data
+        var the_state = inspector.manager.pages[page_id].objects[page_state_id];
+        the_state.object = new_object;
+        the_state.state = new_state
+        the_state.interval = new_interval;
+        the_state.duration = new_duration;
+        // refresh
+        inspector.refresh_page_states_list(page_id);
+    }
 }
 
 

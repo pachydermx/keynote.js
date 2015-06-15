@@ -22,7 +22,12 @@ $(document).ready(function () {
     
     $("#new_state").click(function(){
         preview.create_state();
-        inspector.refresh_state_list(parseInt($("#object_id").val()));
+        //inspector.refresh_state_list(parseInt($("#object_id").val()));
+    });
+    
+    $("#object_selector").change(function () {
+        var index = $(this).val();
+        inspector.select_page_object_item(index);
     });
     
     // inspector panel
