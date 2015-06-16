@@ -34,12 +34,13 @@
                     <li><a href="#page_panel">Page</a></li>
                     <li><a href="#output">Output</a></li>
                 </ul>
+           <!-- Inspector -->
                 <div class="inspector_panel" id="objects_panel">
                     <div id="objects_selector" class="selector">
                         <ul id="object_list">
                         </ul>
                     </div>
-                    <ul class="options">
+                    <ul id="objects_form" class="options">
                         <li>
                             <input class="index" id="object_id" type="text">
                         </li>
@@ -61,6 +62,7 @@
                         </li>
                         <hr/>
                         <button id="confirm_object_changes">Confirm</button>
+                        <button id="refresh_object_list">Refresh</button>
                     </ul>
                 </div>
                 
@@ -71,7 +73,7 @@
                     </div>
                     <ul id="object_info_list">
                     </ul>
-                    <ul class="options">
+                    <ul id="states_form" class="options">
                         <li>
                             <input class="index" id="state_id" type="text">
                         </li>

@@ -147,8 +147,10 @@ function inspector(manager) {
     // highlight object
     this.highlight_object = function (object) {
         // highlight the object
-        $(".object").removeClass("selected_object");
-        object.dom_obj.addClass("selected_object");
+        $(".selected_object").removeClass("selected_object");
+        if (typeof object !== "undefined") {
+            object.dom_obj.addClass("selected_object");
+        }
     };
     
     // highlight selection

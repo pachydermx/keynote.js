@@ -1,6 +1,13 @@
 function editor_inspector (manager) {
     this.manager = manager;
     
+    this.clear_form = function (selector) {
+        $(selector).find("input[type=text]").val("");
+        $(selector).find("input[type=number]").val("");
+        $(selector).find("input[type=checkbox]").prop("checked", false);
+        $(selector).find("textarea").text("");
+    }
+    
     // init editor inspector
     this.enable_editor = function (objects) {
         // configure
@@ -17,10 +24,17 @@ function editor_inspector (manager) {
     
     // refresh overall object list (editor)
     this.refresh_object_list = function () {
+        // clear objects form
+        this.clear_form("#objects_form");
+        this.clear_form("#state_panel");
+        // clear selection
+        preview.$(".selected_object").removeClass("selected_object");
         // refresh object list
         this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "property", "id", this.start_edit_object);
         // refresh object selector
         this.refresh_list($("#object_selector"), this.objects, "", "", "object_select", "id");
+        // clear states list
+        $("#object_state_list").html("");
     };
     
     // start editing object. 
@@ -56,6 +70,7 @@ function editor_inspector (manager) {
     
     // refresh object states list (editor)
     this.refresh_state_list = function (object_id) {
+        // reload list
         this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
     };
     

@@ -49,6 +49,10 @@ $(document).ready(function () {
         inspector.confirm_object_change();
     });
     
+    $("#refresh_object_list").click(function () {
+        inspector.refresh_object_list();
+    });
+    
     $("#confirm_state_changes").click(function (){
         inspector.confirm_state_change();
     });
