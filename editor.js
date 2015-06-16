@@ -65,10 +65,13 @@ $(document).ready(function () {
         inspector.confirm_page_state_change();
     });
     
+    $("#confirm_page_state_insert").click(function () {
+        inspector.insert_page_state();
+    });
+    
     // auto load state list
     $("#object_selector").change(function () {
-        var index = $(this).val();
-        inspector.select_page_object_item(index);
+        inspector.reload_object_state_selector();
     });
     
 });

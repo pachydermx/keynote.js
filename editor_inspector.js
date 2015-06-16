@@ -35,6 +35,8 @@ function editor_inspector (manager) {
         this.refresh_list($("#object_selector"), this.objects, "", "", "object_select", "id");
         // clear states list
         $("#object_state_list").html("");
+        // reload state list
+        this.reload_object_state_selector();
     };
     
     // start editing object. 
@@ -81,7 +83,10 @@ function editor_inspector (manager) {
     
     // refresh page list (editor)
     this.refresh_page_list = function () {
+        // refresh list
         this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
+        // reset form
+        this.clear_form("#pages_form");
     };
     
     // select an object and show its state list in page inspector
@@ -287,7 +292,6 @@ function editor_inspector (manager) {
         var new_state = parseInt($("#object_state_select").val());
         var new_interval = parseInt($("#object_interval_input").val());
         var new_duration = parseInt($("#object_duration_input").val());
-        console.log(new_object_index, new_object, new_state, new_interval, new_duration);
         // assign data
         var the_state = inspector.manager.pages[page_id].objects[page_state_id];
         the_state.object = new_object;
@@ -296,6 +300,32 @@ function editor_inspector (manager) {
         the_state.duration = new_duration;
         // refresh
         inspector.refresh_page_states_list(page_id);
+        // reset form
+        inspector.clear_form("#pages_states_form");
+    }
+    
+    // insert object state into page
+    this.insert_page_state = function () {
+        // get basic index
+        var page_id = parseInt($("#page_id").val());
+        // get new data
+        var new_object_index = parseInt($("#object_selector").val());
+        var new_object = inspector.objects[new_object_index];
+        var new_state = parseInt($("#object_state_select").val());
+        var new_interval = parseInt($("#object_interval_input").val());
+        var new_duration = parseInt($("#object_duration_input").val());
+        // assign data
+        inspector.manager.pages[page_id].add(new_object, new_state, new_interval, new_duration);
+        // refresh
+        inspector.refresh_page_states_list(page_id);
+        // reset form
+        inspector.clear_form("#pages_states_form");
+    }
+    
+    // reload object state selector
+    this.reload_object_state_selector = function () {
+        var index = $("#object_selector").val();
+        this.select_page_object_item(index);
     }
 }
 

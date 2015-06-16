@@ -203,15 +203,17 @@
                         <ul id="page_list">
                         </ul>
                     </div>
-                    <ul class="options">
+                    <ul id="pages_form"  class="options">
                         <input class="index" id="page_id" type="text">
                         <li>
                             <label for="page_name_input">Page Name</label>
                             <input id="page_name_input" type="text">
                         </li>
+                    </ul>
                         <hr>
                         <button id="confirm_page_changes">Confirm</button>
                         <hr>
+                    <ul id="pages_states_form" class="options">
                         <li>
                             <div id="page_state" class="selector">
                                 <ul id="page_state_list">
@@ -232,10 +234,10 @@
                             <label for="object_duration_input">Duration</label>
                             <input id="object_duration_input" min="0" step="200" type="number">
                         </li>
+                    </ul>
                         <hr>
                         <button id="confirm_page_state_changes">Confirm</button>
                         <button id="confirm_page_state_insert">Insert</button>
-                    </ul>
                 </div>
                 
                 <div class="inspector_panel" id="output">
