@@ -1,13 +1,24 @@
 function editor_inspector (manager) {
     this.manager = manager;
     
-    this.clear_form = function (selector) {
+    // clear form
+    this.clear_form = function (selector, disable) {
         $(selector).find("input[type=range]").val(0);
         $(selector).find("input[type=text]").val("");
         $(selector).find("input[type=number]").val("");
         $(selector).find("input[type=checkbox]").prop("checked", false);
         $(selector).find("textarea").text("");
+        if (disable) {
+            this.set_panel_enable(selector, false);
+        }
     }
+    
+    // enable / disable form
+    this.set_panel_enable = function (selector, enable){
+        $(selector).find("input").prop("disabled", !enable);
+        $(selector).find("textarea").prop("disabled", !enable);
+    }
+        
     
     // init editor inspector
     this.enable_editor = function (objects) {
@@ -26,8 +37,8 @@ function editor_inspector (manager) {
     // refresh overall object list (editor)
     this.refresh_object_list = function () {
         // clear objects form
-        this.clear_form("#objects_form");
-        this.clear_form("#state_panel");
+        this.clear_form("#objects_form", true);
+        this.clear_form("#state_panel", true);
         // clear selection
         preview.$(".selected_object").removeClass("selected_object");
         // refresh object list
@@ -69,6 +80,8 @@ function editor_inspector (manager) {
         inspector.highlight_object(inspector.objects[object_id]);
         // refresh states list
         inspector.refresh_state_list(object_id);
+        // enable edit
+        inspector.set_panel_enable("#objects_form", true);
     };
     
     // refresh object states list (editor)
@@ -87,7 +100,7 @@ function editor_inspector (manager) {
         // refresh list
         this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
         // reset form
-        this.clear_form("#pages_form");
+        this.clear_form("#pages_form", true);
     };
     
     // select an object and show its state list in page inspector
@@ -193,6 +206,8 @@ function editor_inspector (manager) {
         } else {
             $("#easing_enabled_input").prop("checked", false);
         }
+        // enable edit
+        inspector.set_panel_enable("#state_panel", true);
     };
     
     // confirm changes on object name
@@ -302,7 +317,7 @@ function editor_inspector (manager) {
         // refresh
         inspector.refresh_page_states_list(page_id);
         // reset form
-        inspector.clear_form("#pages_states_form");
+        inspector.clear_form("#pages_states_form", true);
     }
     
     // insert object state into page
@@ -320,7 +335,7 @@ function editor_inspector (manager) {
         // refresh
         inspector.refresh_page_states_list(page_id);
         // reset form
-        inspector.clear_form("#pages_states_form");
+        inspector.clear_form("#pages_states_form", true);
     }
     
     // reload object state selector
