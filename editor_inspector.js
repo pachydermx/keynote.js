@@ -2,6 +2,7 @@ function editor_inspector (manager) {
     this.manager = manager;
     
     this.clear_form = function (selector) {
+        $(selector).find("input[type=range]").val(0);
         $(selector).find("input[type=text]").val("");
         $(selector).find("input[type=number]").val("");
         $(selector).find("input[type=checkbox]").prop("checked", false);
@@ -330,4 +331,5 @@ function editor_inspector (manager) {
 }
 
 
+// set editor_inspector as a sub class of inspector
 editor_inspector.prototype = new inspector();

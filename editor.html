@@ -12,6 +12,7 @@
         
     </head>
     <body> 
+        <!-- Menu Bar -->
         <div id="menu_bar">
             <button class="menu_bar_button" id="new_page">New Page</button>
             <button class="menu_bar_button" id="new_text_obj">New Text Object</button>
@@ -21,7 +22,7 @@
             <button class="menu_bar_button" id="new_state">New State</button>
             
             <label for="animation_enabled_input">Animation</label>
-            <input id="animation_enabled_input" type="checkbox">
+            <input id="animation_enabled_input" checked="checked" type="checkbox">
         </div>
         <table id="content_frame"><tr>
             <td id="preview_frame">
@@ -34,7 +35,7 @@
                     <li><a href="#page_panel">Page</a></li>
                     <li><a href="#output">Output</a></li>
                 </ul>
-           <!-- Inspector -->
+       <!-- Inspector -->
                 <div class="inspector_panel" id="objects_panel">
                     <div id="objects_selector" class="selector">
                         <ul id="object_list">
@@ -96,7 +97,8 @@
                         <hr>
                         <li>
                             <label for="alpha_input">Alpha</label>
-                            <input id="alpha_input" min="0" max="1" step="0.1" type="number">
+                            <input id="alpha_input" min="0" max="1" step="0.01" type="range">
+                            <input id="alpha_input_display" min="0" max="1" step="0.1" type="number">
                         </li>
                     </ul>
                     <hr>

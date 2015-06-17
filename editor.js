@@ -45,6 +45,7 @@ $(document).ready(function () {
     });
     
     // inspector panel
+    // object panel
     $("#confirm_object_changes").click(function (){
         inspector.confirm_object_change();
     });
@@ -53,10 +54,19 @@ $(document).ready(function () {
         inspector.refresh_object_list();
     });
     
+    $("#alpha_input").change(function () {
+        $("#alpha_input_display").val($(this).val());
+    });
+    $("#alpha_input_display").change(function () {
+        $("#alpha_input").val($(this).val());
+    });
+    
+    // state panel
     $("#confirm_state_changes").click(function (){
         inspector.confirm_state_change();
     });
     
+    // page panel
     $("#confirm_page_changes").click(function () {
         inspector.confirm_page_change();
     });
