@@ -39,6 +39,10 @@ $(document).ready(function () {
         preview.create_obj();
         inspector.refresh_object_list();
     });
+    $("#new_image_obj").click(function(){
+        preview.create_img_obj();
+        inspector.refresh_object_list();
+    });
     
     $("#new_state").click(function(){
         preview.create_state();

@@ -22,6 +22,15 @@ function create_obj() {
     last_created_object_index = objects.length - 1;
 }
 
+function create_img_obj() {
+    var new_object = new object("Untitled"+objects.length, meta);
+    objects.push(new_object);
+    manager.objects.push(new_object);
+    objects[objects.length - 1].add_state(50, 0, 50, 0, 1);
+    objects[objects.length-1].init_with_image("body", "placeholder.png");
+    last_created_object_index = objects.length - 1;
+}
+
 function create_state() {
     var object_index;
     if (typeof selected_object_index !== "undefined"){
