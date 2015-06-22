@@ -7,7 +7,9 @@ $(document).ready(function () {
     
     // set ui
     // tool bar
-    $(".menu_bar_button").button();
+    $(".uibutton").button();
+    $(".uiselect").selectmenu({width: 100});
+    
     // control panel
     // panels
     $(".optional.panel").accordion({ 

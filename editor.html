@@ -14,12 +14,12 @@
     <body> 
         <!-- Menu Bar -->
         <div id="menu_bar">
-            <button class="menu_bar_button" id="new_page">New Page</button>
-            <button class="menu_bar_button" id="new_text_obj">New Text Object</button>
-            <button class="menu_bar_button" id="new_image_obj">New Image Object</button>
-            <button class="menu_bar_button" id="new_code_obj">New Code Object</button>
-            <button class="menu_bar_button" id="preview_this_page">Preview</button>
-            <button class="menu_bar_button" id="new_state">New State</button>
+            <button class="menu_bar_button uibutton" id="new_page">New Page</button>
+            <button class="menu_bar_button uibutton" id="new_text_obj">New Text Object</button>
+            <button class="menu_bar_button uibutton" id="new_image_obj">New Image Object</button>
+            <button class="menu_bar_button uibutton" id="new_code_obj">New Code Object</button>
+            <button class="menu_bar_button uibutton" id="preview_this_page">Preview</button>
+            <button class="menu_bar_button uibutton" id="new_state">New State</button>
             
             <label for="animation_enabled_input">Animation</label>
             <input id="animation_enabled_input" checked="checked" type="checkbox">
@@ -62,8 +62,8 @@
                             <textarea id="object_code_input"></textarea>
                         </li>
                         <hr/>
-                        <button id="confirm_object_changes">Confirm</button>
-                        <button id="refresh_object_list">Refresh</button>
+                        <button class="uibutton" id="confirm_object_changes">Confirm</button>
+                        <button class="uibutton" id="refresh_object_list">Refresh</button>
                     </ul>
                 </div>
                 
@@ -156,7 +156,7 @@
                                 </li>
                                 <li>
                                     <label for="easing_input">Easing</label>
-                                    <select id="easing_input">
+                                    <select class="uiselect" id="easing_input">
                                         <option value="linear">Linear</option>
                                         <option value="swing">Swing</option>
                                         <option value="easeInQuad">Ease In Quad</option>
@@ -196,7 +196,7 @@
                     </div>
                     <hr>
                     <ul class="options">
-                        <button id="confirm_state_changes">Confirm</button>
+                        <button class="uibutton" id="confirm_state_changes">Confirm</button>
                     </ul>
                 </div>
                 
@@ -213,7 +213,7 @@
                         </li>
                     </ul>
                         <hr>
-                        <button id="confirm_page_changes">Confirm</button>
+                        <button class="uibutton" id="confirm_page_changes">Confirm</button>
                         <hr>
                     <ul id="pages_states_form" class="options">
                         <li>
@@ -225,8 +225,8 @@
                         <input class="index" id="page_state_id" type="text">
                         <li>
                             <label for="object_selector">Object</label>
-                            <select id="object_selector"></select>
-                            <select id="object_state_select"></select>
+                            <select class="uiselect" id="object_selector"></select>
+                            <select class="uiselect" id="object_state_select"></select>
                         </li>
                         <li>
                             <label for="object_interval_input">Interval</label>
@@ -238,13 +238,13 @@
                         </li>
                     </ul>
                         <hr>
-                        <button id="confirm_page_state_changes">Confirm</button>
-                        <button id="confirm_page_state_insert">Insert</button>
+                        <button class="uibutton" id="confirm_page_state_changes">Confirm</button>
+                        <button class="uibutton" id="confirm_page_state_insert">Insert</button>
                 </div>
                 
                 <div class="inspector_panel" id="output">
-                    <button id="output_refresh">Refresh</button>
-                    <button id="output_copy">Copy to Clipboard</button>
+                    <button class="uibutton" id="output_refresh">Refresh</button>
+                    <button class="uibutton" id="output_copy">Copy to Clipboard</button>
                     <textarea id="output_textarea">
                     </textarea>
                 </div>
