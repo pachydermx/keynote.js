@@ -16,6 +16,7 @@ ul{
     width: 100%;
     height: 48px;
     background: #222222;
+    color: #eeeeee;
 }
 
 #content_frame{
@@ -51,7 +52,7 @@ input.index{
     height: calc(100% - 32px);
 }
 
-input[type=text], input[type=number], input[type=checkbox], textarea{
+input[type=text], input[type=number], input[type=checkbox], textarea, select{
     background: #333333;
     color: #eeeeee;
     border: solid 1px #555555;
@@ -81,6 +82,7 @@ input[type=text]:hover, input[type=number]:hover, textarea:hover {
 .selector li{
     padding: 3px;
     border-bottom: dotted rgba(255, 255, 255, 0.5) 1px;
+    cursor: default;
 }
 
 .selected{

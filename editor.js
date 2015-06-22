@@ -8,7 +8,7 @@ $(document).ready(function () {
     // set ui
     // tool bar
     $(".uibutton").button();
-    $(".uiselect").selectmenu({width: 100});
+    //$(".uiselect").selectmenu({width: 100});
     
     // control panel
     // panels
