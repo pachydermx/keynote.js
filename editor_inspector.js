@@ -41,6 +41,18 @@ function editor_inspector (manager) {
         $(selector).find("input").prop("disabled", !enable);
         $(selector).find("textarea").prop("disabled", !enable);
     }
+    
+    // show message in state panel
+    this.show_message = function (type, message) {
+        target = $("#message_panel");
+        target.text(message);
+        // set style
+        if (type == "alert") {
+            target.attr("class", "ui-state-error");
+        } else {
+            target.attr("class", "ui-state-highlight");
+        }
+    };
         
     
     /* Part II - Panel Action */
@@ -107,15 +119,21 @@ function editor_inspector (manager) {
         var new_auto_reset = $("#auto_reset_input").prop("checked")
         var new_z_index = $("#z_index_input").val();
         var new_code = $("#object_code_input").text();
-        // assign object info
-        this.objects[object_id].id = new_name;
-        this.objects[object_id].auto_reset = new_auto_reset;
-        if (!isNaN(parseInt($("#z_index_input").val()))){
-            this.objects[object_id].set_z_index(parseInt($("#z_index_input").val()));
+        // check if object selected
+        if (typeof this.objects[object_id] !== "undefined") {
+            // assign object info
+            this.objects[object_id].id = new_name;
+            this.objects[object_id].auto_reset = new_auto_reset;
+            if (!isNaN(parseInt($("#z_index_input").val()))){
+                this.objects[object_id].set_z_index(parseInt($("#z_index_input").val()));
+            }
+            this.objects[object_id].set_content($("#object_code_input").val());
+            // refresh object list
+            this.refresh_object_list();
+        } else {
+            // show error
+            this.show_message("alert", "Invaild Page");
         }
-        this.objects[object_id].set_content($("#object_code_input").val());
-        // refresh object list
-        this.refresh_object_list();
     };
     
     
