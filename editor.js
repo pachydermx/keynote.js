@@ -46,6 +46,7 @@ $(document).ready(function () {
     
     $("#new_state").click(function(){
         preview.create_state();
+        inspector.reload_object_state_selector();
     });
     
     // inspector panel

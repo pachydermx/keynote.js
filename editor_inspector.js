@@ -296,14 +296,6 @@ function editor_inspector (manager) {
         this.clear_form("#pages_states_form", false);
     };
     
-    // select item
-    this.select_page_object_item = function (index) {
-        // activate the item
-        $("#object_selector [value=" + index + "]").prop("selected", "selected");
-        // refresh its state list
-        this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
-    }
-    
     // start edit
     this.start_edit_page_state = function (e) {
         // gather basic information
@@ -370,6 +362,14 @@ function editor_inspector (manager) {
         inspector.refresh_page_states_list(page_id);
         // reset form
         inspector.clear_form("#pages_states_form", true);
+    }
+    
+    // select item in object selector
+    this.select_page_object_item = function (index) {
+        // activate the item
+        $("#object_selector [value=" + index + "]").prop("selected", "selected");
+        // refresh its state list
+        this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
     }
     
     // reload selector
