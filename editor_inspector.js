@@ -43,15 +43,24 @@ function editor_inspector (manager) {
     }
     
     // show message in state panel
-    this.show_message = function (type, message) {
-        target = $("#message_panel");
-        target.text(message);
-        // set style
-        if (type == "alert") {
-            target.attr("class", "ui-state-error");
+    this.show_message = function (title, message, icon) {
+        var target = $("#dialog_window");
+        if (typeof icon !== "undefined") {
+            var icon = "<span class='ui-icon ui-icon-" + icon + "'></span>";
         } else {
-            target.attr("class", "ui-state-highlight");
+            var icon = "<span class='ui-icon ui-icon-info'></span>";
         }
+        target.html(icon + message);
+        target.dialog({
+            resizable: false,
+            modal: true,
+            title: title,
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
     };
         
     
@@ -132,7 +141,7 @@ function editor_inspector (manager) {
             this.refresh_object_list();
         } else {
             // show error
-            this.show_message("alert", "Invaild Page");
+            this.show_message("Error", "Invaild Page", "alert");
         }
     };
     
@@ -214,46 +223,52 @@ function editor_inspector (manager) {
         var new_y_percent = parseInt($("#y_percent_input").val());
         var new_y_delta = parseInt($("#y_delta_input").val());
         var new_alpha = parseFloat($("#alpha_input").val());
-        // assign object info
-        // basic info
-        var the_state = this.objects[object_id].states[state_id];
-        the_state.x_percent = new_x_percent;
-        the_state.x_delta = new_x_delta;
-        the_state.y_percent = new_y_percent;
-        the_state.y_delta = new_y_delta;
-        the_state.alpha = new_alpha;
-        // size info
-        var new_width_percent, new_width_delta, new_height_percent, new_height_delta;
-        if ($("#size_enabled_input").prop("checked")){
-            new_width_percent = parseInt($("#width_percent_input").val());
-            new_width_delta = parseInt($("#width_delta_input").val());
-            new_height_percent = parseInt($("#height_percent_input").val());
-            new_height_delta = parseInt($("#height_delta_input").val());
+        // error catch
+        if (typeof this.objects[object_id].states[state_id] !== "undefined") {
+            // assign object info
+            // basic info
+            var the_state = this.objects[object_id].states[state_id];
+            the_state.x_percent = new_x_percent;
+            the_state.x_delta = new_x_delta;
+            the_state.y_percent = new_y_percent;
+            the_state.y_delta = new_y_delta;
+            the_state.alpha = new_alpha;
+            // size info
+            var new_width_percent, new_width_delta, new_height_percent, new_height_delta;
+            if ($("#size_enabled_input").prop("checked")){
+                new_width_percent = parseInt($("#width_percent_input").val());
+                new_width_delta = parseInt($("#width_delta_input").val());
+                new_height_percent = parseInt($("#height_percent_input").val());
+                new_height_delta = parseInt($("#height_delta_input").val());
+            }
+            if (!(isNaN(new_width_percent) || isNaN(new_width_delta) || isNaN(new_height_percent) || isNaN(new_height_delta))){
+                the_state.width_percent = new_width_percent;
+                the_state.width_delta = new_width_delta;
+                the_state.height_percent = new_height_percent;
+                the_state.height_delta = new_height_delta;
+            }
+            // rotate info
+            var new_angle;
+            if ($("#rotate_enabled_input").prop("checked")){
+                new_angle = parseInt($("#angle_input").val());
+            }
+            if (!isNaN(new_angle)){
+                the_state.angle = new_angle;
+            }
+            // easing
+            var new_easing;
+            if ($("#easing_enabled_input").prop("checked")){
+                new_easing = $("#easing_input").val();
+                the_state.easing = new_easing;
+            }
+            // refresh object list
+            this.refresh_state_list(object_id);
+            // refresh state
+            inspector.switch_state(object_id, state_id);
+        } else {
+            // show error
+            this.show_message("Error", "Invaild State", "alert");
         }
-        if (!(isNaN(new_width_percent) || isNaN(new_width_delta) || isNaN(new_height_percent) || isNaN(new_height_delta))){
-            the_state.width_percent = new_width_percent;
-            the_state.width_delta = new_width_delta;
-            the_state.height_percent = new_height_percent;
-            the_state.height_delta = new_height_delta;
-        }
-        // rotate info
-        var new_angle;
-        if ($("#rotate_enabled_input").prop("checked")){
-            new_angle = parseInt($("#angle_input").val());
-        }
-        if (!isNaN(new_angle)){
-            the_state.angle = new_angle;
-        }
-        // easing
-        var new_easing;
-        if ($("#easing_enabled_input").prop("checked")){
-            new_easing = $("#easing_input").val();
-            the_state.easing = new_easing;
-        }
-        // refresh object list
-        this.refresh_state_list(object_id);
-        // refresh state
-        inspector.switch_state(object_id, state_id);
     };
     
     
@@ -295,10 +310,15 @@ function editor_inspector (manager) {
         // get new info from inputs
         var page_id = parseInt($("#page_id").val());
         var new_name = $("#page_name_input").val();
-        // assign new info
-        inspector.manager.pages[page_id].name = new_name;
-        // refresh list
-        inspector.refresh_page_list();
+        if (typeof inspector.manager.pages[page_id] !== "undefined") {
+            // assign new info
+            inspector.manager.pages[page_id].name = new_name;
+            // refresh list
+            inspector.refresh_page_list();
+        } else {
+            // show error
+            this.show_message("Error", "Invaild Page", "alert");
+        }
     };
     
     
@@ -352,16 +372,27 @@ function editor_inspector (manager) {
         var new_state = parseInt($("#object_state_select").val());
         var new_interval = parseInt($("#object_interval_input").val());
         var new_duration = parseInt($("#object_duration_input").val());
-        // assign data
-        var the_state = inspector.manager.pages[page_id].objects[page_state_id];
-        the_state.object = new_object;
-        the_state.state = new_state
-        the_state.interval = new_interval;
-        the_state.duration = new_duration;
-        // refresh
-        inspector.refresh_page_states_list(page_id);
-        // reset form
-        inspector.clear_form("#pages_states_form", true);
+        if (typeof inspector.manager.pages[page_id] !== "undefined") {
+            if (typeof inspector.manager.pages[page_id].objects[page_state_id] !== "undefined") {
+                // assign data
+                var the_state = inspector.manager.pages[page_id].objects[page_state_id];
+                the_state.object = new_object;
+                the_state.state = new_state
+                the_state.interval = new_interval;
+                the_state.duration = new_duration;
+                // refresh
+                inspector.refresh_page_states_list(page_id);
+                // reset form
+                inspector.clear_form("#pages_states_form", true);
+            } else {
+                // show error
+                this.show_message("Error", "Invaild State", "alert");
+            }
+        } else {
+            // show error
+            this.show_message("Error", "Invaild Page", "alert");
+        }
+            
     }
     
     // insert object

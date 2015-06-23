@@ -8,6 +8,10 @@ ul{
     padding-left: 10px;
 }
 
+.hidden {
+    display: none;
+}
+
 .ui-widget {
     font-size: 80%;
 }
