@@ -321,7 +321,14 @@ function editor_inspector (manager) {
         }
     };
     
-    
+    // override 
+    this.highlight_object = function (object) {
+        // highlight the object
+        preview.$(".selected_object").removeClass("selected_object");
+        if (typeof object !== "undefined") {
+            object.dom_obj.addClass("selected_object");
+        }
+    };
     
     
     /* Part II.D Page Panel (Object List) */
