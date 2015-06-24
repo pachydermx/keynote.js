@@ -57,6 +57,11 @@ input.index{
     height: calc(100% - 32px);
 }
 
+.inspector_panel label{
+    width: 70px;
+    display: inline-block;
+}
+
 input[type=text], input[type=number], input[type=checkbox], textarea, select{
     background: #333333;
     color: #eeeeee;
