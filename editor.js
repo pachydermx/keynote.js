@@ -16,7 +16,6 @@ $(document).ready(function () {
         collapsible: true,
         active: false,
         activate: function (e, ui) {
-            console.log(this);
             if (ui.newHeader.length > 0){
                 // opening
                 $(this).find(".enabler").prop("checked", true);
@@ -24,7 +23,6 @@ $(document).ready(function () {
             } else {
                 // collapsing
                 $(this).find(".enabler").prop("checked", false);
-                console.log(this);
             }
         }
     });

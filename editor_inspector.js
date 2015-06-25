@@ -150,6 +150,8 @@ function editor_inspector (manager) {
         // get object id
         var object_id = $("#object_id").val();
         if (typeof this.objects[object_id] !== "undefined") {
+            // delete dom obj
+            this.objects[object_id].dom_obj.remove();
             // delete item from object list
             this.objects.splice(object_id, 1);
             // refresh object list
@@ -441,7 +443,9 @@ function editor_inspector (manager) {
         // activate the item
         $("#object_selector [value=" + index + "]").prop("selected", "selected");
         // refresh its state list
-        this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
+        try {
+            this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
+        } catch (e) {}
     }
     
     // reload selector
