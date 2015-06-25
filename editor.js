@@ -51,6 +51,7 @@ $(document).ready(function () {
         inspector.reload_object_state_selector();
     });
     
+    
     // inspector panel
     // object panel
     $("#confirm_object_changes").click(function (){
@@ -59,6 +60,10 @@ $(document).ready(function () {
     
     $("#refresh_object_list").click(function () {
         inspector.refresh_object_list();
+    });
+    
+    $("#delete_object").click(function () {
+        inspector.delete_object();
     });
     
     $("#alpha_input").change(function () {

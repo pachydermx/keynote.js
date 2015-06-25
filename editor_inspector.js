@@ -145,6 +145,22 @@ function editor_inspector (manager) {
         }
     };
     
+    // delete a object
+    this.delete_object = function (e) {
+        // get object id
+        var object_id = $("#object_id").val();
+        if (typeof this.objects[object_id] !== "undefined") {
+            // delete item from object list
+            this.objects.splice(object_id, 1);
+            // refresh object list
+            this.refresh_object_list();
+        } else {
+            // show error
+            this.show_message("Error", "Invaild Page", "alert");
+        }
+        
+    };
+        
     
     
     /* Part II.B States Panel */
