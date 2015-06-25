@@ -169,10 +169,12 @@ function editor_inspector (manager) {
     
     // refresh object states list (editor)
     this.refresh_state_list = function (object_id) {
+        if (typeof object_id === "undefined") {
+            object_id = $("#object_id").val();
+        }
         // reload list
         this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
     };
-    
        
     // start editing state
     // this event occurs after clicking items in state list

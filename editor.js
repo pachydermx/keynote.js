@@ -44,11 +44,6 @@ $(document).ready(function () {
         inspector.refresh_object_list();
     });
     
-    $("#new_state").click(function(){
-        preview.create_state();
-        inspector.reload_object_state_selector();
-    });
-    
     
     // inspector panel
     // object panel
@@ -73,6 +68,12 @@ $(document).ready(function () {
     });
     
     // state panel
+    $("#new_state").click(function(){
+        preview.create_state();
+        inspector.refresh_state_list();
+        inspector.reload_object_state_selector();
+    });
+    
     $("#confirm_state_changes").click(function (){
         inspector.confirm_state_change();
     });
@@ -80,6 +81,7 @@ $(document).ready(function () {
     $("#delete_state").click(function () {
         inspector.delete_state();
     });
+    
     // page panel
     $("#confirm_page_changes").click(function () {
         inspector.confirm_page_change();
