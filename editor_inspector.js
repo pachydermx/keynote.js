@@ -289,6 +289,24 @@ function editor_inspector (manager) {
         }
     };
     
+    // delete state
+    this.delete_state = function (e) {
+        // get basic info
+        var object_id = $("#object_id").val();
+        var state_id = $("#state_id").val();
+        // error catch
+        if (typeof this.objects[object_id].states[state_id] !== "undefined") {
+            this.objects[object_id].states.splice(state_id, 1);
+            // refresh object list
+            this.refresh_state_list(object_id);
+            // refresh state
+            inspector.switch_state(object_id, state_id);
+        } else {
+            // show error
+            this.show_message("Error", "Invaild State", "alert");
+        }
+    };
+        
     
     
     

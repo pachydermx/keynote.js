@@ -67,6 +67,7 @@ $(document).ready(function () {
     $("#alpha_input").change(function () {
         $("#alpha_input_display").val($(this).val());
     });
+    
     $("#alpha_input_display").change(function () {
         $("#alpha_input").val($(this).val());
     });
@@ -76,6 +77,9 @@ $(document).ready(function () {
         inspector.confirm_state_change();
     });
     
+    $("#delete_state").click(function () {
+        inspector.delete_state();
+    });
     // page panel
     $("#confirm_page_changes").click(function () {
         inspector.confirm_page_change();
