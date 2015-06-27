@@ -127,11 +127,11 @@ editor_inspector.prototype.refresh_object_list = function () {
     // clear selection
     preview.$(".selected_object").removeClass("selected_object");
     // refresh object list
-    this.refresh_list(this.object_list, this.objects, "object_list_item_", "object_list_item", "property", "id", this.start_edit_object);
+    this.refresh_list(this.dom.object_list, this.objects, "object_list_item_", "object_list_item", "property", "id", this.start_edit_object);
     // refresh object selector
-    this.refresh_list($("#object_selector"), this.objects, "", "", "object_select", "id");
+    this.refresh_list(this.dom.page_state_object, this.objects, "", "", "object_select", "id");
     // clear states list
-    $("#object_state_list").html("");
+    this.dom.state_list.html("");
     // reload state list
     this.reload_object_state_selector();
 };
@@ -148,18 +148,18 @@ editor_inspector.prototype.start_edit_object = function (e) {
 
     // print values to form
     // print id
-    $("#object_id").val(object_id);
+    inspector.dom.object_id.val(object_id);
     preview.selected_object_index = object_id;
     // print name into input
-    $("#object_name_input").val(object_name);
+    inspector.dom.object_name.val(object_name);
     // set auto reset
-    $("#auto_reset_input").prop("checked", the_object.auto_reset); 
+    inspector.dom.object_auto_reset.prop("checked", the_object.auto_reset); 
     // set z-index
     if (typeof the_object.z_index !== "undefined"){
-        $("#z_index_input").val(the_object.z_index);
+        inspector.dom.object_z_index.val(the_object.z_index);
     }
     // get code
-    $("#object_code_input").text(the_object.dom_obj.html());
+    inspector.dom.object_code.text(the_object.dom_obj.html());
 
     // highlight object
     inspector.highlight_object(inspector.objects[object_id]);
@@ -173,21 +173,21 @@ editor_inspector.prototype.start_edit_object = function (e) {
 // this event occurs after clicking confirm button in object panel
 editor_inspector.prototype.confirm_object_change = function (e) {
     // get object id
-    var object_id = $("#object_id").val();
+    var object_id = inspector.dom.object_id.val();
     // get new object info
-    var new_name = $("#object_name_input").val();
-    var new_auto_reset = $("#auto_reset_input").prop("checked")
-    var new_z_index = $("#z_index_input").val();
-    var new_code = $("#object_code_input").text();
+    var new_name = inspector.dom.object_name.val();
+    var new_auto_reset = inspector.dom.object_auto_reset.prop("checked")
+    var new_z_index = inspector.dom.object_z_index.val();
+    var new_code = inspector.dom.object_code.text();
     // check if object selected
     if (typeof this.objects[object_id] !== "undefined") {
         // assign object info
         this.objects[object_id].id = new_name;
         this.objects[object_id].auto_reset = new_auto_reset;
-        if (!isNaN(parseInt($("#z_index_input").val()))){
-            this.objects[object_id].set_z_index(parseInt($("#z_index_input").val()));
+        if (!isNaN(parseInt(inspector.dom.object_z_index.val()))){
+            this.objects[object_id].set_z_index(parseInt(inspector.dom.object_z_index.val()));
         }
-        this.objects[object_id].set_content($("#object_code_input").val());
+        this.objects[object_id].set_content(inspector.dom.object_code.val());
         // refresh object list
         this.refresh_object_list();
     } else {
@@ -199,7 +199,7 @@ editor_inspector.prototype.confirm_object_change = function (e) {
 // delete a object
 editor_inspector.prototype.delete_object = function (e) {
     // get object id
-    var object_id = $("#object_id").val();
+    var object_id = inspector.dom.object_id.val();
     if (typeof this.objects[object_id] !== "undefined") {
         // delete dom obj
         this.objects[object_id].dom_obj.remove();
