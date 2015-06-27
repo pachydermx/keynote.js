@@ -221,17 +221,17 @@ editor_inspector.prototype.delete_object = function (e) {
 // refresh object states list (editor)
 editor_inspector.prototype.refresh_state_list = function (object_id) {
     if (typeof object_id === "undefined") {
-        object_id = $("#object_id").val();
+        object_id = this.dom.object_id.val();
     }
     // reload list
-    this.refresh_list(this.object_state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
+    this.refresh_list(this.dom.state_list, this.objects[object_id].states, "object_state_list_item_", "object_state_list_item", "index", "State", this.start_edit_state);
 };
 
 // start editing state
 // this event occurs after clicking items in state list
 editor_inspector.prototype.start_edit_state = function (e) {
     // get basic information
-    var object_id = $("#object_id").val();
+    var object_id = inspector.dom.object_id.val();
     var the_object = inspector.objects[object_id];
     var state_id = $(this).attr("id").split('_')[4];
     var the_state = the_object.states[state_id];
@@ -241,42 +241,43 @@ editor_inspector.prototype.start_edit_state = function (e) {
     inspector.highlight_selection("object_state_list", this);
 
     // print value to form
-    $("#state_id").val(state_id);
+    inspector.dom.state_id.val(state_id);
     // print position
-    $("#x_percent_input").val(the_state.x_percent);
-    $("#x_delta_input").val(the_state.x_delta);
-    $("#y_percent_input").val(the_state.y_percent);
-    $("#y_delta_input").val(the_state.y_delta);
+    inspector.dom.state_x_percent.val(the_state.x_percent);
+    inspector.dom.state_x_delta.val(the_state.x_delta);
+    inspector.dom.state_y_percent.val(the_state.y_percent);
+    inspector.dom.state_y_delta.val(the_state.y_delta);
     // print alpha
-    $("#alpha_input").val(the_state.alpha);
+    inspector.dom.state_alpha.val(the_state.alpha);
     // print size
     if (typeof the_state["width_percent"] !== "undefined") {
         // checkbox
-        $("#size_enabled_input").prop("checked", true);
+        // TODO: open panel
+        inspector.dom.state_size.prop("checked", true);
         // data
-        $("#width_percent_input").val(the_state.width_percent);
-        $("#width_delta_input").val(the_state.width_delta);
-        $("#height_percent_input").val(the_state.height_percent);
-        $("#height_delta_input").val(the_state.height_delta);
+        inspector.dom.state_size_width_percent.val(the_state.width_percent);
+        inspector.dom.state_size_width_delta.val(the_state.width_delta);
+        inspector.dom.state_size_height_percent.val(the_state.height_percent);
+        inspector.dom.state_size_height_delta.val(the_state.height_delta);
     } else {
-        $("#size_enabled_input").prop("checked", false);
+        inspector.dom.state_size.prop("checked", false);
     }
     // print rotate
     if (typeof the_state.angle !== "undefined") {
         // checkbox
-        $("#rotate_enabled_input").prop("checked", true);
+        inspector.dom.state_rotate.prop("checked", true);
         // data
-        $("#angle_input").val(the_state.angle);
+        inspector.dom.state_rotate_angle.val(the_state.angle);
     } else {
-        $("#rotate_enabled_input").prop("checked", false);
+        inspector.dom.state_rotate.prop("checked", false);
     }
     // print easing
     if (typeof the_state.easing !== "undefined") {
         // checkbox
-        $("#easing_enabled_input").prop("checked", true);
+        inspector.dom.state_easing.prop("checked", true);
         $("#easing_input [value=" + the_state.easing +"]").prop("selected", "selected");
     } else {
-        $("#easing_enabled_input").prop("checked", false);
+        inspector.dom.state_easing.prop("checked", false);
     }
     // enable edit
     inspector.set_panel_enable("#state_panel", true);
@@ -286,14 +287,14 @@ editor_inspector.prototype.start_edit_state = function (e) {
 // this event occurs after clicking confirm button in state panel
 editor_inspector.prototype.confirm_state_change = function (e) {
     // get basic info
-    var object_id = $("#object_id").val();
-    var state_id = $("#state_id").val();
+    var object_id = inspector.dom.object_id.val();
+    var state_id = inspector.dom.state_id.val();
     // get new state info
-    var new_x_percent = parseInt($("#x_percent_input").val());
-    var new_x_delta = parseInt($("#x_delta_input").val());
-    var new_y_percent = parseInt($("#y_percent_input").val());
-    var new_y_delta = parseInt($("#y_delta_input").val());
-    var new_alpha = parseFloat($("#alpha_input").val());
+    var new_x_percent = parseInt(inspector.dom.state_x_percent.val());
+    var new_x_delta = parseInt(inspector.dom.state_x_delta.val());
+    var new_y_percent = parseInt(inspector.dom.state_y_percent.val());
+    var new_y_delta = parseInt(inspector.dom.state_y_delta.val());
+    var new_alpha = parseFloat(inspector.dom.state_alpha.val());
     // error catch
     if (typeof this.objects[object_id].states[state_id] !== "undefined") {
         // assign object info
@@ -306,31 +307,41 @@ editor_inspector.prototype.confirm_state_change = function (e) {
         the_state.alpha = new_alpha;
         // size info
         var new_width_percent, new_width_delta, new_height_percent, new_height_delta;
-        if ($("#size_enabled_input").prop("checked")){
-            new_width_percent = parseInt($("#width_percent_input").val());
-            new_width_delta = parseInt($("#width_delta_input").val());
-            new_height_percent = parseInt($("#height_percent_input").val());
-            new_height_delta = parseInt($("#height_delta_input").val());
+        if (inspector.dom.state_size.prop("checked")){
+            new_width_percent = parseInt(inspector.dom.state_size_width_percent.val());
+            new_width_delta = parseInt(inspector.dom.state_size_width_delta.val());
+            new_height_percent = parseInt(inspector.dom.state_size_height_percent.val());
+            new_height_delta = parseInt(inspector.dom.state_size_height_delta.val());
+        } else {
+            // TODO: Delete Optional Data
         }
         if (!(isNaN(new_width_percent) || isNaN(new_width_delta) || isNaN(new_height_percent) || isNaN(new_height_delta))){
             the_state.width_percent = new_width_percent;
             the_state.width_delta = new_width_delta;
             the_state.height_percent = new_height_percent;
             the_state.height_delta = new_height_delta;
+        } else {
+            // TODO: Error Report
         }
         // rotate info
         var new_angle;
-        if ($("#rotate_enabled_input").prop("checked")){
-            new_angle = parseInt($("#angle_input").val());
+        if (inspector.dom.state_rotate.prop("checked")){
+            new_angle = parseInt(inspector.dom.state_rotate_angle.val());
+        } else {
+            // TODO: Delete Optional Data
         }
         if (!isNaN(new_angle)){
             the_state.angle = new_angle;
+        } else {
+            // TODO: Error Report
         }
         // easing
         var new_easing;
-        if ($("#easing_enabled_input").prop("checked")){
-            new_easing = $("#easing_input").val();
+        if (inspector.dom.state_easing.prop("checked")){
+            new_easing = inspector.dom.state_easing_type.val();
             the_state.easing = new_easing;
+        } else {
+            // TODO: Delete Optional Data
         }
         // refresh object list
         this.refresh_state_list(object_id);

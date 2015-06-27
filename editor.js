@@ -19,7 +19,6 @@ $(document).ready(function () {
             if (ui.newHeader.length > 0){
                 // opening
                 $(this).find(".enabler").prop("checked", true);
-                console.log("open");
             } else {
                 // collapsing
                 $(this).find(".enabler").prop("checked", false);
