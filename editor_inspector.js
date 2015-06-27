@@ -114,6 +114,16 @@ editor_inspector.prototype.show_message = function (title, message, icon) {
     });
 };
 
+// override 
+editor_inspector.prototype.highlight_object = function (object) {
+    // highlight the object
+    preview.$(".selected_object").removeClass("selected_object");
+    if (typeof object !== "undefined") {
+        object.dom_obj.addClass("selected_object");
+    }
+};
+
+
 
 /* Part II - Panel Action */
 
@@ -356,8 +366,8 @@ editor_inspector.prototype.confirm_state_change = function (e) {
 // delete state
 editor_inspector.prototype.delete_state = function (e) {
     // get basic info
-    var object_id = $("#object_id").val();
-    var state_id = $("#state_id").val();
+    var object_id = inspector.dom.object_id.val();
+    var state_id = inspector.dom.state_id.val();
     // error catch
     if (typeof this.objects[object_id].states[state_id] !== "undefined") {
         this.objects[object_id].states.splice(state_id, 1);
@@ -379,7 +389,7 @@ editor_inspector.prototype.delete_state = function (e) {
 // refresh page list 
 editor_inspector.prototype.refresh_page_list = function () {
     // refresh list
-    this.refresh_list(this.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
+    this.refresh_list(this.dom.page_list, this.manager.pages, "page_list_item_", "page_list_item", "property", "name", this.start_edit_page);
     // reset form
     this.clear_form("#pages_form", true);
 };
@@ -395,9 +405,9 @@ editor_inspector.prototype.start_edit_page = function (e) {
     // set style
     inspector.highlight_selection("page_list", this);
     // print values to form
-    $("#page_id").val(page_id);
+    inspector.dom.page_id.val(page_id);
     // print page name
-    $("#page_name_input").val(the_page.name);
+    inspector.dom.page_name.val(the_page.name);
     // print states
     inspector.refresh_page_states_list(page_id);
     // enable editing
@@ -408,8 +418,8 @@ editor_inspector.prototype.start_edit_page = function (e) {
 // this event occurs after clicking confirm button in page panel
 editor_inspector.prototype.confirm_page_change = function (e) {
     // get new info from inputs
-    var page_id = parseInt($("#page_id").val());
-    var new_name = $("#page_name_input").val();
+    var page_id = parseInt(inspector.dom.page_id.val());
+    var new_name = inspector.dom.page_name.val();
     if (typeof inspector.manager.pages[page_id] !== "undefined") {
         // assign new info
         inspector.manager.pages[page_id].name = new_name;
@@ -421,22 +431,12 @@ editor_inspector.prototype.confirm_page_change = function (e) {
     }
 };
 
-// override 
-editor_inspector.prototype.highlight_object = function (object) {
-    // highlight the object
-    preview.$(".selected_object").removeClass("selected_object");
-    if (typeof object !== "undefined") {
-        object.dom_obj.addClass("selected_object");
-    }
-};
-
-
 /* Part II.D Page Panel (Object List) */
 
 // refresh list
 editor_inspector.prototype.refresh_page_states_list = function (page_id) {
     // refresh list
-    this.refresh_list($("#page_state_list"), this.manager.pages[page_id].objects, "page_state_item_", "page_state_item", "state", "id", this.start_edit_page_state);
+    this.refresh_list(inspector.dom.page_state_list, this.manager.pages[page_id].objects, "page_state_item_", "page_state_item", "state", "id", this.start_edit_page_state);
     // clear form
     this.clear_form("#pages_states_form", false);
 };
@@ -444,10 +444,10 @@ editor_inspector.prototype.refresh_page_states_list = function (page_id) {
 // start edit
 editor_inspector.prototype.start_edit_page_state = function (e) {
     // gather basic information
-    var page_id = $("#page_id").val();
+    var page_id = inspector.dom.page_id.val();
     var the_page = inspector.manager.pages[page_id];
     var state_id = $(this).attr("id").split('_')[3];
-    $("#page_state_id").val(state_id);
+    inspector.dom.page_state_id.val(state_id);
     var the_state = the_page.objects[state_id];
     // set style
     inspector.highlight_selection("page_state_list", this);
@@ -459,10 +459,10 @@ editor_inspector.prototype.start_edit_page_state = function (e) {
     $("#object_state_select [value=" + object_state_index + "]").prop("selected", "selected");
     // set interval
     var object_interval = the_state.interval;
-    $("#object_interval_input").val(object_interval);
+    inspector.dom.page_state_interval.val(object_interval);
     // set duration
     var object_duration = the_state.duration;
-    $("#object_duration_input").val(object_duration);
+    inspector.dom.page_state_duration.val(object_duration);
     // enable edit
     inspector.set_panel_enable("#pages_states_form", true);
 
@@ -471,14 +471,14 @@ editor_inspector.prototype.start_edit_page_state = function (e) {
 // confirm changes
 editor_inspector.prototype.confirm_page_state_change = function (e) {
     // get basic index
-    var page_id = parseInt($("#page_id").val());
-    var page_state_id = parseInt($("#page_state_id").val());
+    var page_id = parseInt(inspector.dom.page_id.val());
+    var page_state_id = parseInt(inspector.dom.page_state_id.val());
     // get new data
-    var new_object_index = parseInt($("#object_selector").val());
+    var new_object_index = parseInt(inspector.dom.page_state_object.val());
     var new_object = inspector.objects[new_object_index];
-    var new_state = parseInt($("#object_state_select").val());
-    var new_interval = parseInt($("#object_interval_input").val());
-    var new_duration = parseInt($("#object_duration_input").val());
+    var new_state = parseInt(inspector.dom.page_state_state.val());
+    var new_interval = parseInt(inspector.dom.page_state_interval.val());
+    var new_duration = parseInt(inspector.dom.page_state_duration.val());
     if (typeof inspector.manager.pages[page_id] !== "undefined") {
         if (typeof inspector.manager.pages[page_id].objects[page_state_id] !== "undefined") {
             // assign data
@@ -505,13 +505,13 @@ editor_inspector.prototype.confirm_page_state_change = function (e) {
 // insert object
 editor_inspector.prototype.insert_page_state = function () {
     // get basic index
-    var page_id = parseInt($("#page_id").val());
+    var page_id = parseInt(inspector.dom.page_id.val());
     // get new data
-    var new_object_index = parseInt($("#object_selector").val());
+    var new_object_index = parseInt(inspector.dom.page_state_object.val());
     var new_object = inspector.objects[new_object_index];
-    var new_state = parseInt($("#object_state_select").val());
-    var new_interval = parseInt($("#object_interval_input").val());
-    var new_duration = parseInt($("#object_duration_input").val());
+    var new_state = parseInt(inspector.dom.page_state_state.val());
+    var new_interval = parseInt(inspector.dom.page_state_interval.val());
+    var new_duration = parseInt(inspector.dom.page_state_duration.val());
     // assign data
     inspector.manager.pages[page_id].add(new_object, new_state, new_interval, new_duration);
     // refresh
@@ -526,13 +526,13 @@ editor_inspector.prototype.select_page_object_item = function (index) {
     $("#object_selector [value=" + index + "]").prop("selected", "selected");
     // refresh its state list
     try {
-        this.refresh_list(this.object_state_select, this.objects[index].states, "", "", "page_state_select", "State");
+        this.refresh_list(this.dom.page_state_state, this.objects[index].states, "", "", "page_state_select", "State");
     } catch (e) {}
 }
 
 // reload selector
 editor_inspector.prototype.reload_object_state_selector = function () {
-    var index = $("#object_selector").val();
+    var index = this.dom.page_state_object.val();
     this.select_page_object_item(index);
 }
 
