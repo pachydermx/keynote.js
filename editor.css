@@ -49,6 +49,7 @@ ul{
 .optional.panel .enabler,
 input.index{
     background: red !important;
+	display: none;
 }
 
 .inspector_panel{
