@@ -186,7 +186,7 @@ editor_inspector.prototype.confirm_object_change = function (e) {
     var object_id = inspector.dom.object_id.val();
     // get new object info
     var new_name = inspector.dom.object_name.val();
-    var new_auto_reset = inspector.dom.object_auto_reset.prop("checked")
+    var new_auto_reset = inspector.dom.object_auto_reset.prop("checked");
     var new_z_index = inspector.dom.object_z_index.val();
     var new_code = inspector.dom.object_code.text();
     // check if object selected

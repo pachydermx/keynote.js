@@ -42,3 +42,8 @@ function create_state() {
     objects[object_index].add_state(50, 0, 50, 0, 1);
 }
     
+function code_export() {
+	var objects = manager.objects;
+	var pages = manager.pages;
+	console.log(JSON.stringify(objects), JSON.stringify(pages));
+}
