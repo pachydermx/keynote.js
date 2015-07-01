@@ -431,6 +431,20 @@ editor_inspector.prototype.confirm_page_change = function (e) {
     }
 };
 
+editor_inspector.prototype.delete_page = function (e) {
+	// get basic info
+    var page_id = parseInt(inspector.dom.page_id.val());
+	// delete page
+	if (typeof inspector.manager.pages[page_id] !== "undefined"){
+		inspector.manager.pages.splice(page_id, 1);
+		// reload list
+		inspector.refresh_page_list();
+	} else {
+		// show error 
+		this.show_message("Error", "Invaild Page", "alert");
+	}
+}
+
 /* Part II.D Page Panel (Object List) */
 
 // refresh list
