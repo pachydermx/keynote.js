@@ -520,18 +520,27 @@ editor_inspector.prototype.confirm_page_state_change = function (e) {
 editor_inspector.prototype.insert_page_state = function () {
     // get basic index
     var page_id = parseInt(inspector.dom.page_id.val());
-    // get new data
-    var new_object_index = parseInt(inspector.dom.page_state_object.val());
-    var new_object = inspector.objects[new_object_index];
-    var new_state = parseInt(inspector.dom.page_state_state.val());
-    var new_interval = parseInt(inspector.dom.page_state_interval.val());
-    var new_duration = parseInt(inspector.dom.page_state_duration.val());
-    // assign data
-    inspector.manager.pages[page_id].add(new_object, new_state, new_interval, new_duration);
-    // refresh
-    inspector.refresh_page_states_list(page_id);
-    // reset form
-    inspector.clear_form("#pages_states_form", true);
+    if (typeof inspector.manager.pages[page_id] !== "undefined") {
+		// get new data
+		var new_object_index = parseInt(inspector.dom.page_state_object.val());
+		var new_object = inspector.objects[new_object_index];
+		var new_state = parseInt(inspector.dom.page_state_state.val());
+		var new_interval = parseInt(inspector.dom.page_state_interval.val());
+		// check interval
+		new_interval = isNaN(new_interval) ? 0 : new_interval;
+		var new_duration = parseInt(inspector.dom.page_state_duration.val());
+		// check duration
+		new_duration = isNaN(new_duration) ? 1000 : new_duration;
+		// assign data
+		inspector.manager.pages[page_id].add(new_object, new_state, new_interval, new_duration);
+		// refresh
+		inspector.refresh_page_states_list(page_id);
+		// reset form
+		inspector.clear_form("#pages_states_form", true);
+	} else {
+        // show error
+        this.show_message("Error", "Invaild Page", "alert");
+    }
 }
 
 // page state delete
