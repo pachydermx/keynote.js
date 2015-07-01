@@ -98,6 +98,10 @@ $(document).ready(function () {
 		inspector.delete_page();
 	});
 	
+	$("#delete_page_state").click(function () {
+		inspector.delete_page_state();
+	});
+	
     // auto load state list
     $("#object_selector").change(function () {
         inspector.reload_object_state_selector();

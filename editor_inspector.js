@@ -534,6 +534,30 @@ editor_inspector.prototype.insert_page_state = function () {
     inspector.clear_form("#pages_states_form", true);
 }
 
+// page state delete
+editor_inspector.prototype.delete_page_state = function () {
+	// get basic info
+    var page_id = parseInt(inspector.dom.page_id.val());
+    var page_state_id = parseInt(inspector.dom.page_state_id.val());
+	// check available
+    if (typeof inspector.manager.pages[page_id] !== "undefined") {
+        if (typeof inspector.manager.pages[page_id].objects[page_state_id] !== "undefined") {
+			// delete page state
+			inspector.manager.pages[page_id].objects.splice(page_state_id, 1);
+			// reload list
+            inspector.refresh_page_states_list(page_id);
+			// reset form
+            inspector.clear_form("#pages_states_form", true);
+        } else {
+            // show error
+            this.show_message("Error", "Invaild State", "alert");
+        }
+    } else {
+        // show error
+        this.show_message("Error", "Invaild Page", "alert");
+    }
+}
+
 // select item in object selector
 editor_inspector.prototype.select_page_object_item = function (index) {
     // activate the item
