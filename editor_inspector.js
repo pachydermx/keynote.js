@@ -170,7 +170,9 @@ editor_inspector.prototype.start_edit_object = function (e) {
     // set z-index
     if (typeof the_object.z_index !== "undefined"){
         inspector.dom.object_z_index.val(the_object.z_index);
-    }
+    } else {
+		inspector.dom.object_z_index.val("");
+	}
     // get code
     inspector.dom.object_code.text(the_object.dom_obj.html());
 
