@@ -316,10 +316,15 @@ editor_inspector.prototype.confirm_state_change = function (e) {
     var state_id = inspector.dom.state_id.val();
     // get new state info
     var new_x_percent = parseInt(inspector.dom.state_x_percent.val());
+	new_x_percent = isNaN(new_x_percent) ? 50 : new_x_percent;
     var new_x_delta = parseInt(inspector.dom.state_x_delta.val());
+	new_x_delta = isNaN(new_x_delta) ? 0 : new_x_delta;
     var new_y_percent = parseInt(inspector.dom.state_y_percent.val());
+	new_y_percent = isNaN(new_y_percent) ? 50 : new_x_percent;
     var new_y_delta = parseInt(inspector.dom.state_y_delta.val());
+	new_y_delta = isNaN(new_y_delta) ? 50 : new_y_delta;
     var new_alpha = parseFloat(inspector.dom.state_alpha.val());
+	new_alpha = isNaN(new_alpha) ? 1 : new_alpha;
     // error catch
     if (typeof this.objects[object_id].states[state_id] !== "undefined") {
         // assign object info
@@ -333,40 +338,43 @@ editor_inspector.prototype.confirm_state_change = function (e) {
         // size info
         var new_width_percent, new_width_delta, new_height_percent, new_height_delta;
         if (inspector.dom.state_size.prop("checked")){
+			// get data
             new_width_percent = parseInt(inspector.dom.state_size_width_percent.val());
             new_width_delta = parseInt(inspector.dom.state_size_width_delta.val());
             new_height_percent = parseInt(inspector.dom.state_size_height_percent.val());
             new_height_delta = parseInt(inspector.dom.state_size_height_delta.val());
+			// assign
+            the_state.width_percent = isNaN(new_width_percent) ? 10 : new_width_percent;
+            the_state.width_delta = isNaN(new_width_delta) ? 0 : new_width_delta;
+            the_state.height_percent = isNaN(new_height_percent) ? 10 : new_height_percent;
+            the_state.height_delta = isNaN(new_height_delta) ? 0 : new_height_delta;
         } else {
-            // TODO: Delete Optional Data
-        }
-        if (!(isNaN(new_width_percent) || isNaN(new_width_delta) || isNaN(new_height_percent) || isNaN(new_height_delta))){
-            the_state.width_percent = new_width_percent;
-            the_state.width_delta = new_width_delta;
-            the_state.height_percent = new_height_percent;
-            the_state.height_delta = new_height_delta;
-        } else {
-            // TODO: Error Report
+            // Delete Optional Data
+			delete the_state.width_percent;
+			delete the_state.width_delta;
+			delete the_state.height_percent;
+			delete the_state.height_delta;
         }
         // rotate info
         var new_angle;
         if (inspector.dom.state_rotate.prop("checked")){
+			// get data
             new_angle = parseInt(inspector.dom.state_rotate_angle.val());
+			// assign
+            the_state.angle = isNaN(new_angle) ? 0 : new_angle;
         } else {
-            // TODO: Delete Optional Data
-        }
-        if (!isNaN(new_angle)){
-            the_state.angle = new_angle;
-        } else {
-            // TODO: Error Report
+            // delete Optional Data
+			delete the_state.angle
         }
         // easing
         var new_easing;
         if (inspector.dom.state_easing.prop("checked")){
+			// get data
             new_easing = inspector.dom.state_easing_type.val();
             the_state.easing = new_easing;
         } else {
-            // TODO: Delete Optional Data
+			// delete data
+			delete the_state.easing;
         }
         // refresh object list
         this.refresh_state_list(object_id);
