@@ -32,13 +32,16 @@ editor_inspector.prototype.enable_editor = function (objects) {
         'state_y_percent': $("#y_percent_input"),
         'state_y_delta': $("#y_delta_input"),
         'state_alpha': $("#alpha_input"),
+		'state_size_panel': $("#size_panel"),
         'state_size': $("#size_enabled_input"),
         'state_size_width_percent': $("#width_percent_input"),
         'state_size_width_delta': $("#width_delta_input"),
         'state_size_height_percent': $("#height_percent_input"),
         'state_size_height_delta': $("#height_delta_input"),
+		'state_rotate_panel': $("#rotate_panel"),
         'state_rotate': $("#rotate_enabled_input"),
         'state_rotate_angle': $("#angle_input"),
+		'state_easing_panel': $("#easing_panel"),
         'state_easing': $("#easing_enabled_input"),
         'state_easing_type': $("#easing_input"),
         'state_create': $("#new_state"),
@@ -262,7 +265,9 @@ editor_inspector.prototype.start_edit_state = function (e) {
     // print size
     if (typeof the_state["width_percent"] !== "undefined") {
         // checkbox
-        // TODO: open panel
+        // open panel
+		inspector.dom.state_size_panel.accordion("option", "active", 0);
+		// check
         inspector.dom.state_size.prop("checked", true);
         // data
         inspector.dom.state_size_width_percent.val(the_state.width_percent);
@@ -270,23 +275,33 @@ editor_inspector.prototype.start_edit_state = function (e) {
         inspector.dom.state_size_height_percent.val(the_state.height_percent);
         inspector.dom.state_size_height_delta.val(the_state.height_delta);
     } else {
+		// close panel
+		inspector.dom.state_size_panel.accordion("option", "active", false);
         inspector.dom.state_size.prop("checked", false);
     }
     // print rotate
     if (typeof the_state.angle !== "undefined") {
+		// open panel
+		inspector.dom.state_rotate_panel.accordion("option", "active", 0);
         // checkbox
         inspector.dom.state_rotate.prop("checked", true);
         // data
         inspector.dom.state_rotate_angle.val(the_state.angle);
     } else {
+		// close panel
+		inspector.dom.state_rotate_panel.accordion("option", "active", false);
         inspector.dom.state_rotate.prop("checked", false);
     }
     // print easing
     if (typeof the_state.easing !== "undefined") {
+		// open panel
+		inspector.dom.state_easing_panel.accordion("option", "active", 0);
         // checkbox
         inspector.dom.state_easing.prop("checked", true);
         $("#easing_input [value=" + the_state.easing +"]").prop("selected", "selected");
     } else {
+		// close panel
+		inspector.dom.state_easing_panel.accordion("option", "active", false);
         inspector.dom.state_easing.prop("checked", false);
     }
     // enable edit
