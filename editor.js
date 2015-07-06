@@ -12,11 +12,11 @@ $(document).ready(function () {
     
     // control panel
     // panels
-    $(".optional.panel").accordion({ 
+    $(".optional.panel").accordion({
         collapsible: true,
         active: false,
         activate: function (e, ui) {
-            if (ui.newHeader.length > 0){
+            if (ui.newHeader.length > 0) {
                 // opening
                 $(this).find(".enabler").prop("checked", true);
             } else {
@@ -29,16 +29,16 @@ $(document).ready(function () {
     $("#inspector_frame").tabs();
     
     // assign actions
-    $("#new_page").click(function(){
+    $("#new_page").click(function () {
         preview.create_page();
         inspector.refresh_page_list();
     });
     
-    $("#new_text_obj").click(function(){
+    $("#new_text_obj").click(function () {
         preview.create_obj();
         inspector.refresh_object_list();
     });
-    $("#new_image_obj").click(function(){
+    $("#new_image_obj").click(function () {
         preview.create_img_obj();
         inspector.refresh_object_list();
     });
@@ -46,7 +46,7 @@ $(document).ready(function () {
     
     // inspector panel
     // object panel
-    $("#confirm_object_changes").click(function (){
+    $("#confirm_object_changes").click(function () {
         inspector.confirm_object_change();
     });
     
@@ -67,13 +67,15 @@ $(document).ready(function () {
     });
     
     // state panel
-    $("#new_state").click(function(){
-        preview.create_state();
-        inspector.refresh_state_list();
-        inspector.reload_object_state_selector();
+    $("#new_state").click(function () {
+		try {
+			preview.create_state();
+			inspector.refresh_state_list();
+			inspector.reload_object_state_selector();
+		} catch (error) {}
     });
     
-    $("#confirm_state_changes").click(function (){
+    $("#confirm_state_changes").click(function () {
         inspector.confirm_state_change();
     });
     
@@ -110,7 +112,7 @@ $(document).ready(function () {
 });
 
 // init inspector
-function preview_loaded () {
+function preview_loaded() {
     inspector = new editor_inspector(preview.manager);
     inspector.enable_editor(preview.objects);
     

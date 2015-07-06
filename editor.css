@@ -63,6 +63,10 @@ input.index{
     display: inline-block;
 }
 
+.inspector_panel .pixel{
+	width: 50px;
+}
+
 input[type=text], input[type=number], input[type=checkbox], textarea, select{
     background: #333333;
     color: #eeeeee;
