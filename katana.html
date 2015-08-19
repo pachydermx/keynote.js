@@ -262,22 +262,22 @@
 		
 		var supporttexta = new object("supporttexta", meta);
 		supporttexta.add_state(50, 0, 150, 0, 0);
-		supporttexta.add_state(50, 0, 50, 0, 0);
+		supporttexta.add_state(50, 0, 50, 0, 1);
 		supporttexta.set_z_index(3);
 		
 		var supporttextb = new object("supporttextb", meta);
 		supporttextb.add_state(50, 0, 150, 0, 0);
-		supporttextb.add_state(50, 0, 50, 0, 0);
+		supporttextb.add_state(50, 0, 50, 0, 1);
 		supporttextb.set_z_index(3);
 		
 		var supporttextc = new object("supporttextc", meta);
 		supporttextc.add_state(50, 0, 150, 0, 0);
-		supporttextc.add_state(50, 0, 50, 0, 0);
+		supporttextc.add_state(50, 0, 50, 0, 1);
 		supporttextc.set_z_index(3);
 		
 		var supporttextd = new object("supporttextd", meta);
 		supporttextd.add_state(50, 0, 150, 0, 0);
-		supporttextd.add_state(50, 0, 50, 0, 0);
+		supporttextd.add_state(50, 0, 50, 0, 1);
 		supporttextd.set_z_index(3);
 		
 		// CONTACT
@@ -294,30 +294,6 @@
 		
 		
 		
-		
-        var domtest = new object("domtest", meta);
-        domtest.add_state(100, 100, 10, 100, 1);
-        domtest.add_state(100, -100, 10, 100, 1);
-        
-        var test2 = new object("test2", meta);
-        test2.add_state(50, 0, 100, 10, 0);
-        test2.add_state(50, 0, 50, 220, 1);
-        test2.add_easing(1, "easeOutElastic");
-        test2.add_state(50, 0, 0, -10, 0);
-        test2.default_exit_location = 2;
-        
-        var imgtest = new object("test3", meta);
-        imgtest.add_state(-50, 0, 50, 0, 1);
-        imgtest.add_size_transform(0, 100, -40, 100, -40);
-        imgtest.add_state(50, 0, 50, 0, 1);
-        imgtest.add_size_transform(1, 100, -40, 100, -40);
-        imgtest.add_state(25, 0, 25, 0, 1);
-        imgtest.add_size_transform(2, 50, 0, 50, 0);
-        imgtest.add_rotate_transform(2, 180);
-        imgtest.auto_reset = false;
-        imgtest.set_z_index(-1);
-        imgtest.set_image_scale_mode("cover");
-        
         // create pages
         var home = new page('Home', manager);
         manager.add(home);
@@ -352,12 +328,48 @@
 		websiteb.add(websiteleafd, 1, 6000, 1000);
 		websiteb.add(websitedevices, 1, 7000, 1000);
 		
+		var interactive = new page("Interactive", manager);
+		manager.add(interactive);
+		interactive.add(interbg, 1, 1000, 1000);
+		interactive.add(interinfoa, 1, 2000, 1000);
+		interactive.add(interinfob, 1, 3000, 1000);
+		interactive.add(interinfoc, 1, 4000, 1000);
+		interactive.add(intertext, 1, 5000, 1000);
 		
+		var brand = new page("Brand", manager);
+		manager.add(brand);
+		brand.add(brandcarda, 1, 1000, 1000);
+		brand.add(brandcardb, 1, 2000, 1000);
+		brand.add(brandcardc, 1, 3000, 1000);
+		brand.add(brandcardd, 1, 4000, 1000);
+		brand.add(brandclip, 1, 5000, 1000);
+		brand.add(brandpen, 1, 6000, 1000);
+		brand.add(brandclip, 1, 7000, 1000);
+		brand.add(brandtext, 1, 8000, 1000);
 		
-        var page2 = new page('second page', manager);
-        manager.add(page2);
-        page2.add(test2, 1, 10000, 1000);
-        page2.add(imgtest, 1, 0, 1000);
+		var video = new page("Video", manager);
+		manager.add(video);
+		video.add(videobg, 1, 0, 1000);
+		video.add(videoclipa, 1, 1000, 1000);
+		video.add(videoclipb, 1, 2000, 1000);
+		video.add(videoclipc, 1, 3000, 1000);
+		video.add(videoclipd, 1, 4000, 1000);
+		video.add(videotext, 1, 5000, 1000);
+		
+		var support = new page("Support", manager);
+		manager.add(support);
+		support.add(supportbg, 1, 1000, 1000);
+		support.add(supportwbg, 1, 2000, 1000);
+		support.add(supporttexta, 1, 3000, 1000);
+		support.add(supporttextb, 1, 4000, 1000);
+		support.add(supporttextc, 1, 5000, 1000);
+		support.add(supporttextd, 1, 6000, 1000);
+		
+		var contact = new page("Contact", manager);
+		manager.add(contact);
+		contact.add(supportbg, 1, 1000, 1000);
+		contact.add(contactlogo, 1, 2000, 1000);
+		contact.add(contactform, 1, 3000, 1000);
         
         // create inspector
         var inspector = new inspector(manager);
@@ -432,11 +444,6 @@
 			//contact
 			contactlogo.init_with_selector("#contactlogo");
 			contactform.init_with_selector("#contactform");
-			
-			
-            domtest.init_with_selector("#domtest");
-            test2.init("body", "<div>WORLD</div>");
-            imgtest.init_with_image("body", "img/test.jpg");
             
             manager.goto_page(0);
         });
@@ -537,9 +544,5 @@
 			<img src="katana/contactform.png">
 		</div>
 	</div>
-    <div id="domtest">
-        <img src="img/icon.png">
-        <p>Hello World</p>
-    </div>
 </body>
 </html>
