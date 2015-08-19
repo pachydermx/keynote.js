@@ -47,7 +47,6 @@ page.prototype.play = function () {
 
 
 page.prototype.fire = function (obj){
-	console.log(obj);
 	this.timers.push(setTimeout(function(){
 		obj.object.moveToState(obj.state, obj.duration);
 	}, obj.interval));
