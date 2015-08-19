@@ -1,0 +1,427 @@
+<html>
+<head>
+    <!-- import jquery library -->
+    <title></title>
+    <script src="jquery.js"></script>
+    <script src="jquery.rotate.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="library.js"></script>
+    <script src="meta.js"></script>
+    <script src="configurator.js"></script>
+    <script src="inspector.js"></script>
+    <script src="manager.js"></script>
+    <script src="page.js"></script>
+    <script src="object.js"></script>
+    <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="keynote.css" rel="stylesheet" type="text/css">
+    <link href="object.css" rel="stylesheet" type="text/css">
+    <link href="inspector.css" rel="stylesheet" type="text/css">
+    <script>
+        
+        // create meta and manager objects
+        var meta = new meta();
+        var manager = new manager();
+        
+        // create objects
+		// HOME STATE A
+        var homebg = new object("homebg", meta);
+        homebg.add_state(50, 0, -50, 0, 1);
+        homebg.add_state(50, 0, 50, 0, 1);
+        homebg.add_state(50, 0, 150, 0, 1);
+		homebg.add_size_transform(0, 100, 0, 100, 0);
+		homebg.set_z_index(-1);
+		
+		var homelogoa = new object("homelogoa", meta);
+		homelogoa.add_state(50, 0, 50, 0, 0);
+		homelogoa.add_state(50, 0, 50, 0, 1);
+		homelogoa.set_z_index(1);
+		
+		var homelogolighta = new object("homelogolighta", meta);
+		homelogolighta.add_state(50, 0, 50, 0, 0);
+		homelogolighta.add_state(50, 0, 50, 0, 1);
+		homelogolighta.set_z_index(4);
+		
+		var homelogolightb = new object("homelogolightb", meta);
+		homelogolightb.add_state(50, 0, 50, 0, 0);
+		homelogolightb.add_state(50, 0, 50, 0, 1);
+		homelogolightb.set_z_index(4);
+		
+		var homesakuraa = new object("homesakuraa", meta);
+		homesakuraa.add_state(50, 0, -50, 0, 1);
+		homesakuraa.add_state(50, 0, 150, 0, 1);
+		homesakuraa.set_z_index(2);
+        
+		var homesakurab = new object("homesakurab", meta);
+		homesakurab.add_state(50, 0, -50, 0, 1);
+		homesakurab.add_state(50, 0, 150, 0, 1);
+		homesakurab.set_z_index(2);
+        
+		var homesakurac = new object("homesakurac", meta);
+		homesakurac.add_state(50, 0, -50, 0, 1);
+		homesakurac.add_state(50, 0, 150, 0, 1);
+		homesakurac.set_z_index(2);
+		
+		var homekatana = new object("homekatana", meta);
+		homekatana.add_state(50, 0, -50, 0, 0);
+		homekatana.add_state(50, 0, 0, 209, 1);
+        
+		// HOME STATE B
+        var homebgb = new object("homebgb", meta);
+        homebgb.add_state(50, 0, -50, 0, 1);
+        homebgb.add_state(50, 0, 50, 0, 1);
+        homebgb.add_state(50, 0, 150, 0, 1);
+		homebgb.add_size_transform(0, 100, 0, 100, 0);
+		homebgb.set_z_index(1);
+		
+		var homelogob = new object("homelogob", meta);
+		homelogob.add_state(50, 0, 50, 0, 0);
+		homelogob.add_state(50, 0, 50, 0, 1);
+		homelogob.set_z_index(2);
+		
+		var hometext = new object("hometext", meta);
+		hometext.add_state(50, 0, 50, 0, 0);
+		hometext.add_state(50, 0, 50, 0, 0);
+		hometext.set_z_index(2)
+		
+		var homesakurad = new object("homesakurad", meta);
+		homesakurad.add_state(50, 0, -50, 0, 1);
+		homesakurad.add_state(50, 0, 150, 0, 1);
+		homesakurad.set_z_index(2);
+        
+		var homesakurae = new object("homesakurae", meta);
+		homesakurae.add_state(50, 0, -50, 0, 1);
+		homesakurae.add_state(50, 0, 150, 0, 1);
+		homesakurae.set_z_index(2);
+        
+		var homesakuraf = new object("homesakuraf", meta);
+		homesakuraf.add_state(50, 0, -50, 0, 1);
+		homesakuraf.add_state(50, 0, 150, 0, 1);
+		homesakuraf.set_z_index(2);
+		
+		
+		// WEBSITE 1
+        var websitebg = new object("websitebg", meta);
+        websitebg.add_state(50, 0, -50, 0, 1);
+        websitebg.add_state(50, 0, 50, 0, 1);
+        websitebg.add_state(50, 0, 150, 0, 1);
+		websitebg.add_size_transform(0, 100, 0, 100, 0);
+		websitebg.set_z_index(-1);
+		
+		websitewbg = new object("websitewbg", meta);
+        websitewbg.add_state(50, 0, -50, 0, 1);
+        websitewbg.add_state(50, 0, 50, 0, 1);
+        websitewbg.add_state(50, 0, 150, 0, 1);
+		websitewbg.set_z_index(1);
+		
+		// WEBSITE 2
+		
+		var websitetext = new object("websitetext", meta);
+		websitetext.add_state(50, 0, 50, 0, 0);
+		websitetext.add_state(50, 0, 50, 0, 1);
+		websitetext.set_z_index(2);
+		
+		var websiteleafa = new object("websiteleafa", meta);
+		websiteleafa.add_state(50, 0, -50, 0, 1);
+		websiteleafa.add_state(50, 0, 50, 0, 1);
+		websiteleafa.add_state(50, 0, 150, 0, 1);
+		websiteleafa.set_z_index(4);
+		
+		var websiteleafb = new object("websiteleafb", meta);
+		websiteleafb.add_state(50, 0, -50, 0, 1);
+		websiteleafb.add_state(50, 0, 50, 0, 1);
+		websiteleafb.add_state(50, 0, 150, 0, 1);
+		websiteleafb.set_z_index(4);
+		
+		var websiteleafc = new object("websiteleafc", meta);
+		websiteleafc.add_state(50, 0, -50, 0, 1);
+		websiteleafc.add_state(50, 0, 50, 0, 1);
+		websiteleafc.add_state(50, 0, 150, 0, 1);
+		websiteleafc.set_z_index(4);
+		
+		var websiteleafd = new object("websiteleafd", meta);
+		websiteleafd.add_state(50, 0, -50, 0, 1);
+		websiteleafd.add_state(50, 0, 50, 0, 1);
+		websiteleafd.add_state(50, 0, 150, 0, 1);
+		websiteleafd.set_z_index(4);
+		
+		var websitedevices = new object("websitedevices", meta);
+		websitedevices.add_state(-50, 0, 50, 0, 1);
+		websitedevices.add_state(50, 0, 50, 0, 1);
+		websitedevices.add_state(150, 0, 50, 0, 1);
+		websitedevices.set_z_index(4);
+		
+		// INTERECTIVE
+		var interbg = new object("interbg", meta);
+		
+		var interinfoa = new object("interinfoa", meta);
+		
+		var interinfob = new object("interinfob", meta);
+		
+		var interinfoc = new object("interinfoc", meta);
+		
+		var interinfod = new object("interinfod", meta);
+		
+		var intertext = new object("intertext", meta);
+		
+		// BRAND
+		var brandcarda = new object("brandcarda", meta);
+		
+		var brandcardb = new object("brandcardb", meta);
+		
+		var brandcardc = new object("brandcardc", meta);
+		
+		var brandcardd = new object("brandcardd", meta);
+		
+		var brandpen = new object("brandpen", meta);
+		
+		var brandclip = new object("brandclip", meta);
+		
+		var brandtext = new object("brandtext", meta);
+		
+		// VIDEO
+		var videobg = new object("objectbg", meta);
+		
+		var videoclipa = new object("videoclipa", meta);
+		
+		var videoclipb = new object("videoclipb", meta);
+		
+		var videoclipc = new object("videoclipc", meta);
+		
+		var videoclipd = new object("videoclipd", meta);
+		
+		var videotext = new object("videotext", meta);
+		
+		// SUPPORT
+		var supportbg = new object("supportbg", meta);
+		
+		var supportwbg = new object("supportwbg", meta);
+		
+		var supporttexta = new object("supporttexta", meta);
+		
+		var supporttextb = new object("supporttextb", meta);
+		
+		var supporttextc = new object("supporttextc", meta);
+		
+		var supporttextd = new object("supporttextd", meta);
+		
+		// CONTACT
+		var contactlogo = new object("contactlogo", meta);
+		
+		var contactform = new object("contactform", meta);
+		
+		
+		
+		
+		
+        var domtest = new object("domtest", meta);
+        domtest.add_state(100, 100, 10, 100, 1);
+        domtest.add_state(100, -100, 10, 100, 1);
+        
+        var test2 = new object("test2", meta);
+        test2.add_state(50, 0, 100, 10, 0);
+        test2.add_state(50, 0, 50, 220, 1);
+        test2.add_easing(1, "easeOutElastic");
+        test2.add_state(50, 0, 0, -10, 0);
+        test2.default_exit_location = 2;
+        
+        var imgtest = new object("test3", meta);
+        imgtest.add_state(-50, 0, 50, 0, 1);
+        imgtest.add_size_transform(0, 100, -40, 100, -40);
+        imgtest.add_state(50, 0, 50, 0, 1);
+        imgtest.add_size_transform(1, 100, -40, 100, -40);
+        imgtest.add_state(25, 0, 25, 0, 1);
+        imgtest.add_size_transform(2, 50, 0, 50, 0);
+        imgtest.add_rotate_transform(2, 180);
+        imgtest.auto_reset = false;
+        imgtest.set_z_index(-1);
+        imgtest.set_image_scale_mode("cover");
+        
+        // create pages
+        var home = new page('Home', manager);
+        manager.add(home);
+        home.add(homebg, 1, 1000, 1000);
+        home.add(homelogoa, 1, 2000, 1000);
+		home.add(homelogolighta, 1, 3000, 1000);
+		home.add(homelogolightb, 1, 4000, 1000);
+		home.add(homesakuraa, 1, 5000, 1000);
+		home.add(homesakurab, 1, 6000, 1000);
+		home.add(homesakurac, 1, 7000, 1000);
+		home.add(homekatana, 1, 8000, 1000);
+		
+		home.add(homebgb, 1, 9000, 1000);
+		home.add(homelogob, 1, 10000, 1000);
+		home.add(hometext, 1, 11000, 1000);
+		home.add(homesakurad, 1, 12000, 1000);
+		home.add(homesakurae, 1, 13000, 1000);
+		home.add(homesakuraf, 1, 14000, 1000);
+        
+		var websitea = new page("Website 1", manager);
+		manager.add(websitea);
+		websitea.add(websitebg, 1, 1000, 1000);
+		websitea.add(websitewbg, 1, 2000, 1000);
+		
+		var websiteb = new page("Website 2", manager);
+		manager.add(websiteb);
+		websiteb.add(websitebg, 1, 1000, 1000);
+		websiteb.add(websitetext, 1, 2000, 1000);
+		websiteb.add(websiteleafa, 1, 3000, 1000);
+		websiteb.add(websiteleafb, 1, 4000, 1000);
+		websiteb.add(websiteleafc, 1, 5000, 1000);
+		websiteb.add(websiteleafd, 1, 6000, 1000);
+		websiteb.add(websitedevices, 1, 7000, 1000);
+		
+		
+		
+        var page2 = new page('second page', manager);
+        manager.add(page2);
+        page2.add(test2, 1, 10000, 1000);
+        page2.add(imgtest, 1, 0, 1000);
+        
+        // create inspector
+        var inspector = new inspector(manager);
+        
+        // create listener
+        $(window).resize(function(){
+            meta.update();
+            manager.refresh();
+        });
+ 
+        $(window).load(function(){
+            inspector.enable("body");
+			// home
+			homebg.init_with_selector("#homebg");
+			homelogoa.init_with_selector("#homelogoa");
+			homelogolighta.init_with_selector("#homelogolighta");
+			homelogolightb.init_with_selector("#homelogolightb");
+			homesakuraa.init_with_selector("#homesakuraa");
+			homesakurab.init_with_selector("#homesakurab");
+			homesakurac.init_with_selector("#homesakurac");
+			homekatana.init_with_selector("#homekatana");
+			homebgb.init_with_selector("#homebgb");
+			homelogob.init_with_selector("#homelogob");
+			hometext.init_with_selector("#hometext");
+			homesakurad.init_with_selector("#homesakurad");
+			homesakurae.init_with_selector("#homesakurae");
+			homesakuraf.init_with_selector("#homesakuraf");
+			
+			
+			// website
+			websitebg.init_with_selector("#websitebg");
+			websitewbg.init_with_selector("#websitewbg");
+			websitetext.init_with_selector("#websitetext");
+			websiteleafa.init_with_selector("#websiteleafa");
+			websiteleafb.init_with_selector("#websiteleafb");
+			websiteleafc.init_with_selector("#websiteleafc");
+			websiteleafd.init_with_selector("#websiteleafd");
+			websitedevices.init_with_selector("#websitedevices");
+			
+			
+            domtest.init_with_selector("#domtest");
+            test2.init("body", "<div>WORLD</div>");
+            imgtest.init_with_image("body", "img/test.jpg");
+            
+            manager.goto_page(0);
+        });
+    </script>
+</head>
+<body>
+	<div id="images">
+		<!-- HOME -->
+		<img id="homebg" src="katana/homebg.jpg">
+		<img id="homelogoa" src="katana/homelogoa.png">
+		<img id="homelogolighta" src="katana/homelogolighta.png">
+		<img id="homelogolightb" src="katana/homelogolightb.png">
+		<img id="homesakuraa" src="katana/homesakuraa.png">
+		<img id="homesakurab" src="katana/homesakurab.png">
+		<img id="homesakurac" src="katana/homesakurac.png">
+		<img id="homekatana" src="katana/homekatana.png">
+		
+		<img id="homebgb" src="katana/homebgb.jpg">
+		<img id="homelogob" src="katana/homelogob.png">
+		<div id="hometext">
+			<img src="katana/hometext.png">
+		</div>
+		<img id="homesakurad" src="katana/homesakurad.png">
+		<img id="homesakurae" src="katana/homesakurae.png">
+		<img id="homesakuraf" src="katana/homesakuraf.png">
+		
+		<!-- WEBSITE 1-->
+		<img id="websitebg" src="katana/websitebg.jpg">
+		<img id="websitewbg" src="katana/websitewbg.jpg">
+		
+		<!-- WEBSITE 2 -->
+		<img id="websiteleafa" src="katana/websiteleafa.png">
+		<img id="websiteleafb" src="katana/websiteleafb.png">
+		<img id="websiteleafc" src="katana/websiteleafc.png">
+		<img id="websiteleafd" src="katana/websiteleafd.png">
+		<img id="websitedevices" src="katana/websitedevices.png">
+		<div id="websitetext">
+			<img src="katana/websitetext.png">	
+		</div>
+		
+		<!-- INTERECTIVE -->
+		<img id="interbg" src="katana/interbg.jpg">
+		<div class="interective circle" id="interinfoa">
+			<img src="katana/interinfoa.png">
+		</div>
+		<div class="interective circle" id="interinfob">
+			<img src="katana/interinfob.png">
+		</div>
+		<div class="interective circle" id="interinfoc">
+			<img src="katana/interinfoc.png">
+		</div>
+		<div id="intertext">
+			<img src="katana/intertext.png">
+		</div>
+		
+		<!-- BRAND -->
+		<img id="brandcarda" src="katana/brandcarda.png">
+		<img id="brandcardb" src="katana/brandcardb.png">
+		<img id="brandcardc" src="katana/brandcardc.png">
+		<img id="brandcardd" src="katana/brandcardd.png">
+		<img id="brandclip" src="katana/brandclip.png">
+		<img id="brandpen" src="katana/brandpen.png">
+		<div id="brandtext">
+			<img src="katana/brandtext.png">
+		</div>
+		
+		<!-- VIDEO -->
+		<img id="videobg" src="katana/videobg.jpg">
+		<img id="videoclipa" src="katana/videoclipa.png">
+		<img id="videoclipb" src="katana/videoclipb.png">
+		<img id="videoclipc" src="katana/videoclipc.png">
+		<img id="videoclipd" src="katana/videoclipd.png">
+		<div id="videotext">
+			<img src="katana/videotext.png">
+		</div>
+		
+		<!-- SUPPORT -->
+		<img id="supportbg" src="katana/supportbg.jpg">
+		<div id="supportwbg">
+			<img src="katana/supportwbg.png">
+		</div>
+		<div class="supporttext" id="supporttexta">
+			<img src="katana/supporttexta.png">
+		</div>
+		<div class="supporttext" id="supporttextb">
+			<img src="katana/supporttextb.png">
+		</div>
+		<div class="supporttext" id="supporttextc">
+			<img src="katana/supporttextc.png">
+		</div>
+		<div class="supporttext" id="supporttextd">
+			<img src="katana/supporttextd.png">
+		</div>
+		
+		<!-- CONTACT -->
+		<img id="contactlogo" src="katana/contactlogo.png">
+		<div id="contactform">
+			<img src="katana/contactform.png">
+		</div>
+	</div>
+    <div id="domtest">
+        <img src="img/icon.png">
+        <p>Hello World</p>
+    </div>
+</body>
+</html>
