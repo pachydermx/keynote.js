@@ -45,16 +45,25 @@ page.prototype.play = function () {
 	}
 };
 
-
+// create timeout event
 page.prototype.fire = function (obj){
 	this.timers.push(setTimeout(function(){
 		obj.object.moveToState(obj.state, obj.duration);
 	}, obj.interval));
 };
 
+// clear timeout events
+page.prototype.clear = function(){
+	while(this.timers.length > 0){
+		clearTimeout(this.timers.pop());
+	}
+};
+
 // exit page
 page.prototype.exit = function (new_page_objects) {
 	if (typeof new_page_objects !== 'undefined') {
+		// clear timers
+		this.clear();
 		// substract objects list
 		var objects = [], to_remove = [], i;
 		for (i in this.objects) {
