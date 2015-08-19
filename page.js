@@ -34,10 +34,23 @@ page.prototype.play = function () {
 			the_object.object.moveToState(0, 0);
 		}
 		// perform
-		this.timers.push(setTimeout(
-			the_object.object.moveToState(the_object.state, the_object.duration)
+		/*
+		this.timers.push(setTimeout(function(){
+			//the_object.object.moveToState(the_object.state, the_object.duration);
+			console.log(the_object);
+		}
 		, the_object.interval));
+		*/
+		this.fire(the_object);
 	}
+};
+
+
+page.prototype.fire = function (obj){
+	console.log(obj);
+	this.timers.push(setTimeout(function(){
+		obj.object.moveToState(obj.state, obj.duration);
+	}, obj.interval));
 };
 
 // exit page
