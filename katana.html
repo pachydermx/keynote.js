@@ -29,8 +29,10 @@
         // create objects
 		// HOME STATE A
         var homebg = new object("homebg", meta);
+        homebg.add_state(50, 0, 50, 0, 0);
         homebg.add_state(50, 0, 50, 0, 1);
 		homebg.add_size_transform(0, 100, 0, 100, 0);
+		homebg.add_size_transform(1, 100, 0, 100, 0);
 		homebg.set_z_index(1);
 		
 		var homelogoa = new object("homelogoa", meta);
@@ -66,7 +68,9 @@
 		homesakurac.set_z_index(2);
 		
 		var homekatana = new object("homekatana", meta);
+		homekatana.add_state(61, 0, 0, 209, 0);
 		homekatana.add_state(61, 0, 0, 209, 1);
+		homekatana.set_z_index(1);
         
 		// HOME STATE B
         var homebgb = new object("homebgb", meta);
@@ -120,6 +124,7 @@
 		websitebg.add_size_transform(0, 100, 0, 100, 0);
 		websitebg.add_size_transform(1, 100, 0, 100, 0);
 		websitebg.add_size_transform(2, 100, 0, 100, 0);
+		websitebg.add_easing(1, defaultEasing);
 		websitebg.auto_reset = false;
 		websitebg.set_z_index(4);
 		
@@ -127,6 +132,7 @@
         websitewbg.add_state(50, 0, 150, 0, 1);
         websitewbg.add_state(50, 0, 0, 421, 1);
         websitewbg.add_state(50, 0, -50, 0, 1);
+		websitewbg.add_easing(1, defaultEasing);
 		websitewbg.default_exit_location = 2;
 		websitewbg.set_z_index(5);
 		
@@ -230,112 +236,151 @@
 		
 		// BRAND
 		var brandcarda = new object("brandcarda", meta);
-		brandcarda.add_state(50, 0, -50, 0, 1);
-		brandcarda.add_state(50, 0, 50, 0, 1);
+		brandcarda.add_state(20, 0, -50, 0, 1);
+		brandcarda.add_state(20, 0, 27, 0, 1);
+		brandcarda.add_size_transform(0, 27, 0, 41, 0);
+		brandcarda.add_size_transform(1, 27, 0, 41, 0);
 		brandcarda.set_z_index(2);
 		
 		var brandcardb = new object("brandcardb", meta);
-		brandcardb.add_state(50, 0, -50, 0, 1);
-		brandcardb.add_state(50, 0, 50, 0, 1);
-		brandcardb.set_z_index(2);
+		brandcardb.add_state(50, 0, 150, 0, 1);
+		brandcardb.add_state(50, 0, 27, 0, 1);
+		brandcardb.add_size_transform(0, 27, 0, 41, 0);
+		brandcardb.add_size_transform(1, 27, 0, 41, 0);
+		brandcardb.set_z_index(3);
 		
 		var brandcardc = new object("brandcardc", meta);
-		brandcardc.add_state(50, 0, -50, 0, 1);
-		brandcardc.add_state(50, 0, 50, 0, 1);
+		brandcardc.add_state(80, 0, -50, 0, 1);
+		brandcardc.add_state(80, 0, 27, 0, 1);
+		brandcardc.add_size_transform(0, 27, 0, 41, 0);
+		brandcardc.add_size_transform(1, 27, 0, 41, 0);
 		brandcardc.set_z_index(2);
 		
 		var brandcardd = new object("brandcardd", meta);
-		brandcardd.add_state(50, 0, 150, 0, 1);
-		brandcardd.add_state(50, 0, 50, 0, 1);
+		brandcardd.add_state(31, 0, 150, 0, 1);
+		brandcardd.add_state(31, 0, 76, 0, 1);
+		brandcardd.add_size_transform(0, 51, 0, 49, 0);
+		brandcardd.add_size_transform(1, 51, 0, 49, 0);
 		brandcardd.set_z_index(2);
 		
 		var brandpen = new object("brandpen", meta);
-		brandpen.add_state(50, 0, 150, 0, 1);
-		brandpen.add_state(50, 0, 50, 0, 1);
+		brandpen.add_state(89, 0, 150, 0, 1);
+		brandpen.add_state(89, 0, 85, 0, 1);
+		brandpen.add_size_transform(0, 12, 0, 30, 0);
+		brandpen.add_size_transform(1, 12, 0, 30, 0);
 		brandpen.set_z_index(2);
 		
 		var brandclip = new object("brandclip", meta);
-		brandclip.add_state(50, 0, 150, 0, 1);
-		brandclip.add_state(50, 0, 50, 0, 1);
+		brandclip.add_state(89, 0, 150, 0, 1);
+		brandclip.add_state(89, 0, 56, 0, 1);
+		brandclip.add_size_transform(0, 10, 0, 28, 0);
+		brandclip.add_size_transform(1, 10, 0, 28, 0);
 		brandclip.set_z_index(2);
 		
 		var brandtext = new object("brandtext", meta);
-		brandtext.add_state(50, 0, 150, 0, 1);
-		brandtext.add_state(50, 0, 50, 0, 1);
+		brandtext.add_state(68, 0, 150, 0, 1);
+		brandtext.add_state(68, 0, 75, 0, 1);
 		brandtext.set_z_index(2);
+		
+		brandcarda.add_easing(1, defaultEasing);
+		brandcardb.add_easing(1, defaultEasing);
+		brandcardc.add_easing(1, defaultEasing);
+		brandcardd.add_easing(1, defaultEasing);
+		brandclip.add_easing(1, defaultEasing);
+		brandpen.add_easing(1, defaultEasing);
+		brandtext.add_easing(1, defaultEasing);
 		
 		// VIDEO
 		var videobg = new object("objectbg", meta);
-		videobg.add_state(50, 0, 150, 0, 1);
+		videobg.add_state(50, 0, 180, 0, 1);
 		videobg.add_state(50, 0, 50, 0, 1);
-		videobg.set_z_index(-1);
+		videobg.auto_reset = false;
+		videobg.add_easing(1, defaultEasing);
+		videobg.set_z_index(3);
 		
 		var videoclipa = new object("videoclipa", meta);
-		videoclipa.add_state(-50, 0, 50, 0, 1);
-		videoclipa.add_state(50, 0, 50, 0, 1);
-		videoclipa.set_z_index(2);
+		videoclipa.add_state(-50, 0, 55, 165, 1);
+		videoclipa.add_state(30, 0, 55, 165, 1);
+		videoclipa.set_z_index(4);
 		
 		var videoclipb = new object("videoclipb", meta);
-		videoclipb.add_state(-50, 0, 50, 0, 1);
-		videoclipb.add_state(50, 0, 50, 0, 1);
-		videoclipb.set_z_index(2);
+		videoclipb.add_state(-50, 0, 55, 55, 1);
+		videoclipb.add_state(30, 0, 55, 55, 1);
+		videoclipb.set_z_index(4);
 		
 		var videoclipc = new object("videoclipc", meta);
-		videoclipc.add_state(-50, 0, 50, 0, 1);
-		videoclipc.add_state(50, 0, 50, 0, 1);
-		videoclipc.set_z_index(2);
+		videoclipc.add_state(-50, 0, 55, -55, 1);
+		videoclipc.add_state(30, 0, 55, -55, 1);
+		videoclipc.set_z_index(4);
 		
 		var videoclipd = new object("videoclipd", meta);
-		videoclipd.add_state(-50, 0, 50, 0, 1);
-		videoclipd.add_state(50, 0, 50, 0, 1);
-		videoclipd.set_z_index(2);
+		videoclipd.add_state(-50, 0, 55, -165, 1);
+		videoclipd.add_state(30, 0, 55, -165, 1);
+		videoclipd.set_z_index(4);
 		
 		var videotext = new object("videotext", meta);
-		videotext.add_state(150, 0, 50, 0, 1);
-		videotext.add_state(50, 0, 50, 0, 1);
+		videotext.add_state(70, 0, 65, 0, 0);
+		videotext.add_state(70, 0, 55, 0, 1);
 		videotext.set_z_index(4);
+		
+		videoclipa.add_easing(1, defaultEasing);
+		videoclipb.add_easing(1, defaultEasing);
+		videoclipc.add_easing(1, defaultEasing);
+		videoclipd.add_easing(1, defaultEasing);
+		videotext.add_easing(1, defaultEasing);
 		
 		// SUPPORT
 		var supportbg = new object("supportbg", meta);
-		supportbg.add_state(50, 0, 150, 0, 1);
+		supportbg.add_state(50, 0, 50, 0, 0);
 		supportbg.add_state(50, 0, 50, 0, 1);
-		supportbg.set_z_index(-1);
+		supportbg.auto_reset = false;
+		supportbg.set_z_index(5);
 		
 		var supportwbg = new object("supportwbg", meta);
 		supportwbg.add_state(50, 0, 150, 0, 1);
-		supportwbg.add_state(50, 0, 50, 0, 1);
-		supportwbg.set_z_index(1);	
+		supportwbg.add_state(50, 0, 0, 421, 1);
+		supportwbg.set_z_index(6);	
 		
 		var supporttexta = new object("supporttexta", meta);
-		supporttexta.add_state(50, 0, 150, 0, 0);
-		supporttexta.add_state(50, 0, 50, 0, 1);
-		supporttexta.set_z_index(3);
+		supporttexta.add_state(23, 0, 150, 0, 0);
+		supporttexta.add_state(23, 0, 0, 480, 1);
+		supporttexta.set_z_index(6);
 		
 		var supporttextb = new object("supporttextb", meta);
-		supporttextb.add_state(50, 0, 150, 0, 0);
-		supporttextb.add_state(50, 0, 50, 0, 1);
-		supporttextb.set_z_index(3);
+		supporttextb.add_state(41, 0, 150, 0, 0);
+		supporttextb.add_state(41, 0, 0, 480, 1);
+		supporttextb.set_z_index(6);
 		
 		var supporttextc = new object("supporttextc", meta);
-		supporttextc.add_state(50, 0, 150, 0, 0);
-		supporttextc.add_state(50, 0, 50, 0, 1);
-		supporttextc.set_z_index(3);
+		supporttextc.add_state(59, 0, 150, 0, 0);
+		supporttextc.add_state(59, 0, 0, 480, 1);
+		supporttextc.set_z_index(6);
 		
 		var supporttextd = new object("supporttextd", meta);
-		supporttextd.add_state(50, 0, 150, 0, 0);
-		supporttextd.add_state(50, 0, 50, 0, 1);
-		supporttextd.set_z_index(3);
+		supporttextd.add_state(77, 0, 150, 0, 0);
+		supporttextd.add_state(77, 0, 0, 480, 1);
+		supporttextd.set_z_index(6);
+		
+		supportbg.add_easing(1, defaultEasing);
+		supportwbg.add_easing(1, defaultEasing);
+		supporttexta.add_easing(1, defaultEasing);
+		supporttextb.add_easing(1, defaultEasing);
+		supporttextc.add_easing(1, defaultEasing);
+		supporttextd.add_easing(1, defaultEasing);
 		
 		// CONTACT
 		var contactlogo = new object("contactlogo", meta);
 		contactlogo.add_state(50, 0, 150, 0, 1);
-		contactlogo.add_state(50, 0, 50, 0, 1);
-		contactlogo.set_z_index(2);
+		contactlogo.add_state(50, 0, 50, -250, 1);
+		contactlogo.set_z_index(7);
 		
 		var contactform = new object("contactform", meta);
 		contactform.add_state(50, 0, 150, 0, 1);
-		contactform.add_state(50, 0, 50, 0, 1);
-		contactform.set_z_index(2);
+		contactform.add_state(50, 0, 50, 90, 1);
+		contactform.set_z_index(7);
+		
+		contactlogo.add_easing(1, defaultEasing);
+		contactform.add_easing(1, defaultEasing);
 		
 		
 		
@@ -343,21 +388,21 @@
         // create pages
         var home = new page('Home', manager);
         manager.add(home);
-        home.add(homebg, 0, 0, 0);
-        home.add(homelogoa, 1, 1000, 1000);
-		home.add(homelogolighta, 1, 2500, 1000);
-		home.add(homelogolightb, 1, 2000, 1000);
-		home.add(homesakuraa, 1, 3000, 4000);
-		home.add(homesakurab, 1, 2700, 4600);
-		home.add(homesakurac, 1, 2400, 5200);
+        home.add(homebg, 1, 0, 0);
+        home.add(homelogoa, 1, 0, 0);
+		home.add(homelogolighta, 1, 1000, 1000);
+		home.add(homelogolightb, 1, 1000, 500);
+		home.add(homesakuraa, 1, 2000, 4000);
+		home.add(homesakurab, 1, 1700, 4600);
+		home.add(homesakurac, 1, 1400, 5200);
 		home.add(homekatana, 1, 0, 0);
 		
-		home.add(homebgb, 1, 7000, 1500);
-		home.add(homelogob, 1, 7500, 1000);
-		home.add(hometext, 1, 7500, 1000);
-		home.add(homesakurad, 1, 7500, 1500);
-		home.add(homesakurae, 1, 7500, 1500);
-		home.add(homesakuraf, 1, 7500, 1500);
+		home.add(homebgb, 1, 4000, 1500);
+		home.add(homelogob, 1, 4500, 1000);
+		home.add(hometext, 1, 4500, 2000);
+		home.add(homesakurad, 1, 4500, 2000);
+		home.add(homesakurae, 1, 4500, 2000);
+		home.add(homesakuraf, 1, 4500, 2000);
         
 		var websitea = new page("Website 1", manager);
 		manager.add(websitea);
@@ -386,28 +431,29 @@
 		
 		var brand = new page("Brand", manager);
 		manager.add(brand);
-		brand.add(brandcarda, 1, 1000, 1000);
-		brand.add(brandcardb, 1, 2000, 1000);
-		brand.add(brandcardc, 1, 3000, 1000);
-		brand.add(brandcardd, 1, 4000, 1000);
-		brand.add(brandclip, 1, 5000, 1000);
-		brand.add(brandpen, 1, 6000, 1000);
-		brand.add(brandclip, 1, 7000, 1000);
-		brand.add(brandtext, 1, 8000, 1000);
+		brand.add(brandcarda, 1, 2500, 1000);
+		brand.add(brandcardb, 1, 2500, 1000);
+		brand.add(brandcardc, 1, 2500, 1000);
+		brand.add(brandcardd, 1, 1000, 2500);
+		brand.add(brandclip, 1, 2500, 1000);
+		brand.add(brandpen, 1, 1000, 2500);
+		brand.add(brandclip, 1, 2500, 1000);
+		brand.add(brandtext, 1, 2500, 1000);
 		
 		var video = new page("Video", manager);
 		manager.add(video);
-		video.add(videobg, 1, 0, 1000);
-		video.add(videoclipa, 1, 1000, 1000);
-		video.add(videoclipb, 1, 2000, 1000);
+		video.add(videobg, 1, 0, 2000);
+		video.add(videoclipa, 1, 2000, 1000);
+		video.add(videoclipb, 1, 2500, 1000);
 		video.add(videoclipc, 1, 3000, 1000);
-		video.add(videoclipd, 1, 4000, 1000);
-		video.add(videotext, 1, 5000, 1000);
+		video.add(videoclipd, 1, 3500, 1000);
+		video.add(videotext, 1, 5000, 500);
 		
 		var support = new page("Support", manager);
 		manager.add(support);
-		support.add(supportbg, 1, 1000, 1000);
-		support.add(supportwbg, 1, 2000, 1000);
+		support.add(videobg, 1, 0, 1000);
+		support.add(supportbg, 1, 2000, 2000);
+		support.add(supportwbg, 1, 0, 2000);
 		support.add(supporttexta, 1, 3000, 1000);
 		support.add(supporttextb, 1, 4000, 1000);
 		support.add(supporttextc, 1, 5000, 1000);
@@ -548,12 +594,12 @@
 		</div>
 		
 		<!-- BRAND -->
-		<img id="brandcarda" src="katana/brandcarda.png">
-		<img id="brandcardb" src="katana/brandcardb.png">
-		<img id="brandcardc" src="katana/brandcardc.png">
-		<img id="brandcardd" src="katana/brandcardd.png">
-		<img id="brandclip" src="katana/brandclip.png">
-		<img id="brandpen" src="katana/brandpen.png">
+		<div class="contain" id="brandcarda"></div>
+		<div class="contain" id="brandcardb"></div>
+		<div class="contain" id="brandcardc"></div>
+		<div class="contain bottom-align" id="brandcardd"></div>
+		<div class="contain" id="brandclip"></div>
+		<div class="contain bottom-align" id="brandpen"></div>
 		<div id="brandtext">
 			<img src="katana/brandtext.png">
 		</div>

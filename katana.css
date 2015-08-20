@@ -12,6 +12,10 @@
 	background-position: right;
 }
 
+.bottom-align{
+	background-position: bottom;
+}
+
 #homebg{
 	background-image: url(katana/homebg.jpg);
 }
@@ -75,4 +79,23 @@
 
 #interbg{
 	background-image: url(katana/interbg.jpg);
+}
+
+#brandcarda{
+	background-image: url(katana/brandcarda.png);
+}
+#brandcardb{
+	background-image: url(katana/brandcardb.png);
+}
+#brandcardc{
+	background-image: url(katana/brandcardc.png);
+}
+#brandcardd{
+	background-image: url(katana/brandcardd.png);
+}
+#brandclip{
+	background-image: url(katana/brandclip.png);
+}
+#brandpen{
+	background-image: url(katana/brandpen.png);
 }
