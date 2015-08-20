@@ -25,9 +25,7 @@
         // create objects
 		// HOME STATE A
         var homebg = new object("homebg", meta);
-        homebg.add_state(50, 0, -50, 0, 1);
         homebg.add_state(50, 0, 50, 0, 1);
-        homebg.add_state(50, 0, 150, 0, 1);
 		homebg.add_size_transform(0, 100, 0, 100, 0);
 		homebg.set_z_index(-1);
 		
@@ -48,28 +46,27 @@
 		
 		var homesakuraa = new object("homesakuraa", meta);
 		homesakuraa.add_state(50, 0, -50, 0, 1);
-		homesakuraa.add_state(50, 0, 150, 0, 1);
+		homesakuraa.add_state(50, 0, 180, 0, 1);
 		homesakuraa.set_z_index(2);
         
 		var homesakurab = new object("homesakurab", meta);
 		homesakurab.add_state(50, 0, -50, 0, 1);
-		homesakurab.add_state(50, 0, 150, 0, 1);
+		homesakurab.add_state(50, 0, 180, 0, 1);
 		homesakurab.set_z_index(2);
         
 		var homesakurac = new object("homesakurac", meta);
 		homesakurac.add_state(50, 0, -50, 0, 1);
-		homesakurac.add_state(50, 0, 150, 0, 1);
+		homesakurac.add_state(50, 0, 180, 0, 1);
 		homesakurac.set_z_index(2);
 		
 		var homekatana = new object("homekatana", meta);
-		homekatana.add_state(50, 0, -50, 0, 0);
 		homekatana.add_state(50, 0, 0, 209, 1);
         
 		// HOME STATE B
         var homebgb = new object("homebgb", meta);
-        homebgb.add_state(50, 0, -50, 0, 1);
-        homebgb.add_state(50, 0, 50, 0, 1);
         homebgb.add_state(50, 0, 150, 0, 1);
+        homebgb.add_state(50, 0, 50, 0, 1);
+        homebgb.add_state(50, 0, -50, 0, 1);
 		homebgb.add_size_transform(0, 100, 0, 100, 0);
 		homebgb.set_z_index(1);
 		
@@ -297,21 +294,21 @@
         // create pages
         var home = new page('Home', manager);
         manager.add(home);
-        home.add(homebg, 1, 1000, 1000);
-        home.add(homelogoa, 1, 2000, 1000);
-		home.add(homelogolighta, 1, 3000, 1000);
-		home.add(homelogolightb, 1, 4000, 1000);
-		home.add(homesakuraa, 1, 5000, 1000);
-		home.add(homesakurab, 1, 6000, 1000);
-		home.add(homesakurac, 1, 7000, 1000);
-		home.add(homekatana, 1, 8000, 1000);
+        home.add(homebg, 0, 0, 0);
+        home.add(homelogoa, 1, 1000, 1000);
+		home.add(homelogolighta, 1, 2000, 1000);
+		home.add(homelogolightb, 1, 3000, 1000);
+		home.add(homesakuraa, 1, 4000, 3000);
+		home.add(homesakurab, 1, 4000, 3000);
+		home.add(homesakurac, 1, 4000, 3000);
+		home.add(homekatana, 1, 0, 0);
 		
-		home.add(homebgb, 1, 9000, 1000);
-		home.add(homelogob, 1, 10000, 1000);
-		home.add(hometext, 1, 11000, 1000);
-		home.add(homesakurad, 1, 12000, 1000);
-		home.add(homesakurae, 1, 13000, 1000);
-		home.add(homesakuraf, 1, 14000, 1000);
+		home.add(homebgb, 1, 5000, 1500);
+		home.add(homelogob, 1, 6000, 1000);
+		home.add(hometext, 1, 7000, 1000);
+		home.add(homesakurad, 1, 8000, 1000);
+		home.add(homesakurae, 1, 9000, 1000);
+		home.add(homesakuraf, 1, 10000, 1000);
         
 		var websitea = new page("Website 1", manager);
 		manager.add(websitea);
