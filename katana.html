@@ -197,32 +197,36 @@
 		var interbg = new object("interbg", meta);
 		interbg.add_state(50, 0, 150, 0, 1);
 		interbg.add_state(50, 0, 50, 0, 1);
+		interbg.add_size_transform(0, 100, 0, 100, 0);
+		interbg.add_size_transform(1, 100, 0, 100, 0);
+		interbg.add_easing(1, defaultEasing);
 		interbg.set_z_index(4);
 		
 		var interinfoa = new object("interinfoa", meta);
-		interinfoa.add_state(50, 0, 150, 0, 1);
-		interinfoa.add_state(50, 0, 50, 0, 1);
+		interinfoa.add_state(20, 0, 80, 0, 0);
+		interinfoa.add_state(20, 0, 70, 0, 1);
 		interinfoa.set_z_index(5);
 		
 		var interinfob = new object("interinfob", meta);
-		interinfob.add_state(50, 0, 150, 0, 1);
-		interinfob.add_state(50, 0, 50, 0, 1);
+		interinfob.add_state(35, 0, 80, 0, 0);
+		interinfob.add_state(35, 0, 70, 0, 1);
 		interinfob.set_z_index(5);
 		
 		var interinfoc = new object("interinfoc", meta);
-		interinfoc.add_state(50, 0, 150, 0, 1);
-		interinfoc.add_state(50, 0, 50, 0, 1);
+		interinfoc.add_state(50, 0, 80, 0, 0);
+		interinfoc.add_state(50, 0, 70, 0, 1);
 		interinfoc.set_z_index(5);
 		
-		var interinfod = new object("interinfod", meta);
-		interinfod.add_state(50, 0, 150, 0, 1);
-		interinfod.add_state(50, 0, 50, 0, 1);
-		interinfod.set_z_index(5);
+		interinfoa.add_easing(1, defaultEasing);
+		interinfob.add_easing(1, defaultEasing);
+		interinfoc.add_easing(1, defaultEasing);
 		
 		var intertext = new object("intertext", meta);
-		intertext.add_state(50, 0, 150, 0, 1);
-		intertext.add_state(50, 0, 50, 0, 1);
+		intertext.add_state(70, 0, 55, 0, 0);
+		intertext.add_state(70, 0, 45, 0, 1);
 		intertext.set_z_index(5);
+		
+		
 		
 		// BRAND
 		var brandcarda = new object("brandcarda", meta);
@@ -374,11 +378,11 @@
 		
 		var interactive = new page("Interactive", manager);
 		manager.add(interactive);
-		interactive.add(interbg, 1, 1000, 1000);
-		interactive.add(interinfoa, 1, 2000, 1000);
-		interactive.add(interinfob, 1, 3000, 1000);
+		interactive.add(interbg, 1, 1000, 2000);
+		interactive.add(interinfoa, 1, 3000, 1000);
+		interactive.add(interinfob, 1, 3500, 1000);
 		interactive.add(interinfoc, 1, 4000, 1000);
-		interactive.add(intertext, 1, 5000, 1000);
+		interactive.add(intertext, 1, 4500, 1000);
 		
 		var brand = new page("Brand", manager);
 		manager.add(brand);
