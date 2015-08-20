@@ -22,6 +22,9 @@
         // create meta and manager objects
         var meta = new meta();
         var manager = new manager();
+		
+		// options
+		var defaultEasing = "easeOutQuad";
         
         // create objects
 		// HOME STATE A
@@ -43,6 +46,7 @@
 		var homelogolightb = new object("homelogolightb", meta);
 		homelogolightb.add_state(50, 0, 50, -60, 0);
 		homelogolightb.add_state(50, 0, 50, -60, 1);
+		homelogolightb.add_easing(1, defaultEasing);
 		homelogolightb.add_rotate_transform(0, -180);
 		homelogolightb.set_z_index(2);
 		
@@ -89,6 +93,7 @@
 		homesakurad.add_state(18, 0, 75, 0, 1);
 		homesakurad.add_size_transform(0, 36, 0, 51, 0);
 		homesakurad.add_size_transform(1, 36, 0, 51, 0);
+		homesakurad.add_easing(1, defaultEasing);
 		homesakurad.set_z_index(4);
         
 		var homesakurae = new object("homesakurae", meta);
@@ -96,6 +101,7 @@
 		homesakurae.add_state(80, 0, 25, 0, 1);
 		homesakurae.add_size_transform(0, 40, 0, 51, 0);
 		homesakurae.add_size_transform(1, 40, 0, 51, 0);
+		homesakurae.add_easing(1, defaultEasing);
 		homesakurae.set_z_index(4);
         
 		var homesakuraf = new object("homesakuraf", meta);
@@ -103,6 +109,7 @@
 		homesakuraf.add_state(28, 0, -5, 0, 1);
 		homesakuraf.add_size_transform(0, 56, 0, 86, 0);
 		homesakuraf.add_size_transform(1, 56, 0, 86, 0);
+		homesakuraf.add_easing(1, defaultEasing);
 		homesakuraf.set_z_index(4);
 		
 		
