@@ -1,0 +1,50 @@
+.contain{
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.cover{
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.right-align{
+	background-position: right;
+}
+
+#homebg{
+	background-image: url(katana/homebg.jpg);
+}
+
+#homebgb{
+	background-image: url(katana/homebgb.jpg);
+}
+
+.homelogolight{
+	background-repeat: no-repeat;
+}
+
+#homelogolighta{
+	background-image: url(katana/homelogolighta.png);
+	width: 235px;
+	height: 254px;
+}
+
+#homelogolightb{
+	background-image: url(katana/homelogolightb.png);
+	width: 250px;
+	height: 250px;
+	background-position: left top;
+}
+
+#homesakurad{
+	background-image: url(katana/homesakurad.png);
+}
+
+#homesakurae{
+	background-image: url(katana/homesakurae.png);
+}
+
+#homesakuraf{
+	background-image: url(katana/homesakuraf.png);
+}

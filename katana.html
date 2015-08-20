@@ -13,6 +13,7 @@
     <script src="page.js"></script>
     <script src="object.js"></script>
     <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="katana.css" rel="stylesheet" type="text/css">
     <link href="keynote.css" rel="stylesheet" type="text/css">
     <link href="object.css" rel="stylesheet" type="text/css">
     <link href="inspector.css" rel="stylesheet" type="text/css">
@@ -27,7 +28,7 @@
         var homebg = new object("homebg", meta);
         homebg.add_state(50, 0, 50, 0, 1);
 		homebg.add_size_transform(0, 100, 0, 100, 0);
-		homebg.set_z_index(-1);
+		homebg.set_z_index(1);
 		
 		var homelogoa = new object("homelogoa", meta);
 		homelogoa.add_state(50, 0, 50, 0, 0);
@@ -35,32 +36,33 @@
 		homelogoa.set_z_index(1);
 		
 		var homelogolighta = new object("homelogolighta", meta);
-		homelogolighta.add_state(50, 0, 50, 0, 0);
-		homelogolighta.add_state(50, 0, 50, 0, 1);
-		homelogolighta.set_z_index(4);
+		homelogolighta.add_state(50, 0, 50, -60, 0);
+		homelogolighta.add_state(50, 0, 50, -60, 1);
+		homelogolighta.set_z_index(2);
 		
 		var homelogolightb = new object("homelogolightb", meta);
-		homelogolightb.add_state(50, 0, 50, 0, 0);
-		homelogolightb.add_state(50, 0, 50, 0, 1);
-		homelogolightb.set_z_index(4);
+		homelogolightb.add_state(50, 0, 50, -60, 0);
+		homelogolightb.add_state(50, 0, 50, -60, 1);
+		homelogolightb.add_rotate_transform(0, -180);
+		homelogolightb.set_z_index(2);
 		
 		var homesakuraa = new object("homesakuraa", meta);
-		homesakuraa.add_state(50, 0, -50, 0, 1);
-		homesakuraa.add_state(50, 0, 180, 0, 1);
+		homesakuraa.add_state(50, 0, -150, 0, 1);
+		homesakuraa.add_state(50, 0, 250, 0, 1);
 		homesakuraa.set_z_index(2);
         
 		var homesakurab = new object("homesakurab", meta);
-		homesakurab.add_state(50, 0, -50, 0, 1);
-		homesakurab.add_state(50, 0, 180, 0, 1);
+		homesakurab.add_state(50, 0, -100, 0, 1);
+		homesakurab.add_state(50, 0, 200, 0, 1);
 		homesakurab.set_z_index(2);
         
 		var homesakurac = new object("homesakurac", meta);
-		homesakurac.add_state(50, 0, -50, 0, 1);
+		homesakurac.add_state(50, 0, -80, 0, 1);
 		homesakurac.add_state(50, 0, 180, 0, 1);
 		homesakurac.set_z_index(2);
 		
 		var homekatana = new object("homekatana", meta);
-		homekatana.add_state(50, 0, 0, 209, 1);
+		homekatana.add_state(61, 0, 0, 209, 1);
         
 		// HOME STATE B
         var homebgb = new object("homebgb", meta);
@@ -68,32 +70,40 @@
         homebgb.add_state(50, 0, 50, 0, 1);
         homebgb.add_state(50, 0, -50, 0, 1);
 		homebgb.add_size_transform(0, 100, 0, 100, 0);
-		homebgb.set_z_index(1);
+		homebgb.add_size_transform(1, 100, 0, 100, 0);
+		homebgb.add_size_transform(2, 100, 0, 100, 0);
+		homebgb.set_z_index(3);
 		
 		var homelogob = new object("homelogob", meta);
-		homelogob.add_state(50, 0, 50, 0, 0);
-		homelogob.add_state(50, 0, 50, 0, 1);
-		homelogob.set_z_index(2);
+		homelogob.add_state(50, -300, 45, 0, 0);
+		homelogob.add_state(50, -300, 45, 0, 1);
+		homelogob.set_z_index(4);
 		
 		var hometext = new object("hometext", meta);
-		hometext.add_state(50, 0, 50, 0, 0);
-		hometext.add_state(50, 0, 50, 0, 0);
-		hometext.set_z_index(2)
+		hometext.add_state(50, 300, 45, 150, 0);
+		hometext.add_state(50, 300, 45, 100, 1);
+		hometext.set_z_index(4)
 		
 		var homesakurad = new object("homesakurad", meta);
-		homesakurad.add_state(50, 0, -50, 0, 1);
-		homesakurad.add_state(50, 0, 150, 0, 1);
-		homesakurad.set_z_index(2);
+		homesakurad.add_state(18, 0, 150, 0, 1);
+		homesakurad.add_state(18, 0, 75, 0, 1);
+		homesakurad.add_size_transform(0, 36, 0, 51, 0);
+		homesakurad.add_size_transform(1, 36, 0, 51, 0);
+		homesakurad.set_z_index(4);
         
 		var homesakurae = new object("homesakurae", meta);
-		homesakurae.add_state(50, 0, -50, 0, 1);
-		homesakurae.add_state(50, 0, 150, 0, 1);
-		homesakurae.set_z_index(2);
+		homesakurae.add_state(80, 0, 150, 0, 1);
+		homesakurae.add_state(80, 0, 25, 0, 1);
+		homesakurae.add_size_transform(0, 40, 0, 51, 0);
+		homesakurae.add_size_transform(1, 40, 0, 51, 0);
+		homesakurae.set_z_index(4);
         
 		var homesakuraf = new object("homesakuraf", meta);
-		homesakuraf.add_state(50, 0, -50, 0, 1);
-		homesakuraf.add_state(50, 0, 150, 0, 1);
-		homesakuraf.set_z_index(2);
+		homesakuraf.add_state(28, 0, 150, 0, 1);
+		homesakuraf.add_state(28, 0, -5, 0, 1);
+		homesakuraf.add_size_transform(0, 56, 0, 86, 0);
+		homesakuraf.add_size_transform(1, 56, 0, 86, 0);
+		homesakuraf.set_z_index(4);
 		
 		
 		// WEBSITE 1
@@ -296,19 +306,19 @@
         manager.add(home);
         home.add(homebg, 0, 0, 0);
         home.add(homelogoa, 1, 1000, 1000);
-		home.add(homelogolighta, 1, 2000, 1000);
-		home.add(homelogolightb, 1, 3000, 1000);
-		home.add(homesakuraa, 1, 4000, 3000);
-		home.add(homesakurab, 1, 4000, 3000);
-		home.add(homesakurac, 1, 4000, 3000);
+		home.add(homelogolighta, 1, 2500, 1000);
+		home.add(homelogolightb, 1, 2000, 1000);
+		home.add(homesakuraa, 1, 3000, 4000);
+		home.add(homesakurab, 1, 2700, 4600);
+		home.add(homesakurac, 1, 2400, 5200);
 		home.add(homekatana, 1, 0, 0);
 		
-		home.add(homebgb, 1, 5000, 1500);
-		home.add(homelogob, 1, 6000, 1000);
-		home.add(hometext, 1, 7000, 1000);
-		home.add(homesakurad, 1, 8000, 1000);
-		home.add(homesakurae, 1, 9000, 1000);
-		home.add(homesakuraf, 1, 10000, 1000);
+		home.add(homebgb, 1, 7000, 1500);
+		home.add(homelogob, 1, 7500, 1000);
+		home.add(hometext, 1, 7500, 1000);
+		home.add(homesakurad, 1, 7500, 1500);
+		home.add(homesakurae, 1, 7500, 1500);
+		home.add(homesakuraf, 1, 7500, 1500);
         
 		var websitea = new page("Website 1", manager);
 		manager.add(websitea);
@@ -449,23 +459,23 @@
 <body>
 	<div id="images">
 		<!-- HOME -->
-		<img id="homebg" src="katana/homebg.jpg">
+		<div class="cover" id="homebg"></div>
 		<img id="homelogoa" src="katana/homelogoa.png">
-		<img id="homelogolighta" src="katana/homelogolighta.png">
-		<img id="homelogolightb" src="katana/homelogolightb.png">
+		<div class="homelogolight" id="homelogolighta"></div>
+		<div class="homelogolight" id="homelogolightb"></div>
 		<img id="homesakuraa" src="katana/homesakuraa.png">
 		<img id="homesakurab" src="katana/homesakurab.png">
 		<img id="homesakurac" src="katana/homesakurac.png">
 		<img id="homekatana" src="katana/homekatana.png">
 		
-		<img id="homebgb" src="katana/homebgb.jpg">
+		<div class="cover" id="homebgb"></div>
 		<img id="homelogob" src="katana/homelogob.png">
 		<div id="hometext">
 			<img src="katana/hometext.png">
 		</div>
-		<img id="homesakurad" src="katana/homesakurad.png">
-		<img id="homesakurae" src="katana/homesakurae.png">
-		<img id="homesakuraf" src="katana/homesakuraf.png">
+		<div class="contain" id="homesakurad"></div>
+		<div class="contain right-align" id="homesakurae"></div>
+		<div class="contain" id="homesakuraf"></div>
 		
 		<!-- WEBSITE 1-->
 		<img id="websitebg" src="katana/websitebg.jpg">
