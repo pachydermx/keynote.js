@@ -41,14 +41,14 @@
 		homelogoa.set_z_index(1);
 		
 		var homelogolighta = new object("homelogolighta", meta);
-		homelogolighta.add_state(50, 0, 50, -60, 0);
-		homelogolighta.add_state(50, 0, 50, -60, 1);
+		homelogolighta.add_state(50, 0, 50, -55, 0);
+		homelogolighta.add_state(50, 0, 50, -55, 1);
 		homelogolighta.set_z_index(2);
 		
 		var homelogolightb = new object("homelogolightb", meta);
-		homelogolightb.add_state(50, 0, 50, -60, 0);
-		homelogolightb.add_state(50, 0, 50, -60, 1);
-		homelogolightb.add_easing(1, defaultEasing);
+		homelogolightb.add_state(50, 0, 50, -55, 0);
+		homelogolightb.add_state(50, 0, 50, -55, 1);
+		homelogolightb.add_easing(1, "easeOutCubic");
 		homelogolightb.add_rotate_transform(0, -180);
 		homelogolightb.set_z_index(2);
 		
@@ -124,6 +124,7 @@
 		websitebg.add_size_transform(0, 100, 0, 100, 0);
 		websitebg.add_size_transform(1, 100, 0, 100, 0);
 		websitebg.add_size_transform(2, 100, 0, 100, 0);
+		websitebg.default_exit_location = 2;
 		websitebg.add_easing(1, defaultEasing);
 		websitebg.auto_reset = false;
 		websitebg.set_z_index(4);
@@ -141,6 +142,8 @@
 		var websitetext = new object("websitetext", meta);
 		websitetext.add_state(65, 0, 45, 0, 0);
 		websitetext.add_state(65, 0, 35, 0, 1);
+		websitetext.add_state(65, 0, -50, 0, 1);
+		websitetext.default_exit_location = 2;
 		websitetext.add_easing(1, defaultEasing);
 		websitetext.set_z_index(5);
 		
@@ -174,7 +177,7 @@
 		websiteleafc.add_size_transform(1, 18, 0, 31, 0);
 		websiteleafc.add_size_transform(2, 18, 0, 31, 0);
 		websiteleafc.add_easing(1, defaultEasing);
-		websiteleafb.default_exit_location = 2;
+		websiteleafc.default_exit_location = 2;
 		websiteleafc.set_z_index(5);
 		
 		var websiteleafd = new object("websiteleafd", meta);
@@ -185,13 +188,13 @@
 		websiteleafd.add_size_transform(1, 25, 0, 44, 0);
 		websiteleafd.add_size_transform(2, 25, 0, 44, 0);
 		websiteleafd.add_easing(1, defaultEasing);
-		websiteleafb.default_exit_location = 2;
+		websiteleafd.default_exit_location = 2;
 		websiteleafd.set_z_index(5);
 		
 		var websitedevices = new object("websitedevices", meta);
 		websitedevices.add_state(40, 0, 75, 0, 0);
 		websitedevices.add_state(50, 0, 75, 0, 1);
-		websitedevices.add_state(150, 0, 75, 0, 1);
+		websitedevices.add_state(50, 0, -50, 0, 1);
 		websitedevices.add_size_transform(0, 61, 0, 45, 0);
 		websitedevices.add_size_transform(1, 61, 0, 45, 0);
 		websitedevices.add_size_transform(2, 61, 0, 45, 0);
@@ -203,24 +206,33 @@
 		var interbg = new object("interbg", meta);
 		interbg.add_state(50, 0, 150, 0, 1);
 		interbg.add_state(50, 0, 50, 0, 1);
+		interbg.add_state(50, 0, -50, 0, 1);
 		interbg.add_size_transform(0, 100, 0, 100, 0);
 		interbg.add_size_transform(1, 100, 0, 100, 0);
+		interbg.add_size_transform(2, 100, 0, 100, 0);
 		interbg.add_easing(1, defaultEasing);
+		interbg.default_exit_location = 2;
 		interbg.set_z_index(4);
 		
 		var interinfoa = new object("interinfoa", meta);
 		interinfoa.add_state(20, 0, 80, 0, 0);
 		interinfoa.add_state(20, 0, 70, 0, 1);
+		interinfoa.add_state(20, 0, -30, 0, 1);
+		interinfoa.default_exit_location = 2;
 		interinfoa.set_z_index(5);
 		
 		var interinfob = new object("interinfob", meta);
 		interinfob.add_state(35, 0, 80, 0, 0);
 		interinfob.add_state(35, 0, 70, 0, 1);
+		interinfob.add_state(35, 0, -30, 0, 1);
+		interinfob.default_exit_location = 2;
 		interinfob.set_z_index(5);
 		
 		var interinfoc = new object("interinfoc", meta);
 		interinfoc.add_state(50, 0, 80, 0, 0);
 		interinfoc.add_state(50, 0, 70, 0, 1);
+		interinfoc.add_state(50, 0, -30, 0, 1);
+		interinfoc.default_exit_location = 2;
 		interinfoc.set_z_index(5);
 		
 		interinfoa.add_easing(1, defaultEasing);
@@ -230,6 +242,9 @@
 		var intertext = new object("intertext", meta);
 		intertext.add_state(70, 0, 55, 0, 0);
 		intertext.add_state(70, 0, 45, 0, 1);
+		intertext.add_state(70, 0, -55, 0, 1);
+		intertext.default_exit_location = 2;
+		intertext.add_easing(1, defaultEasing);
 		intertext.set_z_index(5);
 		
 		
@@ -339,26 +354,36 @@
 		var supportwbg = new object("supportwbg", meta);
 		supportwbg.add_state(50, 0, 150, 0, 1);
 		supportwbg.add_state(50, 0, 0, 421, 1);
+		supportwbg.add_state(50, 0, -50, 0, 1);
+		supportwbg.default_exit_location = 2;
 		supportwbg.set_z_index(6);	
 		
 		var supporttexta = new object("supporttexta", meta);
 		supporttexta.add_state(23, 0, 150, 0, 0);
 		supporttexta.add_state(23, 0, 0, 480, 1);
+		supporttexta.add_state(23, 0, -50, 0, 1);
+		supporttexta.default_exit_location = 2;
 		supporttexta.set_z_index(6);
 		
 		var supporttextb = new object("supporttextb", meta);
 		supporttextb.add_state(41, 0, 150, 0, 0);
 		supporttextb.add_state(41, 0, 0, 480, 1);
+		supporttextb.add_state(41, 0, -50, 0, 1);
+		supporttextb.default_exit_location = 2;
 		supporttextb.set_z_index(6);
 		
 		var supporttextc = new object("supporttextc", meta);
 		supporttextc.add_state(59, 0, 150, 0, 0);
 		supporttextc.add_state(59, 0, 0, 480, 1);
+		supporttextc.add_state(59, 0, -50, 0, 1);
+		supporttextc.default_exit_location = 2;
 		supporttextc.set_z_index(6);
 		
 		var supporttextd = new object("supporttextd", meta);
 		supporttextd.add_state(77, 0, 150, 0, 0);
 		supporttextd.add_state(77, 0, 0, 480, 1);
+		supporttextd.add_state(77, 0, -50, 0, 1);
+		supporttextd.default_exit_location = 2;
 		supporttextd.set_z_index(6);
 		
 		supportbg.add_easing(1, defaultEasing);
@@ -391,18 +416,18 @@
         home.add(homebg, 1, 0, 0);
         home.add(homelogoa, 1, 0, 0);
 		home.add(homelogolighta, 1, 1000, 1000);
-		home.add(homelogolightb, 1, 1000, 500);
-		home.add(homesakuraa, 1, 2000, 4000);
-		home.add(homesakurab, 1, 1700, 4600);
-		home.add(homesakurac, 1, 1400, 5200);
+		home.add(homelogolightb, 1, 1000, 1500);
+		home.add(homesakuraa, 1, 3000, 4000);
+		home.add(homesakurab, 1, 2700, 4600);
+		home.add(homesakurac, 1, 2400, 5200);
 		home.add(homekatana, 1, 0, 0);
 		
-		home.add(homebgb, 1, 4000, 1500);
-		home.add(homelogob, 1, 4500, 1000);
-		home.add(hometext, 1, 4500, 2000);
-		home.add(homesakurad, 1, 4500, 2000);
-		home.add(homesakurae, 1, 4500, 2000);
-		home.add(homesakuraf, 1, 4500, 2000);
+		home.add(homebgb, 1, 5000, 1500);
+		home.add(homelogob, 1, 5500, 1000);
+		home.add(hometext, 1, 5500, 2000);
+		home.add(homesakurad, 1, 5500, 2000);
+		home.add(homesakurae, 1, 5500, 2000);
+		home.add(homesakuraf, 1, 5500, 2000);
         
 		var websitea = new page("Website 1", manager);
 		manager.add(websitea);
