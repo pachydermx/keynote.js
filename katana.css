@@ -124,6 +124,10 @@
 	background-image: url(katana/supportbg.jpg);
 }
 
+#supportwbg{
+	background: white;
+}
+
 /* Text */
 
 .preview_container{
@@ -160,6 +164,10 @@
 .tag.green{
 	background: #009966;
 }
+.tag.purple{
+	background: #9966cc;	
+}
+
 
 .title{
 	font-family: "Georgia";
@@ -221,3 +229,25 @@
 	font-weight: bold;
 	margin: auto;
 }
+
+.thumb_display{
+	background: rgba(255, 255, 255, 0.32);
+	font-family: "Arial";
+	padding: 0.8vw;
+	text-align: center;
+}
+
+.thumb_img img{
+	width: 9vw;
+}
+		
+.thumb_title{
+	padding-top: 9px;
+	font-size: 0.8vw;
+}
+		
+.thumb_box{
+	display: inline-block;
+	margin-right: 0.8vw;
+}
+
