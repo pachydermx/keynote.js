@@ -128,6 +128,12 @@
 	background: white;
 }
 
+#supporttitle{
+	font-family: "Georgia";
+	font-size: 2.5vw;
+	text-align: center;
+}
+
 .supporttext p {
     font-family: "Arial";
     font-size: 0.75vw;
