@@ -319,7 +319,9 @@
 		
 		var brandtext = new object("brandtext", meta);
 		brandtext.add_state(68, 0, 150, 0, 1);
-		brandtext.add_state(68, 0, 75, 0, 1);
+		brandtext.add_state(68, 0, 70, 0, 1);
+		brandtext.add_size_transform(0, 25, 0, 45, 0);
+		brandtext.add_size_transform(1, 25, 0, 45, 0);
 		brandtext.set_z_index(2);
 		
 		brandcarda.add_easing(1, defaultEasing);
@@ -720,8 +722,34 @@
 		<div class="contain bottom-align" id="brandcardd"></div>
 		<div class="contain" id="brandclip"></div>
 		<div class="contain bottom-align" id="brandpen"></div>
-		<div id="brandtext">
-			<img src="katana/brandtext.png">
+		<div class="preview_container black" id="brandtext">
+			<div class="title_container">
+				<span class="title">
+					Brand Designing
+				</span>
+			</div>
+			<hr class="title_divider">
+			<div class="context_container">
+				<p class="context">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat fugiat nulla pariatur.
+				</p>
+				<ul class="context">
+					<li>Identify the different types of websites available</li>
+					<li>develop an online process of selecting and creating a website</li>
+					<li>Login to an online store and explore product management</li>
+					<li>Identify the different on-line and off-line marking strategies</li>
+				</ul>
+			</div>
+			<div class="button_container black_button">
+				<div class="more_button reverse">
+					<div class="vertical_align">
+						<span class="button_label">
+							<span class="button_icon more_info">▶︎</span>
+							More Information
+						</span>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<!-- VIDEO -->
