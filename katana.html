@@ -386,8 +386,11 @@
 		
 		var supportwbg = new object("supportwbg", meta);
 		supportwbg.add_state(50, 0, 150, 0, 1);
-		supportwbg.add_state(50, 0, 0, 421, 1);
+		supportwbg.add_state(50, 0, 39, 0, 1);
 		supportwbg.add_state(50, 0, -50, 0, 1);
+		supportwbg.add_size_transform(0, 100, 0, 78, 0);
+		supportwbg.add_size_transform(1, 100, 0, 78, 0);
+		supportwbg.add_size_transform(2, 100, 0, 78, 0);
 		supportwbg.default_exit_location = 2;
 		supportwbg.set_z_index(6);	
 		
@@ -809,8 +812,7 @@
 		
 		<!-- SUPPORT -->
 		<div class="cover" id="supportbg"></div>
-		<div id="supportwbg">
-		</div>
+		<div id="supportwbg"></div>
 		<div class="supporttext" id="supporttexta">
 			<img src="katana/supporttexta.png">
 		</div>
