@@ -1,5 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=2048">
 <html>
 <head>
     <!-- import jquery library -->
@@ -91,6 +91,8 @@
 		var hometext = new object("hometext", meta);
 		hometext.add_state(50, 300, 45, 150, 0);
 		hometext.add_state(50, 300, 45, 100, 1);
+		hometext.add_size_transform(0, 25, 0, 31, 0);
+		hometext.add_size_transform(1, 25, 0, 31, 0);
 		hometext.set_z_index(4)
 		
 		var homesakurad = new object("homesakurad", meta);
@@ -318,8 +320,8 @@
 		brandclip.set_z_index(2);
 		
 		var brandtext = new object("brandtext", meta);
-		brandtext.add_state(68, 0, 150, 0, 1);
-		brandtext.add_state(68, 0, 70, 0, 1);
+		brandtext.add_state(70, 0, 150, 0, 1);
+		brandtext.add_state(70, 0, 70, 0, 1);
 		brandtext.add_size_transform(0, 25, 0, 45, 0);
 		brandtext.add_size_transform(1, 25, 0, 45, 0);
 		brandtext.set_z_index(2);
@@ -634,7 +636,7 @@
     </script>
 </head>
 <body>
-	<div id="images">
+	<div id="page_frame">
 		<!-- HOME -->
 		<div class="cover" id="homebg"></div>
 		<img id="homelogoa" src="katana/homelogoa.png">
@@ -647,8 +649,19 @@
 		
 		<div class="cover" id="homebgb"></div>
 		<img id="homelogob" src="katana/homelogob.png">
-		<div id="hometext">
-			<img src="katana/hometext.png">
+		<div class="preview_container black" id="hometext">
+			<div class="title_container">
+				<span class="title">
+					Welcome to <br>
+					Studio KATANA
+				</span>
+			</div>
+			<hr class="title_divider">
+			<div class="context_container">
+				<p class="context">
+					Combining technology, design & media we build advanced connections between brands and their audiences. We create compelling solutions that deliver and sustain business growth, starting from web and mobile applications to complex business enterprise software. 
+				</p>
+			</div>
 		</div>
 		<div class="contain" id="homesakurad"></div>
 		<div class="contain right-align" id="homesakurae"></div>
