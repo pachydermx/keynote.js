@@ -128,6 +128,19 @@
 	background: white;
 }
 
+.supporttext p {
+    font-family: "Arial";
+    font-size: 0.75vw;
+    line-height: 1.5;
+    /*text-align: justify;*/
+    width: 80%;
+    padding-left: 10%;
+}
+
+.supporttext img{
+	width: 100%;
+}
+
 /* Text */
 
 .preview_container{
