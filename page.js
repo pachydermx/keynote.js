@@ -4,6 +4,7 @@ function page(name, manager) {
     this.manager = manager;
     this.objects = [];
     this.timers = [];
+	this.callbacks = [];
 	this.counter = 0;
     this.default_duration = 1000;
 }
@@ -100,7 +101,16 @@ page.prototype.object_complete = function (obj){
 	// remove delegate
 	obj.delegate = undefined;
 	// check if empty
-	if (this.counter == 0){
-		console.log("EMPTY!!!");
+	if (this.counter == 0 && typeof this.callbacks.animation_complete !== "undefined"){
+		this.callbacks.animation_complete();
 	}
-}
+};
+
+// add callback
+page.prototype.add_callback = function (function_flag, func){
+	if (function_flag === "animation_complete"){
+		this.callbacks.animation_complete = func;
+	} else {
+		console.log("ERROR: Unknown function flag");
+	}
+};

@@ -149,8 +149,8 @@ object.prototype.add_easing = function (state_id, easing) {
 };
 
 // add complete callback
-object.prototype.add_callback = function (state_id, function_slot, func) {
-	if (function_slot === "complete"){
+object.prototype.add_callback = function (state_id, function_flag, func) {
+	if (function_flag === "complete"){
 		this.add_optional_info(state_id, {"func_complete" : func});
 	} else {
 		console.log("ERROR: Unknown Function Slot");
