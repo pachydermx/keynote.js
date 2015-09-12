@@ -13,6 +13,7 @@ function object(id, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
+	this.delegate = undefined;
     var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode, angle;
     
 }
@@ -213,10 +214,15 @@ object.prototype.perform_animation = function (target, duration) {
         }, {duration: duration,
             easing: easing,
             complete: function () {
-				// run callback if function exist
+				// check if object ready
 				if (typeof that.state !== "undefined") {
+					// run callback if function exist
 					if ("func_complete" in that.states[that.state]){
 						that.states[that.state].func_complete();
+					}
+					// check if delegate func exist
+					if (typeof that.delegate !== "undefined"){
+						that.delegate.object_complete(that);	
 					}
 				}
 			}

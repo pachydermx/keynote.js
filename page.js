@@ -4,6 +4,7 @@ function page(name, manager) {
     this.manager = manager;
     this.objects = [];
     this.timers = [];
+	this.counter = 0;
     this.default_duration = 1000;
 }
     
@@ -34,19 +35,17 @@ page.prototype.play = function () {
 			the_object.object.moveToState(0, 0);
 		}
 		// perform
-		/*
-		this.timers.push(setTimeout(function(){
-			//the_object.object.moveToState(the_object.state, the_object.duration);
-			console.log(the_object);
-		}
-		, the_object.interval));
-		*/
 		this.fire(the_object);
 	}
 };
 
 // create timeout event
 page.prototype.fire = function (obj){
+	// set delegate
+	obj.object.delegate = this;
+	// set counter
+	this.counter++;
+	// set timer 
 	this.timers.push(setTimeout(function(){
 		obj.object.moveToState(obj.state, obj.duration);
 	}, obj.interval));
@@ -54,9 +53,18 @@ page.prototype.fire = function (obj){
 
 // clear timeout events
 page.prototype.clear = function(){
+	// reset delegates
+	for (i in this.objects) {
+		var the_object = this.objects[i];
+		// reset its delegate
+		the_object.object.delegate = undefined;
+	}
+	// clear timers
 	while(this.timers.length > 0){
 		clearTimeout(this.timers.pop());
 	}
+	// reset counter
+	this.counter = 0;
 };
 
 // exit page
@@ -84,3 +92,15 @@ page.prototype.exit = function (new_page_objects) {
 		}
 	}
 };
+
+// receive complete call from objects
+page.prototype.object_complete = function (obj){
+	// set counter
+	this.counter--;
+	// remove delegate
+	obj.delegate = undefined;
+	// check if empty
+	if (this.counter == 0){
+		console.log("EMPTY!!!");
+	}
+}
