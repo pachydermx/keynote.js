@@ -147,6 +147,15 @@ object.prototype.add_easing = function (state_id, easing) {
     this.add_optional_info(state_id, {'easing': easing});
 };
 
+// add complete callback
+object.prototype.add_callback = function (state_id, function_slot, func) {
+	if (function_slot === "complete"){
+		this.add_optional_info(state_id, {"func_complete" : func});
+	} else {
+		console.log("ERROR: Unknown Function Slot");
+	}
+};
+
 // move and scale
 object.prototype.perform_animation = function (target, duration) {
     // store state
@@ -192,6 +201,8 @@ object.prototype.perform_animation = function (target, duration) {
     var destination_y = this.meta.height * (target.y_percent / 100) - target_size.height / 2 + target.y_delta;
     // perform with animation
     if (duration !== undefined || duration > 0) {
+		// assign current object to temp var
+		var that = this;
         this.dom_obj.animate({
             'left' : destination_x,
             'top' : destination_y,
@@ -201,7 +212,14 @@ object.prototype.perform_animation = function (target, duration) {
             'rotate': target_angle
         }, {duration: duration,
             easing: easing,
-            complete: function () {}
+            complete: function () {
+				// run callback if function exist
+				if (typeof that.state !== "undefined") {
+					if ("func_complete" in that.states[that.state]){
+						that.states[that.state].func_complete();
+					}
+				}
+			}
             });
     } else {
         // perform without animation

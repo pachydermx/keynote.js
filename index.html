@@ -28,6 +28,10 @@
         var test = new object("test", meta);
         test.add_state(0, 0, 0, 0, 0);
         test.add_state(50, 0, 50, 200, 1);
+		var test_complete = function(){
+			console.log("Hello world");
+		};
+		test.add_callback(1, "complete", test_complete);
         test.add_state(50, 0, 50, 100, 1);
         test.auto_reset = false;
         
