@@ -34,10 +34,30 @@
 		test.add_callback(1, "complete", test_complete);
         test.add_state(50, 0, 50, 100, 1);
         test.auto_reset = false;
+		
+        var testa = new object("testa", meta);
+        testa.add_state(150, 0, 50, 0, 1);
+        testa.add_state(50, 0, 50, 0, 1);
+        testa.add_state(-50, 0, 50, 0, 1);
+        
+        var testb = new object("testb", meta);
+        testb.add_state(150, 0, 50, 0, 1);
+        testb.add_state(50, 0, 50, 0, 1);
+        testb.add_state(-50, 0, 50, 0, 1);
+        
+        var testc = new object("testc", meta);
+        testc.add_state(150, 0, 50, 0, 1);
+        testc.add_state(50, 0, 50, 0, 1);
+        testc.add_state(-50, 0, 50, 0, 1);
+		
+		testa.default_exit_location = 2;
+		testb.default_exit_location = 2;
+		testc.default_exit_location = 2;
         
         var domtest = new object("domtest", meta);
         domtest.add_state(100, 100, 10, 100, 1);
         domtest.add_state(100, -100, 10, 100, 1);
+		domtest.auto_reset = false;
         
         var test2 = new object("test2", meta);
         test2.add_state(50, 0, 100, 10, 0);
@@ -78,6 +98,23 @@
         manager.add(page3);
         page3.add(imgtest, 2, 0, 1000);
         page3.add(imgtest, 1, 1000, 1000);
+		
+		
+		// slider
+		pages1 = new page("Slider #1", manager);
+		manager.add(pages1);
+		pages1.add(testa, 1, 1000, 1000);
+		pages1.add(domtest, 1, 1000, 1000);
+        
+		pages2 = new page("Slider #2", manager);
+		manager.add(pages2);
+		pages2.add(testb, 1, 1000, 1000);
+		pages2.add(domtest, 1, 1000, 1000);
+        
+		pages3 = new page("Slider #3", manager);
+		manager.add(pages3);
+		pages3.add(testc, 1, 1000, 1000);
+		pages3.add(domtest, 1, 1000, 1000);
         
         // create inspector
         var inspector = new inspector(manager);
@@ -91,6 +128,9 @@
         $(window).load(function(){
             inspector.enable("body");
             test.init("body", "<div>HELLO</div>");
+            testa.init("body", "HELLOPAGE1");
+            testb.init("body", "HELLOPAGE2");
+            testc.init("body", "HELLOPAGE3");
             domtest.init_with_selector("#domtest");
             test2.init("body", "<div>WORLD</div>");
             imgtest.init_with_image("body", "img/test.jpg");
