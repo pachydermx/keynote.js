@@ -122,6 +122,8 @@
 		testslider.add(pages2);
 		testslider.add(pages3);
 		
+		testslider.set_intro(page1);
+		
         // create inspector
         var inspector = new inspector(manager);
         
@@ -140,10 +142,11 @@
             domtest.init_with_selector("#domtest");
             test2.init("body", "<div>WORLD</div>");
             imgtest.init_with_image("body", "img/test.jpg");
+			
+			testslider.init();
             
             manager.goto_page(0);
 			
-			testslider.init();
         });
     </script>
 </head>

@@ -4,6 +4,7 @@ function slider(manager){
 	this.pages_id = [];
 	this.current_page_id = undefined;
 	this.playing = false;
+	this.intro_page = undefined;
 }
 
 // add slider page
@@ -11,19 +12,33 @@ slider.prototype.add = function (page){
 	this.pages_id.push(this.manager.pages.indexOf(page));
 };
 
+// set intro page
+slider.prototype.set_intro = function (page){
+	this.intro_page = this.manager.pages.indexOf(page);
+};
+
 // init slider
 slider.prototype.init = function () {
-	// assign callback
+	// assign manager callback
 	var that = this;
 	this.manager.add_callback(function(id) {
 		that.filter(id);
 	});
+	// assign intro
+	if (typeof this.intro_page !== "undefined") {
+		var that = this;
+		this.manager.pages[this.intro_page].add_callback("animation_complete", function () {
+			that.manager.goto_page(that.pages_id[0]);
+		});
+	}
 }
 
 // start filter
 slider.prototype.filter = function (page_id) {
+	// jump to slider page
 	if (this.pages_id.indexOf(Number(page_id)) != -1) {
 		this.start();
+	// things else
 	} else {
 		this.stop();
 	}
