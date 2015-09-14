@@ -5,6 +5,7 @@ function slider(manager){
 	this.current_page_id = undefined;
 	this.playing = false;
 	this.intro_page = undefined;
+	this.callback = undefined;
 }
 
 // add slider page
@@ -24,6 +25,8 @@ slider.prototype.init = function () {
 	this.manager.add_callback(function(id) {
 		that.filter(id);
 	});
+	// reset start point
+	this.current_page_id = this.pages_id.length - 1;
 	// assign intro
 	if (typeof this.intro_page !== "undefined") {
 		var that = this;
@@ -54,8 +57,6 @@ slider.prototype.start = function () {
 	} else {
 		// init properties
 		this.playing = true;
-		this.current_page_id = 0;
-		this.manager.goto_page(this.pages_id[this.current_page_id]);
 		// set callbacks
 		for (var i in this.pages_id){
 			var the_page = this.manager.pages[this.pages_id[i]];
@@ -65,6 +66,7 @@ slider.prototype.start = function () {
 				that.next();
 			});
 		}
+		this.next();
 		return true;
 	}
 };
@@ -80,6 +82,10 @@ slider.prototype.next = function () {
 		}
 		// perform	
 		this.manager.goto_page(this.pages_id[this.current_page_id]);
+		// callback
+		if (typeof this.callback !== "undefined") {
+			this.callback(this.current_page_id);
+		}
 		return true;
 	} else {
 		console.log("Warning: Slider is not playing");
@@ -91,7 +97,6 @@ slider.prototype.next = function () {
 slider.prototype.stop = function () {
 	// reset properties
 	this.playing = false;
-	this.current_page_id = undefined;
 	// clear callbacks
 	for (var i in this.pages_id){
 		var the_page = this.manager.pages[this.pages_id[i]];

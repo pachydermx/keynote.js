@@ -123,6 +123,9 @@
 		testslider.add(pages3);
 		
 		testslider.set_intro(page1);
+		testslider.callback = function (id) {
+			console.log("id: "+ id);
+		};
 		
         // create inspector
         var inspector = new inspector(manager);
