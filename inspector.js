@@ -33,7 +33,7 @@ function inspector(manager) {
         this.dom_obj.append(getUl('object_info_list', 'inspector_frame', ''));
         this.object_info_list = $("#object_info_list");
     };
-
+	
     // refresh page list
     this.refresh_page_viewer = function () {
         // print page list
@@ -141,7 +141,7 @@ function inspector(manager) {
         // show positions
         inspector.refresh_object_info(inspector.manager.pages[inspector.manager.lastPage].objects[object_id].object);
     };
-    
+	
     // general functions
     
     // highlight object
@@ -209,8 +209,4 @@ function inspector(manager) {
         }
     };
         
-    
-    
-    
-    
 }

@@ -2,13 +2,13 @@
 function manager() {
     this.pages = [];
     this.objects = [];
-    var lastPage;
+    this.lastPage = undefined;
     
     // add page to manager
     this.add = function (page) {
         this.pages.push(page);
     };
-    
+	
     // reset positions of all pages
     this.refresh = function () {
         // refresh objects which had already added to a page
@@ -21,6 +21,10 @@ function manager() {
         for (i in this.objects) {
             this.objects[i].refresh();
         }
+		// refresh submanagers
+		if (typeof this.submanagers[this.lastPage] !== "undefined"){
+			this.submanagers[this.lastPage].refresh();
+		}
     };
     
     // go to page
@@ -38,4 +42,5 @@ function manager() {
             console.log("Page " + page + " not defined");
         }
     };
+	
 }

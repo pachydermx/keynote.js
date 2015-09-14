@@ -12,6 +12,7 @@
     <script src="configurator.js"></script>
     <script src="inspector.js"></script>
     <script src="manager.js"></script>
+    <script src="slider.js"></script>
     <script src="page.js"></script>
     <script src="object.js"></script>
     <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
@@ -115,7 +116,12 @@
 		manager.add(pages3);
 		pages3.add(testc, 1, 1000, 1000);
 		pages3.add(domtest, 1, 1000, 1000);
-        
+		
+		testslider = new slider(manager);
+		testslider.add(3);
+		testslider.add(4);
+		testslider.add(5);
+		
         // create inspector
         var inspector = new inspector(manager);
         
@@ -136,6 +142,8 @@
             imgtest.init_with_image("body", "img/test.jpg");
             
             manager.goto_page(0);
+			
+			testslider.start();
         });
     </script>
 </head>

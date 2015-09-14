@@ -4,7 +4,7 @@ function page(name, manager) {
     this.manager = manager;
     this.objects = [];
     this.timers = [];
-	this.callbacks = [];
+	this.callbacks = {};
 	this.counter = 0;
     this.default_duration = 1000;
 }
