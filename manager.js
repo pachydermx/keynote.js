@@ -3,6 +3,7 @@ function manager() {
     this.pages = [];
     this.objects = [];
     this.lastPage = undefined;
+	this.callbacks = [];
     
     // add page to manager
     this.add = function (page) {
@@ -27,6 +28,11 @@ function manager() {
 		}
     };
     
+	// add callback
+	this.add_callback = function (func) {
+		this.callbacks.push(func);
+	};
+	
     // go to page
     this.goto_page = function(page) {
         if (typeof this.pages[page] !== "undefined") {
@@ -38,8 +44,15 @@ function manager() {
             this.pages[page].play();
             // remember last page
             this.lastPage = page;
+			// run callbacks
+			for (var i in this.callbacks){
+				this.callbacks[i](page);
+			}
+			
+			return true;
         } else {
             console.log("Page " + page + " not defined");
+			return false;
         }
     };
 	

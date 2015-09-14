@@ -118,9 +118,9 @@
 		pages3.add(domtest, 1, 1000, 1000);
 		
 		testslider = new slider(manager);
-		testslider.add(3);
-		testslider.add(4);
-		testslider.add(5);
+		testslider.add(pages1);
+		testslider.add(pages2);
+		testslider.add(pages3);
 		
         // create inspector
         var inspector = new inspector(manager);
@@ -143,7 +143,7 @@
             
             manager.goto_page(0);
 			
-			testslider.start();
+			testslider.init();
         });
     </script>
 </head>
