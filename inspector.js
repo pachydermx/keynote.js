@@ -32,6 +32,13 @@ function inspector(manager) {
         this.dom_obj.append(getLabel('', 'section_title', 'Info'));
         this.dom_obj.append(getUl('object_info_list', 'inspector_frame', ''));
         this.object_info_list = $("#object_info_list");
+		
+		
+		// set manager callback
+		var that = this;
+		manager.add_callback(function (id) {
+			that.highlight_page_item(id);
+		});
     };
 	
     // refresh page list
@@ -124,13 +131,16 @@ function inspector(manager) {
         var page_id = $(this).attr("id").split('_')[4];
         // move to page
         manager.goto_page(page_id);
+    };
+	
+	this.highlight_page_item = function (page_id) {
         // set style
         $("#page_viewer_list li").removeClass("selected");
-        $(this).addClass("selected");
+        $("#page_viewer_list_item_" + page_id).addClass("selected");
 
         // refresh object list
         inspector.refresh_object_viewer_list(page_id);
-    };
+	};
     
     // object viewer click action
     this.object_viewer_list_click_action = function () {
