@@ -72,12 +72,14 @@
         imgtest.add_size_transform(0, 100, -40, 100, -40);
         imgtest.add_state(50, 0, 50, 0, 1);
         imgtest.add_size_transform(1, 100, -40, 100, -40);
+        imgtest.add_size_transform(1, 50, -40, 50, -40, 0);
         imgtest.add_state(25, 0, 25, 0, 1);
         imgtest.add_size_transform(2, 50, 0, 50, 0);
         imgtest.add_rotate_transform(2, 180);
         imgtest.auto_reset = false;
         imgtest.set_z_index(-1);
         imgtest.set_image_scale_mode("cover");
+		imgtest.mod = 0;
         
         // create pages
         var page1 = new page('test page', manager);

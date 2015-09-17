@@ -14,10 +14,13 @@ function object(id, meta, auto_reset) {
         this.auto_reset = true;
     }
 	this.delegate = undefined;
+	this.mod = undefined;
     var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode, angle;
     
 }
-    
+
+/* Basic */
+
 // init object
 object.prototype.init = function (selector, content, class_name) {
     if (typeof class_name === "undefined") {
@@ -116,36 +119,60 @@ object.prototype.refresh = function () {
 
 };
 
+/* State Config */
+
 // add position
 object.prototype.add_state = function (x_percent, x_delta, y_percent, y_delta, alpha) {
     this.states.push({'x_percent': x_percent,
                          'x_delta': x_delta,
                          'y_percent': y_percent,
                          'y_delta': y_delta,
-                         'alpha': alpha});
+                         'alpha': alpha,
+					 	 'mod': []
+					 });
 };
 
 // add optional info (sizes, rotations, etc)
-object.prototype.add_optional_info = function (state_id, optional_info) {
+object.prototype.add_optional_info = function (state_id, optional_info, mod_id) {
     var i;
     for (i in optional_info) {
-        this.states[state_id][i] = optional_info[i];
+		// add mod info
+		if (typeof mod_id !== "undefined"){
+			// if mod exist then push, else create
+			if (typeof this.states[state_id].mod[mod_id] == "undefined"){
+				this.states[state_id].mod.push({});
+			}
+			this.states[state_id].mod[mod_id][i] = optional_info[i];
+		// add normal info
+		} else {
+			this.states[state_id][i] = optional_info[i];
+		}
     }
 };
 
+// add position
+object.prototype.change_position = function (state_id, x_percent, x_delta, y_percent, y_delta, alpha, mod_id) {
+	this.add_optional_info(state_id, {'x_percent': x_percent, 
+									  'x_delta': x_delta, 
+									  'y_percent': y_percent, 
+									  'y_delta': y_delta,
+									  'alpha': alpha},
+						   mod_id);
+};
+
 // add size transform
-object.prototype.add_size_transform = function (state_id, width_percent, width_delta, height_percent, height_delta) {
-    this.add_optional_info(state_id, {'width_percent': width_percent, 'width_delta': width_delta, 'height_percent': height_percent, 'height_delta': height_delta});
+object.prototype.add_size_transform = function (state_id, width_percent, width_delta, height_percent, height_delta, mod_id) {
+	this.add_optional_info(state_id, {'width_percent': width_percent, 'width_delta': width_delta, 'height_percent': height_percent, 'height_delta': height_delta}, mod_id);
 };
 
 // add rotate transform
-object.prototype.add_rotate_transform = function (state_id, angle) {
-    this.add_optional_info(state_id, {'angle': angle});
+object.prototype.add_rotate_transform = function (state_id, angle, mod_id) {
+		this.add_optional_info(state_id, {'angle': angle}, mod_id);
 };
 
 // add easing
-object.prototype.add_easing = function (state_id, easing) {
-    this.add_optional_info(state_id, {'easing': easing});
+object.prototype.add_easing = function (state_id, easing, mod_id) {
+    this.add_optional_info(state_id, {'easing': easing}, mod_id);
 };
 
 // add complete callback
@@ -157,13 +184,25 @@ object.prototype.add_callback = function (state_id, function_flag, func) {
 	}
 };
 
+/* Performance */
+
 // move and scale
 object.prototype.perform_animation = function (target, duration) {
     // store state
-    this.current_x_percent = target.x_percent;
-    this.current_x_delta = target.x_delta;
-    this.current_y_percent = target.y_percent;
-    this.current_y_delta = target.y_delta;
+	// position
+	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod].x_percent !== "undefined") {
+		this.current_x_percent = target.mod[this.mod].x_percent;
+		this.current_x_delta = target.mod[this.mod].x_delta;
+		this.current_y_percent = target.mod[this.mod].y_percent;
+		this.current_y_delta = target.mod[this.mod].y_delta;
+		this.current_alpha = target.mod[this.mod].alpha;
+	} else {
+		this.current_x_percent = target.x_percent;
+		this.current_x_delta = target.x_delta;
+		this.current_y_percent = target.y_percent;
+		this.current_y_delta = target.y_delta;
+		this.current_alpha = target.alpha;
+	}
     // size
     if (typeof target.width_percent !== "undefined") {
         this.width_percent = target.width_percent;
