@@ -20,6 +20,7 @@ function object(id, meta, auto_reset) {
 }
 
 /* Basic */
+object.prototype.parameters = ['x_percent', 'x_delta', 'y_percent', 'y_delta', 'alpha', 'width_percent', 'width_delta', 'height_percent', 'height_delta', 'angle', 'easing'];
 
 // init object
 object.prototype.init = function (selector, content, class_name) {
@@ -34,7 +35,7 @@ object.prototype.init = function (selector, content, class_name) {
     // reset to default position
     if (this.states.length > 0) {
         var pos = this.states[0];
-        this.perform_animation(pos, 0);
+        this.to(pos, 0);
     }
 };
 
@@ -56,7 +57,7 @@ object.prototype.init_with_selector = function (object_selector, additional_clas
     // reset to default position
     if (this.states.length > 0) {
         var pos = this.states[0];
-        this.perform_animation(pos, 0);
+        this.to(pos, 0);
     }
 };
 
@@ -186,72 +187,87 @@ object.prototype.add_callback = function (state_id, function_flag, func) {
 
 /* Performance */
 
-// move and scale
-object.prototype.perform_animation = function (target, duration) {
-    // store state
-	// position
-	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod].x_percent !== "undefined") {
-		this.current_x_percent = target.mod[this.mod].x_percent;
-		this.current_x_delta = target.mod[this.mod].x_delta;
-		this.current_y_percent = target.mod[this.mod].y_percent;
-		this.current_y_delta = target.mod[this.mod].y_delta;
-		this.current_alpha = target.mod[this.mod].alpha;
+// to state
+object.prototype.to = function (target, duration) {
+	// check if mod is enabled
+	var mod_enabled;
+	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod] !== "undefined") {
+		mod_enabled = true;
 	} else {
-		this.current_x_percent = target.x_percent;
-		this.current_x_delta = target.x_delta;
-		this.current_y_percent = target.y_percent;
-		this.current_y_delta = target.y_delta;
-		this.current_alpha = target.alpha;
+		mod_enabled = false;
 	}
+	
+	// build final target
+	var target_final = {};
+	// for each parameter
+	for (var i in this.parameters) {
+		var index = this.parameters[i];
+		// find correct properties
+		// if mod enabled
+		if (mod_enabled) {
+			// find if current property modded
+			if (index in target.mod[this.mod]) {
+				target_final[index] = target.mod[this.mod][index];
+			} else {
+				target_final[index] = target[index];
+			}
+		} else {
+			target_final[index] = target[index];
+		}
+	}
+	// clean
+	if (typeof target_final.angle === "undefined") {
+		target_final.angle = 0;
+	}
+	if (typeof target_final.easing === "undefined") {
+		target_final.easing = "linear";
+	}
+	
+	
+	// save current states
+	// position
+	this.current_x_percent = target_final.x_percent;
+	this.current_x_delta = target_final.x_delta;
+	this.current_y_percent = target_final.y_percent;
+	this.current_y_delta = target_final.y_delta;
+	this.current_alpha = target_final.alpha;
     // size
-    if (typeof target.width_percent !== "undefined") {
-        this.width_percent = target.width_percent;
-        this.width_delta = target.width_delta;
-        this.height_percent = target.height_percent;
-        this.height_delta = target.height_delta;
+    if (typeof target_final.width_percent !== "undefined") {
+        this.width_percent = target_final.width_percent;
+        this.width_delta = target_final.width_delta;
+        this.height_percent = target_final.height_percent;
+        this.height_delta = target_final.height_delta;
     }
-    // rotate
-    if (typeof target.angle !== "undefined") {
-        this.angle = target.angle;
-    }
+	
+	
     // check if optional data exist
-    var target_size = {}, target_angle, easing;
+    var actual_size = {};
     // check size
-    if (typeof target.width_percent !== "undefined") {
-        target_size.width = this.meta.width * target.width_percent / 100 + target.width_delta;
-        target_size.height = this.meta.height * target.height_percent / 100 + target.height_delta;
+    if (typeof target_final.width_percent !== "undefined") {
+        actual_size.width = this.meta.width * target_final.width_percent / 100 + target_final.width_delta;
+        actual_size.height = this.meta.height * target_final.height_percent / 100 + target_final.height_delta;
     } else {
-        target_size.width = this.width;
-        target_size.height = this.height;
+        actual_size.width = this.width;
+        actual_size.height = this.height;
     }
-    // check rotate
-    if (typeof target.angle !== "undefined") {
-        target_angle = target.angle;
-    } else {
-        target_angle = 0;
-    }
-    // check easing
-    if (typeof target.easing !== "undefined") {
-        easing = target.easing;
-    } else {
-        easing = "swing";
-    }
+		
     // calc correct position
-    var destination_x = this.meta.width * (target.x_percent / 100) - target_size.width / 2 + target.x_delta;
-    var destination_y = this.meta.height * (target.y_percent / 100) - target_size.height / 2 + target.y_delta;
-    // perform with animation
-    if (duration !== undefined || duration > 0) {
+    var actual_x = this.meta.width * (target_final.x_percent / 100) - actual_size.width / 2 + target_final.x_delta;
+    var actual_y = this.meta.height * (target_final.y_percent / 100) - actual_size.height / 2 + target_final.y_delta;
+    
+	// perform with animation
+    if (duration !== undefined && duration > 0) {
 		// assign current object to temp var
 		var that = this;
         this.dom_obj.animate({
-            'left' : destination_x,
-            'top' : destination_y,
-            'width' : target_size.width,
-            'height' : target_size.height,
-            'opacity' : target.alpha,
-            'rotate': target_angle
+            'left' : actual_x,
+            'top' : actual_y,
+            'width' : actual_size.width,
+            'height' : actual_size.height,
+            'opacity' : target_final.alpha,
+            'rotate': target_final.angle
         }, {duration: duration,
-            easing: easing,
+            easing: target_final.easing,
             complete: function () {
 				// check if object ready
 				if (typeof that.state !== "undefined") {
@@ -268,12 +284,12 @@ object.prototype.perform_animation = function (target, duration) {
             });
     } else {
         // perform without animation
-        this.dom_obj.css("left", destination_x);
-        this.dom_obj.css("top", destination_y);
-        this.dom_obj.css("opacity", target.alpha);
-        this.dom_obj.css("width", target_size.width);
-        this.dom_obj.css("height", target_size.height);
-        this.dom_obj.css("rotate", target_angle);
+        this.dom_obj.css("left", actual_x);
+        this.dom_obj.css("top", actual_y);
+        this.dom_obj.css("opacity", target_final.alpha);
+        this.dom_obj.css("width", actual_size.width);
+        this.dom_obj.css("height", actual_size.height);
+        this.dom_obj.css("rotate", target_final.angle);
     }
 };
 
@@ -283,7 +299,7 @@ object.prototype.moveToState = function (state, duration) {
     // update state logger
     var the_state = this.states[state];
     // perform movement
-    this.perform_animation(this.states[state], duration);
+    this.to(this.states[state], duration);
 };
 
 // exit
