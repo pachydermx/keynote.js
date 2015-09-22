@@ -1,9 +1,11 @@
 // manager controls pages
 function manager() {
     this.pages = [];
+	// for discrete objects
     this.objects = [];
     this.lastPage = undefined;
 	this.callbacks = [];
+	this.mod = undefined;
     
     // add page to manager
     this.add = function (page) {
@@ -22,10 +24,6 @@ function manager() {
         for (i in this.objects) {
             this.objects[i].refresh();
         }
-		// refresh submanagers
-		if (typeof this.submanagers[this.lastPage] !== "undefined"){
-			this.submanagers[this.lastPage].refresh();
-		}
     };
     
 	// add callback
@@ -56,4 +54,23 @@ function manager() {
         }
     };
 	
+	// switch mod
+	this.mod = function(id) {
+		// change all objects' mod value
+		// object inside pages
+		for (var i in this.pages) {
+			for (var j in this.pages[i].objects) {
+				var the_object = this.pages[i].objects[j].object;
+				the_object.mod = id;
+				//console.log("set "+the_object.id+" mod to "+the_object.id);
+			}
+		}
+		// discrete objects
+		for (var i in this.objects) {
+			var the_object = this.objects[i];
+			the_object.mod = id;
+		}
+		// refresh
+		this.refresh();
+	};
 }
