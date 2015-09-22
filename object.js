@@ -15,7 +15,9 @@ function object(id, meta, auto_reset) {
     }
 	this.delegate = undefined;
 	this.mod = undefined;
-    var dom_obj, width, height, current_x_percent, current_x_delta, current_y_percent, current_y_delta, state, current_alpha, default_exit_location, content, width_percent, width_delta, height_percent, height_delta, z_index, image_scale_mode, angle;
+	this.state = 0;
+	
+    var dom_obj, width, height, default_exit_location, content,  z_index, image_scale_mode, angle;
     
 }
 
@@ -34,8 +36,7 @@ object.prototype.init = function (selector, content, class_name) {
     this.refresh();
     // reset to default position
     if (this.states.length > 0) {
-        var pos = this.states[0];
-        this.to(pos, 0);
+		this.moveToState(0, 0);
     }
 };
 
@@ -93,22 +94,11 @@ object.prototype.set_content = function (code) {
 
 // reset size
 object.prototype.refresh = function () {
-    // set size
-    if (typeof this.width_percent !== "undefined") {
-        // calc actual size
-        var actual_width = this.meta.width * this.width_percent / 100 + this.width_delta, actual_height = this.meta.height * this.height_percent / 100 + this.height_delta;
-        // css apply
-        this.dom_obj.css('width', actual_width);
-        this.dom_obj.css('height', actual_height);
-    }
     // reset size
     this.width = this.dom_obj.width();
     this.height = this.dom_obj.height();
-    // set location
-    var actual_x = this.meta.width * (this.current_x_percent / 100) - this.width / 2 + this.current_x_delta;
-    var actual_y = this.meta.height * (this.current_y_percent / 100) - this.height / 2 + this.current_y_delta;
-    this.dom_obj.css('left', actual_x);
-    this.dom_obj.css('top', actual_y);
+	
+	this.moveToState(this.state, 0);
     // set z-index
     if (typeof this.z_index !== "undefined") {
         this.dom_obj.css('z-index', this.z_index);
@@ -117,7 +107,6 @@ object.prototype.refresh = function () {
     if (typeof this.image_scale_mode !== "undefined") {
         this.dom_obj.css('background-size', this.image_scale_mode);
     }
-
 };
 
 /* State Config */
@@ -222,23 +211,6 @@ object.prototype.to = function (target, duration) {
 	if (typeof target_final.easing === "undefined") {
 		target_final.easing = "linear";
 	}
-	
-	
-	// save current states
-	// position
-	this.current_x_percent = target_final.x_percent;
-	this.current_x_delta = target_final.x_delta;
-	this.current_y_percent = target_final.y_percent;
-	this.current_y_delta = target_final.y_delta;
-	this.current_alpha = target_final.alpha;
-    // size
-    if (typeof target_final.width_percent !== "undefined") {
-        this.width_percent = target_final.width_percent;
-        this.width_delta = target_final.width_delta;
-        this.height_percent = target_final.height_percent;
-        this.height_delta = target_final.height_delta;
-    }
-	
 	
     // check if optional data exist
     var actual_size = {};
