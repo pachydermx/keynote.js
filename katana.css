@@ -224,6 +224,7 @@ html{
 }
 
 .context, .context p, .context li{
+	text-align: left;
 	font-weight: lighter;
 	font-size: 0.8vw;
 	font-family: "Arial";
@@ -288,4 +289,33 @@ html{
 	display: inline-block;
 	margin-right: 0.8vw;
 }
+.center{
+	text-align: center;
+}
+		
+.slider_showcase{
+	width: 12vw;
+	height: 12vw;
+	margin: auto;
+	margin-bottom: 1vw;
+	background: url(katana/sliderframe.png);
+	background-size: contain;
+}
 
+.slider_icon{
+	margin: 0px;
+	position: relative;
+	left: 2.6vw;
+	top: 2.6vw;
+	width: 7vw;
+	height: 7vw;
+	background-size: contain;
+}
+		
+#slider_icon_1{
+	background-image: url(katana/icon1.png);
+}
+		
+.second.title{
+	font-size: 2.0vw;
+}

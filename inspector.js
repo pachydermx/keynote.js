@@ -56,7 +56,7 @@ function inspector(manager) {
     // refresh mod list
     this.refresh_mod_viewer = function () {
         // print mod list
-		this.mod_viewer_list.append(getLi("mod_viewer_list_item_x", "mod_viewer_list_item", "Normal"));
+		this.mod_viewer_list.append(getLi("mod_viewer_list_item_x", "mod_viewer_list_item selected", "Normal"));
 		$("#mod_viewer_list_item_x").click(this.mod_viewer_list_click_action);
         var i, the_mod;
         for (i in this.manager.mods) {

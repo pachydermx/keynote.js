@@ -5,8 +5,8 @@
 	<style>
 
 		body{
-			background: black;
-			color: white;
+			background: white;
+			color: black;
 		}
 		
 		.preview_container{
@@ -81,6 +81,8 @@
 			margin: auto;
 		}
 		
+	
+		
 .tag.purple{
 	background: #9966cc;	
 }
@@ -105,17 +107,51 @@
 	display: inline-block;
 	margin-right: 0.8vw;
 }
+		
+		
+		
+		
+		
+.center{
+	text-align: center;
+}
+		
+.slider_showcase{
+	width: 12vw;
+	height: 12vw;
+	margin: auto;
+	margin-bottom: 1vw;
+	background: url(katana/sliderframe.png);
+	background-size: contain;
+}
+
+.slider_icon{
+	margin: 0px;
+	position: relative;
+	left: 2.6vw;
+	top: 2.6vw;
+	width: 7vw;
+	height: 7vw;
+	background-size: contain;
+}
+		
+#slider_icon_1{
+	background-image: url(katana/icon1.png);
+}
+		
+.second.title{
+	font-size: 2.0vw;
+}
+		
 	</style>
 </head>
-	<div class="preview_container">
-		<div class="tag_container">
-			<span class="tag purple">
-				Video
-			</span>
+	<div class="preview_container center">
+		<div class="slider_showcase">
+			<div class="slider_icon" id="slider_icon_1"></div>
 		</div>
 		<div class="title_container">
-			<span class="title">
-				Video Making
+			<span class="title second">
+				The Company
 			</span>
 		</div>
 		<hr class="title_divider">
@@ -124,33 +160,10 @@
 				Combining technology, design & media we build advanced connections between brands and their audiences. We create compelling solutions that deliver and sustain business growth, starting from web and mobile applications to complex business enterprise software. 
 			</p>
 		</div>
-		<div class="thumb_display">
-			<div class="thumb_box">
-				<div class="thumb_img">
-					<img class="thumb" src="katana/videosample1.jpg">
-				</div>
-				<div class="thumb_title">
-					Storm Partners
-				</div>
-			</div>
-			<div class="thumb_box">
-				<div class="thumb_img">
-					<img class="thumb" src="katana/videosample2.jpg">
-				</div>
-				<div class="thumb_title">
-					Studio Katana
-				</div>
-			</div>
-		</div>
-		<div class="button_container">
-			<div class="more_button">
-				<div class="vertical_align">
-					<span class="button_label">
-						<span class="button_icon more_info">▶︎</span>
-						More Information
-					</span>
-				</div>
-			</div>
+		<div class="tag_container">
+			<span class="tag purple">
+				Video
+			</span>
 		</div>
 	</div>
 </html>
