@@ -262,6 +262,17 @@ object.prototype.to = function (target, duration) {
         this.dom_obj.css("width", actual_size.width);
         this.dom_obj.css("height", actual_size.height);
         this.dom_obj.css("rotate", target_final.angle);
+		// check if object ready
+		if (typeof this.state !== "undefined") {
+			// run callback if function exist
+			if ("func_complete" in this.states[this.state]){
+				this.states[this.state].func_complete();
+			}
+			// check if delegate func exist
+			if (typeof this.delegate !== "undefined"){
+				this.delegate.object_complete(this);	
+			}
+		}
     }
 };
 

@@ -10,12 +10,18 @@ function slider(manager){
 
 // add slider page
 slider.prototype.add = function (page){
-	this.pages_id.push(this.manager.pages.indexOf(page));
+	// get page id from manager
+	var page_id = this.manager.pages.indexOf(page);
+	// reserve the page id
+	this.pages_id.push(page_id);
+	// add tab before name of the page
+	page.name = " ⇢ "+page.name;
 };
 
 // set intro page
 slider.prototype.set_intro = function (page){
 	this.intro_page = this.manager.pages.indexOf(page);
+	page.name = " ► " + page.name;
 };
 
 // init slider

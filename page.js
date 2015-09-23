@@ -98,8 +98,6 @@ page.prototype.exit = function (new_page_objects) {
 page.prototype.object_complete = function (obj){
 	// set counter
 	this.counter--;
-	// remove delegate
-	obj.delegate = undefined;
 	// check if empty
 	if (this.counter == 0 && typeof this.callbacks.animation_complete !== "undefined"){
 		this.callbacks.animation_complete();

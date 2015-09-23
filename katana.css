@@ -312,10 +312,23 @@ html{
 	background-size: contain;
 }
 		
-#slider_icon_1{
-	background-image: url(katana/icon1.png);
-}
-		
 .second.title{
 	font-size: 2.0vw;
 }
+
+#slider_icon_1{
+	background-image: url(katana/icon1.png);
+}
+
+#slider_icon_2{
+	background-image: url(katana/icon2.png);
+}
+		
+#slider_icon_3{
+	background-image: url(katana/icon3.png);
+}
+		
+#slider_icon_4{
+	background-image: url(katana/icon4.png);
+}
+		

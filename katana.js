@@ -122,12 +122,15 @@ websitewbg = new object("websitewbg", meta);
 websitewbg.add_state(50, 0, 150, 0, 1);
 websitewbg.add_state(50, 0, 40, 0, 1);
 websitewbg.add_state(50, 0, -50, 0, 1);
+websitewbg.auto_reset = false;
 websitewbg.add_size_transform(0, 100, 0, 80, 0);
 websitewbg.add_size_transform(1, 100, 0, 80, 0);
 websitewbg.add_size_transform(2, 100, 0, 80, 0);
 websitewbg.add_easing(1, defaultEasing);
 websitewbg.default_exit_location = 2;
 websitewbg.set_z_index(5);
+
+// WEBSITE SLIDER
 
 websiteslider1 = new object("websiteslider1", meta);
 websiteslider1.add_state(150, 0, 40, 0, 1);
@@ -138,6 +141,36 @@ websiteslider1.add_size_transform(1, 20, 0, 48, 0);
 websiteslider1.add_size_transform(2, 20, 0, 48, 0);
 websiteslider1.default_exit_location = 2;
 websiteslider1.set_z_index(5);
+
+websiteslider2 = new object("websiteslider2", meta);
+websiteslider2.add_state(150, 0, 40, 0, 1);
+websiteslider2.add_state(50, 0, 40, 0, 1);
+websiteslider2.add_state(-50, 0, 40, 0, 1);
+websiteslider2.add_size_transform(0, 20, 0, 48, 0);
+websiteslider2.add_size_transform(1, 20, 0, 48, 0);
+websiteslider2.add_size_transform(2, 20, 0, 48, 0);
+websiteslider2.default_exit_location = 2;
+websiteslider2.set_z_index(5);
+
+websiteslider3 = new object("websiteslider3", meta);
+websiteslider3.add_state(150, 0, 40, 0, 1);
+websiteslider3.add_state(50, 0, 40, 0, 1);
+websiteslider3.add_state(-50, 0, 40, 0, 1);
+websiteslider3.add_size_transform(0, 20, 0, 48, 0);
+websiteslider3.add_size_transform(1, 20, 0, 48, 0);
+websiteslider3.add_size_transform(2, 20, 0, 48, 0);
+websiteslider3.default_exit_location = 2;
+websiteslider3.set_z_index(5);
+
+websiteslider4 = new object("websiteslider4", meta);
+websiteslider4.add_state(150, 0, 40, 0, 1);
+websiteslider4.add_state(50, 0, 40, 0, 1);
+websiteslider4.add_state(-50, 0, 40, 0, 1);
+websiteslider4.add_size_transform(0, 20, 0, 48, 0);
+websiteslider4.add_size_transform(1, 20, 0, 48, 0);
+websiteslider4.add_size_transform(2, 20, 0, 48, 0);
+websiteslider4.default_exit_location = 2;
+websiteslider4.set_z_index(5);
 
 // WEBSITE 2
 
@@ -482,7 +515,46 @@ websitea.add(homebgb, 1, 0, 1500);
 websitea.add(homebgb, 0, 5000, 0);
 websitea.add(websitebg, 1, 2000, 3000);
 websitea.add(websitewbg, 1, 0, 3000);
-websitea.add(websiteslider1, 1, 0, 1500);
+
+var websiteslider_intro = 2500;
+var websiteslider_duration = 2000;
+
+var websitesliderpage1 = new page("Slider #1", manager);
+manager.add(websitesliderpage1);
+websitesliderpage1.add(websitebg, 1, 0, 0);
+websitesliderpage1.add(websitewbg, 1, 0, 0);
+websitesliderpage1.add(websiteslider1, 1, 0, websiteslider_intro);
+websitesliderpage1.add(websiteslider1, 1, websiteslider_intro, websiteslider_duration);
+
+var websitesliderpage2 = new page("Slider #2", manager);
+manager.add(websitesliderpage2);
+websitesliderpage2.add(websitebg, 1, 0, 0);
+websitesliderpage2.add(websitewbg, 1, 0, 0);
+websitesliderpage2.add(websiteslider2, 1, 0, websiteslider_intro);
+websitesliderpage2.add(websiteslider2, 1, websiteslider_intro, websiteslider_duration);
+
+var websitesliderpage3 = new page("Slider #3", manager);
+manager.add(websitesliderpage3);
+websitesliderpage3.add(websitebg, 1, 0, 0);
+websitesliderpage3.add(websitewbg, 1, 0, 0);
+websitesliderpage3.add(websiteslider3, 1, 0, websiteslider_intro);
+websitesliderpage3.add(websiteslider3, 1, websiteslider_intro, websiteslider_duration);
+
+var websitesliderpage4 = new page("Slider #4", manager);
+manager.add(websitesliderpage4);
+websitesliderpage4.add(websitebg, 1, 0, 0);
+websitesliderpage4.add(websitewbg, 1, 0, 0);
+websitesliderpage4.add(websiteslider4, 1, 0, websiteslider_intro);
+websitesliderpage4.add(websiteslider4, 1, websiteslider_intro, websiteslider_duration);
+
+// create slider
+var websiteslider = new slider(manager);
+websiteslider.add(websitesliderpage1);
+websiteslider.add(websitesliderpage2);
+websiteslider.add(websitesliderpage3);
+websiteslider.add(websitesliderpage4);
+websiteslider.set_intro(websitea);
+
 
 var websiteb = new page("Website 2", manager);
 websiteb.default_duration = 2000;
@@ -574,6 +646,9 @@ $(window).load(function(){
 	websitebg.init_with_selector("#websitebg");
 	websitewbg.init_with_selector("#websitewbg");
 	websiteslider1.init_with_selector("#websiteslider1");
+	websiteslider2.init_with_selector("#websiteslider2");
+	websiteslider3.init_with_selector("#websiteslider3");
+	websiteslider4.init_with_selector("#websiteslider4");
 
 	websitetext.init_with_selector("#websitetext");
 	websiteleafa.init_with_selector("#websiteleafa");
@@ -618,6 +693,9 @@ $(window).load(function(){
 	//contact
 	contactlogo.init_with_selector("#contactlogo");
 	contactform.init_with_selector("#contactform");
+	
+	websiteslider.init();
 
 	manager.goto_page(0);
+	
 });
