@@ -1,7 +1,7 @@
 // inspector is debugger of a page
 function inspector(manager) {
     this.manager = manager;
-    var dom_obj, object_list, page_viewer, page_viewer_list, object_viewer, page_list, object_viewer_list, object_state_list, object_info_list, moving, editor, objects;
+    var dom_obj, object_list, page_viewer, page_viewer_list, object_viewer, page_list, object_viewer_list, object_state_list, object_info_list, moving, editor, objects, mod_viewer, mod_viewer_list;
     
     // init inspector window
     this.enable = function (selector) {
@@ -13,6 +13,13 @@ function inspector(manager) {
         this.dom_obj.draggable();
         // title
         this.dom_obj.append("<div class='inspector_frame inspector_title'><label>Inspector</label></div>");
+        // mod viewer
+        this.dom_obj.append(getLabel('', 'section_title', 'Mod'));
+        this.dom_obj.append(getDiv('mod_viewer', 'inspector_frame', ''));
+        this.mod_viewer = $("#mod_viewer");
+        this.mod_viewer.append(getUl('mod_viewer_list', 'inspector_frame', ''));
+        this.mod_viewer_list = $("#mod_viewer_list");
+        this.refresh_mod_viewer();
         // page viewer
         this.dom_obj.append(getLabel('', 'section_title', 'Pages'));
         this.dom_obj.append(getDiv('page_viewer', 'inspector_frame', ''));
@@ -36,10 +43,53 @@ function inspector(manager) {
 		
 		// set manager callback
 		var that = this;
-		manager.add_callback(function (id) {
+		manager.add_callback("gotopage", function (id) {
 			that.highlight_page_item(id);
 		});
+		manager.add_callback("modswitch", function (id) {
+			that.highlight_mod_item(id);
+		});
     };
+	
+	/* Mod List */
+	
+    // refresh mod list
+    this.refresh_mod_viewer = function () {
+        // print mod list
+		this.mod_viewer_list.append(getLi("mod_viewer_list_item_x", "mod_viewer_list_item", "Normal"));
+		$("#mod_viewer_list_item_x").click(this.mod_viewer_list_click_action);
+        var i, the_mod;
+        for (i in this.manager.mods) {
+            // create dom element
+            the_mod = this.manager.mods[i];
+            this.mod_viewer_list.append(getLi("mod_viewer_list_item_" + i, "mod_viewer_list_item", the_mod));
+            // assign action
+            $("#mod_viewer_list_item_" + i).click(this.mod_viewer_list_click_action);
+        }
+    };
+	
+    // viewer_list_click_action
+    // var inspector must exist
+    this.mod_viewer_list_click_action = function () {
+        var mod_id = $(this).attr("id").split('_')[4];
+		if (mod_id == "x") {
+			mod_id = undefined;
+		}
+        // move to page
+        manager.mod(mod_id);
+    };
+	
+	this.highlight_mod_item = function (mod_id) {
+		if (mod_id == undefined) {
+			mod_id = "x";
+		}
+        // set style
+        $("#mod_viewer_list li").removeClass("selected");
+        $("#mod_viewer_list_item_" + mod_id).addClass("selected");
+	};
+	
+	
+	/* Page List */
 	
     // refresh page list
     this.refresh_page_viewer = function () {

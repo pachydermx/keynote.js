@@ -4,7 +4,13 @@ function manager() {
 	// for discrete objects
     this.objects = [];
     this.lastPage = undefined;
+	/* flags
+		gotopage - fires after entering a page
+		modswitch - fires after switching a mod
+	*/
 	this.callbacks = [];
+	// mod names
+	this.mods = [];
 	this.mod = undefined;
     
     // add page to manager
@@ -27,8 +33,9 @@ function manager() {
     };
     
 	// add callback
-	this.add_callback = function (func) {
-		this.callbacks.push(func);
+	this.add_callback = function (flag, func) {
+		this.callbacks.push({"flag" : flag,
+							 "func" : func});
 	};
 	
     // go to page
@@ -44,7 +51,9 @@ function manager() {
             this.lastPage = page;
 			// run callbacks
 			for (var i in this.callbacks){
-				this.callbacks[i](page);
+				if (this.callbacks[i].flag == "gotopage") {
+					this.callbacks[i].func(page);
+				}
 			}
 			
 			return true;
@@ -72,5 +81,12 @@ function manager() {
 		}
 		// refresh
 		this.refresh();
+		
+		// run callbacks
+		for (var i in this.callbacks){
+			if (this.callbacks[i].flag == "modswitch") {
+				this.callbacks[i].func(id);
+			}
+		}
 	};
 }

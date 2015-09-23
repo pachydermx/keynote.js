@@ -22,7 +22,7 @@ slider.prototype.set_intro = function (page){
 slider.prototype.init = function () {
 	// assign manager callback
 	var that = this;
-	this.manager.add_callback(function(id) {
+	this.manager.add_callback("gotopage", function(id) {
 		that.filter(id);
 	});
 	// reset start point
