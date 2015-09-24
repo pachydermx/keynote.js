@@ -4,7 +4,7 @@ function object(id, meta, auto_reset) {
     this.id = id;
     // check id
     if (id.indexOf(' ') >= 0){
-        console.log("Error: Space in object ID");
+        console.error("Error: Space in object ID");
     }
     this.states = [];
     this.meta = meta;
@@ -16,6 +16,7 @@ function object(id, meta, auto_reset) {
 	this.delegate = undefined;
 	this.mod = undefined;
 	this.state = 0;
+	this.exiting = false;
 	
     var dom_obj, width, height, default_exit_location, content,  z_index, image_scale_mode, angle;
     
@@ -170,14 +171,14 @@ object.prototype.add_callback = function (state_id, function_flag, func) {
 	if (function_flag === "complete"){
 		this.add_optional_info(state_id, {"func_complete" : func});
 	} else {
-		console.log("ERROR: Unknown Function Slot");
+		console.error("ERROR: Unknown Function Slot");
 	}
 };
 
 /* Performance */
 
 // to state
-object.prototype.to = function (target, duration) {
+object.prototype.to = function (target, duration, callback) {
 	// check if mod is enabled
 	var mod_enabled;
 	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod] !== "undefined") {
@@ -211,6 +212,7 @@ object.prototype.to = function (target, duration) {
 	if (typeof target_final.easing === "undefined") {
 		target_final.easing = "linear";
 	}
+
 	
     // check if optional data exist
     var actual_size = {};
@@ -241,6 +243,8 @@ object.prototype.to = function (target, duration) {
         }, {duration: duration,
             easing: target_final.easing,
             complete: function () {
+				
+				
 				// check if object ready
 				if (typeof that.state !== "undefined") {
 					// run callback if function exist
@@ -249,9 +253,14 @@ object.prototype.to = function (target, duration) {
 					}
 					// check if delegate func exist
 					if (typeof that.delegate !== "undefined"){
-						that.delegate.object_complete(that);	
+						that.delegate.object_complete(that);
+					}
+					// run callback in parameter
+					if (typeof callback !== "undefined") {
+						callback();
 					}
 				}
+				
 			}
             });
     } else {
@@ -270,31 +279,45 @@ object.prototype.to = function (target, duration) {
 			}
 			// check if delegate func exist
 			if (typeof this.delegate !== "undefined"){
-				this.delegate.object_complete(this);	
+				this.delegate.object_complete(this);
+			}
+			this.delegate = undefined;
+			// run callback in parameter
+			if (typeof callback !== "undefined") {
+				callback();
 			}
 		}
     }
 };
 
 // move to a state
-object.prototype.moveToState = function (state, duration) {
+object.prototype.moveToState = function (state, duration, callback) {
     this.state = state;
     // update state logger
     var the_state = this.states[state];
     // perform movement
-    this.to(this.states[state], duration);
+    this.to(this.states[state], duration, callback);
 };
 
 // exit
 object.prototype.exit = function (duration) {
-    // determine destination
-    var destination;
+	if (!this.exiting) {
+		this.exiting = true;
+		// determine destination
+		var destination;
 
-    if (typeof this.default_exit_location !== 'undefined') {
-        destination = this.default_exit_location;
-    } else {
-        destination = 0;
-    }
-    // perform
-    this.moveToState(destination, duration);
+		if (typeof this.default_exit_location !== 'undefined') {
+			destination = this.default_exit_location;
+		} else {
+			destination = 0;
+		}
+		// perform
+		var that = this;
+		this.moveToState(destination, duration, function () {
+			if (that.auto_reset) {
+				that.moveToState(0, 0);
+				that.exiting = false;
+			}
+		});
+	}
 };

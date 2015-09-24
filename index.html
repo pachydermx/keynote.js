@@ -101,7 +101,8 @@
         var page3 = new page('third page', manager);
         manager.add(page3);
         page3.add(imgtest, 2, 0, 1000);
-        page3.add(imgtest, 1, 1000, 1000);
+        page3.add(imgtest, 2, 1000, 1000);
+		page3.add_callback("animation_complete", page1_callback);
 		
 		
 		// slider
@@ -119,6 +120,12 @@
 		manager.add(pages3);
 		pages3.add(testc, 1, 1000, 1000);
 		pages3.add(domtest, 1, 1000, 1000);
+		
+		pages1.add(testa, 1, 2500, 1000);
+		pages2.add(testb, 1, 2500, 1000);
+		pages3.add(testc, 1, 2500, 1000);
+		
+		pages1.add_callback("animation_complete", page1_callback);
 		
 		testslider = new slider(manager);
 		testslider.add(pages1);

@@ -31,10 +31,13 @@ page.prototype.play = function () {
 	var i;
 	for (i in this.objects) {
 		var the_object = this.objects[i];
+		/*
 		// reset to original state
 		if (the_object.object.auto_reset) {
+			the_object.delegate = undefined;
 			the_object.object.moveToState(0, 0);
 		}
+		*/
 		// perform
 		this.fire(the_object);
 	}
@@ -109,6 +112,6 @@ page.prototype.add_callback = function (function_flag, func){
 	if (function_flag === "animation_complete"){
 		this.callbacks.animation_complete = func;
 	} else {
-		console.log("ERROR: Unknown function flag");
+		console.error("ERROR: Unknown function flag");
 	}
 };
