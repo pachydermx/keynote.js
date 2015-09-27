@@ -17,6 +17,7 @@ function object(id, meta, auto_reset) {
 	this.mod = undefined;
 	this.state = 0;
 	this.exiting = false;
+	this.default_class = undefined;
 	
     var dom_obj, width, height, default_exit_location, content,  z_index, image_scale_mode, angle;
     
@@ -53,8 +54,14 @@ object.prototype.init_with_image = function (selector, image) {
 
 // init from DOM object
 object.prototype.init_with_selector = function (object_selector, additional_class) {
-    $(object_selector).addClass("object " + additional_class);
+	if (typeof additional_class !== "undefined") {
+		$(object_selector).addClass("object " + additional_class);
+	} else {
+		$(object_selector).addClass("object");
+	}
     this.dom_obj = $(object_selector);
+	// save default class
+	this.default_class = this.dom_obj.attr("class");
     this.refresh();
     // reset to default position
     if (this.states.length > 0) {
@@ -228,7 +235,7 @@ object.prototype.to = function (target, duration, callback) {
     // calc correct position
     var actual_x = this.meta.width * (target_final.x_percent / 100) - actual_size.width / 2 + target_final.x_delta;
     var actual_y = this.meta.height * (target_final.y_percent / 100) - actual_size.height / 2 + target_final.y_delta;
-    
+	
 	// perform with animation
     if (duration !== undefined && duration > 0) {
 		// assign current object to temp var

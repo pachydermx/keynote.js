@@ -1,9 +1,11 @@
 // create meta and manager objects
 var meta = new meta();
 var manager = new manager();
+manager.mods = ["Mobile", "SmallScreen"];
 
 // options
 var defaultEasing = "easeOutQuad";
+var defaultExiting = "easeInQuad";
 
 // create objects
 // HOME STATE A
@@ -47,8 +49,10 @@ homesakurac.add_state(50, 0, 180, 0, 1);
 homesakurac.set_z_index(2);
 
 var homekatana = new object("homekatana", meta);
-homekatana.add_state(61, 0, 0, 209, 0);
-homekatana.add_state(61, 0, 0, 209, 1);
+homekatana.add_state(61, 0, 20, 0, 0);
+homekatana.add_state(61, 0, 20, 0, 1);
+homekatana.add_size_transform(0, 100, 0, 40, 0);
+homekatana.add_size_transform(1, 100, 0, 40, 0);
 homekatana.set_z_index(1);
 
 // HOME STATE B
@@ -61,16 +65,28 @@ homebgb.auto_reset = false;
 homebgb.set_z_index(3);
 
 var homelogob = new object("homelogob", meta);
-homelogob.add_state(50, -300, 45, 0, 0);
-homelogob.add_state(50, -300, 45, 0, 1);
+homelogob.add_state(35, 0, 45, 0, 0);
+homelogob.add_state(35, 0, 45, 0, 1);
+homelogob.add_size_transform(0, 33, 0, 60, 0);
+homelogob.add_size_transform(1, 33, 0, 60, 0);
 homelogob.set_z_index(4);
+// mobile
+homelogob.change_position(0, 50, 0, 26, 0, 0, 0);
+homelogob.change_position(1, 50, 0, 26, 0, 1, 0);
+homelogob.add_size_transform(0, 100, 0, 35, 0, 0);
+homelogob.add_size_transform(1, 100, 0, 35, 0, 0);
 
 var hometext = new object("hometext", meta);
-hometext.add_state(50, 300, 45, 150, 0);
-hometext.add_state(50, 300, 45, 100, 1);
+hometext.add_state(66, 0, 60, 0, 0);
+hometext.add_state(66, 0, 54, 0, 1);
 hometext.add_size_transform(0, 25, 0, 31, 0);
 hometext.add_size_transform(1, 25, 0, 31, 0);
 hometext.set_z_index(4)
+// mobile
+hometext.change_position(0, 50, 0, 75, 0, 0, 0);
+hometext.change_position(1, 50, 0, 65, 0, 1, 0);
+hometext.add_size_transform(0, 80, 0, 40, 0, 0);
+hometext.add_size_transform(1, 80, 0, 40, 0, 0);
 
 var homesakurad = new object("homesakurad", meta);
 homesakurad.add_state(18, 0, 150, 0, 1);
@@ -139,6 +155,8 @@ websiteslider1.add_state(-50, 0, 40, 0, 1);
 websiteslider1.add_size_transform(0, 20, 0, 48, 0);
 websiteslider1.add_size_transform(1, 20, 0, 48, 0);
 websiteslider1.add_size_transform(2, 20, 0, 48, 0);
+websiteslider1.add_easing(1, defaultEasing);
+websiteslider1.add_easing(2, defaultExiting);
 websiteslider1.default_exit_location = 2;
 websiteslider1.set_z_index(5);
 
@@ -149,6 +167,8 @@ websiteslider2.add_state(-50, 0, 40, 0, 1);
 websiteslider2.add_size_transform(0, 20, 0, 48, 0);
 websiteslider2.add_size_transform(1, 20, 0, 48, 0);
 websiteslider2.add_size_transform(2, 20, 0, 48, 0);
+websiteslider2.add_easing(1, defaultEasing);
+websiteslider2.add_easing(2, defaultExiting);
 websiteslider2.default_exit_location = 2;
 websiteslider2.set_z_index(5);
 
@@ -159,6 +179,8 @@ websiteslider3.add_state(-50, 0, 40, 0, 1);
 websiteslider3.add_size_transform(0, 20, 0, 48, 0);
 websiteslider3.add_size_transform(1, 20, 0, 48, 0);
 websiteslider3.add_size_transform(2, 20, 0, 48, 0);
+websiteslider3.add_easing(1, defaultEasing);
+websiteslider3.add_easing(2, defaultExiting);
 websiteslider3.default_exit_location = 2;
 websiteslider3.set_z_index(5);
 
@@ -169,6 +191,8 @@ websiteslider4.add_state(-50, 0, 40, 0, 1);
 websiteslider4.add_size_transform(0, 20, 0, 48, 0);
 websiteslider4.add_size_transform(1, 20, 0, 48, 0);
 websiteslider4.add_size_transform(2, 20, 0, 48, 0);
+websiteslider4.add_easing(1, defaultEasing);
+websiteslider4.add_easing(2, defaultExiting);
 websiteslider4.default_exit_location = 2;
 websiteslider4.set_z_index(5);
 
@@ -185,6 +209,13 @@ websitetext.default_exit_location = 2;
 websitetext.add_easing(1, defaultEasing);
 websitetext.add_easing(2, defaultEasing);
 websitetext.set_z_index(5);
+// mobile
+websitetext.change_position(0, 50, 0, 82, 0, 0, 0);
+websitetext.change_position(1, 50, 0, 72, 0, 1, 0);
+websitetext.change_position(2, 50, 0, -50, 0, 1, 0);
+websitetext.add_size_transform(0, 80, 0, 40, 0, 0);
+websitetext.add_size_transform(1, 80, 0, 40, 0, 0);
+websitetext.add_size_transform(2, 80, 0, 40, 0, 0);
 
 var websiteleafa = new object("websiteleafa", meta);
 websiteleafa.add_state(16, 0, 34, 0, 0);
@@ -245,6 +276,13 @@ websitedevices.default_exit_location = 2;
 websitedevices.add_easing(1, defaultEasing);
 websitedevices.add_easing(2, defaultEasing);
 websitedevices.set_z_index(5);
+// mobile
+websitedevices.change_position(0, 40, 0, 40, 0, 0, 0);
+websitedevices.change_position(1, 50, 0, 40, 0, 1, 0);
+websitedevices.change_position(2, 50, 0, -50, 0, 1, 0);
+websitedevices.add_size_transform(0, 90, 0, 33, 0, 0);
+websitedevices.add_size_transform(1, 90, 0, 33, 0, 0);
+websitedevices.add_size_transform(2, 90, 0, 33, 0, 0);
 
 // INTERECTIVE
 var interbg = new object("interbg", meta);
@@ -279,6 +317,17 @@ interinfoc.add_state(50, 0, -30, 0, 1);
 interinfoc.default_exit_location = 2;
 interinfoc.set_z_index(5);
 
+// mobile
+interinfoa.change_position(0, 95, 0, 11, 0, 0, 0);
+interinfoa.change_position(1, 75, 0, 11, 0, 1, 0);
+interinfoa.change_position(2, 75, 0, -89, 0, 1, 0);
+interinfob.change_position(0, 95, 0, 29, 0, 0, 0);
+interinfob.change_position(1, 75, 0, 29, 0, 1, 0);
+interinfob.change_position(2, 75, 0, -71, 0, 1, 0);
+interinfoc.change_position(0, 95, 0, 47, 0, 0, 0);
+interinfoc.change_position(1, 75, 0, 47, 0, 1, 0);
+interinfoc.change_position(2, 75, 0, -53, 0, 1, 0);
+
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
 interinfoc.add_easing(1, defaultEasing);
@@ -293,6 +342,13 @@ intertext.add_size_transform(2, 30, 0, 52, 0);
 intertext.default_exit_location = 2;
 intertext.add_easing(1, defaultEasing);
 intertext.set_z_index(5);
+// mobile
+intertext.change_position(0, 50, 0, 82, 0, 0, 0);
+intertext.change_position(1, 50, 0, 72, 0, 1, 0);
+intertext.change_position(2, 50, 0, -50, 0, 1, 0);
+intertext.add_size_transform(0, 80, 0, 40, 0, 0);
+intertext.add_size_transform(1, 80, 0, 40, 0, 0);
+intertext.add_size_transform(2, 80, 0, 40, 0, 0);
 
 
 
@@ -303,6 +359,11 @@ brandcarda.add_state(20, 0, 27, 0, 1);
 brandcarda.add_size_transform(0, 27, 0, 41, 0);
 brandcarda.add_size_transform(1, 27, 0, 41, 0);
 brandcarda.set_z_index(2);
+// mobile
+brandcarda.change_position(0, 0, 0, -50, 0, 1, 0);
+brandcarda.change_position(1, 0, 0, 15, 0, 1, 0);
+brandcarda.add_size_transform(0, 40, 0, 40, 0, 0);
+brandcarda.add_size_transform(1, 40, 0, 40, 0, 0);
 
 var brandcardb = new object("brandcardb", meta);
 brandcardb.add_state(50, 0, 150, 0, 1);
@@ -310,6 +371,11 @@ brandcardb.add_state(50, 0, 27, 0, 1);
 brandcardb.add_size_transform(0, 27, 0, 41, 0);
 brandcardb.add_size_transform(1, 27, 0, 41, 0);
 brandcardb.set_z_index(3);
+// mobile
+brandcardb.change_position(0, 50, 0, -50, 0, 1, 0);
+brandcardb.change_position(1, 50, 0, 15, 0, 1, 0);
+brandcardb.add_size_transform(0, 40, 0, 40, 0, 0);
+brandcardb.add_size_transform(1, 40, 0, 40, 0, 0);
 
 var brandcardc = new object("brandcardc", meta);
 brandcardc.add_state(80, 0, -50, 0, 1);
@@ -317,6 +383,12 @@ brandcardc.add_state(80, 0, 27, 0, 1);
 brandcardc.add_size_transform(0, 27, 0, 41, 0);
 brandcardc.add_size_transform(1, 27, 0, 41, 0);
 brandcardc.set_z_index(2);
+// mobile
+brandcardc.change_position(0, 100, 0, -50, 0, 1, 0);
+brandcardc.change_position(1, 100, 0, 15, 0, 1, 0);
+brandcardc.add_size_transform(0, 40, 0, 40, 0, 0);
+brandcardc.add_size_transform(1, 40, 0, 40, 0, 0);
+
 
 var brandcardd = new object("brandcardd", meta);
 brandcardd.add_state(31, 0, 150, 0, 1);
@@ -324,6 +396,11 @@ brandcardd.add_state(31, 0, 76, 0, 1);
 brandcardd.add_size_transform(0, 51, 0, 49, 0);
 brandcardd.add_size_transform(1, 51, 0, 49, 0);
 brandcardd.set_z_index(2);
+// mobile
+brandcardd.change_position(0, 0, 0, 150, 0, 1, 0);
+brandcardd.change_position(1, 0, 0, 77, 0, 1, 0);
+brandcardd.add_size_transform(0, 200, 0, 46, 0, 0);
+brandcardd.add_size_transform(1, 200, 0, 46, 0, 0);
 
 var brandpen = new object("brandpen", meta);
 brandpen.add_state(89, 0, 150, 0, 1);
@@ -331,6 +408,11 @@ brandpen.add_state(89, 0, 85, 0, 1);
 brandpen.add_size_transform(0, 12, 0, 30, 0);
 brandpen.add_size_transform(1, 12, 0, 30, 0);
 brandpen.set_z_index(2);
+// mobile
+brandpen.change_position(0, 84, 0, 150, 0, 1, 0);
+brandpen.change_position(1, 84, 0, 85, 0, 1, 0);
+brandpen.add_size_transform(0, 25, 0, 30, 0, 0);
+brandpen.add_size_transform(1, 25, 0, 30, 0, 0);
 
 var brandclip = new object("brandclip", meta);
 brandclip.add_state(89, 0, 150, 0, 1);
@@ -338,6 +420,11 @@ brandclip.add_state(89, 0, 56, 0, 1);
 brandclip.add_size_transform(0, 10, 0, 28, 0);
 brandclip.add_size_transform(1, 10, 0, 28, 0);
 brandclip.set_z_index(2);
+// mobile
+brandclip.change_position(0, 84, 0, 150, 0, 1, 0);
+brandclip.change_position(1, 84, 0, 63, 0, 1, 0);
+brandclip.add_size_transform(0, 17, 0, 30, 0, 0);
+brandclip.add_size_transform(1, 17, 0, 30, 0, 0);
 
 var brandtext = new object("brandtext", meta);
 brandtext.add_state(70, 0, 150, 0, 1);
@@ -345,6 +432,11 @@ brandtext.add_state(70, 0, 70, 0, 1);
 brandtext.add_size_transform(0, 25, 0, 45, 0);
 brandtext.add_size_transform(1, 25, 0, 45, 0);
 brandtext.set_z_index(2);
+// mobile
+brandtext.change_position(0, 50, 0, 150, 0, 1, 0);
+brandtext.change_position(1, 50, 0, 42, 0, 1, 0);
+brandtext.add_size_transform(0, 80, 0, 40, 0, 0);
+brandtext.add_size_transform(1, 80, 0, 40, 0, 0);
 
 brandcarda.add_easing(1, defaultEasing);
 brandcardb.add_easing(1, defaultEasing);
@@ -367,22 +459,50 @@ videobg.set_z_index(3);
 var videoclipa = new object("videoclipa", meta);
 videoclipa.add_state(-50, 0, 55, 165, 1);
 videoclipa.add_state(30, 0, 55, 165, 1);
+videoclipa.add_size_transform(0, 32.5, 0, 31.1, 0);
+videoclipa.add_size_transform(1, 32.5, 0, 31.1, 0);
 videoclipa.set_z_index(4);
+// mobile
+videoclipa.add_size_transform(0, 49.7, 0, 20, 0, 0);
+videoclipa.add_size_transform(1, 49.7, 0, 20, 0, 0);
+videoclipa.change_position(0, -50, 0, 32, 0, 1, 0);
+videoclipa.change_position(1, 42, 0, 32, 0, 1, 0);
 
 var videoclipb = new object("videoclipb", meta);
 videoclipb.add_state(-50, 0, 55, 55, 1);
 videoclipb.add_state(30, 0, 55, 55, 1);
+videoclipb.add_size_transform(0, 32.5, 0, 31.1, 0);
+videoclipb.add_size_transform(1, 32.5, 0, 31.1, 0);
 videoclipb.set_z_index(4);
+// mobile
+videoclipb.add_size_transform(0, 49.7, 0, 20, 0, 0);
+videoclipb.add_size_transform(1, 49.7, 0, 20, 0, 0);
+videoclipb.change_position(0, -50, 0, 25.6, 0, 1, 0);
+videoclipb.change_position(1, 48.3, 0, 25.6, 0, 1, 0);
 
 var videoclipc = new object("videoclipc", meta);
 videoclipc.add_state(-50, 0, 55, -55, 1);
 videoclipc.add_state(30, 0, 55, -55, 1);
+videoclipc.add_size_transform(0, 32.5, 0, 31.1, 0);
+videoclipc.add_size_transform(1, 32.5, 0, 31.1, 0);
 videoclipc.set_z_index(4);
+// mobile
+videoclipc.add_size_transform(0, 49.7, 0, 20, 0, 0);
+videoclipc.add_size_transform(1, 49.7, 0, 20, 0, 0);
+videoclipc.change_position(0, -50, 0, 19.3, 0, 1, 0);
+videoclipc.change_position(1, 54.6, 0, 19.3, 0, 1, 0);
 
 var videoclipd = new object("videoclipd", meta);
 videoclipd.add_state(-50, 0, 55, -165, 1);
 videoclipd.add_state(30, 0, 55, -165, 1);
+videoclipd.add_size_transform(0, 32.5, 0, 31.1, 0);
+videoclipd.add_size_transform(1, 32.5, 0, 31.1, 0);
 videoclipd.set_z_index(4);
+// mobile
+videoclipd.add_size_transform(0, 49.7, 0, 20, 0, 0);
+videoclipd.add_size_transform(1, 49.7, 0, 20, 0, 0);
+videoclipd.change_position(0, -50, 0, 13, 0, 1, 0);
+videoclipd.change_position(1, 61, 0, 13, 0, 1, 0);
 
 var videotext = new object("videotext", meta);
 videotext.add_state(70, 0, 65, 0, 0);
@@ -390,6 +510,11 @@ videotext.add_state(70, 0, 55, 0, 1);
 videotext.add_size_transform(0, 25, 0, 54, 0);
 videotext.add_size_transform(1, 25, 0, 54, 0);
 videotext.set_z_index(4);
+// mobile
+videotext.change_position(0, 50, 0, 82, 0, 0, 0);
+videotext.change_position(1, 50, 0, 72, 0, 1, 0);
+videotext.add_size_transform(0, 80, 0, 40, 0, 0);
+videotext.add_size_transform(1, 80, 0, 40, 0, 0);
 
 videoclipa.add_easing(1, defaultEasing);
 videoclipb.add_easing(1, defaultEasing);
@@ -414,7 +539,12 @@ supportwbg.add_size_transform(0, 100, 0, 78, 0);
 supportwbg.add_size_transform(1, 100, 0, 78, 0);
 supportwbg.add_size_transform(2, 100, 0, 78, 0);
 supportwbg.default_exit_location = 2;
-supportwbg.set_z_index(6);	
+supportwbg.set_z_index(6);
+// mobile
+supportwbg.add_size_transform(0, 100, 0, 100, 0, 0);
+supportwbg.add_size_transform(1, 100, 0, 100, 0, 0);
+supportwbg.add_size_transform(2, 100, 0, 100, 0, 0);
+supportwbg.change_position(1, 50, 0, 50, 0, 1, 0);
 
 var supporttitle = new object("supporttitle", meta);
 supporttitle.add_state(50, 0, -50, 0, 0);
@@ -422,6 +552,15 @@ supporttitle.add_state(50, 0, 15, 0, 1);
 supporttitle.add_size_transform(0, 25, 0, 8, 0);
 supporttitle.add_size_transform(1, 25, 0, 8, 0);
 supporttitle.set_z_index(6);
+// mobile
+supporttitle.add_size_transform(0, 100, 0, 17, 0, 0);
+supporttitle.add_size_transform(1, 100, 0, 17, 0, 0);
+
+var supporttext_width = 33;
+var supporttext_line_1_top = 33;
+var supporttext_line_2_top = 70;
+var supporttext_row_1_left = 25;
+var supporttext_row_2_left = 75;
 
 var supporttexta = new object("supporttexta", meta);
 supporttexta.add_state(23, 0, 150, 0, 0);
@@ -432,6 +571,14 @@ supporttexta.add_size_transform(1, 20, 0, 55, 0);
 supporttexta.add_size_transform(2, 20, 0, 55, 0);
 supporttexta.default_exit_location = 2;
 supporttexta.set_z_index(6);
+// mobile
+supporttexta.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
+supporttexta.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
+supporttexta.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttexta.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 0);
+supporttexta.change_position(1, supporttext_row_1_left, 0, supporttext_line_1_top, 0, 1, 0);
+supporttexta.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 0);
+
 
 var supporttextb = new object("supporttextb", meta);
 supporttextb.add_state(41, 0, 150, 0, 0);
@@ -442,6 +589,13 @@ supporttextb.add_size_transform(1, 20, 0, 55, 0);
 supporttextb.add_size_transform(2, 20, 0, 55, 0);
 supporttextb.default_exit_location = 2;
 supporttextb.set_z_index(6);
+// mobile
+supporttextb.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
+supporttextb.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
+supporttextb.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttextb.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 0);
+supporttextb.change_position(1, supporttext_row_2_left, 0, supporttext_line_1_top, 0, 1, 0);
+supporttextb.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 0);
 
 var supporttextc = new object("supporttextc", meta);
 supporttextc.add_state(59, 0, 150, 0, 0);
@@ -452,6 +606,13 @@ supporttextc.add_size_transform(1, 20, 0, 55, 0);
 supporttextc.add_size_transform(2, 20, 0, 55, 0);
 supporttextc.default_exit_location = 2;
 supporttextc.set_z_index(6);
+// mobile
+supporttextc.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
+supporttextc.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
+supporttextc.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttextc.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 0);
+supporttextc.change_position(1, supporttext_row_1_left, 0, supporttext_line_2_top, 0, 1, 0);
+supporttextc.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 0);
 
 var supporttextd = new object("supporttextd", meta);
 supporttextd.add_state(77, 0, 150, 0, 0);
@@ -462,6 +623,13 @@ supporttextd.add_size_transform(1, 20, 0, 55, 0);
 supporttextd.add_size_transform(2, 20, 0, 55, 0);
 supporttextd.default_exit_location = 2;
 supporttextd.set_z_index(6);
+// mobile
+supporttextd.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
+supporttextd.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
+supporttextd.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttextd.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 0);
+supporttextd.change_position(1, supporttext_row_2_left, 0, supporttext_line_2_top, 0, 1, 0);
+supporttextd.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 0);
 
 supportbg.add_easing(1, defaultEasing);
 supportwbg.add_easing(1, defaultEasing);
@@ -512,40 +680,41 @@ websitea.add(homesakurad, 0, 0, 1500);
 websitea.add(homesakurae, 0, 0, 1500);
 websitea.add(homesakuraf, 0, 0, 1500);
 websitea.add(homebgb, 1, 0, 1500);
-websitea.add(homebgb, 0, 5000, 0);
-websitea.add(websitebg, 1, 2000, 3000);
+websitea.add(homebgb, 0, 3000, 0);
+websitea.add(websitebg, 1, 2000, 1000);
 websitea.add(websitewbg, 1, 0, 3000);
 
-var websiteslider_intro = 2500;
-var websiteslider_duration = 2000;
+var websiteslider_interval = 1000;
+var websiteslider_intro = 1000;
+var websiteslider_duration = 3000;
 
 var websitesliderpage1 = new page("Slider #1", manager);
 manager.add(websitesliderpage1);
 websitesliderpage1.add(websitebg, 1, 0, 0);
 websitesliderpage1.add(websitewbg, 1, 0, 0);
-websitesliderpage1.add(websiteslider1, 1, 0, websiteslider_intro);
-websitesliderpage1.add(websiteslider1, 1, websiteslider_intro, websiteslider_duration);
+websitesliderpage1.add(websiteslider1, 1, websiteslider_interval, websiteslider_intro);
+websitesliderpage1.add(websiteslider1, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage2 = new page("Slider #2", manager);
 manager.add(websitesliderpage2);
 websitesliderpage2.add(websitebg, 1, 0, 0);
 websitesliderpage2.add(websitewbg, 1, 0, 0);
-websitesliderpage2.add(websiteslider2, 1, 0, websiteslider_intro);
-websitesliderpage2.add(websiteslider2, 1, websiteslider_intro, websiteslider_duration);
+websitesliderpage2.add(websiteslider2, 1, websiteslider_interval, websiteslider_intro);
+websitesliderpage2.add(websiteslider2, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage3 = new page("Slider #3", manager);
 manager.add(websitesliderpage3);
 websitesliderpage3.add(websitebg, 1, 0, 0);
 websitesliderpage3.add(websitewbg, 1, 0, 0);
-websitesliderpage3.add(websiteslider3, 1, 0, websiteslider_intro);
-websitesliderpage3.add(websiteslider3, 1, websiteslider_intro, websiteslider_duration);
+websitesliderpage3.add(websiteslider3, 1, websiteslider_interval, websiteslider_intro);
+websitesliderpage3.add(websiteslider3, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage4 = new page("Slider #4", manager);
 manager.add(websitesliderpage4);
 websitesliderpage4.add(websitebg, 1, 0, 0);
 websitesliderpage4.add(websitewbg, 1, 0, 0);
-websitesliderpage4.add(websiteslider4, 1, 0, websiteslider_intro);
-websitesliderpage4.add(websiteslider4, 1, websiteslider_intro, websiteslider_duration);
+websitesliderpage4.add(websiteslider4, 1, websiteslider_interval, websiteslider_intro);
+websitesliderpage4.add(websiteslider4, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 // create slider
 var websiteslider = new slider(manager);
@@ -697,5 +866,9 @@ $(window).load(function(){
 	websiteslider.init();
 
 	manager.goto_page(0);
+	
+	
+	// FOR TEST !
+	manager.mod(0);
 	
 });

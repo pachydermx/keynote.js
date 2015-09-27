@@ -20,15 +20,21 @@ html{
 .contain{
 	background-size: contain;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .cover{
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .right-align{
 	background-position: right;
+}
+
+.top-align{
+	background-position: top;
 }
 
 .bottom-align{
@@ -40,6 +46,8 @@ html{
 	font-size: 4.44vw;
 	font-weight: lighter;
 }
+
+/* HOME */
 
 #homebg{
 	background-image: url(katana/homebg.jpg);
@@ -66,6 +74,10 @@ html{
 	background-position: left top;
 }
 
+#homekatana {
+	background-image: url(katana/homekatana.png);
+}
+
 #homesakurad{
 	background-image: url(katana/homesakurad.png);
 }
@@ -77,6 +89,12 @@ html{
 #homesakuraf{
 	background-image: url(katana/homesakuraf.png);
 }
+
+#homelogob{
+	background-image: url(katana/homelogob.png);
+}
+
+/* WEBSITE 1 */
 
 #websitebg{
 	background-image: url(katana/websitebg.jpg);
@@ -135,9 +153,28 @@ html{
 	background-image: url(katana/brandpen.png);
 }
 
+/* VIDEO */
+
 #videobg{
 	background-image: url(katana/videobg.jpg);
 }
+
+#videoclipa{
+	background-image: url(katana/videoclipa.png);
+}
+
+#videoclipb{
+	background-image: url(katana/videoclipb.png);
+}
+
+#videoclipc{
+	background-image: url(katana/videoclipc.png);
+}
+
+#videoclipd{
+	background-image: url(katana/videoclipd.png);
+}
+
 
 #supportbg{
 	background-image: url(katana/supportbg.jpg);
@@ -213,6 +250,10 @@ html{
 	font-weight: lighter;
 }
 
+.Mobile .title{
+	font-size: 8vw;
+}
+
 .title_container{
 	padding-bottom: 1.5vh;
 }
@@ -229,6 +270,11 @@ html{
 	font-size: 0.8vw;
 	font-family: "Arial";
 	line-height: 1.8;
+}
+
+.Mobile .context{
+	font-size: 2.5vw;
+	line-height: 1.4;
 }
 
 .button_container{

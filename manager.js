@@ -71,13 +71,14 @@ function manager() {
 			for (var j in this.pages[i].objects) {
 				var the_object = this.pages[i].objects[j].object;
 				the_object.mod = id;
-				//console.log("set "+the_object.id+" mod to "+the_object.id);
+				the_object.dom_obj.attr("class", the_object.default_class + " " + this.mods[id]);
 			}
 		}
 		// discrete objects
 		for (var i in this.objects) {
 			var the_object = this.objects[i];
 			the_object.mod = id;
+			the_object.dom_obj.attr("class", the_object.default_class + " " + this.mods[id]);
 		}
 		// refresh
 		this.refresh();
