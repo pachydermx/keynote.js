@@ -36,16 +36,22 @@ homelogolightb.set_z_index(2);
 var homesakuraa = new object("homesakuraa", meta);
 homesakuraa.add_state(50, 0, -150, 0, 1);
 homesakuraa.add_state(50, 0, 250, 0, 1);
+homesakuraa.add_size_transform(0, 100, 0, 100, 0);
+homesakuraa.add_size_transform(1, 100, 0, 100, 0);
 homesakuraa.set_z_index(2);
 
 var homesakurab = new object("homesakurab", meta);
 homesakurab.add_state(50, 0, -100, 0, 1);
 homesakurab.add_state(50, 0, 200, 0, 1);
+homesakurab.add_size_transform(0, 100, 0, 100, 0);
+homesakurab.add_size_transform(1, 100, 0, 100, 0);
 homesakurab.set_z_index(2);
 
 var homesakurac = new object("homesakurac", meta);
 homesakurac.add_state(50, 0, -80, 0, 1);
 homesakurac.add_state(50, 0, 180, 0, 1);
+homesakurac.add_size_transform(0, 100, 0, 100, 0);
+homesakurac.add_size_transform(1, 100, 0, 100, 0);
 homesakurac.set_z_index(2);
 
 var homekatana = new object("homekatana", meta);
@@ -96,6 +102,9 @@ homesakurad.add_size_transform(1, 36, 0, 51, 0);
 homesakurad.add_easing(1, defaultEasing);
 homesakurad.auto_reset = false;
 homesakurad.set_z_index(4);
+// mobile
+homesakurad.change_position(0, 8, 0, 150, 0, 1, 0);
+homesakurad.change_position(1, 8, 0, 90, 0, 1, 0);
 
 var homesakurae = new object("homesakurae", meta);
 homesakurae.add_state(80, 0, 150, 0, 1);
@@ -105,6 +114,8 @@ homesakurae.add_size_transform(1, 40, 0, 51, 0);
 homesakurae.add_easing(1, defaultEasing);
 homesakurae.auto_reset = false;
 homesakurae.set_z_index(4);
+// mobile
+homesakurae.change_position(1, 80, 0, 15, 0, 1, 0);
 
 var homesakuraf = new object("homesakuraf", meta);
 homesakuraf.add_state(28, 0, 150, 0, 1);
@@ -114,6 +125,11 @@ homesakuraf.add_size_transform(1, 56, 0, 86, 0);
 homesakuraf.add_easing(1, defaultEasing);
 homesakuraf.auto_reset = false;
 homesakuraf.set_z_index(4);
+// mobile
+homesakuraf.change_position(0, 14, 0, 150, 0, 1, 0);
+homesakuraf.change_position(1, 14, 0, 9, 0, 1, 0);
+homesakuraf.add_size_transform(0, 80, 0, 50, 0, 0);
+homesakuraf.add_size_transform(1, 80, 0, 50, 0, 0);
 
 homesakurad.add_easing(0, "easeInQuad");
 homesakurae.add_easing(0, "easeInQuad");

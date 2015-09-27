@@ -57,6 +57,19 @@ html{
 	background-image: url(katana/homebgb.jpg);
 }
 
+#homesakuraa{
+	background-image: url(katana/homesakuraa.png);
+}
+
+#homesakurab{
+	background-image: url(katana/homesakurab.png);
+}
+
+#homesakurac{
+	background-image: url(katana/homesakurac.png);
+}
+
+
 .homelogolight{
 	background-repeat: no-repeat;
 }
