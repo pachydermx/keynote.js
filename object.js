@@ -158,7 +158,6 @@ object.prototype.add_optional_info = function (index, body, mod_id) {
 		}
 		results.push(result);
 	}
-	console.log(arguments, results);
 	// execute
 	for (var i in results){
 		if (typeof index == "object") {

@@ -772,6 +772,15 @@ $(window).resize(function(){
 	manager.refresh();
 });
 
+// set mouse wheel
+$(window).mousewheel(function(event){
+	if (event.deltaY > 0){
+		console.log("prev");
+	} else if (event.deltaY < 0){
+		console.log("next");
+	}
+});
+
 $(window).load(function(){
 	inspector.enable("body");
 	// home
