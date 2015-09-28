@@ -103,8 +103,10 @@ function manager() {
 	// manual jump
 	this.lock = function () {
 		if (!this.locked) {
+			this.locked = true;
+			var that = this;
 			this.locker = setTimeout(function() {
-				this.locked = false;
+				that.locked = false;
 			}, 3000);
 			return true;
 		} else {
@@ -114,7 +116,7 @@ function manager() {
 	
 	// next/prev
 	this.next = function() {
-		if (this.index < this.jumplist.length - 2 && this.lock()) {
+		if (this.index < this.jumplist.length - 1 && this.lock()) {
 			this.index++;
 			this.goto_page(this.jumplist[this.index]);
 		}

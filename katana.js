@@ -136,7 +136,7 @@ websitebg.add_easing(2, defaultEasing);
 websitebg.auto_reset = false;
 websitebg.set_z_index(4);
 
-websitewbg = new object("websitewbg", meta);
+var websitewbg = new object("websitewbg", meta);
 websitewbg.add_state(50, 0, 150, 0, 1);
 websitewbg.add_state(50, 0, 40, 0, 1);
 websitewbg.add_state(50, 0, -50, 0, 1);
@@ -203,6 +203,12 @@ websiteslider4.set_z_index(5);
 websiteslider4.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider4.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+
+var websitesliderindicator = new object("websitesliderindicator", meta);
+websitesliderindicator.add_state(50, 0, 68, 0, 0);
+websitesliderindicator.add_state(50, 0, 68, 0, 1);
+websitesliderindicator.add_size_transform([0, 1], 0, 200, 0, 25);
+websitesliderindicator.set_z_index(5);
 
 // WEBSITE 2
 
@@ -532,7 +538,7 @@ supportwbg.add_size_transform([0, 1, 2], 100, 0, 100, 0, 0);
 supportwbg.change_position(1, 50, 0, 50, 0, 1, 0);
 // tablet
 supportwbg.add_size_transform([0, 1, 2], 100, 0, 85, 0, 1);
-supportwbg.change_position(1, 50, 0, 42.5, 0, 1);
+supportwbg.change_position(1, 50, 0, 42.5, 0, 1, 1);
 
 var supporttitle = new object("supporttitle", meta);
 supporttitle.add_state(50, 0, -50, 0, 0);
@@ -664,6 +670,7 @@ websitesliderpage1.add(websitebg, 1, 0, 0);
 websitesliderpage1.add(websitewbg, 1, 0, 0);
 websitesliderpage1.add(websiteslider1, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage1.add(websiteslider1, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage1.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage2 = new page("Slider #2", manager);
 manager.add(websitesliderpage2, false);
@@ -671,6 +678,7 @@ websitesliderpage2.add(websitebg, 1, 0, 0);
 websitesliderpage2.add(websitewbg, 1, 0, 0);
 websitesliderpage2.add(websiteslider2, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage2.add(websiteslider2, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage2.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage3 = new page("Slider #3", manager);
 manager.add(websitesliderpage3, false);
@@ -678,6 +686,7 @@ websitesliderpage3.add(websitebg, 1, 0, 0);
 websitesliderpage3.add(websitewbg, 1, 0, 0);
 websitesliderpage3.add(websiteslider3, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage3.add(websiteslider3, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage3.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage4 = new page("Slider #4", manager);
 manager.add(websitesliderpage4, false);
@@ -685,6 +694,7 @@ websitesliderpage4.add(websitebg, 1, 0, 0);
 websitesliderpage4.add(websitewbg, 1, 0, 0);
 websitesliderpage4.add(websiteslider4, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage4.add(websiteslider4, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage4.add(websitesliderindicator, 1, 0, 0);
 
 // create slider
 var websiteslider = new slider(manager);
@@ -692,6 +702,10 @@ websiteslider.add(websitesliderpage1);
 websiteslider.add(websitesliderpage2);
 websiteslider.add(websitesliderpage3);
 websiteslider.add(websitesliderpage4);
+websiteslider.callback = function (id) {
+	$(".indicator").css("background-color", "#cccccc");
+	$("#slider_" + id).css("background-color", "#666666");
+};
 websiteslider.set_intro(websitea);
 
 
@@ -709,7 +723,7 @@ websiteb.add(websitedevices, 1, 1500, 2000);
 var interactive = new page("Interactive", manager);
 manager.add(interactive, true);
 interactive.add(websitebg, 2, 0, 2000);
-interactive.add(websitebg, 0, 2000, 0);
+interactive.add(websitebg, 0, 2000, 500);
 interactive.add(interbg, 1, 0, 2000);
 interactive.add(interinfoa, 1, 2000, 1000);
 interactive.add(interinfob, 1, 2500, 1000);
@@ -798,7 +812,7 @@ $(window).swipe({
 });
 
 $(window).load(function(){
-	inspector.enable("body");
+	//inspector.enable("body");
 	// home
 	homebg.init_with_selector("#homebg");
 	homelogoa.init_with_selector("#homelogoa");
@@ -823,6 +837,7 @@ $(window).load(function(){
 	websiteslider2.init_with_selector("#websiteslider2");
 	websiteslider3.init_with_selector("#websiteslider3");
 	websiteslider4.init_with_selector("#websiteslider4");
+	websitesliderindicator.init_with_selector("#websitesliderindicator");
 
 	websitetext.init_with_selector("#websitetext");
 	websiteleafa.init_with_selector("#websiteleafa");
