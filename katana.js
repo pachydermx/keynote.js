@@ -752,9 +752,23 @@ contact.add(contactform, 1, 3000, 1000);
 // create inspector
 var inspector = new inspector(manager);
 
+var mod_select = function () {
+	var to_mod = undefined;
+	if (meta.width <= 1280) {
+		to_mod = 1;
+	}
+	if (meta.width <= 768) {
+		to_mod = 0;
+	}
+	if (manager.mod != to_mod) {
+		manager.mod(to_mod);
+	}
+}
+
 // create listener
 $(window).resize(function(){
 	meta.update();
+	mod_select();
 	manager.refresh();
 });
 
@@ -833,8 +847,7 @@ $(window).load(function(){
 
 	manager.goto_page(0);
 	
+	mod_select();
 	
-	// FOR TEST !
-	manager.mod(1);
 	
 });
