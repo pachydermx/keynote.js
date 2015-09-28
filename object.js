@@ -35,6 +35,8 @@ object.prototype.init = function (selector, content, class_name) {
     $(selector).append(getDiv('obj_' + this.id, class_name, content));
     // get info
     this.dom_obj = $("#obj_" + this.id);
+	// save default class
+	this.default_class = this.dom_obj.attr("class");
     this.refresh();
     // reset to default position
     if (this.states.length > 0) {
@@ -48,6 +50,8 @@ object.prototype.init_with_image = function (selector, image) {
     this.init(selector, 'image', "object image_object");
     // set background
     this.dom_obj.css('background-image', 'url(' + image + ')');
+	// save default class
+	this.default_class = this.dom_obj.attr("class");
     // set size
     this.refresh();
 };
@@ -130,8 +134,49 @@ object.prototype.add_state = function (x_percent, x_delta, y_percent, y_delta, a
 					 });
 };
 
-// add optional info (sizes, rotations, etc)
-object.prototype.add_optional_info = function (state_id, optional_info, mod_id) {
+// accepts multi-line expansion at the same time
+object.prototype.add_optional_info = function (index, body, mod_id) {
+	//find length
+	var length = 1;
+	for (var i in body){
+		if (typeof body[i] == "object") {
+			if (body[i].length > length) {
+				length = body[i].length;
+			}
+		}
+	}
+	// expand
+	var results = [];
+	for (var i = 0; i < length; i++){
+		var result = {};
+		for (var j in body) {
+			if (typeof body[j] == "object") {
+				result[j] = body[j][i];
+			} else {
+				result[j] = body[j];
+			}
+		}
+		results.push(result);
+	}
+	console.log(arguments, results);
+	// execute
+	for (var i in results){
+		if (typeof index == "object") {
+			for (var j in index) {
+				if (index.length == length) {
+					this.apply_change(index[j], results[j], mod_id);
+				} else {
+					this.apply_change(index[j], results[i], mod_id);
+				}
+			}
+		} else {
+			this.apply_change(index, results[i], mod_id);
+		}
+	}
+};
+
+// add optional info
+object.prototype.apply_change = function (state_id, optional_info, mod_id){
     var i;
     for (i in optional_info) {
 		// add mod info

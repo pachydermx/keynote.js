@@ -292,6 +292,10 @@ html{
 	font-size: 8vw;
 }
 
+.Tablet .title, .Tablet.title{
+	font-size: 4vw;
+}
+
 .title_container{
 	padding-bottom: 1.5vh;
 }
@@ -317,6 +321,11 @@ html{
 .Mobile .context, .Mobile .context p, .Mobile .context li{
 	font-size: 2.3vw;
 	line-height: 1.3;
+}
+
+.Tablet .context, .Tablet .context p, .Tablet .context li{
+	font-size: 1.5vw;
+	line-height: 1.5;
 }
 
 .button_container{
