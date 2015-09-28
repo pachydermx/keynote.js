@@ -175,6 +175,10 @@ websiteslider1.add_easing(1, defaultEasing);
 websiteslider1.add_easing(2, defaultExiting);
 websiteslider1.default_exit_location = 2;
 websiteslider1.set_z_index(5);
+// mobile
+websiteslider1.add_size_transform(0, 75, 0, 50, 0, 0);
+websiteslider1.add_size_transform(1, 75, 0, 50, 0, 0);
+websiteslider1.add_size_transform(2, 75, 0, 50, 0, 0);
 
 websiteslider2 = new object("websiteslider2", meta);
 websiteslider2.add_state(150, 0, 40, 0, 1);
@@ -187,6 +191,10 @@ websiteslider2.add_easing(1, defaultEasing);
 websiteslider2.add_easing(2, defaultExiting);
 websiteslider2.default_exit_location = 2;
 websiteslider2.set_z_index(5);
+// mobile
+websiteslider2.add_size_transform(0, 75, 0, 50, 0, 0);
+websiteslider2.add_size_transform(1, 75, 0, 50, 0, 0);
+websiteslider2.add_size_transform(2, 75, 0, 50, 0, 0);
 
 websiteslider3 = new object("websiteslider3", meta);
 websiteslider3.add_state(150, 0, 40, 0, 1);
@@ -199,6 +207,10 @@ websiteslider3.add_easing(1, defaultEasing);
 websiteslider3.add_easing(2, defaultExiting);
 websiteslider3.default_exit_location = 2;
 websiteslider3.set_z_index(5);
+// mobile
+websiteslider3.add_size_transform(0, 75, 0, 50, 0, 0);
+websiteslider3.add_size_transform(1, 75, 0, 50, 0, 0);
+websiteslider3.add_size_transform(2, 75, 0, 50, 0, 0);
 
 websiteslider4 = new object("websiteslider4", meta);
 websiteslider4.add_state(150, 0, 40, 0, 1);
@@ -211,6 +223,10 @@ websiteslider4.add_easing(1, defaultEasing);
 websiteslider4.add_easing(2, defaultExiting);
 websiteslider4.default_exit_location = 2;
 websiteslider4.set_z_index(5);
+// mobile
+websiteslider4.add_size_transform(0, 75, 0, 50, 0, 0);
+websiteslider4.add_size_transform(1, 75, 0, 50, 0, 0);
+websiteslider4.add_size_transform(2, 75, 0, 50, 0, 0);
 
 // WEBSITE 2
 
@@ -244,6 +260,13 @@ websiteleafa.add_easing(1, defaultEasing);
 websiteleafa.add_easing(2, defaultEasing);
 websiteleafa.default_exit_location = 2;
 websiteleafa.set_z_index(5);
+// mobile
+websiteleafa.add_size_transform(0, 45, 0, 40, 0, 0);
+websiteleafa.add_size_transform(1, 45, 0, 40, 0, 0);
+websiteleafa.add_size_transform(2, 45, 0, 40, 0, 0);
+websiteleafa.change_position(0, 22.5, 0, 20, 0, 0, 0);
+websiteleafa.change_position(1, 22.5, 0, 10, 0, 1, 0);
+websiteleafa.change_position(2, 22.5, 0, -50, 0, 1, 0);
 
 var websiteleafb = new object("websiteleafb", meta);
 websiteleafb.add_state(30, 0, 34, 0, 0);
@@ -255,7 +278,12 @@ websiteleafb.add_size_transform(2, 33, 0, 49, 0);
 websiteleafb.add_easing(1, defaultEasing);
 websiteleafb.add_easing(2, defaultEasing);
 websiteleafb.default_exit_location = 2;
-websiteleafb.set_z_index(5);
+websiteleafb.set_z_index(6);
+// mobile
+websiteleafb.add_size_transform(0, 42.8, 0, 25, 0, 0);
+websiteleafb.add_size_transform(1, 42.8, 0, 25, 0, 0);
+websiteleafb.add_size_transform(2, 42.8, 0, 25, 0, 0);
+websiteleafb.change_position(1, 30, 0, 27, 0, 1, 0);
 
 var websiteleafc = new object("websiteleafc", meta);
 websiteleafc.add_state(75, 0, 90, 0, 0);
@@ -268,6 +296,10 @@ websiteleafc.add_easing(1, defaultEasing);
 websiteleafc.add_easing(2, defaultEasing);
 websiteleafc.default_exit_location = 2;
 websiteleafc.set_z_index(5);
+// mobile
+websiteleafc.add_size_transform(0, 27, 0, 31, 0, 0);
+websiteleafc.add_size_transform(1, 27, 0, 31, 0, 0);
+websiteleafc.add_size_transform(2, 27, 0, 31, 0, 0);
 
 var websiteleafd = new object("websiteleafd", meta);
 websiteleafd.add_state(85, 0, 90, 0, 0);
@@ -280,6 +312,13 @@ websiteleafd.add_easing(1, defaultEasing);
 websiteleafd.add_easing(2, defaultEasing);
 websiteleafd.default_exit_location = 2;
 websiteleafd.set_z_index(5);
+// mobile
+websiteleafd.add_size_transform(0, 37.5, 0, 40, 0, 0);
+websiteleafd.add_size_transform(1, 37.5, 0, 40, 0, 0);
+websiteleafd.add_size_transform(2, 37.5, 0, 40, 0, 0);
+websiteleafd.change_position(0, 95, 0, 90, 0, 0, 0);
+websiteleafd.change_position(1, 95, 0, 75, 0, 1, 0);
+websiteleafd.change_position(2, 95, 0, -25, 0, 1, 0);
 
 var websitedevices = new object("websitedevices", meta);
 websitedevices.add_state(40, 0, 75, 0, 0);
@@ -316,6 +355,9 @@ var interinfoa = new object("interinfoa", meta);
 interinfoa.add_state(20, 0, 80, 0, 0);
 interinfoa.add_state(20, 0, 70, 0, 1);
 interinfoa.add_state(20, 0, -30, 0, 1);
+interinfoa.add_size_transform(0, 10, 0, 20, 0);
+interinfoa.add_size_transform(1, 10, 0, 20, 0);
+interinfoa.add_size_transform(2, 10, 0, 20, 0);
 interinfoa.default_exit_location = 2;
 interinfoa.set_z_index(5);
 
@@ -323,6 +365,9 @@ var interinfob = new object("interinfob", meta);
 interinfob.add_state(35, 0, 80, 0, 0);
 interinfob.add_state(35, 0, 70, 0, 1);
 interinfob.add_state(35, 0, -30, 0, 1);
+interinfob.add_size_transform(0, 10, 0, 20, 0);
+interinfob.add_size_transform(1, 10, 0, 20, 0);
+interinfob.add_size_transform(2, 10, 0, 20, 0);
 interinfob.default_exit_location = 2;
 interinfob.set_z_index(5);
 
@@ -330,19 +375,31 @@ var interinfoc = new object("interinfoc", meta);
 interinfoc.add_state(50, 0, 80, 0, 0);
 interinfoc.add_state(50, 0, 70, 0, 1);
 interinfoc.add_state(50, 0, -30, 0, 1);
+interinfoc.add_size_transform(0, 10, 0, 20, 0);
+interinfoc.add_size_transform(1, 10, 0, 20, 0);
+interinfoc.add_size_transform(2, 10, 0, 20, 0);
 interinfoc.default_exit_location = 2;
 interinfoc.set_z_index(5);
 
 // mobile
-interinfoa.change_position(0, 95, 0, 11, 0, 0, 0);
-interinfoa.change_position(1, 75, 0, 11, 0, 1, 0);
-interinfoa.change_position(2, 75, 0, -89, 0, 1, 0);
-interinfob.change_position(0, 95, 0, 29, 0, 0, 0);
-interinfob.change_position(1, 75, 0, 29, 0, 1, 0);
-interinfob.change_position(2, 75, 0, -71, 0, 1, 0);
-interinfoc.change_position(0, 95, 0, 47, 0, 0, 0);
-interinfoc.change_position(1, 75, 0, 47, 0, 1, 0);
-interinfoc.change_position(2, 75, 0, -53, 0, 1, 0);
+interinfoa.change_position(0, 95, 0, 14, 0, 0, 0);
+interinfoa.change_position(1, 75, 0, 14, 0, 1, 0);
+interinfoa.change_position(2, 75, 0, -84, 0, 1, 0);
+interinfob.change_position(0, 95, 0, 32, 0, 0, 0);
+interinfob.change_position(1, 75, 0, 32, 0, 1, 0);
+interinfob.change_position(2, 75, 0, -66, 0, 1, 0);
+interinfoc.change_position(0, 95, 0, 50, 0, 0, 0);
+interinfoc.change_position(1, 75, 0, 50, 0, 1, 0);
+interinfoc.change_position(2, 75, 0, -48, 0, 1, 0);
+interinfoa.add_size_transform(0, 40, 0, 15, 0, 0);
+interinfoa.add_size_transform(1, 40, 0, 15, 0, 0);
+interinfoa.add_size_transform(2, 40, 0, 15, 0, 0);
+interinfob.add_size_transform(0, 40, 0, 15, 0, 0);
+interinfob.add_size_transform(1, 40, 0, 15, 0, 0);
+interinfob.add_size_transform(2, 40, 0, 15, 0, 0);
+interinfoc.add_size_transform(0, 40, 0, 15, 0, 0);
+interinfoc.add_size_transform(1, 40, 0, 15, 0, 0);
+interinfoc.add_size_transform(2, 40, 0, 15, 0, 0);
 
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
@@ -572,9 +629,9 @@ supporttitle.set_z_index(6);
 supporttitle.add_size_transform(0, 100, 0, 17, 0, 0);
 supporttitle.add_size_transform(1, 100, 0, 17, 0, 0);
 
-var supporttext_width = 33;
+var supporttext_width = 45;
 var supporttext_line_1_top = 33;
-var supporttext_line_2_top = 70;
+var supporttext_line_2_top = 75;
 var supporttext_row_1_left = 25;
 var supporttext_row_2_left = 75;
 
@@ -623,9 +680,9 @@ supporttextc.add_size_transform(2, 20, 0, 55, 0);
 supporttextc.default_exit_location = 2;
 supporttextc.set_z_index(6);
 // mobile
-supporttextc.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
-supporttextc.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
-supporttextc.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttextc.add_size_transform(0, supporttext_width, 0, 40, 0, 0);
+supporttextc.add_size_transform(1, supporttext_width, 0, 40, 0, 0);
+supporttextc.add_size_transform(2, supporttext_width, 0, 40, 0, 0);
 supporttextc.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 0);
 supporttextc.change_position(1, supporttext_row_1_left, 0, supporttext_line_2_top, 0, 1, 0);
 supporttextc.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 0);
@@ -640,9 +697,9 @@ supporttextd.add_size_transform(2, 20, 0, 55, 0);
 supporttextd.default_exit_location = 2;
 supporttextd.set_z_index(6);
 // mobile
-supporttextd.add_size_transform(0, supporttext_width, 0, 33, 0, 0);
-supporttextd.add_size_transform(1, supporttext_width, 0, 33, 0, 0);
-supporttextd.add_size_transform(2, supporttext_width, 0, 33, 0, 0);
+supporttextd.add_size_transform(0, supporttext_width, 0, 40, 0, 0);
+supporttextd.add_size_transform(1, supporttext_width, 0, 40, 0, 0);
+supporttextd.add_size_transform(2, supporttext_width, 0, 40, 0, 0);
 supporttextd.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 0);
 supporttextd.change_position(1, supporttext_row_2_left, 0, supporttext_line_2_top, 0, 1, 0);
 supporttextd.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 0);

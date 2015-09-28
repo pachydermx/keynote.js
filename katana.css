@@ -143,9 +143,31 @@ html{
 	background-image: url(katana/websitedevices.png);
 }
 
+/* INTERACTIVE */
+
 #interbg{
 	background-image: url(katana/interbg.jpg);
 }
+
+.interactive.circle{
+	background-position: top;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#interinfoa{
+	background-image: url(katana/interinfoa.png);
+}
+
+#interinfob{
+	background-image: url(katana/interinfob.png);
+}
+
+#interinfoc{
+	background-image: url(katana/interinfoc.png);
+}
+
+/* BRAND */
 
 #brandcarda{
 	background-image: url(katana/brandcarda.png);
@@ -199,7 +221,6 @@ html{
 
 #supporttitle{
 	font-family: "Georgia";
-	font-size: 2.5vw;
 	text-align: center;
 }
 
@@ -245,6 +266,10 @@ html{
 	border-radius: 5px;
 }
 
+.Mobile .tag{
+	font-size: 1.5vw;
+}
+
 .tag.orange{
 	background: #eb6100;
 }
@@ -263,7 +288,7 @@ html{
 	font-weight: lighter;
 }
 
-.Mobile .title{
+.Mobile .title, .Mobile.title{
 	font-size: 8vw;
 }
 
@@ -285,9 +310,13 @@ html{
 	line-height: 1.8;
 }
 
-.Mobile .context{
-	font-size: 2.5vw;
-	line-height: 1.4;
+.Mobile .context.small{
+	font-size: 2.0vw;
+}
+
+.Mobile .context, .Mobile .context p, .Mobile .context li{
+	font-size: 2.3vw;
+	line-height: 1.3;
 }
 
 .button_container{
@@ -301,6 +330,10 @@ html{
 	background: white;
 	padding: 2.3vh 1vw;
 	border-radius: 8px;
+}
+
+.Mobile .more_button{
+	padding: 10px 5px;
 }
 
 .more_button.reverse{
@@ -328,6 +361,10 @@ html{
 	margin: auto;
 }
 
+.Mobile .button_label{
+	font-size: 2.0vw;
+}
+
 .thumb_display{
 	background: rgba(255, 255, 255, 0.32);
 	font-family: "Arial";
@@ -338,12 +375,20 @@ html{
 .thumb_img img{
 	width: 9vw;
 }
+
+.Mobile .thumb_img img{
+	width: 18vw;
+}
 		
 .thumb_title{
 	padding-top: 9px;
 	font-size: 0.8vw;
 }
-		
+
+.Mobile .thumb_title{
+	font-size: 1.5vw;
+}
+
 .thumb_box{
 	display: inline-block;
 	margin-right: 0.8vw;
@@ -361,6 +406,12 @@ html{
 	background-size: contain;
 }
 
+.Mobile .slider_showcase{
+	width: 36vw;
+	height: 36vw;
+	margin-bottom: 2vw;
+}
+
 .slider_icon{
 	margin: 0px;
 	position: relative;
@@ -370,10 +421,23 @@ html{
 	height: 7vw;
 	background-size: contain;
 }
+
+.Mobile .slider_icon{
+	width: 21vw;
+	height: 21vw;
+	left: 7.8vw;
+	top: 7.8vw;
+}
 		
 .second.title{
 	font-size: 2.0vw;
 }
+
+.Mobile .second.title{
+	font-size: 4.0vw;
+}
+
+/* SLIDER */
 
 #slider_icon_1{
 	background-image: url(katana/icon1.png);
