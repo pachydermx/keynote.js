@@ -49,6 +49,10 @@ homesakurac.add_state(50, 0, -80, 0, 1);
 homesakurac.add_state(50, 0, 180, 0, 1);
 homesakurac.add_size_transform([0, 1], 100, 0, 100, 0);
 homesakurac.set_z_index(2);
+// mobile
+homesakuraa.add_size_transform([0, 1], 300, 0, 100, 0, 0);
+homesakurab.add_size_transform([0, 1], 300, 0, 100, 0, 0);
+homesakurac.add_size_transform([0, 1], 300, 0, 100, 0, 0);
 
 var homekatana = new object("homekatana", meta);
 homekatana.add_state(61, 0, 20, 0, 0);
@@ -621,7 +625,7 @@ contactform.add_easing(1, defaultEasing);
 
 // create pages
 var home = new page('Home', manager);
-manager.add(home);
+manager.add(home, true);
 home.add(homebgb, 0, 0, 0);
 home.add(homebg, 1, 0, 0);
 home.add(homelogoa, 1, 0, 0);
@@ -641,7 +645,7 @@ home.add(homesakuraf, 1, 5500, 2000);
 home.default_duration = 2000;
 
 var websitea = new page("Website 1", manager);
-manager.add(websitea);
+manager.add(websitea, true);
 websitea.add(homesakurad, 0, 0, 1500);
 websitea.add(homesakurae, 0, 0, 1500);
 websitea.add(homesakuraf, 0, 0, 1500);
@@ -655,28 +659,28 @@ var websiteslider_intro = 1000;
 var websiteslider_duration = 3000;
 
 var websitesliderpage1 = new page("Slider #1", manager);
-manager.add(websitesliderpage1);
+manager.add(websitesliderpage1, false);
 websitesliderpage1.add(websitebg, 1, 0, 0);
 websitesliderpage1.add(websitewbg, 1, 0, 0);
 websitesliderpage1.add(websiteslider1, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage1.add(websiteslider1, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage2 = new page("Slider #2", manager);
-manager.add(websitesliderpage2);
+manager.add(websitesliderpage2, false);
 websitesliderpage2.add(websitebg, 1, 0, 0);
 websitesliderpage2.add(websitewbg, 1, 0, 0);
 websitesliderpage2.add(websiteslider2, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage2.add(websiteslider2, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage3 = new page("Slider #3", manager);
-manager.add(websitesliderpage3);
+manager.add(websitesliderpage3, false);
 websitesliderpage3.add(websitebg, 1, 0, 0);
 websitesliderpage3.add(websitewbg, 1, 0, 0);
 websitesliderpage3.add(websiteslider3, 1, websiteslider_interval, websiteslider_intro);
 websitesliderpage3.add(websiteslider3, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
 
 var websitesliderpage4 = new page("Slider #4", manager);
-manager.add(websitesliderpage4);
+manager.add(websitesliderpage4, false);
 websitesliderpage4.add(websitebg, 1, 0, 0);
 websitesliderpage4.add(websitewbg, 1, 0, 0);
 websitesliderpage4.add(websiteslider4, 1, websiteslider_interval, websiteslider_intro);
@@ -693,7 +697,7 @@ websiteslider.set_intro(websitea);
 
 var websiteb = new page("Website 2", manager);
 websiteb.default_duration = 2000;
-manager.add(websiteb);
+manager.add(websiteb, true);
 websiteb.add(websitebg, 1, 1000, 2000);
 websiteb.add(websitetext, 1, 1500, 2000);
 websiteb.add(websiteleafa, 1, 1000, 2000);
@@ -703,7 +707,7 @@ websiteb.add(websiteleafd, 1, 1000, 2000);
 websiteb.add(websitedevices, 1, 1500, 2000);
 
 var interactive = new page("Interactive", manager);
-manager.add(interactive);
+manager.add(interactive, true);
 interactive.add(websitebg, 2, 0, 2000);
 interactive.add(websitebg, 0, 2000, 0);
 interactive.add(interbg, 1, 0, 2000);
@@ -713,7 +717,7 @@ interactive.add(interinfoc, 1, 3000, 1000);
 interactive.add(intertext, 1, 3500, 1000);
 
 var brand = new page("Brand", manager);
-manager.add(brand);
+manager.add(brand, true);
 brand.add(brandcarda, 1, 2500, 1000);
 brand.add(brandcardb, 1, 2500, 1000);
 brand.add(brandcardc, 1, 2500, 1000);
@@ -724,7 +728,7 @@ brand.add(brandclip, 1, 2500, 1000);
 brand.add(brandtext, 1, 2500, 1000);
 
 var video = new page("Video", manager);
-manager.add(video);
+manager.add(video, true);
 video.add(videobg, 1, 0, 2000);
 video.add(videoclipa, 1, 2000, 1000);
 video.add(videoclipb, 1, 2500, 1000);
@@ -733,7 +737,7 @@ video.add(videoclipd, 1, 3500, 1000);
 video.add(videotext, 1, 5000, 500);
 
 var support = new page("Support", manager);
-manager.add(support);
+manager.add(support, true);
 support.add(videobg, 1, 0, 1000);
 support.add(supportbg, 1, 2000, 2000);
 support.add(supportwbg, 1, 0, 2000);
@@ -744,7 +748,7 @@ support.add(supporttextc, 1, 5000, 1000);
 support.add(supporttextd, 1, 6000, 1000);
 
 var contact = new page("Contact", manager);
-manager.add(contact);
+manager.add(contact, true);
 contact.add(supportbg, 1, 1000, 1000);
 contact.add(contactlogo, 1, 2000, 1000);
 contact.add(contactform, 1, 3000, 1000);
@@ -757,7 +761,7 @@ var mod_select = function () {
 	if (meta.width <= 1280) {
 		to_mod = 1;
 	}
-	if (meta.width <= 768) {
+	if (meta.width <= 640) {
 		to_mod = 0;
 	}
 	if (manager.mod != to_mod) {
@@ -775,10 +779,22 @@ $(window).resize(function(){
 // set mouse wheel
 $(window).mousewheel(function(event){
 	if (event.deltaY > 0){
-		console.log("prev");
+		manager.prev();
 	} else if (event.deltaY < 0){
-		console.log("next");
+		manager.next();
 	}
+});
+
+// set swipe
+$(window).swipe({
+	swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+		if(direction == "up"){
+			manager.next();
+		} else if (direction == "down") {
+			manager.prev();
+		}
+	}, 
+	threshold: 0
 });
 
 $(window).load(function(){

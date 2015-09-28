@@ -12,10 +12,16 @@ function manager() {
 	// mod names
 	this.mods = [];
 	this.mod = undefined;
+	this.locked = false;
+	this.jumplist = [];
+	this.index;
     
     // add page to manager
-    this.add = function (page) {
+    this.add = function (page, isRegular) {
         this.pages.push(page);
+		if (isRegular) {
+			this.jumplist.push(this.pages.length - 1);
+		}
     };
 	
     // reset positions of all pages
@@ -49,6 +55,9 @@ function manager() {
             this.pages[page].play();
             // remember last page
             this.lastPage = page;
+			if (this.jumplist.indexOf(this.lastPage) != -1) {
+				this.index = this.jumplist.indexOf(this.lastPage);
+			}
 			// run callbacks
 			for (var i in this.callbacks){
 				if (this.callbacks[i].flag == "gotopage") {
@@ -88,6 +97,33 @@ function manager() {
 			if (this.callbacks[i].flag == "modswitch") {
 				this.callbacks[i].func(id);
 			}
+		}
+	};
+	
+	// manual jump
+	this.lock = function () {
+		if (!this.locked) {
+			this.locker = setTimeout(function() {
+				this.locked = false;
+			}, 3000);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// next/prev
+	this.next = function() {
+		if (this.index < this.jumplist.length - 2 && this.lock()) {
+			this.index++;
+			this.goto_page(this.jumplist[this.index]);
+		}
+	};
+	
+	this.prev = function () {
+		if (this.index > 0 && this.lock()) {
+			this.index--;
+			this.goto_page(this.jumplist[this.index]);
 		}
 	};
 }
