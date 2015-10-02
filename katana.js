@@ -29,7 +29,7 @@ var homelogolightb = new object("homelogolightb", meta);
 homelogolightb.add_state(50, 0, 50, -55, 0);
 homelogolightb.add_state(50, 0, 50, -55, 1);
 homelogolightb.add_easing(1, "easeOutCubic");
-homelogolightb.add_rotate_transform(0, -180);
+homelogolightb.add_rotate_transform(0, -210);
 homelogolightb.set_z_index(2);
 
 var homesakuraa = new object("homesakuraa", meta);
@@ -65,6 +65,7 @@ var homebgb = new object("homebgb", meta);
 homebgb.add_state(50, 0, 150, 0, 1);
 homebgb.add_state(50, 0, 50, 0, 1);
 homebgb.add_size_transform([0, 1], 100, 0, 100, 0);
+homebgb.add_easing(1, defaultEasing);
 homebgb.auto_reset = false;
 homebgb.set_z_index(3);
 
@@ -361,7 +362,7 @@ intertext.change_position(1, 50, 0, 72, 0, 1, 0);
 intertext.change_position(2, 50, 0, -50, 0, 1, 0);
 intertext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 0);
 // tablet
-intertext.add_size_transform([0, 1, 2], 50, 0, 55, 0, 1);
+intertext.add_size_transform([0, 1, 2], 40, 0, 65, 0, 1);
 
 
 
@@ -632,6 +633,7 @@ contactform.add_easing(1, defaultEasing);
 // create pages
 var home = new page('Home', manager);
 manager.add(home, true);
+home.add(websitewbg, 0, 0, 1000);
 home.add(homebgb, 0, 0, 0);
 home.add(homebg, 1, 0, 0);
 home.add(homelogoa, 1, 0, 0);
@@ -652,9 +654,10 @@ home.default_duration = 2000;
 
 var websitea = new page("Website 1", manager);
 manager.add(websitea, true);
-websitea.add(homesakurad, 0, 0, 1500);
-websitea.add(homesakurae, 0, 0, 1500);
-websitea.add(homesakuraf, 0, 0, 1500);
+websitea.add(homesakurad, 0, 3000, 500);
+websitea.add(homesakurae, 0, 3000, 500);
+websitea.add(homesakuraf, 0, 3000, 500);
+websitea.add(hometext, 0, 3000, 500);
 websitea.add(homebgb, 1, 0, 1500);
 websitea.add(homebgb, 0, 3000, 0);
 websitea.add(websitebg, 1, 2000, 1000);
@@ -712,6 +715,7 @@ websiteslider.set_intro(websitea);
 var websiteb = new page("Website 2", manager);
 websiteb.default_duration = 2000;
 manager.add(websiteb, true);
+websiteb.add(websitewbg, 2, 0, 1000);
 websiteb.add(websitebg, 1, 1000, 2000);
 websiteb.add(websitetext, 1, 1500, 2000);
 websiteb.add(websiteleafa, 1, 1000, 2000);
@@ -829,7 +833,6 @@ $(window).load(function(){
 	homesakurae.init_with_selector("#homesakurae");
 	homesakuraf.init_with_selector("#homesakuraf");
 
-
 	// website
 	websitebg.init_with_selector("#websitebg");
 	websitewbg.init_with_selector("#websitewbg");
@@ -888,6 +891,5 @@ $(window).load(function(){
 	manager.goto_page(0);
 	
 	mod_select();
-	
 	
 });

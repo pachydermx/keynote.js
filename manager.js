@@ -128,4 +128,6 @@ function manager() {
 			this.goto_page(this.jumplist[this.index]);
 		}
 	};
+	
+	
 }
