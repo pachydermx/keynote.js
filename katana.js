@@ -175,8 +175,7 @@ websiteslider1.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider1.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
-websiteslider1.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
-websiteslider1.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
+websiteslider1.add_size_transform([0, 1, 2], 60, 0, 48, 0, 2);
 
 websiteslider2 = new object("websiteslider2", meta);
 websiteslider2.add_state(150, 0, 40, 0, 1);
@@ -192,8 +191,7 @@ websiteslider2.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider2.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
-websiteslider2.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
-websiteslider2.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
+websiteslider2.add_size_transform([0, 1, 2], 60, 0, 48, 0, 2);
 
 websiteslider3 = new object("websiteslider3", meta);
 websiteslider3.add_state(150, 0, 40, 0, 1);
@@ -209,8 +207,7 @@ websiteslider3.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider3.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
-websiteslider3.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
-websiteslider3.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
+websiteslider3.add_size_transform([0, 1, 2], 60, 0, 48, 0, 2);
 
 websiteslider4 = new object("websiteslider4", meta);
 websiteslider4.add_state(150, 0, 40, 0, 1);
@@ -226,8 +223,7 @@ websiteslider4.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider4.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
-websiteslider4.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
-websiteslider4.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
+websiteslider4.add_size_transform([0, 1, 2], 60, 0, 48, 0, 2);
 
 var websitesliderindicator = new object("websitesliderindicator", meta);
 websitesliderindicator.add_state(50, 0, 68, 0, 0);
@@ -377,9 +373,9 @@ interinfoa.change_position([0, 1], 20, 0, [90, 80], 0, [0, 1], 1);
 interinfob.change_position([0, 1], 35, 0, [90, 80], 0, [0, 1], 1);
 interinfoc.change_position([0, 1], 50, 0, [90, 80], 0, [0, 1], 1);
 // mobileh
-interinfoa.change_position([0, 1], 20, 0, [90, 80], 0, [0, 1], 2);
-interinfob.change_position([0, 1], 30, 0, [90, 80], 0, [0, 1], 2);
-interinfoc.change_position([0, 1], 40, 0, [90, 80], 0, [0, 1], 2);
+interinfoa.change_position([0, 1, 2], 20, 0, [90, 80, -50], 0, [0, 1, 1], 2);
+interinfob.change_position([0, 1, 2], 30, 0, [90, 80, -50], 0, [0, 1, 1], 2);
+interinfoc.change_position([0, 1, 2], 40, 0, [90, 80, -50], 0, [0, 1, 1], 2);
 
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
@@ -434,7 +430,6 @@ brandcardc.set_z_index(2);
 brandcardc.change_position(0, 100, 0, -50, 0, 1, 0);
 brandcardc.change_position(1, 100, 0, 15, 0, 1, 0);
 brandcardc.add_size_transform([0, 1], 40, 0, 40, 0, 0);
-
 
 var brandcardd = new object("brandcardd", meta);
 brandcardd.add_state(31, 0, 150, 0, 1);
@@ -670,7 +665,7 @@ contactlogo.add_state(50, 0, 25, 0, 1);
 contactlogo.add_size_transform([0, 1], 100, 0, 23, 0);
 contactlogo.set_z_index(7);
 // mobileh
-contactlogo.change_position(1, 50, 0, 20, 0, 1, 2);
+contactlogo.change_position(1, 50, 0, 10, 0, 1, 2);
 
 var contactform = new object("contactform", meta);
 contactform.add_state(50, 0, 150, 0, 1);
@@ -844,6 +839,7 @@ var mod_select = function () {
 
 // create listener
 $(window).resize(function(){
+	window.scrollTo(0, 0);
 	meta.update();
 	mod_select();
 	manager.refresh();
