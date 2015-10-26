@@ -69,6 +69,9 @@ html{
 	background-image: url(katana/homesakurac.png);
 }
 
+#homelogoa{
+	background-image: url(katana/homelogoa.png);
+}
 
 .homelogolight{
 	background-repeat: no-repeat;
@@ -237,6 +240,10 @@ html{
 	width: 100%;
 }
 
+#contactlogo{
+	background-image: url(katana/contactlogo.png);
+}
+
 /* Text */
 
 .preview_container{
@@ -296,6 +303,14 @@ html{
 	font-size: 4vw;
 }
 
+.MobileH .title, .MobileH.title{
+	font-size: 4vw;
+}
+
+#websitewbg.MobileH .title{
+	padding-top: 80px;
+}
+
 .title_container{
 	padding-bottom: 1.5vh;
 }
@@ -324,6 +339,11 @@ html{
 }
 
 .Tablet .context, .Tablet .context p, .Tablet .context li{
+	font-size: 1.5vw;
+	line-height: 1.5;
+}
+
+.MobileH .context, .MobileH .context p, .MobileH .context li{
 	font-size: 1.5vw;
 	line-height: 1.5;
 }
@@ -444,6 +464,10 @@ html{
 
 .Mobile .second.title{
 	font-size: 4.0vw;
+}
+
+.MobileH .mhhide {
+	display: none;
 }
 
 /* SLIDER */

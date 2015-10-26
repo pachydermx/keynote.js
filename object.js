@@ -110,6 +110,7 @@ object.prototype.refresh = function () {
     this.width = this.dom_obj.width();
     this.height = this.dom_obj.height();
 	
+	this.dom_obj.finish();
 	this.moveToState(this.state, 0);
     // set z-index
     if (typeof this.z_index !== "undefined") {
@@ -181,7 +182,7 @@ object.prototype.apply_change = function (state_id, optional_info, mod_id){
 		// add mod info
 		if (typeof mod_id !== "undefined"){
 			// if mod exist then push, else create
-			if (typeof this.states[state_id].mod[mod_id] == "undefined"){
+			while (typeof this.states[state_id].mod[mod_id] == "undefined"){
 				this.states[state_id].mod.push({});
 			}
 			this.states[state_id].mod[mod_id][i] = optional_info[i];
@@ -364,11 +365,14 @@ object.prototype.exit = function (duration) {
 		}
 		// perform
 		var that = this;
+		// clear animate queue
+		this.dom_obj.clearQueue();
+		// play exiting animation
 		this.moveToState(destination, duration, function () {
 			if (that.auto_reset) {
 				that.moveToState(0, 0);
-				that.exiting = false;
 			}
+			that.exiting = false;
 		});
 	}
 };

@@ -1,7 +1,7 @@
 // create meta and manager objects
 var meta = new meta();
 var manager = new manager();
-manager.mods = ["Mobile", "Tablet"];
+manager.mods = ["Mobile", "Tablet", "MobileH"];
 
 // options
 var defaultEasing = "easeOutQuad";
@@ -18,7 +18,14 @@ homebg.set_z_index(1);
 var homelogoa = new object("homelogoa", meta);
 homelogoa.add_state(50, 0, 50, 0, 0);
 homelogoa.add_state(50, 0, 50, 0, 1);
+homelogoa.add_size_transform([0, 1], 0, 359, 0, 265);
 homelogoa.set_z_index(1);
+// mobile
+homelogoa.add_size_transform([0, 1], 50, 0, 50, 0, 0);
+// tablet
+homelogoa.add_size_transform([0, 1], 0, 359, 0, 265, 1);
+// mobileh
+homelogoa.add_size_transform([0, 1], 50, 0, 50, 0, 2);
 
 var homelogolighta = new object("homelogolighta", meta);
 homelogolighta.add_state(50, 0, 50, -55, 0);
@@ -77,6 +84,9 @@ homelogob.set_z_index(4);
 // mobile
 homelogob.change_position([0, 1], 50, 0, 26, 0, [0, 1], 0);
 homelogob.add_size_transform([0, 1], 100, 0, 35, 0, 0);
+// mobileh
+homelogob.change_position([0, 1], 35, 0, 45, 0, [0, 1], 1);
+homelogob.change_position([0, 1], 30, 0, 45, 0, [0, 1], 2);
 
 var hometext = new object("hometext", meta);
 hometext.add_state(66, 0, 60, 0, 0);
@@ -88,6 +98,8 @@ hometext.change_position([0, 1], 50, 0, [75, 65], 0, [0, 1], 0);
 hometext.add_size_transform([0, 1], 80, 0, 40, 0, 0);
 // tablet
 hometext.add_size_transform([0, 1], 32.5, 0, 40.3, 0, 1);
+// mobileh
+hometext.add_size_transform([0, 1], 32.5, 0, 40.3, 0, 2);
 
 var homesakurad = new object("homesakurad", meta);
 homesakurad.add_state(18, 0, 150, 0, 1);
@@ -162,6 +174,9 @@ websiteslider1.set_z_index(5);
 websiteslider1.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider1.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+// mobileh
+websiteslider1.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
+websiteslider1.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
 
 websiteslider2 = new object("websiteslider2", meta);
 websiteslider2.add_state(150, 0, 40, 0, 1);
@@ -176,6 +191,9 @@ websiteslider2.set_z_index(5);
 websiteslider2.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider2.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+// mobileh
+websiteslider2.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
+websiteslider2.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
 
 websiteslider3 = new object("websiteslider3", meta);
 websiteslider3.add_state(150, 0, 40, 0, 1);
@@ -190,6 +208,9 @@ websiteslider3.set_z_index(5);
 websiteslider3.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider3.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+// mobileh
+websiteslider3.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
+websiteslider3.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
 
 websiteslider4 = new object("websiteslider4", meta);
 websiteslider4.add_state(150, 0, 40, 0, 1);
@@ -204,12 +225,18 @@ websiteslider4.set_z_index(5);
 websiteslider4.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
 // tablet
 websiteslider4.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+// mobileh
+websiteslider4.add_size_transform([0, 1, 2], 80, 0, 48, 0, 2);
+websiteslider4.change_position([0, 1, 2], [150, 50, -50], 0, 40, 50, 1, 2);
 
 var websitesliderindicator = new object("websitesliderindicator", meta);
 websitesliderindicator.add_state(50, 0, 68, 0, 0);
 websitesliderindicator.add_state(50, 0, 68, 0, 1);
 websitesliderindicator.add_size_transform([0, 1], 0, 200, 0, 25);
 websitesliderindicator.set_z_index(5);
+
+// mobileh
+websitesliderindicator.change_position(1, 50, 0, 68, 0, 0, 2);
 
 // WEBSITE 2
 
@@ -227,6 +254,9 @@ websitetext.change_position([0, 1, 2], 50, 0, [82, 72, -50], 0, [0, 1, 1], 0);
 websitetext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 0);
 // tablet
 websitetext.add_size_transform([0, 1, 2], 32.5, 0, 52, 0, 1);
+// mobileh
+websitetext.add_size_transform([0, 1, 2], 40, 0, 52, 0, 2);
+websitetext.change_position([0, 1, 2], 60, 0, [55, 45, -65], 0, [0, 1, 1], 2);
 
 var websiteleafa = new object("websiteleafa", meta);
 websiteleafa.add_state(16, 0, 34, 0, 0);
@@ -307,6 +337,9 @@ interbg.add_size_transform([0, 1, 2], 100, 0, 100, 0);
 interbg.add_easing(1, defaultEasing);
 interbg.default_exit_location = 2;
 interbg.set_z_index(4);
+// mobile
+interbg.add_size_transform([0, 1, 2], 150, 0, 100, 0, 0);
+interbg.change_position(1, 60, 0, 50, 0, 1, 0);
 
 var interinfoa = new object("interinfoa", meta);
 interinfoa.add_state(20, 0, 80, 0, 0);
@@ -333,9 +366,9 @@ interinfoc.default_exit_location = 2;
 interinfoc.set_z_index(5);
 
 // mobile
-interinfoa.change_position([0, 1, 2], [95, 75, 75], 0, [14, 14, -84], 0, [0, 1, 1], 0);
-interinfob.change_position([0, 1, 2], [95, 75, 75], 0, [32, 32, -66], 0, [0, 1, 1], 0);
-interinfoc.change_position([0, 1, 2], [95, 75, 75], 0, [50, 50, -48], 0, [0, 1, 1], 0);
+interinfoa.change_position([0, 1, 2], 22, 0, [-50, 37, 150], 0, [0, 1, 1], 0);
+interinfob.change_position([0, 1, 2], 50, 0, [-50, 37, 150], 0, [0, 1, 1], 0);
+interinfoc.change_position([0, 1, 2], 78, 0, [-50, 37, 150], 0, [0, 1, 1], 0);
 interinfoa.add_size_transform([0, 1, 2], 40, 0, 15, 0, 0);
 interinfob.add_size_transform([0, 1, 2], 40, 0, 15, 0, 0);
 interinfoc.add_size_transform([0, 1, 2], 40, 0, 15, 0, 0);
@@ -343,6 +376,10 @@ interinfoc.add_size_transform([0, 1, 2], 40, 0, 15, 0, 0);
 interinfoa.change_position([0, 1], 20, 0, [90, 80], 0, [0, 1], 1);
 interinfob.change_position([0, 1], 35, 0, [90, 80], 0, [0, 1], 1);
 interinfoc.change_position([0, 1], 50, 0, [90, 80], 0, [0, 1], 1);
+// mobileh
+interinfoa.change_position([0, 1], 20, 0, [90, 80], 0, [0, 1], 2);
+interinfob.change_position([0, 1], 30, 0, [90, 80], 0, [0, 1], 2);
+interinfoc.change_position([0, 1], 40, 0, [90, 80], 0, [0, 1], 2);
 
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
@@ -357,12 +394,13 @@ intertext.default_exit_location = 2;
 intertext.add_easing(1, defaultEasing);
 intertext.set_z_index(5);
 // mobile
-intertext.change_position(0, 50, 0, 82, 0, 0, 0);
-intertext.change_position(1, 50, 0, 72, 0, 1, 0);
-intertext.change_position(2, 50, 0, -50, 0, 1, 0);
-intertext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 0);
+intertext.change_position([0, 1, 2], 50, 0, [82, 70, -50], 0, [0, 1, 1], 0);
+intertext.add_size_transform([0, 1, 2], 80, 0, 50, 0, 0);
 // tablet
 intertext.add_size_transform([0, 1, 2], 40, 0, 65, 0, 1);
+// mobileh
+intertext.add_size_transform([0, 1, 2], 40, 0, 65, 0, 2);
+//intertext.change_position([0, 1, 2], 70, 0, [55, 45, -55], 0, [0, 1, 1], 2);
 
 
 
@@ -405,11 +443,14 @@ brandcardd.add_size_transform([0, 1], 51, 0, 49, 0);
 brandcardd.set_z_index(2);
 // mobile
 brandcardd.change_position(0, 0, 0, 150, 0, 1, 0);
-brandcardd.change_position(1, 0, 0, 77, 0, 1, 0);
+brandcardd.change_position(1, 0, 0, 82, 0, 1, 0);
 brandcardd.add_size_transform([0, 1], 200, 0, 46, 0, 0);
 // tablet
 brandcardd.add_size_transform([0, 1], 40, 0, 49, 0, 1);
 brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 1);
+// mobileh
+brandcardd.add_size_transform([0, 1], 40, 0, 49, 0, 2);
+brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 2);
 
 var brandpen = new object("brandpen", meta);
 brandpen.add_state(89, 0, 150, 0, 1);
@@ -418,7 +459,7 @@ brandpen.add_size_transform([0, 1], 12, 0, 30, 0);
 brandpen.set_z_index(2);
 // mobile
 brandpen.change_position(0, 84, 0, 150, 0, 1, 0);
-brandpen.change_position(1, 84, 0, 85, 0, 1, 0);
+brandpen.change_position(1, 84, 0, 90, 0, 1, 0);
 brandpen.add_size_transform([0, 1], 25, 0, 30, 0, 0);
 
 var brandclip = new object("brandclip", meta);
@@ -428,7 +469,7 @@ brandclip.add_size_transform([0, 1], 10, 0, 28, 0);
 brandclip.set_z_index(2);
 // mobile
 brandclip.change_position(0, 84, 0, 150, 0, 1, 0);
-brandclip.change_position(1, 84, 0, 63, 0, 1, 0);
+brandclip.change_position(1, 84, 0, 72, 0, 1, 0);
 brandclip.add_size_transform([0, 1], 17, 0, 30, 0, 0);
 
 var brandtext = new object("brandtext", meta);
@@ -443,6 +484,9 @@ brandtext.add_size_transform([0, 1], 80, 0, 40, 0, 0);
 // tablet
 brandtext.add_size_transform([0, 1], 35, 0, 55, 0, 1);
 brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 1);
+// mobileh
+brandtext.add_size_transform([0, 1], 35, 0, 55, 0, 2);
+brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 2);
 
 brandcarda.add_easing(1, defaultEasing);
 brandcardb.add_easing(1, defaultEasing);
@@ -507,11 +551,12 @@ videotext.add_state(70, 0, 55, 0, 1);
 videotext.add_size_transform([0, 1], 25, 0, 54, 0);
 videotext.set_z_index(4);
 // mobile
-videotext.change_position(0, 50, 0, 82, 0, 0, 0);
-videotext.change_position(1, 50, 0, 72, 0, 1, 0);
-videotext.add_size_transform([0, 1], 80, 0, 40, 0, 0);
+videotext.change_position([0, 1], 50, 0, [82, 70], 0, [0, 1], 0);
+videotext.add_size_transform([0, 1], 80, 0, 50, 0, 0);
 // tablet
 videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 1);
+// mobileh
+videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 2);
 
 videoclipa.add_easing(1, defaultEasing);
 videoclipb.add_easing(1, defaultEasing);
@@ -540,6 +585,9 @@ supportwbg.change_position(1, 50, 0, 50, 0, 1, 0);
 // tablet
 supportwbg.add_size_transform([0, 1, 2], 100, 0, 85, 0, 1);
 supportwbg.change_position(1, 50, 0, 42.5, 0, 1, 1);
+// mobileh
+supportwbg.add_size_transform([0, 1, 2], 100, 0, 85, 0, 2);
+supportwbg.change_position(1, 50, 0, 42.5, 0, 1, 2);
 
 var supporttitle = new object("supporttitle", meta);
 supporttitle.add_state(50, 0, -50, 0, 0);
@@ -618,8 +666,11 @@ supporttextd.add_easing(1, defaultEasing);
 // CONTACT
 var contactlogo = new object("contactlogo", meta);
 contactlogo.add_state(50, 0, 150, 0, 1);
-contactlogo.add_state(50, 0, 50, -250, 1);
+contactlogo.add_state(50, 0, 25, 0, 1);
+contactlogo.add_size_transform([0, 1], 100, 0, 23, 0);
 contactlogo.set_z_index(7);
+// mobileh
+contactlogo.change_position(1, 50, 0, 20, 0, 1, 2);
 
 var contactform = new object("contactform", meta);
 contactform.add_state(50, 0, 150, 0, 1);
@@ -672,7 +723,7 @@ manager.add(websitesliderpage1, false);
 websitesliderpage1.add(websitebg, 1, 0, 0);
 websitesliderpage1.add(websitewbg, 1, 0, 0);
 websitesliderpage1.add(websiteslider1, 1, websiteslider_interval, websiteslider_intro);
-websitesliderpage1.add(websiteslider1, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage1.add(websiteslider1, 1, websiteslider_intro + websiteslider_interval + websiteslider_duration, 0);
 websitesliderpage1.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage2 = new page("Slider #2", manager);
@@ -680,7 +731,7 @@ manager.add(websitesliderpage2, false);
 websitesliderpage2.add(websitebg, 1, 0, 0);
 websitesliderpage2.add(websitewbg, 1, 0, 0);
 websitesliderpage2.add(websiteslider2, 1, websiteslider_interval, websiteslider_intro);
-websitesliderpage2.add(websiteslider2, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage2.add(websiteslider2, 1, websiteslider_intro + websiteslider_interval + websiteslider_duration, 0);
 websitesliderpage2.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage3 = new page("Slider #3", manager);
@@ -688,7 +739,7 @@ manager.add(websitesliderpage3, false);
 websitesliderpage3.add(websitebg, 1, 0, 0);
 websitesliderpage3.add(websitewbg, 1, 0, 0);
 websitesliderpage3.add(websiteslider3, 1, websiteslider_interval, websiteslider_intro);
-websitesliderpage3.add(websiteslider3, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage3.add(websiteslider3, 1, websiteslider_intro + websiteslider_interval + websiteslider_duration, 0);
 websitesliderpage3.add(websitesliderindicator, 1, 0, 0);
 
 var websitesliderpage4 = new page("Slider #4", manager);
@@ -696,7 +747,7 @@ manager.add(websitesliderpage4, false);
 websitesliderpage4.add(websitebg, 1, 0, 0);
 websitesliderpage4.add(websitewbg, 1, 0, 0);
 websitesliderpage4.add(websiteslider4, 1, websiteslider_interval, websiteslider_intro);
-websitesliderpage4.add(websiteslider4, 1, websiteslider_intro + websiteslider_interval, websiteslider_duration);
+websitesliderpage4.add(websiteslider4, 1, websiteslider_intro + websiteslider_interval + websiteslider_duration, 0);
 websitesliderpage4.add(websitesliderindicator, 1, 0, 0);
 
 // create slider
@@ -777,7 +828,11 @@ var inspector = new inspector(manager);
 var mod_select = function () {
 	var to_mod = undefined;
 	if (meta.width <= 1280) {
-		to_mod = 1;
+		if (meta.height >= 720) {
+			to_mod = 1;
+		} else {
+			to_mod = 2;
+		}
 	}
 	if (meta.width <= 640) {
 		to_mod = 0;
