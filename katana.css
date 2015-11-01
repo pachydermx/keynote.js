@@ -366,6 +366,7 @@ html{
 	background: black;
 }
 
+/*
 .button_icon.more_info{
 	display: inline-block;
 	width: 1em;
@@ -376,6 +377,12 @@ html{
 	background-color: black;
 	border-radius: 1em;
 	margin: auto;
+}
+*/
+
+.button_icon.more_info img{
+	width: 1.3em;
+	height: 1.3em;
 }
 
 .button_label{
