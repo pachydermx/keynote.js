@@ -11,7 +11,7 @@ function manager() {
 	this.callbacks = [];
 	// mod names
 	this.mods = [];
-	this.mod = undefined;
+	this.mod_id = undefined;
 	this.locked = false;
 	this.jumplist = [];
 	this.index;
@@ -98,6 +98,7 @@ function manager() {
 				this.callbacks[i].func(id);
 			}
 		}
+		this.mod_id = id;
 	};
 	
 	// manual jump

@@ -26,6 +26,8 @@ homelogoa.add_size_transform([0, 1], 50, 0, 50, 0, 0);
 homelogoa.add_size_transform([0, 1], 0, 359, 0, 265, 1);
 // mobileh
 homelogoa.add_size_transform([0, 1], 50, 0, 50, 0, 2);
+// mobile
+homelogoa.add_size_transform([0, 1], 50, 0, 50, 0, 0);
 
 var homelogolighta = new object("homelogolighta", meta);
 homelogolighta.add_state(50, 0, 50, -55, 0);
@@ -60,6 +62,10 @@ homesakurac.set_z_index(2);
 homesakuraa.add_size_transform([0, 1], 300, 0, 100, 0, 0);
 homesakurab.add_size_transform([0, 1], 300, 0, 100, 0, 0);
 homesakurac.add_size_transform([0, 1], 300, 0, 100, 0, 0);
+// tabletV
+homesakuraa.add_size_transform([0, 1], 300, 0, 100, 0, 3);
+homesakurab.add_size_transform([0, 1], 300, 0, 100, 0, 3);
+homesakurac.add_size_transform([0, 1], 300, 0, 100, 0, 3);
 
 var homekatana = new object("homekatana", meta);
 homekatana.add_state(61, 0, 20, 0, 0);
@@ -68,6 +74,8 @@ homekatana.add_size_transform([0, 1], 100, 0, 40, 0);
 homekatana.set_z_index(1);
 // mobileh
 homekatana.change_position(1, 61, 0, 13, 0, 1, 2);
+// tabletv
+homekatana.change_position(1, 61, 0, 15, 0, 1, 3);
 
 
 // HOME STATE B
@@ -91,6 +99,9 @@ homelogob.add_size_transform([0, 1], 100, 0, 35, 0, 0);
 homelogob.change_position([0, 1], 30, 0, 45, 0, [0, 1], 1);
 // mobileh
 homelogob.change_position([0, 1], 30, 0, 45, 0, [0, 1], 2);
+// tabletV
+homelogob.change_position([0, 1], 50, 0, 26, 0, [0, 1], 3);
+homelogob.add_size_transform([0, 1], 100, 0, 35, 0, 3);
 
 var hometext = new object("hometext", meta);
 hometext.add_state(66, 0, 60, 0, 0);
@@ -105,6 +116,9 @@ hometext.add_size_transform([0, 1], 32.5, 0, 40.3, 0, 1);
 // mobileh
 hometext.add_size_transform([0, 1], 32.5, 0, 55.3, 0, 2);
 hometext.change_position(1, 66, 0, 60, 0, 1, 2);
+// tabletV
+hometext.change_position([0, 1], 50, 0, [75, 65], 0, [0, 1], 3);
+hometext.add_size_transform([0, 1], 80, 0, 40, 0, 3);
 
 var homesakurad = new object("homesakurad", meta);
 homesakurad.add_state(18, 0, 150, 0, 1);
@@ -115,6 +129,8 @@ homesakurad.auto_reset = false;
 homesakurad.set_z_index(4);
 // mobile
 homesakurad.change_position([0, 1], 8, 0, [150, 90], 0, 1, 0);
+// tabletV
+homesakurad.change_position([0, 1], 8, 0, [150, 90], 0, 1, 3);
 
 var homesakurae = new object("homesakurae", meta);
 homesakurae.add_state(80, 0, 150, 0, 1);
@@ -125,6 +141,8 @@ homesakurae.auto_reset = false;
 homesakurae.set_z_index(4);
 // mobile
 homesakurae.change_position(1, 80, 0, 15, 0, 1, 0);
+// tabletV
+homesakurae.change_position(1, 80, 0, 15, 0, 1, 3);
 
 var homesakuraf = new object("homesakuraf", meta);
 homesakuraf.add_state(28, 0, 150, 0, 1);
@@ -136,6 +154,9 @@ homesakuraf.set_z_index(4);
 // mobile
 homesakuraf.change_position([0, 1], 14, 0, [150, 9], 0, 1, 0);
 homesakuraf.add_size_transform([0, 1], 80, 0, 50, 0, 0);
+// tabletV
+homesakuraf.change_position([0, 1], 14, 0, [150, 9], 0, 1, 3);
+homesakuraf.add_size_transform([0, 1], 80, 0, 50, 0, 3);
 
 homesakurad.add_easing(0, "easeInQuad");
 homesakurae.add_easing(0, "easeInQuad");
@@ -184,6 +205,8 @@ websiteslider1.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
 websiteslider1.add_size_transform([0, 1, 2], 60, 0, slider_height_mobileh, 0, 2);
 websiteslider1.change_position([0, 1, 2], [150, 50, -50], 0, slider_y_mobileh, 0, 1, 2);
+// tabletV
+websiteslider1.add_size_transform([0, 1, 2], 75, 0, 50, 0, 3);
 
 websiteslider2 = new object("websiteslider2", meta);
 websiteslider2.add_state(150, 0, 40, 0, 1);
@@ -201,6 +224,8 @@ websiteslider2.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
 websiteslider2.add_size_transform([0, 1, 2], 60, 0, slider_height_mobileh, 0, 2);
 websiteslider2.change_position([0, 1, 2], [150, 50, -50], 0, slider_y_mobileh, 0, 1, 2);
+// tabletV
+websiteslider2.add_size_transform([0, 1, 2], 75, 0, 50, 0, 3);
 
 websiteslider3 = new object("websiteslider3", meta);
 websiteslider3.add_state(150, 0, 40, 0, 1);
@@ -218,6 +243,8 @@ websiteslider3.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
 websiteslider3.add_size_transform([0, 1, 2], 60, 0, slider_height_mobileh, 0, 2);
 websiteslider3.change_position([0, 1, 2], [150, 50, -50], 0, slider_y_mobileh, 0, 1, 2);
+// tabletV
+websiteslider3.add_size_transform([0, 1, 2], 75, 0, 50, 0, 3);
 
 websiteslider4 = new object("websiteslider4", meta);
 websiteslider4.add_state(150, 0, 40, 0, 1);
@@ -235,15 +262,20 @@ websiteslider4.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
 // mobileh
 websiteslider4.add_size_transform([0, 1, 2], 60, 0, slider_height_mobileh, 0, 2);
 websiteslider4.change_position([0, 1, 2], [150, 50, -50], 0, slider_y_mobileh, 0, 1, 2);
+// tabletV
+websiteslider4.add_size_transform([0, 1, 2], 75, 0, 50, 0, 3);
 
 var websitesliderindicator = new object("websitesliderindicator", meta);
 websitesliderindicator.add_state(50, 0, 68, 0, 0);
 websitesliderindicator.add_state(50, 0, 68, 0, 1);
 websitesliderindicator.add_size_transform([0, 1], 0, 200, 0, 25);
 websitesliderindicator.set_z_index(5);
-
+// mobile
+websitesliderindicator.change_position([0, 1], 50, 0, 72, 0, [0, 1], 0);
 // mobileh
 websitesliderindicator.change_position(1, 50, 0, 68, 0, 0, 2);
+// tabletV
+websitesliderindicator.change_position([0, 1], 50, 0, 72, 0, [0, 1], 3);
 
 // WEBSITE 2
 
@@ -264,6 +296,9 @@ websitetext.add_size_transform([0, 1, 2], 32.5, 0, 52, 0, 1);
 // mobileh
 websitetext.add_size_transform([0, 1, 2], 40, 0, 58, 0, 2);
 websitetext.change_position([0, 1, 2], 60, 0, [55, 45, -65], 0, [0, 1, 1], 2);
+// tabletV
+websitetext.change_position([0, 1, 2], 50, 0, [82, 72, -50], 0, [0, 1, 1], 3);
+websitetext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 3);
 
 var websiteleafa = new object("websiteleafa", meta);
 websiteleafa.add_state(16, 0, 34, 0, 0);
@@ -279,6 +314,11 @@ websiteleafa.add_size_transform([0, 1, 2], 45, 0, 40, 0, 0);
 websiteleafa.change_position(0, 22.5, 0, 20, 0, 0, 0);
 websiteleafa.change_position(1, 22.5, 0, 10, 0, 1, 0);
 websiteleafa.change_position(2, 22.5, 0, -50, 0, 1, 0);
+// tabletV
+websiteleafa.add_size_transform([0, 1, 2], 45, 0, 40, 0, 3);
+websiteleafa.change_position(0, 22.5, 0, 20, 0, 0, 3);
+websiteleafa.change_position(1, 22.5, 0, 10, 0, 1, 3);
+websiteleafa.change_position(2, 22.5, 0, -50, 0, 1, 3);
 
 var websiteleafb = new object("websiteleafb", meta);
 websiteleafb.add_state(30, 0, 34, 0, 0);
@@ -292,6 +332,9 @@ websiteleafb.set_z_index(6);
 // mobile
 websiteleafb.add_size_transform([0, 1, 2], 42.8, 0, 25, 0, 0);
 websiteleafb.change_position(1, 30, 0, 27, 0, 1, 0);
+// tabletV
+websiteleafb.add_size_transform([0, 1, 2], 42.8, 0, 25, 0, 3);
+websiteleafb.change_position(1, 30, 0, 27, 0, 1, 3);
 
 var websiteleafc = new object("websiteleafc", meta);
 websiteleafc.add_state(75, 0, 90, 0, 0);
@@ -304,6 +347,8 @@ websiteleafc.default_exit_location = 2;
 websiteleafc.set_z_index(5);
 // mobile
 websiteleafc.add_size_transform([0, 1, 2], 27, 0, 31, 0, 0);
+// tabletV
+websiteleafc.add_size_transform([0, 1, 2], 27, 0, 31, 0, 3);
 
 var websiteleafd = new object("websiteleafd", meta);
 websiteleafd.add_state(85, 0, 90, 0, 0);
@@ -319,6 +364,11 @@ websiteleafd.add_size_transform([0, 1, 2], 37.5, 0, 40, 0, 0);
 websiteleafd.change_position(0, 95, 0, 90, 0, 0, 0);
 websiteleafd.change_position(1, 95, 0, 75, 0, 1, 0);
 websiteleafd.change_position(2, 95, 0, -25, 0, 1, 0);
+// tabletV
+websiteleafd.add_size_transform([0, 1, 2], 37.5, 0, 40, 0, 3);
+websiteleafd.change_position(0, 95, 0, 90, 0, 0, 3);
+websiteleafd.change_position(1, 95, 0, 75, 0, 1, 3);
+websiteleafd.change_position(2, 95, 0, -25, 0, 1, 3);
 
 var websitedevices = new object("websitedevices", meta);
 websitedevices.add_state(40, 0, 75, 0, 0);
@@ -334,6 +384,11 @@ websitedevices.change_position(0, 40, 0, 40, 0, 0, 0);
 websitedevices.change_position(1, 50, 0, 40, 0, 1, 0);
 websitedevices.change_position(2, 50, 0, -50, 0, 1, 0);
 websitedevices.add_size_transform([0, 1, 2], 90, 0, 33, 0, 0);
+// tabletV
+websitedevices.change_position(0, 40, 0, 40, 0, 0, 3);
+websitedevices.change_position(1, 50, 0, 40, 0, 1, 3);
+websitedevices.change_position(2, 50, 0, -50, 0, 1, 3);
+websitedevices.add_size_transform([0, 1, 2], 90, 0, 33, 0, 3);
 
 // INTERECTIVE
 var interbg = new object("interbg", meta);
@@ -347,6 +402,9 @@ interbg.set_z_index(4);
 // mobile
 interbg.add_size_transform([0, 1, 2], 150, 0, 100, 0, 0);
 interbg.change_position(1, 60, 0, 50, 0, 1, 0);
+// tabletV
+interbg.add_size_transform([0, 1, 2], 150, 0, 100, 0, 3);
+interbg.change_position(1, 60, 0, 50, 0, 1, 3);
 
 var interinfoa = new object("interinfoa", meta);
 interinfoa.add_state(20, 0, 80, 0, 0);
@@ -387,6 +445,13 @@ interinfoc.change_position([0, 1], 50, 0, [90, 80], 0, [0, 1], 1);
 interinfoa.change_position([0, 1, 2], 15, 0, [90, 80, -50], 0, [0, 1, 1], 2);
 interinfob.change_position([0, 1, 2], 30, 0, [90, 80, -50], 0, [0, 1, 1], 2);
 interinfoc.change_position([0, 1, 2], 45, 0, [90, 80, -50], 0, [0, 1, 1], 2);
+// tabletV
+interinfoa.change_position([0, 1, 2], 22, 0, [-50, 37, 150], 0, [0, 1, 1], 3);
+interinfob.change_position([0, 1, 2], 50, 0, [-50, 37, 150], 0, [0, 1, 1], 3);
+interinfoc.change_position([0, 1, 2], 78, 0, [-50, 37, 150], 0, [0, 1, 1], 3);
+interinfoa.add_size_transform([0, 1, 2], 40, 0, 15, 0, 3);
+interinfob.add_size_transform([0, 1, 2], 40, 0, 15, 0, 3);
+interinfoc.add_size_transform([0, 1, 2], 40, 0, 15, 0, 3);
 
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
@@ -408,6 +473,9 @@ intertext.add_size_transform([0, 1, 2], 40, 0, 65, 0, 1);
 // mobileh
 intertext.add_size_transform([0, 1, 2], 40, 0, 65, 0, 2);
 //intertext.change_position([0, 1, 2], 70, 0, [55, 45, -55], 0, [0, 1, 1], 2);
+// tabletV
+intertext.change_position([0, 1, 2], 50, 0, [82, 70, -50], 0, [0, 1, 1], 3);
+intertext.add_size_transform([0, 1, 2], 80, 0, 50, 0, 3);
 
 
 
@@ -421,6 +489,10 @@ brandcarda.set_z_index(2);
 brandcarda.change_position(0, 0, 0, -50, 0, 1, 0);
 brandcarda.change_position(1, 0, 0, 15, 0, 1, 0);
 brandcarda.add_size_transform([0, 1], 40, 0, 40, 0, 0);
+// tabletV
+brandcarda.change_position(0, 0, 0, -50, 0, 1, 3);
+brandcarda.change_position(1, 0, 0, 15, 0, 1, 3);
+brandcarda.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 
 var brandcardb = new object("brandcardb", meta);
 brandcardb.add_state(50, 0, 150, 0, 1);
@@ -431,6 +503,10 @@ brandcardb.set_z_index(3);
 brandcardb.change_position(0, 50, 0, -50, 0, 1, 0);
 brandcardb.change_position(1, 50, 0, 15, 0, 1, 0);
 brandcardb.add_size_transform([0, 1], 40, 0, 40, 0, 0);
+// tabletV
+brandcardb.change_position(0, 50, 0, -50, 0, 1, 3);
+brandcardb.change_position(1, 50, 0, 15, 0, 1, 3);
+brandcardb.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 
 var brandcardc = new object("brandcardc", meta);
 brandcardc.add_state(80, 0, -50, 0, 1);
@@ -441,6 +517,10 @@ brandcardc.set_z_index(2);
 brandcardc.change_position(0, 100, 0, -50, 0, 1, 0);
 brandcardc.change_position(1, 100, 0, 15, 0, 1, 0);
 brandcardc.add_size_transform([0, 1], 40, 0, 40, 0, 0);
+// tabletV
+brandcardc.change_position(0, 100, 0, -50, 0, 1, 3);
+brandcardc.change_position(1, 100, 0, 15, 0, 1, 3);
+brandcardc.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 
 var brandcardd = new object("brandcardd", meta);
 brandcardd.add_state(31, 0, 150, 0, 1);
@@ -457,6 +537,10 @@ brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 1);
 // mobileh
 brandcardd.add_size_transform([0, 1], 40, 0, 49, 0, 2);
 brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 2);
+// tabletV
+brandcardd.change_position(0, 0, 0, 150, 0, 1, 3);
+brandcardd.change_position(1, 0, 0, 82, 0, 1, 3);
+brandcardd.add_size_transform([0, 1], 200, 0, 46, 0, 3);
 
 var brandpen = new object("brandpen", meta);
 brandpen.add_state(89, 0, 150, 0, 1);
@@ -467,6 +551,10 @@ brandpen.set_z_index(2);
 brandpen.change_position(0, 84, 0, 150, 0, 1, 0);
 brandpen.change_position(1, 84, 0, 90, 0, 1, 0);
 brandpen.add_size_transform([0, 1], 25, 0, 30, 0, 0);
+// tabletV
+brandpen.change_position(0, 84, 0, 150, 0, 1, 3);
+brandpen.change_position(1, 84, 0, 93, 0, 1, 3);
+brandpen.add_size_transform([0, 1], 25, 0, 30, 0, 3);
 
 var brandclip = new object("brandclip", meta);
 brandclip.add_state(89, 0, 150, 0, 1);
@@ -475,8 +563,12 @@ brandclip.add_size_transform([0, 1], 10, 0, 28, 0);
 brandclip.set_z_index(2);
 // mobile
 brandclip.change_position(0, 84, 0, 150, 0, 1, 0);
-brandclip.change_position(1, 84, 0, 72, 0, 1, 0);
-brandclip.add_size_transform([0, 1], 17, 0, 30, 0, 0);
+brandclip.change_position(1, 84, 0, 74, 0, 1, 0);
+brandclip.add_size_transform([0, 1], 17, 0, 15, 0, 0);
+// tabletV
+brandclip.change_position(0, 84, 0, 150, 0, 1, 3);
+brandclip.change_position(1, 84, 0, 72, 0, 1, 3);
+brandclip.add_size_transform([0, 1], 17, 0, 30, 0, 3);
 
 var brandtext = new object("brandtext", meta);
 brandtext.add_state(70, 0, 150, 0, 1);
@@ -493,6 +585,10 @@ brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 1);
 // mobileh
 brandtext.add_size_transform([0, 1], 35, 0, 55, 0, 2);
 brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 2);
+// tabletV
+brandtext.change_position(0, 50, 0, 150, 0, 1, 3);
+brandtext.change_position(1, 50, 0, 42, 0, 1, 3);
+brandtext.add_size_transform([0, 1], 80, 0, 40, 0, 3);
 
 brandcarda.add_easing(1, defaultEasing);
 brandcardb.add_easing(1, defaultEasing);
@@ -520,6 +616,10 @@ videoclipa.set_z_index(4);
 videoclipa.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
 videoclipa.change_position(0, -50, 0, 32, 0, 1, 0);
 videoclipa.change_position(1, 42, 0, 32, 0, 1, 0);
+// tabletV
+videoclipa.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipa.change_position(0, -50, 0, 32, 0, 1, 3);
+videoclipa.change_position(1, 42, 0, 32, 0, 1, 3);
 
 var videoclipb = new object("videoclipb", meta);
 videoclipb.add_state(-50, 0, 55, 55, 1);
@@ -530,6 +630,10 @@ videoclipb.set_z_index(4);
 videoclipb.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
 videoclipb.change_position(0, -50, 0, 25.6, 0, 1, 0);
 videoclipb.change_position(1, 48.3, 0, 25.6, 0, 1, 0);
+// tabletV
+videoclipb.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipb.change_position(0, -50, 0, 25.6, 0, 1, 3);
+videoclipb.change_position(1, 48.3, 0, 25.6, 0, 1, 3);
 
 var videoclipc = new object("videoclipc", meta);
 videoclipc.add_state(-50, 0, 55, -55, 1);
@@ -540,6 +644,10 @@ videoclipc.set_z_index(4);
 videoclipc.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
 videoclipc.change_position(0, -50, 0, 19.3, 0, 1, 0);
 videoclipc.change_position(1, 54.6, 0, 19.3, 0, 1, 0);
+// tabletV
+videoclipc.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipc.change_position(0, -50, 0, 19.3, 0, 1, 3);
+videoclipc.change_position(1, 54.6, 0, 19.3, 0, 1, 3);
 
 var videoclipd = new object("videoclipd", meta);
 videoclipd.add_state(-50, 0, 55, -165, 1);
@@ -550,6 +658,10 @@ videoclipd.set_z_index(4);
 videoclipd.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
 videoclipd.change_position(0, -50, 0, 13, 0, 1, 0);
 videoclipd.change_position(1, 61, 0, 13, 0, 1, 0);
+// tabletV
+videoclipd.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipd.change_position(0, -50, 0, 13, 0, 1, 3);
+videoclipd.change_position(1, 61, 0, 13, 0, 1, 3);
 
 var videotext = new object("videotext", meta);
 videotext.add_state(70, 0, 65, 0, 0);
@@ -563,6 +675,9 @@ videotext.add_size_transform([0, 1], 80, 0, 50, 0, 0);
 videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 1);
 // mobileh
 videotext.add_size_transform([0, 1], 32.5, 0, 68, 0, 2);
+// tabletV
+videotext.change_position([0, 1], 50, 0, [82, 70], 0, [0, 1], 3);
+videotext.add_size_transform([0, 1], 80, 0, 50, 0, 3);
 
 videoclipa.add_easing(1, defaultEasing);
 videoclipb.add_easing(1, defaultEasing);
@@ -594,6 +709,9 @@ supportwbg.change_position(1, 50, 0, 42.5, 0, 1, 1);
 // mobileh
 supportwbg.add_size_transform([0, 1, 2], 100, 0, 85, 0, 2);
 supportwbg.change_position(1, 50, 0, 42.5, 0, 1, 2);
+// tabletV
+supportwbg.add_size_transform([0, 1, 2], 100, 0, 100, 0, 3);
+supportwbg.change_position(1, 50, 0, 50, 0, 1, 3);
 
 var supporttitle = new object("supporttitle", meta);
 supporttitle.add_state(50, 0, -50, 0, 0);
@@ -602,6 +720,8 @@ supporttitle.add_size_transform([0, 1], 50, 0, 8, 0);
 supporttitle.set_z_index(6);
 // mobile
 supporttitle.add_size_transform([0, 1], 100, 0, 17, 0, 0);
+// tabletV
+supporttitle.add_size_transform([0, 1], 100, 0, 17, 0, 3);
 
 var supporttext_width = 45;
 var supporttext_line_1_top = 33;
@@ -621,6 +741,11 @@ supporttexta.add_size_transform([0, 1, 2], supporttext_width, 0, 33, 0, 0);
 supporttexta.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 0);
 supporttexta.change_position(1, supporttext_row_1_left, 0, supporttext_line_1_top, 0, 1, 0);
 supporttexta.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 0);
+// tabletV
+supporttexta.add_size_transform([0, 1, 2], supporttext_width, 0, 33, 0, 3);
+supporttexta.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 3);
+supporttexta.change_position(1, supporttext_row_1_left, 0, supporttext_line_1_top, 0, 1, 3);
+supporttexta.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 3);
 
 
 var supporttextb = new object("supporttextb", meta);
@@ -635,6 +760,11 @@ supporttextb.add_size_transform([0, 1, 2], supporttext_width, 0, 33, 0, 0);
 supporttextb.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 0);
 supporttextb.change_position(1, supporttext_row_2_left, 0, supporttext_line_1_top, 0, 1, 0);
 supporttextb.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 0);
+// tabletV
+supporttextb.add_size_transform([0, 1, 2], supporttext_width, 0, 33, 0, 3);
+supporttextb.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 3);
+supporttextb.change_position(1, supporttext_row_2_left, 0, supporttext_line_1_top, 0, 1, 3);
+supporttextb.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 3);
 
 var supporttextc = new object("supporttextc", meta);
 supporttextc.add_state(59, 0, 150, 0, 0);
@@ -648,6 +778,12 @@ supporttextc.add_size_transform([0, 1, 2], supporttext_width, 0, 40, 0, 0);
 supporttextc.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 0);
 supporttextc.change_position(1, supporttext_row_1_left, 0, supporttext_line_2_top, 0, 1, 0);
 supporttextc.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 0);
+// tabletV
+supporttextc.add_size_transform([0, 1, 2], supporttext_width, 0, 40, 0, 3);
+supporttextc.change_position(0, supporttext_row_1_left, 0, 150, 0, 0, 3);
+supporttextc.change_position(1, supporttext_row_1_left, 0, supporttext_line_2_top, 0, 1, 3);
+supporttextc.change_position(2, supporttext_row_1_left, 0, -50, 0, 1, 3);
+
 
 var supporttextd = new object("supporttextd", meta);
 supporttextd.add_state(77, 0, 150, 0, 0);
@@ -661,6 +797,11 @@ supporttextd.add_size_transform([0, 1, 2], supporttext_width, 0, 40, 0, 0);
 supporttextd.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 0);
 supporttextd.change_position(1, supporttext_row_2_left, 0, supporttext_line_2_top, 0, 1, 0);
 supporttextd.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 0);
+// tabletV
+supporttextd.add_size_transform([0, 1, 2], supporttext_width, 0, 40, 0, 3);
+supporttextd.change_position(0, supporttext_row_2_left, 0, 150, 0, 0, 3);
+supporttextd.change_position(1, supporttext_row_2_left, 0, supporttext_line_2_top, 0, 1, 3);
+supporttextd.change_position(2, supporttext_row_2_left, 0, -50, 0, 1, 3);
 
 supportbg.add_easing(1, defaultEasing);
 supportwbg.add_easing(1, defaultEasing);
@@ -676,20 +817,27 @@ contactlogo.add_state(50, 0, 25, 0, 1);
 contactlogo.add_size_transform([0, 1], 100, 0, 23, 0);
 contactlogo.set_z_index(7);
 // mobile
-contactlogo.change_position(1, 50, 0, 20, 0, 1, 0);
+contactlogo.change_position(1, 50, 0, 26, 0, 1, 0);
 // tablet
-contactlogo.change_position(1, 50, 0, 20, 0, 1, 0);
+contactlogo.change_position(1, 50, 0, 20, 0, 1, 1);
 // mobileh
 contactlogo.change_position(1, 50, 0, 26, 0, 1, 2);
+// tabletV
+contactlogo.change_position(1, 50, 0, 26, 0, 1, 3);
 
 var contactform = new object("contactform", meta);
 contactform.add_state(50, 0, 150, 0, 1);
 contactform.add_state(50, 0, 50, 90, 1);
 contactform.add_size_transform([0, 1], 0, 380, 0, 366);
 contactform.set_z_index(7);
-
+// mobile
+contactform.add_size_transform([0, 1], 100, 0, 45, 0, 0);
+// tablet
+contactform.add_size_transform([0, 1], 100, 0, 45, 0, 1);
 // mobileh
 contactform.add_size_transform([0, 1], 100, 0, 55, 0, 2);
+// tabletV
+contactform.change_position(1, 50, 0, 65, 0, 1, 3);
 
 contactlogo.add_easing(1, defaultEasing);
 contactform.add_easing(1, defaultEasing);
@@ -861,14 +1009,11 @@ var mod_select = function () {
 			to_mod = 2;
 		}
 	// tablet
-	} else if (min_length <= 768) {
-		if (ratio >= 1) {
-			to_mod = 1;
-		} else {
-			to_mod = 3;
-		}
+	} else if (min_length <= 768 && ratio >= 1) {
+		to_mod = 1;
+	} else if (ratio < 1) {
+		to_mod = 3;
 	}
-	console.log (min_length, ratio, to_mod);
 	if (manager.mod != to_mod) {
 		manager.mod(to_mod);
 	}

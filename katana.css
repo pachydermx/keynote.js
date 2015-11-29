@@ -281,6 +281,10 @@ html{
 	font-size: 1.5vw;
 }
 
+.TabletV .tag{
+	font-size: 1.5vw;
+}
+
 .tag.orange{
 	background: #eb6100;
 }
@@ -303,6 +307,9 @@ html{
 	font-size: 8vw;
 }
 
+.TabletV .title, .TabletV.title{
+	font-size: 5vw;
+}
 .Tablet .title, .Tablet.title{
 	font-size: 4vw;
 }
@@ -333,14 +340,22 @@ html{
 	font-size: 2.0vw;
 }
 
+.TabletV .context.small{
+	font-size: 1.8w;
+}
+
 .Mobile .context, .Mobile .context p, .Mobile .context li{
 	font-size: 2.3vw;
 	line-height: 1.3;
 }
+.TabletV .context, .TabletV .context p, .TabletV .context li{
+	font-size: 1.9vw;
+	line-height: 1.5;
+}
 
 .Tablet .context, .Tablet .context p, .Tablet .context li{
-	font-size: 1.5vw;
-	line-height: 1.5;
+	font-size: 1.4vw;
+	line-height: 1.3;
 }
 
 .MobileH .context, .MobileH .context p, .MobileH .context li{
@@ -364,6 +379,9 @@ html{
 .Mobile .more_button{
 	padding: 10px 5px;
 }
+.TabletV .more_button{
+	padding: 10px 5px;
+}
 
 .more_button.reverse{
 	color: white;
@@ -385,8 +403,8 @@ html{
 */
 
 .button_icon.more_info img{
-	width: 1.3em;
-	height: 1.3em;
+	width: 1em;
+	height: 1em;
 }
 
 .button_label{
@@ -399,6 +417,12 @@ html{
 
 .Mobile .button_label{
 	font-size: 2.0vw;
+}
+.Tablet .button_label{
+	font-size: 1.5vw;
+}
+.TabletV .button_label{
+	font-size: 2vw;
 }
 
 .thumb_display{
@@ -415,6 +439,9 @@ html{
 .Mobile .thumb_img img{
 	width: 18vw;
 }
+.TabletV .thumb_img img{
+	width: 18vw;
+}
 		
 .thumb_title{
 	padding-top: 9px;
@@ -423,6 +450,9 @@ html{
 
 .Mobile .thumb_title{
 	font-size: 1.5vw;
+}
+.TabletV .thumb_title{
+	font-size: 2.2vw;
 }
 
 .thumb_box{
@@ -447,6 +477,11 @@ html{
 	height: 36vw;
 	margin-bottom: 2vw;
 }
+.TabletV .slider_showcase{
+	width: 36vw;
+	height: 36vw;
+	margin-bottom: 2vw;
+}
 
 .slider_icon{
 	margin: 0px;
@@ -464,12 +499,21 @@ html{
 	left: 7.8vw;
 	top: 7.8vw;
 }
+.TabletV .slider_icon{
+	width: 21vw;
+	height: 21vw;
+	left: 7.8vw;
+	top: 7.8vw;
+}
 		
 .second.title{
 	font-size: 2.0vw;
 }
 
 .Mobile .second.title{
+	font-size: 4.0vw;
+}
+.TabletV .second.title{
 	font-size: 4.0vw;
 }
 
