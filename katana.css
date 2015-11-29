@@ -244,6 +244,10 @@ html{
 	background-image: url(katana/contactlogo.png);
 }
 
+#contactform{
+	background-image: url(katana/contactform.png);
+}
+
 /* Text */
 
 .preview_container{

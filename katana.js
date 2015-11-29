@@ -1,7 +1,7 @@
 // create meta and manager objects
 var meta = new meta();
 var manager = new manager();
-manager.mods = ["Mobile", "Tablet", "MobileH"];
+manager.mods = ["Mobile", "Tablet", "MobileH", "TabletV"];
 
 // options
 var defaultEasing = "easeOutQuad";
@@ -262,7 +262,7 @@ websitetext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 0);
 // tablet
 websitetext.add_size_transform([0, 1, 2], 32.5, 0, 52, 0, 1);
 // mobileh
-websitetext.add_size_transform([0, 1, 2], 40, 0, 52, 0, 2);
+websitetext.add_size_transform([0, 1, 2], 40, 0, 58, 0, 2);
 websitetext.change_position([0, 1, 2], 60, 0, [55, 45, -65], 0, [0, 1, 1], 2);
 
 var websiteleafa = new object("websiteleafa", meta);
@@ -562,7 +562,7 @@ videotext.add_size_transform([0, 1], 80, 0, 50, 0, 0);
 // tablet
 videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 1);
 // mobileh
-videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 2);
+videotext.add_size_transform([0, 1], 32.5, 0, 68, 0, 2);
 
 videoclipa.add_easing(1, defaultEasing);
 videoclipb.add_easing(1, defaultEasing);
@@ -680,12 +680,16 @@ contactlogo.change_position(1, 50, 0, 20, 0, 1, 0);
 // tablet
 contactlogo.change_position(1, 50, 0, 20, 0, 1, 0);
 // mobileh
-contactlogo.change_position(1, 50, 0, 10, 0, 1, 2);
+contactlogo.change_position(1, 50, 0, 26, 0, 1, 2);
 
 var contactform = new object("contactform", meta);
 contactform.add_state(50, 0, 150, 0, 1);
 contactform.add_state(50, 0, 50, 90, 1);
+contactform.add_size_transform([0, 1], 0, 380, 0, 366);
 contactform.set_z_index(7);
+
+// mobileh
+contactform.add_size_transform([0, 1], 100, 0, 55, 0, 2);
 
 contactlogo.add_easing(1, defaultEasing);
 contactform.add_easing(1, defaultEasing);
@@ -835,20 +839,36 @@ contact.add(contactform, 1, 3000, 1000);
 // create inspector
 var inspector = new inspector(manager);
 
+// mod list
+/*
+Ratio < 1 -> Horizontal
+Ratio > 1 -> Vertical
+PC	Normal
+0	Mobile (minLength <= 640, Ratio <= 1)
+1	Tablet (minLength <= 1024, Ratio <= 1)
+2	Mobile Horizontal (Normal Copy)
+3	Tablet Vertical (Mobile Copy)
+*/
 var mod_select = function () {
 	var to_mod = undefined;
-	if (meta.width <= 1280) {
-		if (meta.height > 768) {
+	var min_length = Math.min(meta.width, meta.height);
+	var ratio = meta.width / meta.height;
+	// mobile
+	if (min_length <= 640){
+		if (ratio <= 1){
 			to_mod = 0;
-		} else if (meta.height >= 640) {
-			to_mod = 1;
 		} else {
 			to_mod = 2;
 		}
+	// tablet
+	} else if (min_length <= 768) {
+		if (ratio >= 1) {
+			to_mod = 1;
+		} else {
+			to_mod = 3;
+		}
 	}
-	if (meta.width <= 640) {
-		to_mod = 0;
-	}
+	console.log (min_length, ratio, to_mod);
 	if (manager.mod != to_mod) {
 		manager.mod(to_mod);
 	}
@@ -882,6 +902,7 @@ $(window).swipe({
 	}, 
 	threshold: 0
 });
+
 
 $(window).load(function(){
 	//inspector.enable("body");
@@ -960,4 +981,19 @@ $(window).load(function(){
 	
 	mod_select();
 	
+});
+
+// debug
+var buf_num = 0;
+$(window).keydown(function(event){
+	if (event.keyCode >= 48 && event.keyCode <= 57){
+		buf_num = buf_num * 10 + (event.keyCode - 48);
+	}
+	if (event.keyCode == 13){
+		if (buf_num <= manager.pages.length){
+			console.log("go to ", buf_num)
+			manager.goto_page(buf_num - 1);
+		}
+		buf_num = 0;
+	}
 });
