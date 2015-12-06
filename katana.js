@@ -115,7 +115,7 @@ hometext.add_size_transform([0, 1], 80, 0, 40, 0, 0);
 hometext.add_size_transform([0, 1], 32.5, 0, 40.3, 0, 1);
 // mobileh
 hometext.add_size_transform([0, 1], 32.5, 0, 55.3, 0, 2);
-hometext.change_position(1, 66, 0, 60, 0, 1, 2);
+hometext.change_position(1, 66, 0, 55, 0, 1, 2);
 // tabletV
 hometext.change_position([0, 1], 50, 0, [75, 65], 0, [0, 1], 3);
 hometext.add_size_transform([0, 1], 80, 0, 40, 0, 3);
@@ -1062,14 +1062,18 @@ var mod_select = function () {
 	if (min_length <= 640){
 		if (ratio <= 1){
 			to_mod = 0;
+			$(window).swipe("enable");
 		} else {
 			to_mod = 2;
+			$(window).swipe("disable");
 		}
 	// tablet
 	} else if (min_length <= 768 && ratio >= 1) {
 		to_mod = 1;
+		$(window).swipe("enable");
 	} else if (ratio < 1) {
 		to_mod = 3;
+		$(window).swipe("enable");
 	}
 	if (manager.mod != to_mod) {
 		manager.mod(to_mod);
@@ -1092,6 +1096,23 @@ $(window).mousewheel(function(event){
 		manager.next();
 	}
 });
+
+var touchY;
+$(window).bind("touchstart", function(event){
+	touchY = event.originalEvent.pageY;
+})
+
+$(window).bind("touchend", function(event){
+	if(manager.mod_id == 2 && Math.abs(event.originalEvent.pageY - touchY) < 10) {
+		if (event.originalEvent.pageY > meta.height / 2) {
+			manager.next();
+		} else {
+			manager.prev();
+		}
+	}
+	
+});
+
 
 // set swipe
 $(window).swipe({
