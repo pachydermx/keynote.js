@@ -457,9 +457,6 @@ interinfoc.add_size_transform([0, 1, 2], 40, 0, 15, 0, 3);
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
 interinfoc.add_easing(1, defaultEasing);
-interinfoa.auto_reset = false;
-interinfob.auto_reset = false;
-interinfoc.auto_reset = false;
 
 var intertext = new object("intertext", meta);
 intertext.add_state(70, 0, 55, 0, 0);
@@ -468,7 +465,6 @@ intertext.add_state(70, 0, -55, 0, 1);
 intertext.add_size_transform([0, 1, 2], 30, 0, 52, 0);
 intertext.default_exit_location = 2;
 intertext.add_easing(1, defaultEasing);
-intertext.auto_reset = false;
 intertext.set_z_index(5);
 // mobile
 intertext.change_position([0, 1, 2], 50, 0, [82, 70, 70-100], 0, [0, 1, 1], 0);
@@ -623,6 +619,12 @@ brandcardd.add_easing(1, defaultEasing);
 brandclip.add_easing(1, defaultEasing);
 brandpen.add_easing(1, defaultEasing);
 brandtext.add_easing(1, defaultEasing);
+
+brandcardb.add_easing(2, defaultEasing);
+brandcardd.add_easing(2, defaultEasing);
+brandclip.add_easing(2, defaultEasing);
+brandpen.add_easing(2, defaultEasing);
+brandtext.add_easing(2, defaultEasing);
 
 // VIDEO
 var videobg = new object("objectbg", meta);
@@ -1006,6 +1008,7 @@ interactive.add(intertext, 1, 3500, 1000);
 var brand = new page("Brand", manager);
 manager.add(brand, true);
 brand.default_duration = 2000;
+//brand.add(videobg, 0, 0, 1000);
 brand.add(brandcarda, 1, 2500, 1000);
 brand.add(brandcardb, 1, 2500, 1000);
 brand.add(brandcardc, 1, 2500, 1000);
