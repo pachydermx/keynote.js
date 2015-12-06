@@ -551,3 +551,11 @@ html{
 	display: inline-block;
 	margin: 2.5px;
 }
+
+.supporttext.Mobile .image_container, .supporttext.tabletV .image_container{
+	text-align: center;
+}
+
+.supporttext.Mobile img, supporttext.TabletV img{
+	width: 70%;
+}
