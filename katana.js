@@ -399,6 +399,7 @@ interbg.add_size_transform([0, 1, 2], 100, 0, 100, 0);
 interbg.add_easing(1, defaultEasing);
 interbg.default_exit_location = 2;
 interbg.set_z_index(4);
+interbg.auto_reset = false;
 // mobile
 interbg.add_size_transform([0, 1, 2], 150, 0, 100, 0, 0);
 interbg.change_position(1, 60, 0, 50, 0, 1, 0);
@@ -456,6 +457,9 @@ interinfoc.add_size_transform([0, 1, 2], 40, 0, 15, 0, 3);
 interinfoa.add_easing(1, defaultEasing);
 interinfob.add_easing(1, defaultEasing);
 interinfoc.add_easing(1, defaultEasing);
+interinfoa.auto_reset = false;
+interinfob.auto_reset = false;
+interinfoc.auto_reset = false;
 
 var intertext = new object("intertext", meta);
 intertext.add_state(70, 0, 55, 0, 0);
@@ -497,16 +501,20 @@ brandcarda.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 var brandcardb = new object("brandcardb", meta);
 brandcardb.add_state(50, 0, 150, 0, 1);
 brandcardb.add_state(50, 0, 27, 0, 1);
-brandcardb.add_size_transform([0, 1], 27, 0, 41, 0);
+brandcardb.add_state(50, 0, -73, 0, 1);
+brandcardb.add_size_transform([0, 1, 2], 27, 0, 41, 0);
 brandcardb.set_z_index(3);
+brandcardb.default_exit_location = 2;
 // mobile
 brandcardb.change_position(0, 50, 0, -50, 0, 1, 0);
 brandcardb.change_position(1, 50, 0, 15, 0, 1, 0);
-brandcardb.add_size_transform([0, 1], 40, 0, 40, 0, 0);
+brandcardb.change_position(2, 50, 0, -85, 0, 1, 0);
+brandcardb.add_size_transform([0, 1, 2], 40, 0, 40, 0, 0);
 // tabletV
 brandcardb.change_position(0, 50, 0, -50, 0, 1, 3);
 brandcardb.change_position(1, 50, 0, 15, 0, 1, 3);
-brandcardb.add_size_transform([0, 1], 40, 0, 40, 0, 3);
+brandcardb.change_position(2, 50, 0, -85, 0, 1, 3);
+brandcardb.add_size_transform([0, 1, 2], 40, 0, 40, 0, 3);
 
 var brandcardc = new object("brandcardc", meta);
 brandcardc.add_state(80, 0, -50, 0, 1);
@@ -525,70 +533,86 @@ brandcardc.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 var brandcardd = new object("brandcardd", meta);
 brandcardd.add_state(31, 0, 150, 0, 1);
 brandcardd.add_state(31, 0, 76, 0, 1);
-brandcardd.add_size_transform([0, 1], 51, 0, 49, 0);
+brandcardd.add_state(31, 0, -24, 0, 1);
+brandcardd.add_size_transform([0, 1, 2], 51, 0, 49, 0);
 brandcardd.set_z_index(2);
+brandcardd.default_exit_location = 2;
 // mobile
 brandcardd.change_position(0, 0, 0, 150, 0, 1, 0);
 brandcardd.change_position(1, 0, 0, 82, 0, 1, 0);
-brandcardd.add_size_transform([0, 1], 200, 0, 46, 0, 0);
+brandcardd.change_position(2, 0, 0, -18, 0, 1, 0);
+brandcardd.add_size_transform([0, 1, 2], 200, 0, 46, 0, 0);
 // tablet
-brandcardd.add_size_transform([0, 1], 40, 0, 49, 0, 1);
-brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 1);
+brandcardd.add_size_transform([0, 1, 2], 40, 0, 49, 0, 1);
+brandcardd.change_position([0, 1, 2], 26, 0, [150, 76, -24], 0, 1, 1);
 // mobileh
-brandcardd.add_size_transform([0, 1], 40, 0, 49, 0, 2);
-brandcardd.change_position([0, 1], 26, 0, [150, 76], 0, 1, 2);
+brandcardd.add_size_transform([0, 1, 2], 40, 0, 49, 0, 2);
+brandcardd.change_position([0, 1, 2], 26, 0, [150, 76, -24], 0, 1, 2);
 // tabletV
 brandcardd.change_position(0, 0, 0, 150, 0, 1, 3);
 brandcardd.change_position(1, 0, 0, 82, 0, 1, 3);
-brandcardd.add_size_transform([0, 1], 200, 0, 46, 0, 3);
+brandcardd.change_position(2, 0, 0, -18, 0, 1, 3);
+brandcardd.add_size_transform([0, 1, 2], 200, 0, 46, 0, 3);
 
 var brandpen = new object("brandpen", meta);
 brandpen.add_state(89, 0, 150, 0, 1);
 brandpen.add_state(89, 0, 85, 0, 1);
-brandpen.add_size_transform([0, 1], 12, 0, 30, 0);
+brandpen.add_state(89, 0, -15, 0, 1);
+brandpen.add_size_transform([0, 1, 2], 12, 0, 30, 0);
 brandpen.set_z_index(2);
+brandpen.default_exit_location = 2;
 // mobile
 brandpen.change_position(0, 84, 0, 150, 0, 1, 0);
 brandpen.change_position(1, 84, 0, 90, 0, 1, 0);
-brandpen.add_size_transform([0, 1], 25, 0, 30, 0, 0);
+brandpen.change_position(2, 84, 0, -10, 0, 1, 0);
+brandpen.add_size_transform([0, 1, 2], 25, 0, 30, 0, 0);
 // tabletV
 brandpen.change_position(0, 84, 0, 150, 0, 1, 3);
 brandpen.change_position(1, 84, 0, 93, 0, 1, 3);
-brandpen.add_size_transform([0, 1], 25, 0, 30, 0, 3);
+brandpen.change_position(2, 84, 0, -7, 0, 1, 3);
+brandpen.add_size_transform([0, 1, 2], 25, 0, 30, 0, 3);
 
 var brandclip = new object("brandclip", meta);
 brandclip.add_state(89, 0, 150, 0, 1);
 brandclip.add_state(89, 0, 56, 0, 1);
-brandclip.add_size_transform([0, 1], 10, 0, 28, 0);
+brandclip.add_state(89, 0, -44, 0, 1);
+brandclip.add_size_transform([0, 1, 2], 10, 0, 28, 0);
 brandclip.set_z_index(2);
+brandclip.default_exit_location = 2;
 // mobile
 brandclip.change_position(0, 84, 0, 150, 0, 1, 0);
 brandclip.change_position(1, 84, 0, 74, 0, 1, 0);
-brandclip.add_size_transform([0, 1], 17, 0, 15, 0, 0);
+brandclip.change_position(2, 84, 0, -26, 0, 1, 0);
+brandclip.add_size_transform([0, 1, 2], 17, 0, 15, 0, 0);
 // tabletV
 brandclip.change_position(0, 84, 0, 150, 0, 1, 3);
 brandclip.change_position(1, 84, 0, 72, 0, 1, 3);
-brandclip.add_size_transform([0, 1], 17, 0, 30, 0, 3);
+brandclip.change_position(2, 84, 0, -28, 0, 1, 3);
+brandclip.add_size_transform([0, 1, 2], 17, 0, 30, 0, 3);
 
 var brandtext = new object("brandtext", meta);
 brandtext.add_state(70, 0, 150, 0, 1);
 brandtext.add_state(70, 0, 70, 0, 1);
-brandtext.add_size_transform([0, 1], 25, 0, 45, 0);
+brandtext.add_state(70, 0, -30, 0, 1);
+brandtext.add_size_transform([0, 1, 2], 25, 0, 45, 0);
 brandtext.set_z_index(2);
+brandtext.default_exit_location = 2;
 // mobile
 brandtext.change_position(0, 50, 0, 150, 0, 1, 0);
 brandtext.change_position(1, 50, 0, 42, 0, 1, 0);
-brandtext.add_size_transform([0, 1], 80, 0, 40, 0, 0);
+brandtext.change_position(2, 50, 0, -58, 0, 1, 0);
+brandtext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 0);
 // tablet
-brandtext.add_size_transform([0, 1], 35, 0, 55, 0, 1);
-brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 1);
+brandtext.add_size_transform([0, 1, 2], 35, 0, 55, 0, 1);
+brandtext.change_position([0, 1, 2], 65, 0, [150, 65, -35], 0, 1, 1);
 // mobileh
-brandtext.add_size_transform([0, 1], 35, 0, 55, 0, 2);
-brandtext.change_position([0, 1], 65, 0, [150, 65], 0, 1, 2);
+brandtext.add_size_transform([0, 1, 2], 35, 0, 55, 0, 2);
+brandtext.change_position([0, 1, 2], 65, 0, [150, 65, -35], 0, 1, 2);
 // tabletV
 brandtext.change_position(0, 50, 0, 150, 0, 1, 3);
 brandtext.change_position(1, 50, 0, 42, 0, 1, 3);
-brandtext.add_size_transform([0, 1], 80, 0, 40, 0, 3);
+brandtext.change_position(2, 50, 0, -58, 0, 1, 3);
+brandtext.add_size_transform([0, 1, 2], 80, 0, 40, 0, 3);
 
 brandcarda.add_easing(1, defaultEasing);
 brandcardb.add_easing(1, defaultEasing);
@@ -600,84 +624,104 @@ brandtext.add_easing(1, defaultEasing);
 
 // VIDEO
 var videobg = new object("objectbg", meta);
-videobg.add_state(50, 0, 180, 0, 1);
+videobg.add_state(50, 0, 150, 0, 1);
 videobg.add_state(50, 0, 50, 0, 1);
-videobg.add_size_transform([0, 1], 100, 0, 100, 0);
+videobg.add_state(50, 0, -50, 0, 1);
+videobg.add_size_transform([0, 1, 2], 100, 0, 100, 0);
 videobg.auto_reset = false;
 videobg.add_easing(1, defaultEasing);
 videobg.set_z_index(3);
+videobg.default_exit_location = 2;
 
 var videoclipa = new object("videoclipa", meta);
 videoclipa.add_state(-50, 0, 55, 165, 1);
 videoclipa.add_state(30, 0, 55, 165, 1);
-videoclipa.add_size_transform([0, 1], 32.5, 0, 31.1, 0);
+videoclipa.add_state(30, 0, -45, 165, 1);
+videoclipa.add_size_transform([0, 1, 2], 32.5, 0, 31.1, 0);
 videoclipa.set_z_index(4);
+videoclipa.default_exit_location = 2;
 // mobile
-videoclipa.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
+videoclipa.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 0);
 videoclipa.change_position(0, -50, 0, 32, 0, 1, 0);
 videoclipa.change_position(1, 42, 0, 32, 0, 1, 0);
+videoclipa.change_position(2, -50, 0, 32, 0, 1, 0);
 // tabletV
-videoclipa.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipa.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 3);
 videoclipa.change_position(0, -50, 0, 32, 0, 1, 3);
 videoclipa.change_position(1, 42, 0, 32, 0, 1, 3);
+videoclipa.change_position(2, -50, 0, 32, 0, 1, 3);
 
 var videoclipb = new object("videoclipb", meta);
 videoclipb.add_state(-50, 0, 55, 55, 1);
 videoclipb.add_state(30, 0, 55, 55, 1);
-videoclipb.add_size_transform([0, 1], 32.5, 0, 31.1, 0);
+videoclipb.add_state(30, 0, -45, 55, 1);
+videoclipb.add_size_transform([0, 1, 2], 32.5, 0, 31.1, 0);
 videoclipb.set_z_index(4);
+videoclipb.default_exit_location = 2;
 // mobile
-videoclipb.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
+videoclipb.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 0);
 videoclipb.change_position(0, -50, 0, 25.6, 0, 1, 0);
 videoclipb.change_position(1, 48.3, 0, 25.6, 0, 1, 0);
+videoclipb.change_position(2, -50, 0, 25.6, 0, 1, 0);
 // tabletV
-videoclipb.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipb.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 3);
 videoclipb.change_position(0, -50, 0, 25.6, 0, 1, 3);
 videoclipb.change_position(1, 48.3, 0, 25.6, 0, 1, 3);
+videoclipb.change_position(2, -50, 0, 25.6, 0, 1, 3);
 
 var videoclipc = new object("videoclipc", meta);
 videoclipc.add_state(-50, 0, 55, -55, 1);
 videoclipc.add_state(30, 0, 55, -55, 1);
-videoclipc.add_size_transform([0, 1], 32.5, 0, 31.1, 0);
+videoclipc.add_state(30, 0, -45, -55, 1);
+videoclipc.add_size_transform([0, 1, 2], 32.5, 0, 31.1, 0);
 videoclipc.set_z_index(4);
+videoclipc.default_exit_location = 2;
 // mobile
-videoclipc.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
+videoclipc.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 0);
 videoclipc.change_position(0, -50, 0, 19.3, 0, 1, 0);
 videoclipc.change_position(1, 54.6, 0, 19.3, 0, 1, 0);
+videoclipc.change_position(2, -50, 0, 19.3, 0, 1, 0);
 // tabletV
-videoclipc.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipc.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 3);
 videoclipc.change_position(0, -50, 0, 19.3, 0, 1, 3);
 videoclipc.change_position(1, 54.6, 0, 19.3, 0, 1, 3);
+videoclipc.change_position(2, -50, 0, 19.3, 0, 1, 3);
 
 var videoclipd = new object("videoclipd", meta);
 videoclipd.add_state(-50, 0, 55, -165, 1);
 videoclipd.add_state(30, 0, 55, -165, 1);
-videoclipd.add_size_transform([0, 1], 32.5, 0, 31.1, 0);
+videoclipd.add_state(30, 0, -45, -165, 1);
+videoclipd.add_size_transform([0, 1, 2], 32.5, 0, 31.1, 0);
 videoclipd.set_z_index(4);
+videoclipd.default_exit_location = 2;
 // mobile
-videoclipd.add_size_transform([0, 1], 49.7, 0, 20, 0, 0);
+videoclipd.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 0);
 videoclipd.change_position(0, -50, 0, 13, 0, 1, 0);
 videoclipd.change_position(1, 61, 0, 13, 0, 1, 0);
+videoclipd.change_position(2, -50, 0, 13, 0, 1, 0);
 // tabletV
-videoclipd.add_size_transform([0, 1], 49.7, 0, 20, 0, 3);
+videoclipd.add_size_transform([0, 1, 2], 49.7, 0, 20, 0, 3);
 videoclipd.change_position(0, -50, 0, 13, 0, 1, 3);
 videoclipd.change_position(1, 61, 0, 13, 0, 1, 3);
+videoclipd.change_position(2, -50, 0, 13, 0, 1, 3);
 
 var videotext = new object("videotext", meta);
 videotext.add_state(70, 0, 65, 0, 0);
 videotext.add_state(70, 0, 55, 0, 1);
-videotext.add_size_transform([0, 1], 25, 0, 54, 0);
+videotext.add_state(70, 0, -45, 0, 1);
+videotext.add_size_transform([0, 1, 2], 25, 0, 54, 0);
 videotext.set_z_index(4);
+videotext.default_exit_location = 2;
 // mobile
-videotext.change_position([0, 1], 50, 0, [82, 70], 0, [0, 1], 0);
-videotext.add_size_transform([0, 1], 80, 0, 50, 0, 0);
+videotext.change_position([0, 1, 2], 50, 0, [82, 70, -30], 0, [0, 1], 0);
+videotext.add_size_transform([0, 1, 2], 80, 0, 50, 0, 0);
 // tablet
-videotext.add_size_transform([0, 1], 32.5, 0, 60, 0, 1);
+videotext.add_size_transform([0, 1, 2], 32.5, 0, 60, 0, 1);
 // mobileh
-videotext.add_size_transform([0, 1], 32.5, 0, 68, 0, 2);
+videotext.add_size_transform([0, 1, 2], 32.5, 0, 68, 0, 2);
 // tabletV
-videotext.change_position([0, 1], 50, 0, [82, 70], 0, [0, 1], 3);
-videotext.add_size_transform([0, 1], 80, 0, 50, 0, 3);
+videotext.change_position([0, 1, 2], 50, 0, [82, 70, -30], 0, [0, 1], 3);
+videotext.add_size_transform([0, 1, 2], 80, 0, 50, 0, 3);
 
 videoclipa.add_easing(1, defaultEasing);
 videoclipb.add_easing(1, defaultEasing);
@@ -852,8 +896,8 @@ home.add(homebg, 1, 0, 0);
 home.add(homelogoa, 1, 0, 0);
 home.add(homelogolighta, 1, 1000, 1000);
 home.add(homelogolightb, 1, 1000, 1500);
-home.add(homesakuraa, 1, 2100, 5000);
-home.add(homesakurab, 1, 1800, 5600);
+home.add(homesakuraa, 1, 2300, 4600);
+home.add(homesakurab, 1, 1900, 5400);
 home.add(homesakurac, 1, 1500, 6200);
 home.add(homekatana, 1, 0, 0);
 
@@ -928,14 +972,14 @@ websiteslider.set_intro(websitea);
 var websiteb = new page("Website 2", manager);
 websiteb.default_duration = 2000;
 manager.add(websiteb, true);
-websiteb.add(websitewbg, 2, 0, 1000);
-websiteb.add(websitebg, 1, 1000, 2000);
-websiteb.add(websitetext, 1, 1500, 2000);
-websiteb.add(websiteleafa, 1, 1000, 2000);
-websiteb.add(websiteleafb, 1, 1500, 2000);
-websiteb.add(websiteleafc, 1, 1500, 2000);
-websiteb.add(websiteleafd, 1, 1000, 2000);
-websiteb.add(websitedevices, 1, 1500, 2000);
+websiteb.add(websitewbg, 2, 1000, 1000);
+websiteb.add(websitebg, 1, 2000, 2000);
+websiteb.add(websitetext, 1, 2500, 2000);
+websiteb.add(websiteleafa, 1, 2000, 2000);
+websiteb.add(websiteleafb, 1, 2500, 2000);
+websiteb.add(websiteleafc, 1, 2500, 2000);
+websiteb.add(websiteleafd, 1, 2000, 2000);
+websiteb.add(websitedevices, 1, 2500, 2000);
 
 var interactive = new page("Interactive", manager);
 manager.add(interactive, true);
@@ -1050,7 +1094,7 @@ $(window).swipe({
 
 
 $(window).load(function(){
-	//inspector.enable("body");
+	inspector.enable("body");
 	// home
 	homebg.init_with_selector("#homebg");
 	homelogoa.init_with_selector("#homelogoa");
