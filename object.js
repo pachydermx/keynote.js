@@ -231,40 +231,12 @@ object.prototype.add_callback = function (state_id, function_flag, func) {
 
 // to state
 object.prototype.to = function (target, duration, callback) {
-	// check if mod is enabled
-	var mod_enabled;
-	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod] !== "undefined") {
-		mod_enabled = true;
+	var target_final;
+	if (typeof target.final === "undefined"){
+		target_final = this.getFinalState(target);
 	} else {
-		mod_enabled = false;
+		target_final = target;
 	}
-	
-	// build final target
-	var target_final = {};
-	// for each parameter
-	for (var i in this.parameters) {
-		var index = this.parameters[i];
-		// find correct properties
-		// if mod enabled
-		if (mod_enabled) {
-			// find if current property modded
-			if (index in target.mod[this.mod]) {
-				target_final[index] = target.mod[this.mod][index];
-			} else {
-				target_final[index] = target[index];
-			}
-		} else {
-			target_final[index] = target[index];
-		}
-	}
-	// clean
-	if (typeof target_final.angle === "undefined") {
-		target_final.angle = 0;
-	}
-	if (typeof target_final.easing === "undefined") {
-		target_final.easing = "linear";
-	}
-
 	
     // check if optional data exist
     var actual_size = {};
@@ -376,3 +348,49 @@ object.prototype.exit = function (duration) {
 		});
 	}
 };
+
+// get ready to roll down
+object.prototype.getReady = function (target, callback) {
+	var target_final = this.getFinalState(target);
+	target_final.y_percent -= 100;
+	this.to(target_final, 0, callback);
+};
+
+/* Utility */
+object.prototype.getFinalState = function(target) {
+	// check if mod is enabled
+	var mod_enabled;
+	if (typeof this.mod !== "undefined" && typeof target.mod[this.mod] !== "undefined") {
+		mod_enabled = true;
+	} else {
+		mod_enabled = false;
+	}
+	
+	// build final target
+	var target_final = {};
+	// for each parameter
+	for (var i in this.parameters) {
+		var index = this.parameters[i];
+		// find correct properties
+		// if mod enabled
+		if (mod_enabled) {
+			// find if current property modded
+			if (index in target.mod[this.mod]) {
+				target_final[index] = target.mod[this.mod][index];
+			} else {
+				target_final[index] = target[index];
+			}
+		} else {
+			target_final[index] = target[index];
+		}
+	}
+	// clean
+	if (typeof target_final.angle === "undefined") {
+		target_final.angle = 0;
+	}
+	if (typeof target_final.easing === "undefined") {
+		target_final.easing = "linear";
+	}
+	target_final.final = true;
+	return target_final;
+}

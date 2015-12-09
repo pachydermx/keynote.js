@@ -55,6 +55,24 @@ page.prototype.fire = function (obj){
 	}, obj.interval));
 };
 
+// roll down
+page.prototype.rolldown = function(){
+	var object_list = this.getFinalState();
+	// play
+	for (var i in object_list){
+		// get ready
+		var obj = {};
+		obj.object = object_list[i].object;
+		obj.state = object_list[i].state;
+		obj.duration = 1000;
+		obj.interval = 0;
+		obj.object.getReady(obj.object.states[obj.state]);
+		
+		// play
+		this.fire(obj);
+	}
+}
+
 // clear timeout events
 page.prototype.clear = function(){
 	// reset delegates
@@ -96,6 +114,34 @@ page.prototype.exit = function (new_page_objects) {
 		}
 	}
 };
+
+/* Utility */
+page.prototype.getFinalState = function () {
+	var visited = [];
+	for (var i in this.objects){
+		var index = this.objIndexOf(visited, this.objects[i].object);
+		// if not exist, push
+		if (index < 0){
+			visited.push(this.objects[i]);
+		// else replace
+		} else {
+			visited[index] = this.objects[i];
+		}
+	}
+	return visited;
+};
+
+page.prototype.objIndexOf = function (list, object) {
+	var result = -1;
+	for (var i in list){
+		if (object == list[i].object){
+			result = i;
+		}
+	}
+	return result;
+};
+
+/* Callback */
 
 // receive complete call from objects
 page.prototype.object_complete = function (obj){
