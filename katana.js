@@ -917,9 +917,9 @@ arrowdown.add_state(50, 0, 100-arrow_height, 0, 1);
 arrowdown.add_size_transform(0, 0, 0, 0, 0);
 arrowdown.set_z_index(64);
 
-// mobile
-arrowup.add_size_transform(0, 100, 0, arrow_height * 2, 0, 0);
-arrowdown.add_size_transform(0, 100, 0, arrow_height * 2, 0, 0);
+// mobileh
+arrowup.add_size_transform(0, 100, 0, arrow_height * 2, 0, 2);
+arrowdown.add_size_transform(0, 100, 0, arrow_height * 2, 0, 2);
 
 manager.objects.push(arrowup);
 manager.objects.push(arrowdown);
@@ -1141,6 +1141,13 @@ $(window).bind("touchend", function(event){
 	
 });
 
+$("#arrowup").click(function(){
+	manager.prev();
+})
+
+$("#arrowdown").click(function(){
+	manager.next();
+})
 
 // set swipe
 $(window).swipe({

@@ -39,7 +39,6 @@ slider.prototype.init = function () {
 		// add callback function to intro page to make it runs
 		this.manager.pages[this.intro_page].add_callback("animation_complete", function () {
 			that.manager.goto_page(that.pages_id[0]);
-			console.log("animation complete event happend --- start")
 		});
 	}
 }

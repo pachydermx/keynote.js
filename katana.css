@@ -562,6 +562,10 @@ html{
 
 
 /* UI */
+.arrowui{
+	cursor: pointer;
+}
+
 #arrowup{
 	background-image: url(katana/arrow-up.png);
 }
