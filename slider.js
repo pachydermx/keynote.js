@@ -36,8 +36,10 @@ slider.prototype.init = function () {
 	// assign intro
 	if (typeof this.intro_page !== "undefined") {
 		var that = this;
+		// add callback function to intro page to make it runs
 		this.manager.pages[this.intro_page].add_callback("animation_complete", function () {
 			that.manager.goto_page(that.pages_id[0]);
+			console.log("animation complete event happend --- start")
 		});
 	}
 }
@@ -103,6 +105,7 @@ slider.prototype.next = function () {
 slider.prototype.stop = function () {
 	// reset properties
 	this.playing = false;
+	this.current_page_id = 0;
 	// clear callbacks
 	for (var i in this.pages_id){
 		var the_page = this.manager.pages[this.pages_id[i]];

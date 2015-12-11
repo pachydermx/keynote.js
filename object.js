@@ -13,7 +13,6 @@ function object(id, meta, auto_reset) {
     } else {
         this.auto_reset = true;
     }
-	this.delegate = undefined;
 	this.mod = undefined;
 	this.state = 0;
 	this.exiting = false;
@@ -230,7 +229,8 @@ object.prototype.add_callback = function (state_id, function_flag, func) {
 /* Performance */
 
 // to state
-object.prototype.to = function (target, duration, callback) {
+object.prototype.to = function (target, duration, callback, delegate) {
+	
 	var target_final;
 	if (typeof target.final === "undefined"){
 		target_final = this.getFinalState(target);
@@ -276,14 +276,16 @@ object.prototype.to = function (target, duration, callback) {
 						that.states[that.state].func_complete();
 					}
 					// check if delegate func exist
-					if (typeof that.delegate !== "undefined"){
-						that.delegate.object_complete(that);
+					if (typeof delegate !== "undefined"){
+						delegate.object_complete(that);
 					}
 					// run callback in parameter
 					if (typeof callback !== "undefined") {
 						callback();
 					}
 				}
+				
+				
 				
 			}
             });
@@ -302,10 +304,9 @@ object.prototype.to = function (target, duration, callback) {
 				this.states[this.state].func_complete();
 			}
 			// check if delegate func exist
-			if (typeof this.delegate !== "undefined"){
-				this.delegate.object_complete(this);
+			if (typeof delegate !== "undefined"){
+				delegate.object_complete(this);
 			}
-			this.delegate = undefined;
 			// run callback in parameter
 			if (typeof callback !== "undefined") {
 				callback();
@@ -315,15 +316,20 @@ object.prototype.to = function (target, duration, callback) {
 };
 
 // move to a state
-object.prototype.moveToState = function (state, duration, callback, additional_target) {
+object.prototype.moveToState = function (state, duration, option) {
+	// set option
+	if (typeof option === "undefined"){
+		option = {};
+	}
+	// update state
     this.state = state;
     // update state logger
     var the_state = this.states[state];
     // perform movement
-	if (typeof additional_target === "undefined"){
-		this.to(this.states[state], duration, callback);
+	if (typeof option.additional_target === "undefined"){
+		this.to(this.states[state], duration, option.callback, option.delegate);
 	} else {
-		this.to(additional_target, duration, callback);
+		this.to(option.additional_target, duration, option.callback, option.delegate);
 	}
 };
 
@@ -344,12 +350,15 @@ object.prototype.exit = function (duration, additional_target) {
 		// clear animate queue
 		this.dom_obj.clearQueue();
 		// play exiting animation
-		this.moveToState(destination, duration, function () {
-			if (that.auto_reset) {
-				that.moveToState(0, 0);
-			}
-			that.exiting = false;
-		}, additional_target);
+		this.moveToState(destination, duration, {
+			"callback": function () {
+							if (that.auto_reset) {
+								that.moveToState(0, 0);
+							}
+							that.exiting = false;
+						},
+			"additional_target": additional_target
+		});
 	}
 };
 

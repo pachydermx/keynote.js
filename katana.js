@@ -193,20 +193,21 @@ websiteslider1 = new object("websiteslider1", meta);
 websiteslider1.add_state(150, 0, 40, 0, 1);
 websiteslider1.add_state(50, 0, 40, 0, 1);
 websiteslider1.add_state(-50, 0, 40, 0, 1);
+websiteslider1.add_state(150, 0, 140, 0, 1);
 websiteslider1.add_size_transform([0, 1, 2], 20, 0, 48, 0);
 websiteslider1.add_easing(1, defaultEasing);
 websiteslider1.add_easing(2, defaultExiting);
 websiteslider1.default_exit_location = 2;
 websiteslider1.set_z_index(5);
 // mobile
-websiteslider1.add_size_transform([0, 1, 2], 75, 0, 50, 0, 0);
+websiteslider1.add_size_transform([0, 1, 2, 3], 75, 0, 50, 0, 0);
 // tablet
-websiteslider1.add_size_transform([0, 1, 2], 40, 0, 48, 0, 1);
+websiteslider1.add_size_transform([0, 1, 2, 3], 40, 0, 48, 0, 1);
 // mobileh
-websiteslider1.add_size_transform([0, 1, 2], 60, 0, slider_height_mobileh, 0, 2);
-websiteslider1.change_position([0, 1, 2], [150, 50, -50], 0, slider_y_mobileh, 0, 1, 2);
+websiteslider1.add_size_transform([0, 1, 2, 3], 60, 0, slider_height_mobileh, 0, 2);
+websiteslider1.change_position([0, 1, 2, 3], [150, 50, -50, 150], 0, [55, 55, 55, 55+100], 0, 1, 2);
 // tabletV
-websiteslider1.add_size_transform([0, 1, 2], 75, 0, 50, 0, 3);
+websiteslider1.add_size_transform([0, 1, 2, 3], 75, 0, 50, 0, 3);
 
 websiteslider2 = new object("websiteslider2", meta);
 websiteslider2.add_state(150, 0, 40, 0, 1);
@@ -497,14 +498,14 @@ brandcarda.change_position(1, 0, 0, 15, 0, 1, 3);
 brandcarda.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 
 var brandcardb = new object("brandcardb", meta);
-brandcardb.add_state(50, 0, 150, 0, 1);
+brandcardb.add_state(50, 0, 27+100, 0, 1);
 brandcardb.add_state(50, 0, 27, 0, 1);
-brandcardb.add_state(50, 0, -73, 0, 1);
+brandcardb.add_state(50, 0, 27-100, 0, 1);
 brandcardb.add_size_transform([0, 1, 2], 27, 0, 41, 0);
 brandcardb.set_z_index(3);
 brandcardb.default_exit_location = 2;
 // mobile
-brandcardb.change_position(0, 50, 0, -50, 0, 1, 0);
+brandcardb.change_position(0, 50, 0, 115, 0, 1, 0);
 brandcardb.change_position(1, 50, 0, 15, 0, 1, 0);
 brandcardb.change_position(2, 50, 0, -85, 0, 1, 0);
 brandcardb.add_size_transform([0, 1, 2], 40, 0, 40, 0, 0);
@@ -530,7 +531,7 @@ brandcardc.add_size_transform([0, 1], 40, 0, 40, 0, 3);
 
 var brandcardd = new object("brandcardd", meta);
 brandcardd.add_state(31, 0, 150, 0, 1);
-brandcardd.add_state(31, 0, 76, 0, 1);
+brandcardd.add_state(31, 0, 76, 10, 1);
 brandcardd.add_state(31, 0, -24, 0, 1);
 brandcardd.add_size_transform([0, 1, 2], 51, 0, 49, 0);
 brandcardd.set_z_index(2);
@@ -541,7 +542,7 @@ brandcardd.change_position(1, 0, 0, 82, 0, 1, 0);
 brandcardd.change_position(2, 0, 0, -18, 0, 1, 0);
 brandcardd.add_size_transform([0, 1, 2], 200, 0, 46, 0, 0);
 // tablet
-brandcardd.add_size_transform([0, 1, 2], 40, 0, 49, 0, 1);
+brandcardd.add_size_transform([0, 1, 2], 40, 0, 49, 10, 1);
 brandcardd.change_position([0, 1, 2], 26, 0, [150, 76, -24], 0, 1, 1);
 // mobileh
 brandcardd.add_size_transform([0, 1, 2], 40, 0, 49, 0, 2);
@@ -554,7 +555,7 @@ brandcardd.add_size_transform([0, 1, 2], 200, 0, 46, 0, 3);
 
 var brandpen = new object("brandpen", meta);
 brandpen.add_state(89, 0, 150, 0, 1);
-brandpen.add_state(89, 0, 85, 0, 1);
+brandpen.add_state(89, 0, 85, 10, 1);
 brandpen.add_state(89, 0, -15, 0, 1);
 brandpen.add_size_transform([0, 1, 2], 12, 0, 30, 0);
 brandpen.set_z_index(2);
@@ -566,7 +567,7 @@ brandpen.change_position(2, 84, 0, -10, 0, 1, 0);
 brandpen.add_size_transform([0, 1, 2], 25, 0, 30, 0, 0);
 // tabletV
 brandpen.change_position(0, 84, 0, 150, 0, 1, 3);
-brandpen.change_position(1, 84, 0, 93, 0, 1, 3);
+brandpen.change_position(1, 84, 0, 93, 10, 1, 3);
 brandpen.change_position(2, 84, 0, -7, 0, 1, 3);
 brandpen.add_size_transform([0, 1, 2], 25, 0, 30, 0, 3);
 
@@ -620,6 +621,8 @@ brandclip.add_easing(1, defaultEasing);
 brandpen.add_easing(1, defaultEasing);
 brandtext.add_easing(1, defaultEasing);
 
+brandcarda.add_easing(0, defaultEasing);
+brandcardc.add_easing(0, defaultEasing);
 brandcardb.add_easing(2, defaultEasing);
 brandcardd.add_easing(2, defaultEasing);
 brandclip.add_easing(2, defaultEasing);
@@ -901,6 +904,26 @@ contactlogo.add_easing(1, defaultEasing);
 contactform.add_easing(1, defaultEasing);
 
 
+/* UI */
+var arrow_height = 8;
+
+var arrowup = new object("arrowup", meta);
+arrowup.add_state(50, 0, arrow_height, 0, 1);
+arrowup.add_size_transform(0, 0, 0, 0, 0);
+arrowup.set_z_index(64);
+
+var arrowdown = new object("arrowdown", meta);
+arrowdown.add_state(50, 0, 100-arrow_height, 0, 1);
+arrowdown.add_size_transform(0, 0, 0, 0, 0);
+arrowdown.set_z_index(64);
+
+// mobile
+arrowup.add_size_transform(0, 100, 0, arrow_height * 2, 0, 0);
+arrowdown.add_size_transform(0, 100, 0, arrow_height * 2, 0, 0);
+
+manager.objects.push(arrowup);
+manager.objects.push(arrowdown);
+
 // create pages
 var home = new page('Home', manager);
 manager.add(home, true);
@@ -923,20 +946,22 @@ home.add(homesakurae, 1, 5500, 2000);
 home.add(homesakuraf, 1, 5500, 2000);
 home.default_duration = 2000;
 
+var websiteslider_interval = 1000;
+var websiteslider_intro = 1000;
+var websiteslider_duration = 3000;
+
 var websitea = new page("Website 1", manager);
 manager.add(websitea, true);
-websitea.add(homesakurad, 0, 3000, 500);
-websitea.add(homesakurae, 0, 3000, 500);
-websitea.add(homesakuraf, 0, 3000, 500);
+websitea.add(homesakurad, 0, 3000, 0);
+websitea.add(homesakurae, 0, 3000, 0);
+websitea.add(homesakuraf, 0, 3000, 0);
 websitea.add(hometext, 0, 3000, 500);
 websitea.add(homebgb, 1, 0, 1500);
 websitea.add(homebgb, 0, 3000, 0);
 websitea.add(websitebg, 1, 2000, 1000);
 websitea.add(websitewbg, 1, 0, 3000);
-
-var websiteslider_interval = 1000;
-var websiteslider_intro = 1000;
-var websiteslider_duration = 3000;
+websitea.add(websiteslider1, 3, 0, 0);
+websitea.add(websiteslider1, 1, 0, websiteslider_duration);
 
 var websitesliderpage1 = new page("Slider #1", manager);
 manager.add(websitesliderpage1, false);
@@ -1132,6 +1157,10 @@ $(window).swipe({
 
 $(window).load(function(){
 	//inspector.enable("body");
+	// UI
+	arrowup.init_with_selector("#arrowup");
+	arrowdown.init_with_selector("#arrowdown");
+	
 	// home
 	homebg.init_with_selector("#homebg");
 	homelogoa.init_with_selector("#homelogoa");

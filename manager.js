@@ -17,6 +17,7 @@ function manager() {
 	this.index;
     
     // add page to manager
+	// isRegular means the page is not slider page and will add to jumplist
     this.add = function (page, isRegular) {
         this.pages.push(page);
 		if (isRegular) {
@@ -128,6 +129,7 @@ function manager() {
 	this.prev = function(enter_type) {
 		if (this.index > 0 && this.lock()) {
 			this.index--;
+			// TODO: move the rolling parameter to web page
 			this.goto_page(this.jumplist[this.index], "rollin", "rollout");
 		}
 	};

@@ -28,12 +28,17 @@ page.prototype.refresh = function () {
 
 // play page
 page.prototype.play = function (last_page_objects, type) {
+	// play the page
 	switch (type) {
 		case "rollin":
 			this.rollin(last_page_objects, -100);
 			break;
 		default:
 			this.normal_play();
+	}
+	// callback
+	if (typeof this.callbacks.play !== "undefined")	{
+		this.callbacks.play();
 	}
 }
 
@@ -61,8 +66,9 @@ page.prototype.fire = function (obj){
 	// set counter
 	this.counter++;
 	// set timer 
+	var that = this;
 	this.timers.push(setTimeout(function(){
-		obj.object.moveToState(obj.state, obj.duration);
+		obj.object.moveToState(obj.state, obj.duration, {"delegate": that});
 	}, obj.interval));
 };
 
@@ -217,9 +223,14 @@ page.prototype.object_complete = function (obj){
 
 // add callback
 page.prototype.add_callback = function (function_flag, func){
-	if (function_flag === "animation_complete"){
-		this.callbacks.animation_complete = func;
-	} else {
-		console.error("ERROR: Unknown function flag");
+	switch(function_flag){
+		case "animation_complete":
+			this.callbacks.animation_complete = func;
+			break;
+		case "play":
+			this.callbacks.play = func;
+			break;
+		default:
+			console.error("ERROR: Unknown function flag");
 	}
 };

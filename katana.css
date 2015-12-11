@@ -556,6 +556,16 @@ html{
 	text-align: center;
 }
 
-.supporttext.Mobile img, supporttext.TabletV img{
-	width: 70%;
+.supporttext.TabletV img{
+	width: 50%;
+}
+
+
+/* UI */
+#arrowup{
+	background-image: url(katana/arrow-up.png);
+}
+
+#arrowdown{
+	background-image: url(katana/arrow-down.png);
 }
