@@ -50,9 +50,11 @@ function manager() {
             // exit from last page
             if (typeof this.lastPage !== "undefined") {
                 this.pages[this.lastPage].exit(this.pages[page].objects, exit_type);
-            }
-            // enter a page
-            this.pages[page].play(enter_type);
+				// enter a page
+				this.pages[page].play(this.pages[this.lastPage].objects, enter_type);
+            } else {
+				this.pages[page].play([], enter_type);
+			}
             // remember last page
             this.lastPage = page;
 			if (this.jumplist.indexOf(this.lastPage) != -1) {

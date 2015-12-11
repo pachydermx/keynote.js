@@ -27,10 +27,10 @@ page.prototype.refresh = function () {
 };
 
 // play page
-page.prototype.play = function (type) {
+page.prototype.play = function (last_page_objects, type) {
 	switch (type) {
 		case "rollin":
-			this.rollin(-100);
+			this.rollin(last_page_objects, -100);
 			break;
 		default:
 			this.normal_play();
@@ -67,8 +67,11 @@ page.prototype.fire = function (obj){
 };
 
 // roll 
-page.prototype.rollin = function(delta){
+page.prototype.rollin = function(last_page_objects, delta){
+	// get unique objects
 	var object_list = this.getFinalState();
+	// remove objects exist in last page
+	object_list = this.substractItemsFromStateList(object_list, last_page_objects);
 	// play
 	for (var i in object_list){
 		// get ready
@@ -180,7 +183,25 @@ page.prototype.getAbandonedObjectList = function (from){
 		return $.inArray(value, to_remove) < 0;
 	});
 	return exit_objects;
-}
+};
+
+page.prototype.substractItemsFromStateList = function(from, sub_list) {
+	// copy from
+	var work_list = [];
+	for (var i in from) {
+		work_list.push(from[i]);
+	}
+	// substract
+	for (var i in sub_list) {
+		// get index of item in sub_list of work_list
+		var index = this.objIndexOf(work_list, sub_list[i].object);
+		// remove item
+		if (index > 0) {
+			work_list.splice(index, 1);
+		}
+	}
+	return work_list;
+};
 
 /* Callback */
 
