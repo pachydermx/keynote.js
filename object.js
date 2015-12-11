@@ -315,16 +315,20 @@ object.prototype.to = function (target, duration, callback) {
 };
 
 // move to a state
-object.prototype.moveToState = function (state, duration, callback) {
+object.prototype.moveToState = function (state, duration, callback, additional_target) {
     this.state = state;
     // update state logger
     var the_state = this.states[state];
     // perform movement
-    this.to(this.states[state], duration, callback);
+	if (typeof additional_target === "undefined"){
+		this.to(this.states[state], duration, callback);
+	} else {
+		this.to(additional_target, duration, callback);
+	}
 };
 
 // exit
-object.prototype.exit = function (duration) {
+object.prototype.exit = function (duration, additional_target) {
 	if (!this.exiting) {
 		this.exiting = true;
 		// determine destination
@@ -345,14 +349,21 @@ object.prototype.exit = function (duration) {
 				that.moveToState(0, 0);
 			}
 			that.exiting = false;
-		});
+		}, additional_target);
 	}
 };
 
-// get ready to roll down
-object.prototype.getReady = function (target, callback) {
+// get rollout target
+object.prototype.getRolloutTarget = function (target, delta) {
 	var target_final = this.getFinalState(target);
-	target_final.y_percent -= 100;
+	target_final.y_percent += delta;
+	return target_final;
+};
+
+// get ready to rollin
+object.prototype.getReady = function (target, delta, callback) {
+	var target_final = this.getFinalState(target);
+	target_final.y_percent += delta;
 	this.to(target_final, 0, callback);
 };
 

@@ -1078,7 +1078,7 @@ var mod_select = function () {
 		to_mod = 3;
 		$(window).swipe("enable");
 	}
-	if (manager.mod != to_mod) {
+	if (manager.mod_id != to_mod) {
 		manager.mod(to_mod);
 	}
 }

@@ -27,7 +27,18 @@ page.prototype.refresh = function () {
 };
 
 // play page
-page.prototype.play = function () {
+page.prototype.play = function (type) {
+	switch (type) {
+		case "rollin":
+			this.rollin(-100);
+			break;
+		default:
+			this.normal_play();
+	}
+}
+
+
+page.prototype.normal_play = function () {
 	var i;
 	for (i in this.objects) {
 		var the_object = this.objects[i];
@@ -55,8 +66,8 @@ page.prototype.fire = function (obj){
 	}, obj.interval));
 };
 
-// roll down
-page.prototype.rolldown = function(){
+// roll 
+page.prototype.rollin = function(delta){
 	var object_list = this.getFinalState();
 	// play
 	for (var i in object_list){
@@ -66,7 +77,7 @@ page.prototype.rolldown = function(){
 		obj.state = object_list[i].state;
 		obj.duration = 1000;
 		obj.interval = 0;
-		obj.object.getReady(obj.object.states[obj.state]);
+		obj.object.getReady(obj.object.states[obj.state], delta);
 		
 		// play
 		this.fire(obj);
@@ -90,27 +101,40 @@ page.prototype.clear = function(){
 };
 
 // exit page
-page.prototype.exit = function (new_page_objects) {
+page.prototype.exit = function (new_page_objects, type){
+	switch (type) {
+		case "rollout":
+			this.rollout(new_page_objects);
+			break;
+		default:
+			this.normal_exit(new_page_objects);
+	}
+}
+
+page.prototype.normal_exit = function (new_page_objects) {
 	if (typeof new_page_objects !== 'undefined') {
 		// clear timers
 		this.clear();
-		// substract objects list
-		var objects = [], to_remove = [], i;
-		for (i in this.objects) {
-			objects.push(this.objects[i].object);
-		}
-		for (i in new_page_objects) {
-			to_remove.push(new_page_objects[i].object);
-		}
-		// substract elements in last page from current page
-		var exit_objects = [], i, the_object;
-		exit_objects = $.grep(objects, function(value) {
-			return $.inArray(value, to_remove) < 0;
-		});
+		// get exit object list
+		var exit_objects = this.getAbandonedObjectList(new_page_objects);
 		// exit elements
 		for (i in exit_objects) {
 			the_object = exit_objects[i];
 			the_object.exit(this.default_duration);
+		}
+	}
+};
+
+page.prototype.rollout = function (new_page_objects) {
+	if (typeof new_page_objects !== 'undefined') {
+		// clear timers
+		this.clear();
+		// get exit object list
+		var exit_objects = this.getAbandonedObjectList(new_page_objects);
+		// exit elements
+		for (i in exit_objects) {
+			the_object = exit_objects[i];
+			the_object.exit(this.default_duration, the_object.getRolloutTarget(the_object.states[the_object.state], 100));
 		}
 	}
 };
@@ -140,6 +164,23 @@ page.prototype.objIndexOf = function (list, object) {
 	}
 	return result;
 };
+
+page.prototype.getAbandonedObjectList = function (from){
+	// substract objects list
+	var objects = [], to_remove = [], i;
+	for (i in this.objects) {
+		objects.push(this.objects[i].object);
+	}
+	for (i in from) {
+		to_remove.push(from[i].object);
+	}
+	// substract elements in last page from current page
+	var exit_objects = [], i, the_object;
+	exit_objects = $.grep(objects, function(value) {
+		return $.inArray(value, to_remove) < 0;
+	});
+	return exit_objects;
+}
 
 /* Callback */
 

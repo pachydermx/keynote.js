@@ -45,14 +45,14 @@ function manager() {
 	};
 	
     // go to page
-    this.goto_page = function(page) {
+    this.goto_page = function(page, enter_type, exit_type) {
         if (typeof this.pages[page] !== "undefined") {
             // exit from last page
             if (typeof this.lastPage !== "undefined") {
-                this.pages[this.lastPage].exit(this.pages[page].objects);
+                this.pages[this.lastPage].exit(this.pages[page].objects, exit_type);
             }
             // enter a page
-            this.pages[page].play();
+            this.pages[page].play(enter_type);
             // remember last page
             this.lastPage = page;
 			if (this.jumplist.indexOf(this.lastPage) != -1) {
@@ -123,10 +123,10 @@ function manager() {
 		}
 	};
 	
-	this.prev = function () {
+	this.prev = function(enter_type) {
 		if (this.index > 0 && this.lock()) {
 			this.index--;
-			this.goto_page(this.jumplist[this.index]);
+			this.goto_page(this.jumplist[this.index], "rollin", "rollout");
 		}
 	};
 	
