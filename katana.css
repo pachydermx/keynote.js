@@ -405,6 +405,8 @@ html{
 .button_icon.more_info img{
 	width: 1em;
 	height: 1em;
+	position: relative;
+	top: 2px;
 }
 
 .button_label{

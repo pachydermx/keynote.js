@@ -881,6 +881,7 @@ contactlogo.change_position(1, 50, 0, 26, 0, 1, 0);
 // tablet
 contactlogo.change_position(1, 50, 0, 20, 0, 1, 1);
 // mobileh
+contactlogo.add_size_transform([0, 1], 35, 0, 35, 0, 2);
 contactlogo.change_position(1, 50, 0, -20, 0, 1, 2);
 // tabletV
 contactlogo.change_position(1, 50, 0, 26, 0, 1, 3);
@@ -1066,8 +1067,8 @@ support.add(supporttextd, 1, 6000, 1000);
 var contact = new page("Contact", manager);
 manager.add(contact, true);
 contact.add(supportbg, 1, 1000, 1000);
-contact.add(contactlogo, 1, 2000, 1000);
-contact.add(contactform, 1, 3000, 1000);
+contact.add(contactlogo, 1, 1500, 2000);
+contact.add(contactform, 1, 2500, 2000);
 
 // create inspector
 var inspector = new inspector(manager);
