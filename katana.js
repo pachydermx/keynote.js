@@ -6,6 +6,7 @@ manager.mods = ["Mobile", "Tablet", "MobileH", "TabletV"];
 // options
 var defaultEasing = "easeOutQuad";
 var defaultExiting = "easeInQuad";
+object.prototype.default_easing = defaultEasing;
 
 // create objects
 // HOME STATE A
@@ -1024,7 +1025,7 @@ websiteb.add(websitedevices, 1, 2500, 2000);
 var interactive = new page("Interactive", manager);
 manager.add(interactive, true);
 interactive.add(websitebg, 2, 0, 2000);
-interactive.add(websitebg, 0, 2000, 0);
+interactive.add(websitebg, 0, 2000, 100);
 interactive.add(interbg, 1, 0, 2000);
 interactive.add(interinfoa, 1, 2000, 1000);
 interactive.add(interinfob, 1, 2500, 1000);

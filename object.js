@@ -22,6 +22,8 @@ function object(id, meta, auto_reset) {
     
 }
 
+object.prototype.default_easing = "linear";
+
 /* Basic */
 object.prototype.parameters = ['x_percent', 'x_delta', 'y_percent', 'y_delta', 'alpha', 'width_percent', 'width_delta', 'height_percent', 'height_delta', 'angle', 'easing'];
 
@@ -409,7 +411,7 @@ object.prototype.getFinalState = function(target) {
 		target_final.angle = 0;
 	}
 	if (typeof target_final.easing === "undefined") {
-		target_final.easing = "linear";
+		target_final.easing = this.default_easing;
 	}
 	target_final.final = true;
 	return target_final;
