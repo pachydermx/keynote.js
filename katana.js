@@ -907,15 +907,15 @@ contactform.add_easing(1, defaultEasing);
 
 
 /* UI */
-var arrow_height = 8;
+var arrow_height = 6;
 
 var arrowup = new object("arrowup", meta);
-arrowup.add_state(50, 0, arrow_height, 0, 1);
+arrowup.add_state(100 - arrow_height, 0, arrow_height, 0, 1);
 arrowup.add_size_transform(0, 0, 0, 0, 0);
 arrowup.set_z_index(64);
 
 var arrowdown = new object("arrowdown", meta);
-arrowdown.add_state(50, 0, 100-arrow_height, 0, 1);
+arrowdown.add_state(100 - arrow_height, 0, 100-arrow_height, 0, 1);
 arrowdown.add_size_transform(0, 0, 0, 0, 0);
 arrowdown.set_z_index(64);
 

@@ -144,7 +144,7 @@ page.prototype.rollout = function (new_page_objects) {
 		for (i in exit_objects) {
 			the_object = exit_objects[i];
 			// TODO: set exit time
-			the_object.exit(1000, the_object.getRolloutTarget(the_object.states[the_object.state], 100));
+			the_object.exit(1100, the_object.getRolloutTarget(the_object.states[the_object.state], 100));
 		}
 	}
 };
