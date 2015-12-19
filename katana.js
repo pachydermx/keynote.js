@@ -49,14 +49,14 @@ homesakuraa.add_size_transform([0, 1], 100, 0, 100, 0);
 homesakuraa.set_z_index(2);
 
 var homesakurab = new object("homesakurab", meta);
-homesakurab.add_state(50, 0, -100, 0, 1);
-homesakurab.add_state(50, 0, 200, 0, 1);
+homesakurab.add_state(50, 0, -70, 0, 1);
+homesakurab.add_state(50, 0, 170, 0, 1);
 homesakurab.add_size_transform([0, 1], 100, 0, 100, 0);
 homesakurab.set_z_index(2);
 
 var homesakurac = new object("homesakurac", meta);
-homesakurac.add_state(50, 0, -80, 0, 1);
-homesakurac.add_state(50, 0, 180, 0, 1);
+homesakurac.add_state(50, 0, -50, 0, 1);
+homesakurac.add_state(50, 0, 150, 0, 1);
 homesakurac.add_size_transform([0, 1], 100, 0, 100, 0);
 homesakurac.set_z_index(2);
 // mobile
@@ -935,9 +935,9 @@ home.add(homebg, 1, 0, 0);
 home.add(homelogoa, 1, 0, 0);
 home.add(homelogolighta, 1, 1000, 1000);
 home.add(homelogolightb, 1, 1000, 1500);
-home.add(homesakuraa, 1, 2300, 4600);
-home.add(homesakurab, 1, 1900, 5400);
-home.add(homesakurac, 1, 1500, 6200);
+home.add(homesakuraa, 1, 3050, 4100);
+home.add(homesakurab, 1, 2150, 5400);
+home.add(homesakurac, 1, 1500, 6700);
 home.add(homekatana, 1, 0, 0);
 
 home.add(homebgb, 1, 4100, 2000);
