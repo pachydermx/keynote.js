@@ -201,9 +201,12 @@ page.prototype.substractItemsFromStateList = function(from, sub_list) {
 	for (var i in sub_list) {
 		// get index of item in sub_list of work_list
 		var index = this.objIndexOf(work_list, sub_list[i].object);
-		// remove item
+		// when item in sublist also exists in work_list
 		if (index > 0) {
-			work_list.splice(index, 1);
+			// remove item when state id not the same
+			if (work_list[index].state === sub_list[i].state){
+				work_list.splice(index, 1);
+			}
 		}
 	}
 	return work_list;
