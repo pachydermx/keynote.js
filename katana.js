@@ -177,12 +177,14 @@ websitebg.auto_reset = false;
 websitebg.set_z_index(4);
 
 var websitewbg = new object("websitewbg", meta);
-websitewbg.add_state(50, 0, 150, 0, 1);
+websitewbg.add_state(50, 0, 140, 0, 1);
 websitewbg.add_state(50, 0, 40, 0, 1);
-websitewbg.add_state(50, 0, -50, 0, 1);
+websitewbg.add_state(50, 0, -60, 0, 1);
 websitewbg.auto_reset = false;
 websitewbg.add_size_transform([0, 1, 2], 100, 0, 80, 0);
 websitewbg.add_easing(1, defaultEasing);
+websitewbg.add_easing(2, defaultEasing);
+websitewbg.add_easing(0, "linear");
 websitewbg.default_exit_location = 2;
 websitewbg.set_z_index(5);
 
@@ -206,7 +208,7 @@ websiteslider1.add_size_transform([0, 1, 2, 3], 75, 0, 50, 0, 0);
 websiteslider1.add_size_transform([0, 1, 2, 3], 40, 0, 48, 0, 1);
 // mobileh
 websiteslider1.add_size_transform([0, 1, 2, 3], 60, 0, slider_height_mobileh, 0, 2);
-websiteslider1.change_position([0, 1, 2, 3], [150, 50, -50, 150], 0, [55, 55, 55, 55+100], 0, 1, 2);
+websiteslider1.change_position([0, 1, 2, 3], [150, 50, -50, 150], 0, [slider_y_mobileh, slider_y_mobileh, slider_y_mobileh, slider_y_mobileh+100], 0, 1, 2);
 // tabletV
 websiteslider1.add_size_transform([0, 1, 2, 3], 75, 0, 50, 0, 3);
 
@@ -960,6 +962,7 @@ websitea.add(homesakuraf, 0, 3000, 0);
 websitea.add(hometext, 0, 3000, 500);
 websitea.add(homebgb, 1, 0, 1500);
 websitea.add(homebgb, 0, 3000, 0);
+websitea.add(websitebg, 0, 0, 0);
 websitea.add(websitebg, 1, 2000, 1000);
 websitea.add(websitewbg, 1, 0, 3000);
 websitea.add(websiteslider1, 3, 0, 0);
@@ -1057,6 +1060,7 @@ video.add(videotext, 1, 5000, 500);
 var support = new page("Support", manager);
 manager.add(support, true);
 support.add(videobg, 1, 0, 1000);
+support.add(supportbg, 0, 0, 0);
 support.add(supportbg, 1, 2000, 2000);
 support.add(supportwbg, 1, 0, 2000);
 support.add(supporttitle, 1, 2000, 1000);
