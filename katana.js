@@ -937,17 +937,18 @@ home.add(homebg, 1, 0, 0);
 home.add(homelogoa, 1, 0, 0);
 home.add(homelogolighta, 1, 1000, 1000);
 home.add(homelogolightb, 1, 1000, 1500);
-home.add(homesakuraa, 1, 3050, 4100);
-home.add(homesakurab, 1, 2150, 5400);
-home.add(homesakurac, 1, 1500, 6700);
+home.add(homesakurab, 1, 1500, 6500);
+home.add(homesakuraa, 1, 2500, 8000);
+home.add(homesakurac, 1, 4500, 9500);
 home.add(homekatana, 1, 0, 0);
 
-home.add(homebgb, 1, 4100, 2000);
-home.add(homelogob, 1, 5500, 1000);
-home.add(hometext, 1, 5500, 2000);
-home.add(homesakurad, 1, 5500, 2000);
-home.add(homesakurae, 1, 5500, 2000);
-home.add(homesakuraf, 1, 5500, 2000);
+var home_page2_start = 7500;
+home.add(homebgb, 1, home_page2_start - 1400, 2000);
+home.add(homelogob, 1, home_page2_start, 1000);
+home.add(hometext, 1, home_page2_start, 2000);
+home.add(homesakurad, 1, home_page2_start, 2000);
+home.add(homesakurae, 1, home_page2_start, 2000);
+home.add(homesakuraf, 1, home_page2_start, 2000);
 home.default_duration = 2000;
 
 var websiteslider_interval = 1000;
