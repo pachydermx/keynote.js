@@ -938,8 +938,8 @@ home.add(homelogoa, 1, 0, 0);
 home.add(homelogolighta, 1, 1000, 1000);
 home.add(homelogolightb, 1, 1000, 1500);
 home.add(homesakurab, 1, 1500, 6500);
-home.add(homesakuraa, 1, 2500, 8000);
-home.add(homesakurac, 1, 4500, 9500);
+home.add(homesakurac, 1, 1500+700, 6500+900);
+home.add(homesakuraa, 1, 1500+1400, 6500+1800);
 home.add(homekatana, 1, 0, 0);
 
 var home_page2_start = 7500;
