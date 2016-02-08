@@ -6,28 +6,31 @@
     <!-- import jquery library -->
     <title></title>
 	<script>
-		console.log("<?php echo get_template_directory(); ?>")
-		console.log("<?php echo get_template_uri(); ?>")
+		console.log("<?php echo '/'; ?>")
 	</script>
-    <script src="jquery-2.1.4.min.js"></script>
-    <script src="jquery.rotate.js"></script>
-    <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
-    <script src="jquery.mousewheel.min.js"></script>
-    <script src="jquery.touchSwipe.min.js"></script>
-    <script src="library.js"></script>
-    <script src="meta.js"></script>
-    <script src="configurator.js"></script>
-    <script src="inspector.js"></script>
-    <script src="manager.js"></script>
-    <script src="page.js"></script>
-    <script src="slider.js"></script>
-    <script src="object.js"></script>
-    <link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
-    <link href="katana.css" rel="stylesheet" type="text/css">
-    <link href="keynote.css" rel="stylesheet" type="text/css">
-    <link href="object.css" rel="stylesheet" type="text/css">
-    <link href="inspector.css" rel="stylesheet" type="text/css">
-    <script src="katana.js"></script>
+	<?php 
+		// Config
+		$template_uri = get_template_directory_uri().'/page-templates/keynote/';
+	?>
+    <script src="<?php echo $template_uri; ?>jquery-2.1.4.min.js"></script>
+    <script src="<?php echo $template_uri; ?>jquery.rotate.js"></script>
+    <script src="<?php echo $template_uri; ?>jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="<?php echo $template_uri; ?>jquery.mousewheel.min.js"></script>
+    <script src="<?php echo $template_uri; ?>jquery.touchSwipe.min.js"></script>
+    <script src="<?php echo $template_uri; ?>library.js"></script>
+    <script src="<?php echo $template_uri; ?>meta.js"></script>
+    <script src="<?php echo $template_uri; ?>configurator.js"></script>
+    <script src="<?php echo $template_uri; ?>inspector.js"></script>
+    <script src="<?php echo $template_uri; ?>manager.js"></script>
+    <script src="<?php echo $template_uri; ?>page.js"></script>
+    <script src="<?php echo $template_uri; ?>slider.js"></script>
+    <script src="<?php echo $template_uri; ?>object.js"></script>
+    <link href="<?php echo $template_uri; ?>jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $template_uri; ?>katana.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $template_uri; ?>keynote.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $template_uri; ?>object.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $template_uri; ?>inspector.css" rel="stylesheet" type="text/css">
+    <script src="<?php echo $template_uri; ?>katana.js"></script>
 </head>
 <body>
 	<div id="page_frame">
@@ -217,7 +220,7 @@
 				<div class="more_button">
 					<div class="vertical_align">
 						<span class="button_label">
-							<span class="button_icon more_info"><img src="katana/moreinfo.png" /></span>
+							<span class="button_icon more_info"><img src="<?php echo $template_uri; ?>katana/moreinfo.png" /></span>
 							More Information
 						</span>
 					</div>
@@ -260,7 +263,7 @@
 				<div class="more_button reverse">
 					<div class="vertical_align">
 						<span class="button_label">
-							<span class="button_icon more_info"><img src="katana/moreinfo.png" /></span>
+							<span class="button_icon more_info"><img src="<?php echo $template_uri; ?>katana/moreinfo.png" /></span>
 							More Information
 						</span>
 					</div>
@@ -297,7 +300,7 @@
 				<div class="more_button reverse">
 					<div class="vertical_align">
 						<span class="button_label">
-							<span class="button_icon more_info"><img src="katana/moreinfo.png" /></span>
+							<span class="button_icon more_info"><img src="<?php echo $template_uri; ?>katana/moreinfo.png" /></span>
 							More Information
 						</span>
 					</div>
@@ -331,7 +334,7 @@
 			<div class="thumb_display mhhide">
 				<div class="thumb_box">
 					<div class="thumb_img">
-						<img class="thumb" src="katana/videosample1.jpg">
+						<img class="thumb" src="<?php echo $template_uri; ?>katana/videosample1.jpg">
 					</div>
 					<div class="thumb_title">
 						Storm Partners
@@ -339,7 +342,7 @@
 				</div>
 				<div class="thumb_box">
 					<div class="thumb_img">
-						<img class="thumb" src="katana/videosample2.jpg">
+						<img class="thumb" src="<?php echo $template_uri; ?>katana/videosample2.jpg">
 					</div>
 					<div class="thumb_title">
 						Studio Katana
@@ -350,7 +353,7 @@
 				<div class="more_button">
 					<div class="vertical_align">
 						<span class="button_label">
-							<span class="button_icon more_info"><img src="katana/moreinfo.png" /></span>
+							<span class="button_icon more_info"><img src="<?php echo $template_uri; ?>katana/moreinfo.png" /></span>
 							More Information
 						</span>
 					</div>
@@ -366,7 +369,7 @@
 		</div>
 		<div class="supporttext" id="supporttexta">
 			<div class="image_container">
-				<img src="katana/supporttexta.png">
+				<img src="<?php echo $template_uri; ?>katana/supporttexta.png">
 			</div>
 			<p class="context small">
 				Based on a full analysis of your requirements, we uncover the full potential of what your new website can do for you and your business. 
@@ -375,7 +378,7 @@
 		</div>
 		<div class="supporttext" id="supporttextb">
 			<div class="image_container">
-				<img src="katana/supporttextb.png">
+				<img src="<?php echo $template_uri; ?>katana/supporttextb.png">
 			</div>
 			<p class="context small">
 			We identify the latest and most suitable web technologies to achieve the result you desire (or better),
@@ -384,7 +387,7 @@
 		</div>
 		<div class="supporttext" id="supporttextc">
 			<div class="image_container">
-				<img src="katana/supporttextc.png">
+				<img src="<?php echo $template_uri; ?>katana/supporttextc.png">
 			</div>
 			<p class="context small">
 				Within the first 4 seconds, the visitors to a website decide if they wish to stay or move on to another place in the cyber space. 
@@ -393,7 +396,7 @@
 		</div>
 		<div class="supporttext" id="supporttextd">
 			<div class="image_container">
-				<img src="katana/supporttextd.png">
+				<img src="<?php echo $template_uri; ?>katana/supporttextd.png">
 			</div>
 			<p class="context small">
 			At Studio Katana, we offer the latest technology but don't charge you an arm and a leg !  
