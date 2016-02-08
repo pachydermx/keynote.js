@@ -1,12 +1,3 @@
-<?php
-/**
- * Template Name: Keynote
- *
- * @package WordPress
- * @subpackage Twenty_Twelve
- * @since Twenty Twelve 1.0
- */
-?>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,
                                maximum-scale=1.0" />
@@ -14,6 +5,10 @@
 <head>
     <!-- import jquery library -->
     <title></title>
+	<script>
+		console.log("<?php echo get_template_directory(); ?>")
+		console.log("<?php echo get_template_uri(); ?>")
+	</script>
     <script src="jquery-2.1.4.min.js"></script>
     <script src="jquery.rotate.js"></script>
     <script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
